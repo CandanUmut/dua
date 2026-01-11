@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Prophets’ Duas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Top App Bar -->
+  <header class="app-header" role="banner">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="mark-dot"></span>
+          <span class="mark-line"></span>
+        </div>
+        <div class="brand-text">
+          <h1 class="title">Prophets’ Duas</h1>
+          <p class="subtitle">A calm, searchable collection of supplications — Arabic, transliteration, English, Turkish.</p>
+        </div>
+      </div>
+
+      <div class="header-actions" aria-label="Appearance and reading controls (placeholders)">
+        <div class="segmented" role="group" aria-label="Theme (placeholder)">
+          <button class="seg-btn is-active" type="button" aria-pressed="true">Auto</button>
+          <button class="seg-btn" type="button" aria-pressed="false">Light</button>
+          <button class="seg-btn" type="button" aria-pressed="false">Dark</button>
+        </div>
+
+        <div class="font-controls" role="group" aria-label="Font size (placeholder)">
+          <button class="icon-btn" type="button" aria-label="Decrease font size">A−</button>
+          <button class="icon-btn" type="button" aria-label="Increase font size">A+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search + Quick chips -->
+    <div class="wrap header-lower">
+      <div class="search-row" role="search">
+        <label class="sr-only" for="search">Search</label>
+        <div class="search">
+          <span class="search-ic" aria-hidden="true">⌕</span>
+          <input id="search" type="search" inputmode="search"
+                 placeholder="Search: Yunus • sabr • forgiveness • رزق • tövbe …"
+                 aria-label="Search across Arabic, transliteration, English, and Turkish" />
+          <button class="pill-btn ghost" type="button" aria-label="Clear search (placeholder)">Clear</button>
+        </div>
+
+        <div class="toggle-strip" aria-label="Content visibility toggles (placeholders)">
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span class="toggle-label">Arabic</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span class="toggle-label">Translit</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span class="toggle-label">EN</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span class="toggle-label">TR</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="chip-row" aria-label="Quick topic chips (placeholders)">
+        <button class="chip is-active" type="button" aria-pressed="true">All</button>
+        <button class="chip" type="button">Forgiveness</button>
+        <button class="chip" type="button">Guidance</button>
+        <button class="chip" type="button">Protection</button>
+        <button class="chip" type="button">Patience</button>
+        <button class="chip" type="button">Rizq</button>
+        <button class="chip" type="button">Distress</button>
+        <button class="chip" type="button">Family</button>
+        <button class="chip" type="button">Gratitude</button>
+      </div>
+    </div>
+
+    <!-- Desktop Tabs -->
+    <nav class="tabs wrap" aria-label="Primary sections (placeholders)">
+      <a class="tab is-active" href="#home" aria-current="page">Home</a>
+      <a class="tab" href="#prophets">Prophets</a>
+      <a class="tab" href="#topics">Topics</a>
+      <a class="tab" href="#favorites">Favorites</a>
+      <a class="tab" href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main id="main" class="wrap main" role="main">
+    <div class="layout">
+      <!-- Left column -->
+      <div class="content">
+        <!-- Filters -->
+        <section class="panel filters" aria-label="Filters (placeholders)">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title">Explore</h2>
+              <p class="panel-sub">Filter by prophet, topic, or source. Search supports Arabic and translations.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="pill-btn" type="button" aria-label="Reset filters (placeholder)">Reset</button>
+              <button class="pill-btn ghost" type="button" aria-label="Reading mode (placeholder)">Reading Mode</button>
+            </div>
+          </div>
+
+          <div class="filter-grid">
+            <div class="field">
+              <label for="prophet">Prophet</label>
+              <select id="prophet" aria-label="Filter by prophet (placeholder)">
+                <option>All Prophets</option>
+                <option>Adam</option>
+                <option>Nuh (Noah)</option>
+                <option>Ibrahim (Abraham)</option>
+                <option>Musa (Moses)</option>
+                <option>Yunus (Jonah)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="topic">Topic</label>
+              <select id="topic" aria-label="Filter by topic (placeholder)">
+                <option>All Topics</option>
+                <option>Forgiveness</option>
+                <option>Guidance</option>
+                <option>Protection</option>
+                <option>Patience</option>
+                <option>Gratitude</option>
+                <option>Rizq</option>
+                <option>Distress</option>
+                <option>Family</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="source">Source</label>
+              <select id="source" aria-label="Filter by source (placeholder)">
+                <option>All Sources</option>
+                <option>Qur’an</option>
+                <option>Hadith</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field field-inline">
+              <span class="label">Interface</span>
+              <div class="segmented" role="group" aria-label="Interface language (placeholder)">
+                <button class="seg-btn is-active" type="button" aria-pressed="true">EN</button>
+                <button class="seg-btn" type="button" aria-pressed="false">TR</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="meta-row" aria-label="Results meta (placeholder)">
+            <span class="meta-pill">
+              <span class="dot"></span>
+              <strong>128</strong> prayers • <span class="muted">3 shown</span>
+            </span>
+            <span class="meta-pill ghost">
+              Tip: try <span class="kbd">رزق</span> or <span class="kbd">tövbe</span>
+            </span>
+          </div>
+        </section>
+
+        <!-- Prophet Index -->
+        <section class="panel prophet-index" aria-label="Prophet Index (placeholders)">
+          <div class="panel-head tight">
+            <div>
+              <h2 class="panel-title">Prophet Index</h2>
+              <p class="panel-sub">Jump quickly by name. (A–Z + chips)</p>
+            </div>
+          </div>
+
+          <div class="az" aria-label="Alphabet index (placeholder)">
+            <button class="az-btn" type="button">A</button>
+            <button class="az-btn" type="button">B</button>
+            <button class="az-btn" type="button">I</button>
+            <button class="az-btn" type="button">M</button>
+            <button class="az-btn" type="button">N</button>
+            <button class="az-btn" type="button">S</button>
+            <button class="az-btn" type="button">Y</button>
+            <span class="az-fade" aria-hidden="true"></span>
+          </div>
+
+          <div class="chip-grid" aria-label="Prophet chips (placeholder)">
+            <button class="chip" type="button">Adam</button>
+            <button class="chip" type="button">Nuh</button>
+            <button class="chip" type="button">Ibrahim</button>
+            <button class="chip" type="button">Musa</button>
+            <button class="chip" type="button">Ayyub</button>
+            <button class="chip" type="button">Zakariya</button>
+            <button class="chip" type="button">Yunus</button>
+            <button class="chip" type="button">Sulaiman</button>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section class="results" aria-label="Results list">
+          <div class="results-head">
+            <h2 class="results-title">Featured & Recent</h2>
+            <div class="results-actions">
+              <button class="pill-btn ghost" type="button" aria-label="Sort (placeholder)">Sort</button>
+              <button class="pill-btn ghost" type="button" aria-label="View options (placeholder)">View</button>
+            </div>
+          </div>
+
+          <!-- Sample Card 1 -->
+          <article class="card" aria-label="Dua card (sample)">
+            <div class="card-top">
+              <div class="card-title">
+                <h3>Yunus (Jonah)</h3>
+                <p class="ref">Qur’an • Al-Anbiya 21:87–88</p>
+              </div>
+
+              <div class="card-controls" aria-label="Card actions (UI only)">
+                <button class="icon-btn" type="button" aria-label="Save to favorites (placeholder)">☆</button>
+                <button class="icon-btn" type="button" aria-label="Share (placeholder)">↗</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <p class="arabic" lang="ar" dir="rtl">
+                لَا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ
+              </p>
+
+              <div class="grid-2">
+                <div class="block">
+                  <div class="label">Transliteration</div>
+                  <p>Lā ilāha illā anta subḥānaka innī kuntu minaẓ-ẓālimīn.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">English</div>
+                  <p>There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Türkçe</div>
+                  <p>Senden başka ilah yoktur. Seni noksan sıfatlardan tenzih ederim. Gerçekten ben zalimlerden oldum.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Tags</div>
+                  <div class="tags">
+                    <span class="tag">tawbah</span>
+                    <span class="tag">distress</span>
+                    <span class="tag">forgiveness</span>
+                    <span class="tag">hope</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="pill-btn" type="button">Copy Arabic</button>
+                <button class="pill-btn" type="button">Copy Full</button>
+                <button class="pill-btn ghost" type="button">Share</button>
+                <button class="pill-btn ghost" type="button">Save</button>
+              </div>
+
+              <details class="accordion">
+                <summary>
+                  <span>Reflection & Context</span>
+                  <span class="chev" aria-hidden="true">⌄</span>
+                </summary>
+                <div class="accordion-body">
+                  <p class="muted">
+                    This prayer is recited in moments of distress and returning to Allah. It carries humility and
+                    recognition of one’s shortcomings, opening a path to mercy and relief.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- Sample Card 2 -->
+          <article class="card" aria-label="Dua card (sample)">
+            <div class="card-top">
+              <div class="card-title">
+                <h3>Ayyub (Job)</h3>
+                <p class="ref">Qur’an • Al-Anbiya 21:83</p>
+              </div>
+              <div class="card-controls" aria-label="Card actions (UI only)">
+                <button class="icon-btn" type="button" aria-label="Save to favorites (placeholder)">☆</button>
+                <button class="icon-btn" type="button" aria-label="Share (placeholder)">↗</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <p class="arabic" lang="ar" dir="rtl">
+                أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ
+              </p>
+
+              <div class="grid-2">
+                <div class="block">
+                  <div class="label">Transliteration</div>
+                  <p>Annī massaniyaḍ-ḍurru wa anta arḥamu r-rāḥimīn.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">English</div>
+                  <p>Indeed, adversity has touched me, and You are the Most Merciful of the merciful.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Türkçe</div>
+                  <p>Bana gerçekten sıkıntı dokundu. Sen merhametlilerin en merhametlisisin.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Tags</div>
+                  <div class="tags">
+                    <span class="tag">healing</span>
+                    <span class="tag">patience</span>
+                    <span class="tag">mercy</span>
+                    <span class="tag">trial</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="pill-btn" type="button">Copy Arabic</button>
+                <button class="pill-btn" type="button">Copy Full</button>
+                <button class="pill-btn ghost" type="button">Share</button>
+                <button class="pill-btn ghost" type="button">Save</button>
+              </div>
+
+              <details class="accordion">
+                <summary>
+                  <span>Reflection & Context</span>
+                  <span class="chev" aria-hidden="true">⌄</span>
+                </summary>
+                <div class="accordion-body">
+                  <p class="muted">
+                    A prayer of dignified vulnerability: naming the hardship without despair, and affirming Allah’s mercy
+                    above all means.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- Sample Card 3 -->
+          <article class="card" aria-label="Dua card (sample)">
+            <div class="card-top">
+              <div class="card-title">
+                <h3>Zakariya (Zechariah)</h3>
+                <p class="ref">Qur’an • Maryam 19:4–6</p>
+              </div>
+              <div class="card-controls" aria-label="Card actions (UI only)">
+                <button class="icon-btn" type="button" aria-label="Save to favorites (placeholder)">☆</button>
+                <button class="icon-btn" type="button" aria-label="Share (placeholder)">↗</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <p class="arabic" lang="ar" dir="rtl">
+                رَبِّ إِنِّي وَهَنَ الْعَظْمُ مِنِّي وَاشْتَعَلَ الرَّأْسُ شَيْبًا وَلَمْ أَكُن بِدُعَائِكَ رَبِّ شَقِيًّا
+              </p>
+
+              <div class="grid-2">
+                <div class="block">
+                  <div class="label">Transliteration</div>
+                  <p>Rabbi innī wahanal-ʿaẓmu minnī washtaʿala r-ra'su shaybā, wa lam akun biduʿā'ika rabbi shaqiyyā.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">English</div>
+                  <p>My Lord, my bones have weakened and my head has filled with gray, yet I have never been disappointed in my supplication to You.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Türkçe</div>
+                  <p>Rabbim! Kemiklerim zayıfladı, başım ihtiyarlıkla ağardı. Ama sana duamda Rabbim, hiç bedbaht olmadım.</p>
+                </div>
+
+                <div class="block">
+                  <div class="label">Tags</div>
+                  <div class="tags">
+                    <span class="tag">family</span>
+                    <span class="tag">hope</span>
+                    <span class="tag">legacy</span>
+                    <span class="tag">trust</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="pill-btn" type="button">Copy Arabic</button>
+                <button class="pill-btn" type="button">Copy Full</button>
+                <button class="pill-btn ghost" type="button">Share</button>
+                <button class="pill-btn ghost" type="button">Save</button>
+              </div>
+
+              <details class="accordion">
+                <summary>
+                  <span>Reflection & Context</span>
+                  <span class="chev" aria-hidden="true">⌄</span>
+                </summary>
+                <div class="accordion-body">
+                  <p class="muted">
+                    A prayer that blends honesty about weakness with a long memory of answered dua — a soft invitation to keep asking with hope.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- Empty States (placeholders) -->
+          <section class="panel empty-state" aria-label="Empty state: no results (placeholder)">
+            <div class="empty-ic" aria-hidden="true">⟡</div>
+            <h3>No results</h3>
+            <p class="muted">Try a different spelling, a topic tag, or search in Arabic (e.g., هداية).</p>
+            <div class="empty-actions">
+              <button class="pill-btn" type="button">Show All</button>
+              <button class="pill-btn ghost" type="button">Explore Topics</button>
+            </div>
+          </section>
+
+          <section class="panel empty-state" aria-label="Empty state: no favorites (placeholder)">
+            <div class="empty-ic" aria-hidden="true">☆</div>
+            <h3>No favorites yet</h3>
+            <p class="muted">Save duas you want to revisit. Favorites will appear here.</p>
+            <div class="empty-actions">
+              <button class="pill-btn" type="button">Browse Prophets</button>
+              <button class="pill-btn ghost" type="button">Browse Topics</button>
+            </div>
+          </section>
+
+          <!-- Skeleton placeholders -->
+          <section class="panel skeletons" aria-label="Loading skeletons (placeholder)">
+            <div class="skeleton-card">
+              <div class="sk-line w-40"></div>
+              <div class="sk-line w-25"></div>
+              <div class="sk-block"></div>
+              <div class="sk-grid">
+                <div class="sk-line"></div><div class="sk-line"></div>
+                <div class="sk-line"></div><div class="sk-line"></div>
+              </div>
+            </div>
+            <div class="skeleton-card">
+              <div class="sk-line w-30"></div>
+              <div class="sk-line w-20"></div>
+              <div class="sk-block"></div>
+              <div class="sk-grid">
+                <div class="sk-line"></div><div class="sk-line"></div>
+                <div class="sk-line"></div><div class="sk-line"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+
+      <!-- Right side-sheet (desktop placeholder) -->
+      <aside class="side-sheet" aria-label="Dua detail view (placeholder)">
+        <div class="sheet-inner">
+          <div class="sheet-head">
+            <div>
+              <h2 class="sheet-title">Dua Details</h2>
+              <p class="sheet-sub">Select a dua to open a focused reading panel.</p>
+            </div>
+            <button class="icon-btn" type="button" aria-label="Close detail view (placeholder)">✕</button>
+          </div>
+
+          <div class="sheet-body reading-mode" aria-label="Reading mode preview (placeholder)">
+            <div class="reading-top">
+              <span class="badge">Featured</span>
+              <span class="badge ghost">Qur’an</span>
+            </div>
+
+            <h3 class="reading-title">Yunus (Jonah)</h3>
+            <p class="ref">Al-Anbiya 21:87–88</p>
+
+            <p class="arabic big" lang="ar" dir="rtl">
+              لَا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ
+            </p>
+
+            <div class="reading-block">
+              <div class="label">Transliteration</div>
+              <p class="muted">Lā ilāha illā anta subḥānaka innī kuntu minaẓ-ẓālimīn.</p>
+            </div>
+
+            <div class="reading-block">
+              <div class="label">Meaning</div>
+              <p>There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.</p>
+            </div>
+
+            <div class="reading-block">
+              <div class="label">Reflection</div>
+              <p class="muted">
+                A short dua with deep humility — perfect for moments of pressure, regret, or fear. Repeat slowly and let it
+                re-center your heart.
+              </p>
+            </div>
+
+            <div class="card-actions">
+              <button class="pill-btn" type="button">Copy Arabic</button>
+              <button class="pill-btn" type="button">Copy Full</button>
+              <button class="pill-btn ghost" type="button">Share</button>
+              <button class="pill-btn ghost" type="button">Save</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav" aria-label="Bottom navigation (placeholders)">
+    <a class="bn-item is-active" href="#home" aria-current="page">
+      <span class="bn-ic" aria-hidden="true">⌂</span>
+      <span class="bn-txt">Home</span>
+    </a>
+    <a class="bn-item" href="#prophets">
+      <span class="bn-ic" aria-hidden="true">☰</span>
+      <span class="bn-txt">Prophets</span>
+    </a>
+    <a class="bn-item" href="#topics">
+      <span class="bn-ic" aria-hidden="true">◌</span>
+      <span class="bn-txt">Topics</span>
+    </a>
+    <a class="bn-item" href="#favorites">
+      <span class="bn-ic" aria-hidden="true">☆</span>
+      <span class="bn-txt">Saved</span>
+    </a>
+    <a class="bn-item" href="#about">
+      <span class="bn-ic" aria-hidden="true">ⓘ</span>
+      <span class="bn-txt">About</span>
+    </a>
+  </nav>
+
+  <footer class="footer wrap" role="contentinfo">
+    <p class="muted">
+      Static prototype UI (no JS yet). Next step: wire search, filters, favorites, routing, and data loading from <code>data/prayers.json</code>.
+    </p>
+  </footer>
+</body>
+</html>
