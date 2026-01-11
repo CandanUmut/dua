@@ -7,12 +7,15 @@
 
 (() => {
   "use strict";
+  if (window.__duaAppInit) return;
+  window.__duaAppInit = true;
 
   /* ------------------------------
      Configuration / Constants
   ------------------------------ */
   const DATA_URL = "./data/prayers.json";
   const LS_KEY = "prophets_duas_v1";
+  const ONBOARDING_KEY = "prophets_duas_onboarding_seen";
 
   const DEFAULT_PREFS = {
     theme: "auto",            // auto | light | dark
@@ -25,7 +28,7 @@
     fontText: 15,             // px
     favorites: [],            // [id]
     recent: [],               // [id] newest first
-    lastRoute: "#home",
+    lastRoute: "#view=home",
   };
 
   const I18N = {
@@ -33,8 +36,15 @@
       sections: { home: "Home", prophets: "Prophets", topics: "Topics", favorites: "Favorites", about: "About" },
       filters: { prophet: "Prophet", topic: "Topic", source: "Source", allProphets: "All Prophets", allTopics: "All Topics", allSources: "All Sources" },
       meta: { found: "found", prayers: "prayers", shown: "shown", tip: "Tip" },
-      actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset" },
+      actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset", clearFilters: "Clear filters" },
       labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection & Context", meaning: "Meaning" },
+      toasts: {
+        copiedArabic: "Copied Arabic",
+        copiedFull: "Copied full dua",
+        saved: "Saved to favorites",
+        removed: "Removed from favorites",
+        linkCopied: "Link copied"
+      },
       states: {
         loadingTitle: "Loading…",
         loadingDesc: "Preparing the collection.",
@@ -65,8 +75,15 @@
       sections: { home: "Ana Sayfa", prophets: "Peygamberler", topics: "Konular", favorites: "Favoriler", about: "Hakkında" },
       filters: { prophet: "Peygamber", topic: "Konu", source: "Kaynak", allProphets: "Tüm Peygamberler", allTopics: "Tüm Konular", allSources: "Tüm Kaynaklar" },
       meta: { found: "bulundu", prayers: "dua", shown: "gösteriliyor", tip: "İpucu" },
-      actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla" },
+      actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla", clearFilters: "Filtreleri temizle" },
       labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Bağlam & Tefekkür", meaning: "Anlam" },
+      toasts: {
+        copiedArabic: "Arapça kopyalandı",
+        copiedFull: "Dua kopyalandı",
+        saved: "Favorilere eklendi",
+        removed: "Favorilerden çıkarıldı",
+        linkCopied: "Bağlantı kopyalandı"
+      },
       states: {
         loadingTitle: "Yükleniyor…",
         loadingDesc: "Koleksiyon hazırlanıyor.",
@@ -103,6 +120,7 @@
   let PROPHETS = []; // derived list
   let TOPICS = [];   // derived list
   let SOURCE_TYPES = ["Quran", "Hadith", "Other"];
+  let TOPIC_COUNTS = new Map();
 
   const state = {
     prefs: loadPrefs(),
@@ -113,7 +131,20 @@
     topic: "",
     source: "",
     renderedIds: [],
+    lastListState: null,
   };
+
+  const onboarding = {
+    modal: null,
+    steps: [],
+    dots: [],
+    btnPrev: null,
+    btnNext: null,
+    btnFinish: null,
+    btnSkip: null,
+  };
+  let onboardingStep = 0;
+  let onboardingLastFocus = null;
 
   /* ------------------------------
      DOM Helpers
@@ -164,6 +195,12 @@
 
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
+  }
+
+  function getActiveRoute() {
+    return state.route === "dua"
+      ? (state.lastListState?.route || "home")
+      : state.route;
   }
 
   /* ------------------------------
@@ -220,25 +257,23 @@
     // support:
     // 1) #home, #prophets, #topics, #favorites, #about
     // 2) #dua=<id>
-    // 3) #q=...&prophet=...&topic=...&source=...&route=...
+    // 3) #q=...&prophet=...&topic=...&source=...&view=home|...
     if (!h) return { route: "home" };
 
-    // If it looks like querystring
     if (h.includes("=")) {
       const params = new URLSearchParams(h);
       const dua = params.get("dua");
-      const route = params.get("route") || (dua ? "dua" : "home");
+      const route = params.get("view") || params.get("route") || (dua ? "dua" : "home");
       return {
         route,
         dua,
-        q: params.get("q") || "",
-        prophet: params.get("prophet") || "",
-        topic: params.get("topic") || "",
-        source: params.get("source") || ""
+        q: params.get("q"),
+        prophet: params.get("prophet"),
+        topic: params.get("topic"),
+        source: params.get("source")
       };
     }
 
-    // Simple route
     return { route: h };
   }
 
@@ -247,21 +282,22 @@
     const route = extra.route ?? state.route ?? "home";
 
     if (route === "dua" && (extra.dua || state.routeParam)) {
-      params.set("route", "dua");
       params.set("dua", extra.dua || state.routeParam);
     } else {
-      params.set("route", route);
+      params.set("view", route);
     }
 
-    const q = extra.q ?? state.q;
-    const prophet = extra.prophet ?? state.prophet;
-    const topic = extra.topic ?? state.topic;
-    const source = extra.source ?? state.source;
+    if (route !== "dua") {
+      const q = extra.q ?? state.q;
+      const prophet = extra.prophet ?? state.prophet;
+      const topic = extra.topic ?? state.topic;
+      const source = extra.source ?? state.source;
 
-    if (q) params.set("q", q);
-    if (prophet) params.set("prophet", prophet);
-    if (topic) params.set("topic", topic);
-    if (source) params.set("source", source);
+      if (q) params.set("q", q);
+      if (prophet) params.set("prophet", prophet);
+      if (topic) params.set("topic", topic);
+      if (source) params.set("source", source);
+    }
 
     location.hash = params.toString();
   }
@@ -278,11 +314,28 @@
     if (parsed.topic != null) state.topic = parsed.topic;
     if (parsed.source != null) state.source = parsed.source;
 
-    state.prefs.lastRoute = location.hash || "#route=home";
+    if (state.route !== "dua") {
+      state.lastListState = {
+        route: state.route,
+        q: state.q,
+        prophet: state.prophet,
+        topic: state.topic,
+        source: state.source
+      };
+    }
+
+    if (state.route !== "dua") {
+      state.prefs.lastRoute = location.hash || "#view=home";
+    }
     savePrefs();
 
     // sync UI inputs
     syncControlsFromState();
+
+    if (state.route !== "dua") {
+      const sheetBody = $(".sheet-body");
+      if (sheetBody) sheetBody.innerHTML = detailPlaceholderHTML();
+    }
 
     // render section
     renderApp();
@@ -323,6 +376,7 @@
     // Build fast search index and distinct lists
     const prophetsSet = new Map(); // key -> {en,tr,ar}
     const topicsSet = new Set();
+    const topicCounts = new Map();
     const sourceSet = new Set();
 
     INDEX = DATA.map((p) => {
@@ -337,7 +391,10 @@
       }
 
       const topics = Array.isArray(p.topics) ? p.topics.filter(Boolean).map(String) : [];
-      topics.forEach(t => topicsSet.add(t));
+      topics.forEach(t => {
+        topicsSet.add(t);
+        topicCounts.set(t, (topicCounts.get(t) || 0) + 1);
+      });
 
       const sourceType = safeText(p?.source?.type) || "Other";
       sourceSet.add(sourceType);
@@ -364,6 +421,7 @@
         id,
         prophetKey,
         topics: new Set(topics),
+        topicsNorm: new Set(topics.map(t => normalize(t))),
         sourceType,
         search: hay
       };
@@ -383,8 +441,10 @@
     });
 
     // populate filters UI
+    TOPIC_COUNTS = topicCounts;
     fillFilterOptions();
     fillProphetIndex();
+    fillQuickChips(TOPIC_COUNTS);
   }
 
   /* ------------------------------
@@ -401,19 +461,19 @@
       elSearch.value = state.q || "";
       elSearch.addEventListener("input", debounce(() => {
         state.q = elSearch.value || "";
-        setHashFromState({ route: state.route, q: state.q });
+        setHashFromState({ route: getActiveRoute(), q: state.q });
       }, 160));
     } else {
       warnOnce("no-search", "Search input #search not found.");
     }
 
     // Clear search button (placeholder in HTML as .search .pill-btn.ghost)
-    const elClear = $(".search .pill-btn.ghost");
+    const elClear = $("#clear-search");
     if (elClear) {
       elClear.addEventListener("click", () => {
         state.q = "";
         if (elSearch) elSearch.value = "";
-        setHashFromState({ route: state.route, q: "" });
+        setHashFromState({ route: getActiveRoute(), q: "" });
       });
     }
 
@@ -424,23 +484,24 @@
 
     if (elProphet) elProphet.addEventListener("change", () => {
       state.prophet = elProphet.value === "__all__" ? "" : elProphet.value;
-      setHashFromState({ route: state.route, prophet: state.prophet });
+      setHashFromState({ route: getActiveRoute(), prophet: state.prophet });
     });
 
     if (elTopic) elTopic.addEventListener("change", () => {
       state.topic = elTopic.value === "__all__" ? "" : elTopic.value;
-      setHashFromState({ route: state.route, topic: state.topic });
+      setHashFromState({ route: getActiveRoute(), topic: state.topic });
     });
 
     if (elSource) elSource.addEventListener("change", () => {
       state.source = elSource.value === "__all__" ? "" : elSource.value;
-      setHashFromState({ route: state.route, source: state.source });
+      setHashFromState({ route: getActiveRoute(), source: state.source });
     });
 
-    // Reset button in filters panel
+    // Clear filters button in filters panel
+    const clearFiltersBtn = $("#clear-filters");
     const resetBtn = $$("button").find(b => safeText(b.textContent).trim().toLowerCase() === "reset");
     const resetBtnTR = $$("button").find(b => safeText(b.textContent).trim().toLowerCase() === "sıfırla");
-    const reset = resetBtn || resetBtnTR;
+    const reset = clearFiltersBtn || resetBtn || resetBtnTR;
     if (reset) {
       reset.addEventListener("click", () => {
         state.q = "";
@@ -448,7 +509,7 @@
         state.topic = "";
         state.source = "";
         if (elSearch) elSearch.value = "";
-        setHashFromState({ route: state.route, q: "", prophet: "", topic: "", source: "" });
+        setHashFromState({ route: getActiveRoute(), q: "", prophet: "", topic: "", source: "" });
       });
     }
 
@@ -465,39 +526,37 @@
       });
     });
 
-    // Topic chips row (top)
-    $$(".chip-row .chip").forEach(btn => {
-      btn.addEventListener("click", () => {
-        // "All" clears topic filter
-        const label = safeText(btn.textContent).trim();
-        if (normalize(label) === "all" || normalize(label) === "tümü" || normalize(label) === "tum") {
-          state.topic = "";
-        } else {
-          state.topic = label;
-        }
-        setHashFromState({ route: state.route, topic: state.topic });
+    // Topic chips row (top) - event delegation
+    const chipRow = $("#quick-chips");
+    if (chipRow) {
+      chipRow.addEventListener("click", (e) => {
+        const btn = e.target instanceof HTMLElement ? e.target.closest("[data-topic]") : null;
+        if (!btn) return;
+        const topic = btn.getAttribute("data-topic") || "";
+        state.topic = topic === "__all__" ? "" : topic;
+        setHashFromState({ route: getActiveRoute(), topic: state.topic });
       });
-    });
+    }
 
     // Content visibility toggles
     const toggles = $$(".toggle-strip .toggle");
     toggles.forEach((labelEl) => {
-      const txt = normalize(labelEl.textContent);
       const input = $("input", labelEl);
       if (!input) return;
+      const key = input.dataset.toggle;
 
-      if (txt.includes("arabic")) input.checked = !!state.prefs.showArabic;
-      if (txt.includes("translit")) input.checked = !!state.prefs.showTranslit;
-      if (txt === "en") input.checked = !!state.prefs.showEN;
-      if (txt === "tr") input.checked = !!state.prefs.showTR;
+      if (key === "arabic") input.checked = !!state.prefs.showArabic;
+      if (key === "translit") input.checked = !!state.prefs.showTranslit;
+      if (key === "en") input.checked = !!state.prefs.showEN;
+      if (key === "tr") input.checked = !!state.prefs.showTR;
 
       input.addEventListener("change", () => {
-        if (txt.includes("arabic")) setPref("showArabic", input.checked);
-        if (txt.includes("translit")) setPref("showTranslit", input.checked);
-        if (txt === "en") setPref("showEN", input.checked);
-        if (txt === "tr") setPref("showTR", input.checked);
-        renderResults(); // rerender cards quickly
-        updateSideSheetVisibility(); // if open
+        if (key === "arabic") setPref("showArabic", input.checked);
+        if (key === "translit") setPref("showTranslit", input.checked);
+        if (key === "en") setPref("showEN", input.checked);
+        if (key === "tr") setPref("showTR", input.checked);
+        renderResults();
+        updateSideSheetVisibility();
       });
     });
 
@@ -550,6 +609,7 @@
     // Escape closes sheet
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
+        if (onboarding.modal && !onboarding.modal.hidden) return;
         closeSideSheet({ restoreFocus: true });
       }
     });
@@ -563,6 +623,15 @@
       const t = e.target;
       if (!(t instanceof HTMLElement)) return;
       if (t.matches("[data-action='retry']")) fetchData();
+    });
+
+    // Replay onboarding
+    document.addEventListener("click", (e) => {
+      const target = e.target instanceof HTMLElement ? e.target : null;
+      if (!target) return;
+      const btn = target.closest("[data-action='replay-onboarding']");
+      if (!btn) return;
+      openOnboarding({ force: true });
     });
 
     // Global click handlers for card actions (event delegation)
@@ -587,31 +656,45 @@
 
       if (action === "fav") {
         toggleFavorite(id);
+        const isFav = (state.prefs.favorites || []).includes(id);
         // update button states in list + sheet
         updateFavoriteButtons(id);
         renderIfRouteFavorites();
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts[isFav ? "saved" : "removed"]);
         return;
       }
 
       if (action === "share") {
         const link = makeShareLink({ dua: id });
         await copyToClipboard(link);
-        toast(actionBtn, state.prefs.uiLang === "tr" ? "Link kopyalandı!" : "Link copied!");
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.linkCopied);
         return;
       }
 
       if (action === "copyArabic") {
         await copyToClipboard(safeText(entry.arabic));
-        toast(actionBtn, state.prefs.uiLang === "tr" ? "Arapça kopyalandı!" : "Arabic copied!");
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedArabic);
         return;
       }
 
       if (action === "copyFull") {
         const full = buildFullCopy(entry);
         await copyToClipboard(full);
-        toast(actionBtn, state.prefs.uiLang === "tr" ? "Metin kopyalandı!" : "Copied!");
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedFull);
         return;
       }
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target instanceof HTMLElement ? e.target : null;
+      if (!target) return;
+      if (target.closest("[data-action]")) return;
+      if (target.closest("summary, button, a, input, select, textarea")) return;
+      const card = target.closest("[data-card-id]");
+      if (!card) return;
+      const id = card.getAttribute("data-card-id");
+      if (!id) return;
+      openDua(id, { pushRecent: true, focus: true, updateHash: true });
     });
 
     // Keyboard: Enter on card opens
@@ -619,6 +702,7 @@
       const target = e.target;
       if (!(target instanceof HTMLElement)) return;
       if (e.key !== "Enter") return;
+      if (onboarding.modal && !onboarding.modal.hidden) return;
 
       const card = target.closest("[data-card-id]");
       if (!card) return;
@@ -639,47 +723,22 @@
     });
   }
 
-  function toast(anchorEl, message) {
-    // micro toast near the button
+  function toast(message) {
+    const region = $("#toast-region");
+    if (!region) return;
     const el = document.createElement("div");
-    el.className = "mini-toast";
+    el.className = "toast";
     el.textContent = message;
-    Object.assign(el.style, {
-      position: "fixed",
-      zIndex: "9999",
-      padding: "8px 10px",
-      borderRadius: "12px",
-      border: "1px solid rgba(127,127,127,.25)",
-      background: "rgba(20,20,28,.72)",
-      color: "white",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
-      fontSize: "12px",
-      transform: "translateY(6px)",
-      opacity: "0",
-      transition: "opacity 180ms ease, transform 180ms ease",
-      pointerEvents: "none",
-    });
-
-    document.body.appendChild(el);
-
-    const r = anchorEl.getBoundingClientRect();
-    const x = Math.min(window.innerWidth - 12, Math.max(12, r.left));
-    const y = Math.max(12, r.top - 44);
-
-    el.style.left = `${x}px`;
-    el.style.top = `${y}px`;
+    region.appendChild(el);
 
     requestAnimationFrame(() => {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
+      el.classList.add("is-visible");
     });
 
     setTimeout(() => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(6px)";
-      setTimeout(() => el.remove(), 220);
-    }, 900);
+      el.classList.remove("is-visible");
+      setTimeout(() => el.remove(), 240);
+    }, 1400);
   }
 
   async function copyToClipboard(text) {
@@ -745,6 +804,23 @@
     });
   }
 
+  function fillQuickChips(topicCounts) {
+    const chipRow = $("#quick-chips");
+    if (!chipRow) return;
+    const allLabel = state.prefs.uiLang === "tr" ? "Tümü" : "All";
+    const popular = Array.from(topicCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([topic]) => topic);
+    const items = (popular.length ? popular : TOPICS).slice(0, 8);
+
+    chipRow.innerHTML = [
+      `<button class="chip" type="button" data-topic="__all__">${escapeHTML(allLabel)}</button>`,
+      ...items.map(topic => `<button class="chip" type="button" data-topic="${escapeHTML(topic)}">${escapeHTML(topic)}</button>`)
+    ].join("");
+
+    updateTopChipsActive();
+  }
+
   function syncControlsFromState() {
     const elSearch = $("#search");
     if (elSearch && elSearch.value !== state.q) elSearch.value = state.q || "";
@@ -762,6 +838,7 @@
     setNavActive(state.route);
     // Update chip active states (top chip row)
     updateTopChipsActive();
+    updateClearFiltersVisibility();
   }
 
   function setNavActive(route) {
@@ -779,12 +856,19 @@
     // Set active for top chip row based on state.topic
     const chips = $$(".chip-row .chip");
     chips.forEach(c => {
-      const label = safeText(c.textContent).trim();
-      const isAll = normalize(label) === "all" || normalize(label) === "tümü" || normalize(label) === "tum";
-      const active = isAll ? !state.topic : normalize(label) === normalize(state.topic);
+      const topic = c.getAttribute("data-topic") || safeText(c.textContent).trim();
+      const isAll = !topic || topic === "__all__";
+      const active = isAll ? !state.topic : normalize(topic) === normalize(state.topic);
       c.classList.toggle("is-active", active);
       c.setAttribute("aria-pressed", active ? "true" : "false");
     });
+  }
+
+  function updateClearFiltersVisibility() {
+    const btn = $("#clear-filters");
+    if (!btn) return;
+    const active = !!(state.q || state.prophet || state.topic || state.source);
+    btn.classList.toggle("is-hidden", !active);
   }
 
   /* ------------------------------
@@ -795,6 +879,8 @@
       // data not loaded yet; skeletons handle UI
       return;
     }
+
+    syncControlsFromState();
 
     // update labels for i18n
     applyI18n();
@@ -861,6 +947,12 @@
       if (topicLabel) topicLabel.textContent = t.filters.topic;
       if (sourceLabel) sourceLabel.textContent = t.filters.source;
     }
+
+    const clearFiltersBtn = $("#clear-filters");
+    if (clearFiltersBtn) clearFiltersBtn.textContent = t.actions.clearFilters;
+
+    const allChip = $("#quick-chips [data-topic='__all__']");
+    if (allChip) allChip.textContent = state.prefs.uiLang === "tr" ? "Tümü" : "All";
 
     // Update results title based on route (best effort)
     const resultsTitle = $(".results-title");
@@ -1021,6 +1113,9 @@
           <h2 class="panel-title">${escapeHTML(t.about.title)}</h2>
           <p class="panel-sub">${escapeHTML(t.about.desc)}</p>
         </div>
+        <div class="panel-actions">
+          <button class="pill-btn ghost" type="button" data-action="replay-onboarding">${escapeHTML(state.prefs.uiLang === "tr" ? "Tanıtımı tekrar oynat" : "Replay onboarding")}</button>
+        </div>
       </div>
 
       <div style="margin-top:12px; display:grid; gap:12px;">
@@ -1165,15 +1260,13 @@
     }
 
     // Add results header (only when not includeDaily which already has header)
-    if (!opts.includeDaily) {
-      const title =
-        state.route === "favorites" ? t.sections.favorites :
-        state.route === "prophets" ? t.sections.prophets :
-        state.route === "topics" ? t.sections.topics :
-        t.home.featured;
+    const title =
+      state.route === "favorites" ? t.sections.favorites :
+      state.route === "prophets" ? t.sections.prophets :
+      state.route === "topics" ? t.sections.topics :
+      t.home.featured;
 
-      html += sectionHeaderHTML(title);
-    }
+    html += sectionHeaderHTML(title);
 
     // Render list efficiently
     // Limit for performance? show all; can later add pagination
@@ -1286,14 +1379,7 @@
       if (favoritesOnly && !favSet.has(it.id)) continue;
 
       if (np && normalize(it.prophetKey) !== np) continue;
-      if (nt && !it.topics.has(topic)) {
-        // also allow normalized match for topics that differ by case
-        let ok = false;
-        for (const t of it.topics) {
-          if (normalize(t) === nt) { ok = true; break; }
-        }
-        if (!ok) continue;
-      }
+      if (nt && !it.topicsNorm.has(nt)) continue;
       if (ns && normalize(it.sourceType) !== ns) continue;
 
       if (nq && !it.search.includes(nq)) continue;
@@ -1426,8 +1512,8 @@
           </div>
 
           <div class="card-controls" aria-label="Card actions">
-            <button class="icon-btn" type="button" data-action="fav" data-id="${escapeHTML(id)}" aria-label="${fav ? "Unsave" : "Save"}" aria-pressed="${fav ? "true" : "false"}">${fav ? "★" : "☆"}</button>
-            <button class="icon-btn" type="button" data-action="share" data-id="${escapeHTML(id)}" aria-label="Share">↗</button>
+            <button class="icon-btn" type="button" data-action="fav" data-id="${escapeHTML(id)}" aria-label="${fav ? "Unsave" : "Save"}" aria-pressed="${fav ? "true" : "false"}" title="${escapeHTML(fav ? (t.actions.saved || "Saved") : (t.actions.save || "Save"))}">${fav ? "★" : "☆"}</button>
+            <button class="icon-btn" type="button" data-action="share" data-id="${escapeHTML(id)}" aria-label="Share" title="${escapeHTML(t.actions.share)}">↗</button>
           </div>
         </div>
 
@@ -1444,11 +1530,11 @@
           </div>
 
           <div class="card-actions">
-            <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.copyArabic)}</button>
-            <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.copyFull)}</button>
-            <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.share)}</button>
-            <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
-            <button class="pill-btn ghost" type="button" data-action="open" data-id="${escapeHTML(id)}">${escapeHTML(state.prefs.uiLang === "tr" ? "Aç" : "Open")}</button>
+            <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
+            <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
+            <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.share)}">${escapeHTML(t.actions.share)}</button>
+            <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
+            <button class="pill-btn ghost" type="button" data-action="open" data-id="${escapeHTML(id)}" title="${escapeHTML(state.prefs.uiLang === "tr" ? "Aç" : "Open")}">${escapeHTML(state.prefs.uiLang === "tr" ? "Aç" : "Open")}</button>
           </div>
 
           ${reflectionBlock}
@@ -1463,13 +1549,13 @@
     const ref = safeText(p?.source?.reference) || "";
 
     return `
-      <div class="mini-card" style="border:1px solid var(--line-2); border-radius:16px; padding:12px; background: color-mix(in srgb, var(--panel-2) 90%, transparent);">
-        <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+      <div class="mini-card">
+        <div class="mini-card-head">
           <div>
-            <div style="font-weight:700; letter-spacing:-.01em;">${escapeHTML(prophetName)}</div>
-            <div class="muted" style="font-size:12px; margin-top:4px;">${escapeHTML(ref)}</div>
+            <div class="mini-card-title">${escapeHTML(prophetName)}</div>
+            <div class="mini-card-ref muted">${escapeHTML(ref)}</div>
           </div>
-          <button class="pill-btn ghost" type="button" data-mini-open="${escapeHTML(id)}" style="min-height:34px; padding:7px 10px;">${escapeHTML((I18N[state.prefs.uiLang] || I18N.en).home.open)}</button>
+          <button class="pill-btn ghost mini-open" type="button" data-mini-open="${escapeHTML(id)}">${escapeHTML((I18N[state.prefs.uiLang] || I18N.en).home.open)}</button>
         </div>
       </div>
     `;
@@ -1522,6 +1608,16 @@
     const entry = findById(id);
     if (!entry) return;
 
+    if (state.route !== "dua") {
+      state.lastListState = {
+        route: state.route || "home",
+        q: state.q || "",
+        prophet: state.prophet || "",
+        topic: state.topic || "",
+        source: state.source || ""
+      };
+    }
+
     if (pushRecent) pushRecentId(id);
 
     const sheet = $(".side-sheet");
@@ -1565,10 +1661,14 @@
 
     // When closing, return to previous section route (home by default)
     if (state.route === "dua") {
-      const backRoute = inferBackRoute();
-      state.route = backRoute;
+      const backState = state.lastListState || { route: inferBackRoute(), q: "", prophet: "", topic: "", source: "" };
+      state.route = backState.route || "home";
       state.routeParam = null;
-      setHashFromState({ route: backRoute });
+      state.q = backState.q || "";
+      state.prophet = backState.prophet || "";
+      state.topic = backState.topic || "";
+      state.source = backState.source || "";
+      setHashFromState(backState);
     }
 
     if (restoreFocus && lastFocusEl) {
@@ -1653,10 +1753,10 @@
           </div>` : ""}
 
         <div class="card-actions" style="margin-top:14px;">
-          <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.copyArabic)}</button>
-          <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.copyFull)}</button>
-          <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}">${escapeHTML(t.actions.share)}</button>
-          <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
+          <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
+          <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
+          <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.share)}">${escapeHTML(t.actions.share)}</button>
+          <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
         </div>
       </div>
     `;
@@ -1728,12 +1828,134 @@
      Share links
   ------------------------------ */
   function makeShareLink({ dua }) {
-    const params = new URLSearchParams();
-    params.set("route", "dua");
-    params.set("dua", dua);
-    // preserve current ui lang? keep it simple
-    const base = `${location.origin}${location.pathname}`;
-    return `${base}#${params.toString()}`;
+    const safeId = encodeURIComponent(dua);
+    const base = (location.origin && location.origin !== "null")
+      ? `${location.origin}${location.pathname}`
+      : location.href.split("#")[0];
+    return `${base}#dua=${safeId}`;
+  }
+
+  /* ------------------------------
+     Onboarding
+  ------------------------------ */
+  function setupOnboarding() {
+    onboarding.modal = $("#onboarding");
+    if (!onboarding.modal) return;
+    onboarding.modal.setAttribute("aria-hidden", "true");
+
+    onboarding.steps = $$("[data-step]", onboarding.modal);
+    onboarding.dots = $$("[data-step-dot]", onboarding.modal);
+    onboarding.btnPrev = $("[data-action='prev-onboarding']", onboarding.modal);
+    onboarding.btnNext = $("[data-action='next-onboarding']", onboarding.modal);
+    onboarding.btnFinish = $("[data-action='finish-onboarding']", onboarding.modal);
+    onboarding.btnSkip = $("[data-action='skip-onboarding']", onboarding.modal);
+
+    if (onboarding.btnPrev) onboarding.btnPrev.addEventListener("click", () => setOnboardingStep(onboardingStep - 1));
+    if (onboarding.btnNext) onboarding.btnNext.addEventListener("click", () => setOnboardingStep(onboardingStep + 1));
+    if (onboarding.btnFinish) onboarding.btnFinish.addEventListener("click", () => closeOnboarding({ markSeen: true }));
+    if (onboarding.btnSkip) onboarding.btnSkip.addEventListener("click", () => closeOnboarding({ markSeen: true }));
+
+    onboarding.modal.addEventListener("click", (e) => {
+      const target = e.target instanceof HTMLElement ? e.target : null;
+      if (!target) return;
+      if (target.closest("[data-action='close-onboarding']")) {
+        closeOnboarding({ markSeen: true });
+      }
+    });
+
+    onboarding.dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const step = Number(dot.getAttribute("data-step-dot") || 0);
+        setOnboardingStep(step);
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!onboarding.modal || onboarding.modal.hidden) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeOnboarding({ markSeen: true });
+        return;
+      }
+      if (e.key === "Tab") {
+        trapFocus(onboarding.modal, e);
+      }
+    });
+  }
+
+  function openOnboarding({ force = false } = {}) {
+    if (!onboarding.modal) return;
+    if (!force && hasSeenOnboarding()) return;
+
+    onboardingLastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    onboarding.modal.hidden = false;
+    onboarding.modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    onboardingStep = 0;
+    updateOnboardingStep();
+
+    const focusTarget = onboarding.btnNext || onboarding.btnFinish || onboarding.modal;
+    if (focusTarget) focusTarget.focus();
+  }
+
+  function closeOnboarding({ markSeen = false } = {}) {
+    if (!onboarding.modal) return;
+    if (markSeen) setOnboardingSeen();
+    onboarding.modal.hidden = true;
+    onboarding.modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (onboardingLastFocus) {
+      try { onboardingLastFocus.focus(); } catch { /* ignore */ }
+      onboardingLastFocus = null;
+    }
+  }
+
+  function setOnboardingStep(step) {
+    const max = Math.max(0, onboarding.steps.length - 1);
+    onboardingStep = clamp(step, 0, max);
+    updateOnboardingStep();
+  }
+
+  function updateOnboardingStep() {
+    onboarding.steps.forEach((el, idx) => {
+      el.classList.toggle("is-active", idx === onboardingStep);
+    });
+    onboarding.dots.forEach((el, idx) => {
+      el.classList.toggle("is-active", idx === onboardingStep);
+    });
+
+    if (onboarding.btnPrev) onboarding.btnPrev.classList.toggle("is-hidden", onboardingStep === 0);
+    if (onboarding.btnNext) onboarding.btnNext.classList.toggle("is-hidden", onboardingStep >= onboarding.steps.length - 1);
+    if (onboarding.btnFinish) onboarding.btnFinish.classList.toggle("is-hidden", onboardingStep < onboarding.steps.length - 1);
+  }
+
+  function trapFocus(modal, event) {
+    const focusable = $$("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])", modal)
+      .filter(el => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function hasSeenOnboarding() {
+    try {
+      return localStorage.getItem(ONBOARDING_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  function setOnboardingSeen() {
+    try {
+      localStorage.setItem(ONBOARDING_KEY, "1");
+    } catch { /* ignore */ }
   }
 
   /* ------------------------------
@@ -1743,6 +1965,7 @@
     applyTheme();
     applyFontSizes();
     bindUI();
+    setupOnboarding();
 
     // If there is no script tag in HTML, app.js won't run. This file assumes it is included.
     // We continue regardless.
@@ -1766,6 +1989,9 @@
 
     // Listen hash changes
     window.addEventListener("hashchange", handleRouteChange);
+
+    // Onboarding (first run)
+    setTimeout(() => openOnboarding(), 150);
   }
 
   /* ------------------------------
@@ -1810,6 +2036,10 @@
 
   // Kick off
   injectHighlightCSSOnce();
-  init();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
 
 })();

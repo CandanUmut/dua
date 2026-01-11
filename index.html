@@ -47,43 +47,35 @@
           <input id="search" type="search" inputmode="search"
                  placeholder="Search: Yunus • sabr • forgiveness • رزق • tövbe …"
                  aria-label="Search across Arabic, transliteration, English, and Turkish" />
-          <button class="pill-btn ghost" type="button" aria-label="Clear search (placeholder)">Clear</button>
+          <button class="pill-btn ghost" id="clear-search" type="button" aria-label="Clear search">Clear</button>
         </div>
 
         <div class="toggle-strip" aria-label="Content visibility toggles (placeholders)">
           <label class="toggle">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked data-toggle="arabic" />
             <span class="toggle-ui" aria-hidden="true"></span>
             <span class="toggle-label">Arabic</span>
           </label>
           <label class="toggle">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked data-toggle="translit" />
             <span class="toggle-ui" aria-hidden="true"></span>
             <span class="toggle-label">Translit</span>
           </label>
           <label class="toggle">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked data-toggle="en" />
             <span class="toggle-ui" aria-hidden="true"></span>
             <span class="toggle-label">EN</span>
           </label>
           <label class="toggle">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked data-toggle="tr" />
             <span class="toggle-ui" aria-hidden="true"></span>
             <span class="toggle-label">TR</span>
           </label>
         </div>
       </div>
 
-      <div class="chip-row" aria-label="Quick topic chips (placeholders)">
+      <div class="chip-row" id="quick-chips" aria-label="Quick topic chips">
         <button class="chip is-active" type="button" aria-pressed="true">All</button>
-        <button class="chip" type="button">Forgiveness</button>
-        <button class="chip" type="button">Guidance</button>
-        <button class="chip" type="button">Protection</button>
-        <button class="chip" type="button">Patience</button>
-        <button class="chip" type="button">Rizq</button>
-        <button class="chip" type="button">Distress</button>
-        <button class="chip" type="button">Family</button>
-        <button class="chip" type="button">Gratitude</button>
       </div>
     </div>
 
@@ -109,10 +101,10 @@
               <h2 class="panel-title">Explore</h2>
               <p class="panel-sub">Filter by prophet, topic, or source. Search supports Arabic and translations.</p>
             </div>
-            <div class="panel-actions">
-              <button class="pill-btn" type="button" aria-label="Reset filters (placeholder)">Reset</button>
+          <div class="panel-actions">
+              <button class="pill-btn ghost is-hidden" id="clear-filters" type="button" aria-label="Clear filters">Clear filters</button>
               <button class="pill-btn ghost" type="button" aria-label="Reading mode (placeholder)">Reading Mode</button>
-            </div>
+          </div>
           </div>
 
           <div class="filter-grid">
@@ -541,8 +533,55 @@
 
   <footer class="footer wrap" role="contentinfo">
     <p class="muted">
-      Static prototype UI (no JS yet). Next step: wire search, filters, favorites, routing, and data loading from <code>data/prayers.json</code>.
+      Built as a fast, offline-friendly companion for reflection. Data loads from <code>data/prayers.json</code> and stays on-device.
     </p>
   </footer>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="onboarding" id="onboarding" hidden>
+    <div class="onboarding-backdrop" data-action="close-onboarding" aria-hidden="true"></div>
+    <div class="onboarding-card" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" aria-describedby="onboarding-desc">
+      <div class="onboarding-head">
+        <div>
+          <div class="badge">New</div>
+          <h2 id="onboarding-title">Welcome to Prophets’ Duas</h2>
+          <p id="onboarding-desc" class="muted">A calm, searchable library of prophetic supplications.</p>
+        </div>
+        <button class="icon-btn" type="button" data-action="close-onboarding" aria-label="Close onboarding">✕</button>
+      </div>
+
+      <div class="onboarding-steps">
+        <div class="onboarding-step is-active" data-step="0">
+          <h3>Find a dua in seconds</h3>
+          <p class="muted">Search across Arabic, transliteration, English, and Turkish. Use quick topic chips to jump into themes.</p>
+        </div>
+        <div class="onboarding-step" data-step="1">
+          <h3>Explore by prophet, topic, or source</h3>
+          <p class="muted">Filters stay with you as you move between sections. Share any dua with a clean link.</p>
+        </div>
+        <div class="onboarding-step" data-step="2">
+          <h3>Make it yours</h3>
+          <p class="muted">Toggle languages, adjust font sizes, and save favorites for quick return.</p>
+        </div>
+      </div>
+
+      <div class="onboarding-footer">
+        <button class="pill-btn ghost" type="button" data-action="skip-onboarding">Skip</button>
+        <div class="onboarding-dots" role="tablist" aria-label="Onboarding steps">
+          <button class="dot is-active" type="button" data-step-dot="0" aria-label="Step 1"></button>
+          <button class="dot" type="button" data-step-dot="1" aria-label="Step 2"></button>
+          <button class="dot" type="button" data-step-dot="2" aria-label="Step 3"></button>
+        </div>
+        <div class="onboarding-actions">
+          <button class="pill-btn ghost" type="button" data-action="prev-onboarding">Back</button>
+          <button class="pill-btn" type="button" data-action="next-onboarding">Next</button>
+          <button class="pill-btn is-hidden" type="button" data-action="finish-onboarding">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
