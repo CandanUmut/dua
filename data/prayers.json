@@ -1,478 +1,1293 @@
 [
   {
     "id": "adam-7-23",
-    "prophet": {"ar": "آدم", "en": "Adam", "tr": "Âdem"},
-    "source": {"type": "Quran", "reference": "7:23"},
+    "prophet": {
+      "ar": "آدم",
+      "en": "Adam",
+      "tr": "Âdem"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "7:23"
+    },
     "arabic": "قَالَا رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
-    "transliteration": "Qala Rabbana dhalamna anfusana wa-in lam taghfir lana wa tarhamna lanakunna min al-khasireen.",
-    "english": "Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy on us, we will surely be among the losers.",
-    "turkish": "Rabbimiz, kendimize zulmettik. Eğer bizi bağışlamaz ve bize merhamet etmezseniz, muhakkak zarara uğrayanlardan oluruz.",
+    "transliteration": "Rabbana zalamna anfusana wa in lam taghfir lana wa tarhamna lanakunna mina al-khasirin.",
+    "english": "Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we will be among the losers.",
+    "turkish": "Rabbimiz! Kendimize zulmettik. Bizi bağışlamaz ve bize merhamet etmezsen, kaybedenlerden oluruz.",
     "translation_note": "Paraphrase",
-    "topics": ["tawbah", "forgiveness", "humility"],
-    "context": "After Adam and Eve ate the forbidden fruit, they realized their mistake and humbly sought Allah’s forgiveness.",
-    "reflection": "When we err, admitting our faults and seeking Allah's forgiveness with humility is essential.",
-    "sources": ["https://quran.com/7/23"]
+    "topics": [
+      "tawbah",
+      "forgiveness",
+      "mercy"
+    ],
+    "context": "Adam and Hawwa admitted their mistake and turned to Allah with repentance.",
+    "reflection": "True repentance begins with admitting our faults and relying on Allah’s mercy.",
+    "sources": [
+      "https://quran.com/7/23",
+      "https://tanzil.net/#7:23"
+    ]
   },
   {
     "id": "nuh-71-28",
-    "prophet": {"ar": "نوح", "en": "Noah", "tr": "Nuh"},
-    "source": {"type": "Quran", "reference": "71:28"},
+    "prophet": {
+      "ar": "نوح",
+      "en": "Noah",
+      "tr": "Nuh"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "71:28"
+    },
     "arabic": "رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ وَلَا تَزِدِ الظَّالِمِينَ إِلَّا تَبَارًا",
-    "transliteration": "Rabbighfir li wa liwaalidayya wa liman dakhala baytiya mu'minaan wa lilmu'mineena walmu'minaati wa la tazidiz zaalimeena illaa tabaaraa.",
-    "english": "My Lord, forgive me, my parents, whoever enters my house as a believer, and all the believing men and women. And do not let the wrongdoers increase except in ruin.",
-    "turkish": "Rabbim! Beni, anne babamı, iman ederek evime girenleri ve bütün mümin erkekleri ile mümin kadınları bağışla. Zalimlerin ise ancak helakları artsın.",
+    "transliteration": "Rabbi ighfir li wa liwalidayya wa liman dakhala baytiya mu'minan wa lil-mu'minina wal-mu'minat wa la tazid al-zalimin illa tabara.",
+    "english": "My Lord, forgive me, my parents, whoever enters my home as a believer, and all believing men and women. Do not increase the wrongdoers except in ruin.",
+    "turkish": "Rabbim! Beni, anne babamı, evime mümin olarak girenleri ve tüm mümin erkekleri ile mümin kadınları bağışla; zalimlerin helakini artır.",
     "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "mercy", "community"],
-    "context": "After the Flood, Prophet Nuh asked Allah to forgive him, his parents, and all believers, and to let only the injustices perish.",
-    "reflection": "Reminds us to pray for our family and community along with ourselves when seeking forgiveness.",
-    "sources": ["https://myislam.org/surah-nuh/ayat-28/"]
+    "topics": [
+      "forgiveness",
+      "mercy",
+      "family"
+    ],
+    "context": "After long struggle, Nuh prayed for forgiveness for himself, his family, and the believers.",
+    "reflection": "It teaches us to seek forgiveness for ourselves and the wider community.",
+    "sources": [
+      "https://quran.com/71/28",
+      "https://tanzil.net/#71:28"
+    ]
   },
   {
-    "id": "ibrahim-14-40",
-    "prophet": {"ar": "إبراهيم", "en": "Abraham", "tr": "İbrahim"},
-    "source": {"type": "Quran", "reference": "14:40"},
-    "arabic": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِيۚ رَبَّنَا وَتَقَبَّلْ دُعَائِي",
-    "transliteration": "Rabbi ij'alni muqeema as-salati wa min dhurriyyati; Rabbana wa taqabbal du'a.",
-    "english": "My Lord, make me and my descendants among those who establish prayer. Our Lord, accept our supplication.",
-    "turkish": "Rabbim! Beni ve soyumdan gelenleri namazı hakkıyla kılanlardan eyle. Rabbimiz, dualarımızı kabul buyur.",
+    "id": "nuh-71-26",
+    "prophet": {
+      "ar": "نوح",
+      "en": "Noah",
+      "tr": "Nuh"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "71:26"
+    },
+    "arabic": "رَبِّ لَا تَذَرْ عَلَى الْأَرْضِ مِنَ الْكَافِرِينَ دَيَّارًا",
+    "transliteration": "Rabbi la tadhar 'ala al-ardi mina al-kafirina dayyara.",
+    "english": "My Lord, do not leave upon the earth any dwelling of the disbelievers.",
+    "turkish": "Rabbim! Yeryüzünde inkârcılardan tek bir kimseyi bırakma.",
     "translation_note": "Paraphrase",
-    "topics": ["prayer", "family", "guidance"],
-    "context": "Prophet Ibrahim prayed for himself and his descendants to be steadfast in prayer, and asked Allah to accept their prayers.",
-    "reflection": "Highlights the importance of praying for future generations to remain devout in prayer alongside ourselves.",
-    "sources": ["https://myislam.org/rabbi-jalni-muqimas-salati/","https://kuranvemeali.com/ibrahim-suresi/40-ayeti-meali"]
+    "topics": [
+      "justice",
+      "protection"
+    ],
+    "context": "After persistent rejection, Nuh prayed for justice against those who refused guidance.",
+    "reflection": "When oppression persists, we can ask Allah to establish His justice.",
+    "sources": [
+      "https://quran.com/71/26",
+      "https://tanzil.net/#71:26"
+    ]
   },
   {
-    "id": "ibrahim-14-41",
-    "prophet": {"ar": "إبراهيم", "en": "Abraham", "tr": "İbrahim"},
-    "source": {"type": "Quran", "reference": "14:41"},
-    "arabic": "رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
-    "transliteration": "Rabbanaghfir li wa liwalidayya wa lil-mumineena yawma yaqoomu al-hisab.",
-    "english": "Our Lord, forgive me, my parents, and the believers on the Day when the account is established.",
-    "turkish": "Rabbimiz! Hesapların görüleceği o gün beni, anne babamı ve bütün müminleri bağışla.",
+    "id": "nuh-11-47",
+    "prophet": {
+      "ar": "نوح",
+      "en": "Noah",
+      "tr": "Nuh"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "11:47"
+    },
+    "arabic": "قَالَ رَبِّ إِنِّي أَعُوذُ بِكَ أَنْ أَسْأَلَكَ مَا لَيْسَ لِي بِهِ عِلْمٌ وَإِلَّا تَغْفِرْ لِي وَتَرْحَمْنِي أَكُن مِّنَ الْخَاسِرِينَ",
+    "transliteration": "Rabbi inni a'udhu bika an as'alaka ma laysa li bihi ilm wa illa taghfir li wa tarhamni akun mina al-khasirin.",
+    "english": "My Lord, I seek refuge in You from asking what I have no knowledge of. If You do not forgive me and have mercy on me, I will be among the losers.",
+    "turkish": "Rabbim! Bilmediğim şeyi Senden istemekten Sana sığınırım. Beni bağışlamaz ve bana merhamet etmezsen kaybedenlerden olurum.",
     "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "parents", "community"],
-    "context": "Prophet Ibrahim prayed for forgiveness for himself, his parents, and all believers on the Day of Judgment.",
-    "reflection": "Emphasizes praying for the forgiveness of our family and the wider Muslim community, especially on the Day of Reckoning.",
-    "sources": ["https://myislam.org/rabbi-jalni-muqimas-salati/","https://kuranvemeali.com/ibrahim-suresi/40-ayeti-meali"]
+    "topics": [
+      "tawbah",
+      "forgiveness",
+      "mercy"
+    ],
+    "context": "Nuh humbled himself before Allah after being corrected about his request.",
+    "reflection": "We should accept correction from Allah and seek His mercy with humility.",
+    "sources": [
+      "https://quran.com/11/47",
+      "https://tanzil.net/#11:47"
+    ]
+  },
+  {
+    "id": "nuh-23-26",
+    "prophet": {
+      "ar": "نوح",
+      "en": "Noah",
+      "tr": "Nuh"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "23:26"
+    },
+    "arabic": "قَالَ رَبِّ انصُرْنِي بِمَا كَذَّبُونِ",
+    "transliteration": "Rabbi ansurni bima kadhdhabun.",
+    "english": "My Lord, help me because they have denied me.",
+    "turkish": "Rabbim! Beni yalanlamalarına karşı bana yardım et.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "victory",
+      "protection"
+    ],
+    "context": "Nuh asked Allah for support against those who rejected his message.",
+    "reflection": "When facing rejection for truth, we can seek Allah’s help and protection.",
+    "sources": [
+      "https://quran.com/23/26",
+      "https://tanzil.net/#23:26"
+    ]
+  },
+  {
+    "id": "nuh-23-29",
+    "prophet": {
+      "ar": "نوح",
+      "en": "Noah",
+      "tr": "Nuh"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "23:29"
+    },
+    "arabic": "وَقُل رَّبِّ أَنزِلْنِي مُنزَلًا مُّبَارَكًا وَأَنتَ خَيْرُ الْمُنزِلِينَ",
+    "transliteration": "Rabbi anzilni munzalan mubarakan wa anta khayru al-munzilin.",
+    "english": "My Lord, grant me a blessed landing, for You are the best of those who grant landing.",
+    "turkish": "Rabbim! Beni bereketli bir menzile indir. Sen indirenlerin en hayırlısısın.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "gratitude"
+    ],
+    "context": "After the flood, Nuh prayed for a safe and blessed settlement.",
+    "reflection": "We should seek Allah’s blessing when beginning a new stage or place.",
+    "sources": [
+      "https://quran.com/23/29",
+      "https://tanzil.net/#23:29"
+    ]
+  },
+  {
+    "id": "ibrahim-2-126",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "2:126"
+    },
+    "arabic": "رَبِّ اجْعَلْ هَٰذَا بَلَدًا آمِنًا وَارْزُقْ أَهْلَهُ مِنَ الثَّمَرَاتِ مَنْ آمَنَ مِنْهُم بِاللَّهِ وَالْيَوْمِ الْآخِرِ",
+    "transliteration": "Rabbi ij'al hadha baladan amina warzuq ahlahu mina al-thamarat man amana minhum billahi wal-yawm al-akhir.",
+    "english": "My Lord, make this a secure city and provide its people with fruits—those among them who believe in Allah and the Last Day.",
+    "turkish": "Rabbim! Burasını güvenli bir belde yap ve Allah’a ve ahiret gününe iman eden halkını meyvelerle rızıklandır.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "rizq"
+    ],
+    "context": "Ibrahim prayed for safety and provision for the people of Makkah.",
+    "reflection": "Seek both security and lawful provision for our communities.",
+    "sources": [
+      "https://quran.com/2/126",
+      "https://tanzil.net/#2:126"
+    ]
   },
   {
     "id": "ibrahim-2-127",
-    "prophet": {"ar": "إبراهيم", "en": "Abraham", "tr": "İbrahim"},
-    "source": {"type": "Quran", "reference": "2:127"},
-    "arabic": "رَبَّنَا تَقَبَّلْ مِنَّاۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ",
-    "transliteration": "Rabbana taqabbal minna innaka anta as-samee'u al-'aleem.",
-    "english": "Our Lord, accept [this] from us. Indeed, You are the All-Hearing, All-Knowing.",
-    "turkish": "Rabbimiz! Bunu bizden kabul buyur. Şüphesiz ki Sen, her şeyi işiten ve bilensin.",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "2:127"
+    },
+    "arabic": "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ",
+    "transliteration": "Rabbana taqabbal minna innaka anta al-sami'u al-'alim.",
+    "english": "Our Lord, accept from us; indeed, You are the All-Hearing, All-Knowing.",
+    "turkish": "Rabbimiz! Bizden kabul buyur; şüphesiz Sen işiten ve bilensin.",
     "translation_note": "Paraphrase",
-    "topics": ["humility", "submission", "gratitude"],
-    "context": "After building the Kaaba’s foundations, Prophet Ibrahim, with his son Ismail, asked Allah to accept their effort.",
-    "reflection": "Teaches humility – even after a righteous deed, we seek Allah’s acceptance, recognizing His attributes of hearing and knowing.",
-    "sources": ["https://myislam.org/dua-of-prophet-ibrahim/","https://kuranvemeali.com/bakara-suresi/127-ayeti-meali"]
+    "topics": [
+      "gratitude",
+      "mercy"
+    ],
+    "context": "Ibrahim and Ismail asked Allah to accept their service while raising the Ka'bah.",
+    "reflection": "Righteous acts need Allah’s acceptance more than our pride.",
+    "sources": [
+      "https://quran.com/2/127",
+      "https://tanzil.net/#2:127"
+    ]
+  },
+  {
+    "id": "ibrahim-2-128",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "2:128"
+    },
+    "arabic": "رَبَّنَا وَاجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَا أُمَّةً مُّسْلِمَةً لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَا إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ",
+    "transliteration": "Rabbana waj'alna muslimayni laka wa min dhurriyyatina ummatan muslimatan laka wa arina manasikana wa tub 'alayna innaka anta al-tawwab al-rahim.",
+    "english": "Our Lord, make us Muslims devoted to You, and from our descendants a Muslim community. Show us our rites and accept our repentance.",
+    "turkish": "Rabbimiz! Bizi Sana teslim olanlardan kıl; soyumuzdan da Sana teslim bir ümmet çıkar. Bize ibadet yollarımızı göster ve tövbemizi kabul et.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "guidance",
+      "tawbah",
+      "family"
+    ],
+    "context": "Ibrahim and Ismail asked Allah for steadfast submission and guidance for their descendants.",
+    "reflection": "We ask Allah to shape our worship and the faith of future generations.",
+    "sources": [
+      "https://quran.com/2/128",
+      "https://tanzil.net/#2:128"
+    ]
+  },
+  {
+    "id": "ibrahim-2-129",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "2:129"
+    },
+    "arabic": "رَبَّنَا وَابْعَثْ فِيهِمْ رَسُولًا مِّنْهُمْ يَتْلُوا عَلَيْهِمْ آيَاتِكَ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ وَيُزَكِّيهِمْ إِنَّكَ أَنتَ الْعَزِيزُ الْحَكِيمُ",
+    "transliteration": "Rabbana wab'ath fihim rasulan minhum yatlu 'alayhim ayatika wa yu'allimuhum al-kitab wal-hikmah wa yuzakkihim innaka anta al-'aziz al-hakim.",
+    "english": "Our Lord, send among them a messenger who will recite Your verses, teach the Book and wisdom, and purify them.",
+    "turkish": "Rabbimiz! Onların arasına kendilerinden bir elçi gönder; ayetlerini okusun, Kitabı ve hikmeti öğretsin, onları arındırsın.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "guidance",
+      "knowledge"
+    ],
+    "context": "Ibrahim prayed for a messenger to guide his descendants with revelation.",
+    "reflection": "True purification and knowledge come through Allah’s guidance.",
+    "sources": [
+      "https://quran.com/2/129",
+      "https://tanzil.net/#2:129"
+    ]
+  },
+  {
+    "id": "ibrahim-14-35",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "14:35"
+    },
+    "arabic": "رَبِّ اجْعَلْ هَٰذَا الْبَلَدَ آمِنًا وَاجْنُبْنِي وَبَنِيَّ أَن نَّعْبُدَ الْأَصْنَامَ",
+    "transliteration": "Rabbi ij'al hadha al-balad amina wajnubni wa baniyya an na'bud al-asnam.",
+    "english": "My Lord, make this city secure and keep me and my children away from worshiping idols.",
+    "turkish": "Rabbim! Bu beldeyi güvenli kıl; beni ve çocuklarımı putlara tapmaktan uzak tut.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "guidance",
+      "family"
+    ],
+    "context": "Ibrahim prayed for Makkah’s security and protection from idolatry.",
+    "reflection": "We ask Allah to safeguard our faith and our families.",
+    "sources": [
+      "https://quran.com/14/35",
+      "https://tanzil.net/#14:35"
+    ]
+  },
+  {
+    "id": "ibrahim-14-36",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "14:36"
+    },
+    "arabic": "رَبِّ إِنَّهُنَّ أَضْلَلْنَ كَثِيرًا مِّنَ النَّاسِ فَمَن تَبِعَنِي فَإِنَّهُ مِنِّي وَمَنْ عَصَانِي فَإِنَّكَ غَفُورٌ رَّحِيمٌ",
+    "transliteration": "Rabbi innahunna adlalna kathiran mina al-nas fa man tabi'ani fa innahu minni wa man 'asani fa innaka ghafur rahim.",
+    "english": "My Lord, idols have led many people astray. Whoever follows me is of me, and whoever disobeys me—You are forgiving and merciful.",
+    "turkish": "Rabbim! Putlar birçok insanı saptırdı. Kim bana uyarsa bendendir; kim bana karşı gelirse, şüphesiz Sen bağışlayan ve merhamet edensin.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "mercy",
+      "guidance"
+    ],
+    "context": "Ibrahim acknowledged the danger of idols and entrusted people to Allah’s mercy.",
+    "reflection": "We depend on Allah’s mercy while urging others toward guidance.",
+    "sources": [
+      "https://quran.com/14/36",
+      "https://tanzil.net/#14:36"
+    ]
   },
   {
     "id": "ibrahim-14-37",
-    "prophet": {"ar": "إبراهيم", "en": "Abraham", "tr": "İbrahim"},
-    "source": {"type": "Quran", "reference": "14:37"},
-    "arabic": "رَبَّنَا إِنِّيٓ أَسْكَنْتُ مِن ذُرِّيَّتِيۖ بِوَادٍ غَيْرِ ذِي زَرْعٍۖ عِندَ بَيْتِكَ ٱلْمُحَرَّمِۚ رَبَّنَا لِيُقِيمُواْ ٱلصَّلَوٰةَۖ فَٱجْعَلۡ أَفۡئِدَةً مِّنَ ٱلنَّاسِ تَهۡوِيٓ إِلَيۡهِمۡ وَٱرۡزُقۡهُم مِّنَ ٱلثَّمَرَٰتِ لَعَلَّهُمۡ يَشۡكُرُونَ",
-    "transliteration": "Rabbanaa innee askantu min dhurriyyati biwaadin ghayri dhi zar'in 'inda baytika al-muharram; Rabbanaa liyuqeemu as-salata, faj'al af'ida tan mina n-nasi tahwee ilayhim, warzuqhum minath-thamarati la'allahum yashkuroon.",
-    "english": "My Lord, I have settled some of my offspring in an uncultivated valley near Your Sacred House so they may establish prayer. So let some hearts among people incline toward them and provide them with fruits so they may be grateful.",
-    "turkish": "Rabbimiz! Soyumdan bir kısmını, namazı dosdoğru kılmaları için, Beyt-i Haram’ın yanında ekinsiz bir vadiye yerleştirdim. İnsanlardan bir kısmının kalbini onlara yönelt ve onları meyvelerle rızıklandır ki şükretsinler.",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "14:37"
+    },
+    "arabic": "رَبَّنَا إِنِّيٓ أَسْكَنْتُ مِن ذُرِّيَّتِي بِوَادٍ غَيْرِ ذِي زَرْعٍ عِندَ بَيْتِكَ الْمُحَرَّمِ رَبَّنَا لِيُقِيمُوا الصَّلَاةَ فَاجْعَلْ أَفْئِدَةً مِّنَ النَّاسِ تَهْوِيٓ إِلَيْهِمْ وَارْزُقْهُم مِّنَ الثَّمَرَاتِ لَعَلَّهُمْ يَشْكُرُونَ",
+    "transliteration": "Rabbana inni askantu min dhurriyyati biwadin ghayri dhi zar'in 'inda baytika al-muharram rabbana liyuqimu al-salah faj'al af'idatan mina al-nas tahwi ilayhim warzuqhum mina al-thamarat la'allahum yashkurun.",
+    "english": "Our Lord, I have settled some of my descendants in a barren valley near Your Sacred House so they may establish prayer. Make hearts incline toward them and provide them with fruits so they may be grateful.",
+    "turkish": "Rabbimiz! Soyumdan bir kısmını, namazı dosdoğru kılsınlar diye Beyt-i Haram’ın yanında ekinsiz bir vadiye yerleştirdim. İnsanların kalplerini onlara yönelt ve onları meyvelerle rızıklandır ki şükretsinler.",
     "translation_note": "Paraphrase",
-    "topics": ["prayer", "guidance", "gratitude"],
-    "context": "Prophet Ibrahim placed his family near the Kaaba for devotion, and asked Allah to draw others’ support and provisions to them.",
-    "reflection": "Shows caring for future generations’ faith and trusting Allah to attract blessings and support; encourages community solidarity.",
-    "sources": ["https://surahquran.com/aya-37-sora-14.html","https://kuranvemeali.com/AyetKarsilastirma.php?sure=14&ayet=37"]
+    "topics": [
+      "guidance",
+      "rizq",
+      "gratitude"
+    ],
+    "context": "Ibrahim placed his family near the Ka'bah and prayed for their worship and provision.",
+    "reflection": "Faithful communities need both devotion and Allah’s provision.",
+    "sources": [
+      "https://quran.com/14/37",
+      "https://tanzil.net/#14:37"
+    ]
   },
   {
-    "id": "yaqub-12-86",
-    "prophet": {"ar": "يعقوب", "en": "Jacob", "tr": "Yakup"},
-    "source": {"type": "Quran", "reference": "12:86"},
-    "arabic": "إِنَّمَا أَشْكُو بَثِّي وَحُزْنِي إِلَى اللَّهِ وَأَعْلَمُ مِنَ اللَّهِ مَا لَا تَعْلَمُونَ",
-    "transliteration": "Innamaa ashkoo bathhee wa huznee ila Allah wa a'lamu min Allah ma la ta'lamoon.",
-    "english": "I only complain of my suffering and my grief to Allah, and I know from Allah what you do not know.",
-    "turkish": "Ben bütün dert ve kederimi ancak Allah’a şikayet ederim; Allah’tan gelen ilimle sizin bilmediğiniz birçok şeyi bilirim.",
+    "id": "ibrahim-14-40",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "14:40"
+    },
+    "arabic": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
+    "transliteration": "Rabbi ij'alni muqima al-salah wa min dhurriyyati rabbana wa taqabbal du'a.",
+    "english": "My Lord, make me an establisher of prayer, and from my descendants. Our Lord, accept my supplication.",
+    "turkish": "Rabbim! Beni namazı dosdoğru kılanlardan eyle; soyumdan da. Rabbimiz, duamı kabul buyur.",
     "translation_note": "Paraphrase",
-    "topics": ["patience", "grief", "trust"],
-    "context": "Prophet Yaqub, overwhelmed by sorrow at Yusuf’s (Joseph’s) loss, turned to Allah, trusting in His greater wisdom.",
-    "reflection": "Reminds us to bring our hardships to Allah and trust His wisdom, even when we cannot see the full picture.",
-    "sources": ["https://kuranvemeali.com/yusuf-suresi/86-ayeti-meali"]
+    "topics": [
+      "guidance",
+      "family",
+      "gratitude"
+    ],
+    "context": "Ibrahim prayed for steadfastness in prayer for himself and his offspring.",
+    "reflection": "We seek Allah’s help to remain consistent in worship.",
+    "sources": [
+      "https://quran.com/14/40",
+      "https://tanzil.net/#14:40"
+    ]
   },
   {
-    "id": "zakariya-21-89",
-    "prophet": {"ar": "زكريا", "en": "Zechariah", "tr": "Zekeriya"},
-    "source": {"type": "Quran", "reference": "21:89"},
-    "arabic": "وَزَكَرِيَّا إِذْ نَادَىٰ رَبَّهُۥ رَبِّ لَا تَذَرْنِيۤ فَرْدًا وَأَنتَ خَيْرُ ٱلْوَٰرِثِينَ",
-    "transliteration": "Wazakariyya idh nada rabbahu rabbi la tazharni fardan wa anta khayru al-waritheen.",
-    "english": "My Lord, do not leave me without an heir; indeed, You are the best of inheritors.",
-    "turkish": "Rabbim! Beni çocuksuz bırakma; şüphesiz sen mirasçıların en hayırlısısın.",
+    "id": "ibrahim-14-41",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "14:41"
+    },
+    "arabic": "رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+    "transliteration": "Rabbana ighfir li wa liwalidayya wa lil-mu'minina yawma yaqumu al-hisab.",
+    "english": "Our Lord, forgive me, my parents, and the believers on the Day the account is established.",
+    "turkish": "Rabbimiz! Hesap görüleceği gün beni, anne babamı ve müminleri bağışla.",
     "translation_note": "Paraphrase",
-    "topics": ["family", "hope", "miracle"],
-    "context": "Prophet Zakariya prayed for a child in his old age, trusting Allah as the ultimate Provider of heirs.",
-    "reflection": "Encourages patience and trust in Allah for blessings of family, even when it seems unlikely by worldly standards.",
-    "sources": ["https://quran.com/21/89"]
+    "topics": [
+      "forgiveness",
+      "family",
+      "mercy"
+    ],
+    "context": "Ibrahim sought forgiveness for himself, his parents, and all believers.",
+    "reflection": "We should include family and the wider community in our prayers.",
+    "sources": [
+      "https://quran.com/14/41",
+      "https://tanzil.net/#14:41"
+    ]
   },
   {
-    "id": "yunus-21-87",
-    "prophet": {"ar": "يونس", "en": "Jonah", "tr": "Yunus"},
-    "source": {"type": "Quran", "reference": "21:87"},
-    "arabic": "فَنَادَىٰ فِي ٱلظُّلُمَٰتِ أَن لَّآ إِلَٰهَ إِلَّآ أَنتَ سُبْحَٰنَكَ إِنِّي كُنتُ مِنَ ٱلظَّٰلِمِينَ",
-    "transliteration": "La ilaha illa anta, subhanaka, inni kuntu minaz-zalimeen.",
-    "english": "There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.",
-    "turkish": "Allah'ım, Senden başka ilah yoktur; Seni her türlü eksiklikten tenzih ederim; ben gerçekten zalimlerden oldum.",
+    "id": "ibrahim-26-83",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:83"
+    },
+    "arabic": "رَبِّ هَبْ لِي حُكْمًا وَأَلْحِقْنِي بِالصَّالِحِينَ",
+    "transliteration": "Rabbi hab li hukman wa alhiqni bil-salihin.",
+    "english": "My Lord, grant me sound judgment and join me with the righteous.",
+    "turkish": "Rabbim! Bana hikmet ver ve beni salihlerle birlikte kıl.",
     "translation_note": "Paraphrase",
-    "topics": ["repentance", "salvation", "humility"],
-    "context": "Prophet Yunus called this from the darkness of the whale’s belly, affirming Allah’s oneness and admitting his mistake.",
-    "reflection": "Teaches sincere repentance and humility: even in dire straits, affirm the oneness of Allah and admit our faults.",
-    "sources": ["https://quran.com/21/87"]
+    "topics": [
+      "guidance",
+      "knowledge"
+    ],
+    "context": "Ibrahim asked for wisdom and companionship with the righteous.",
+    "reflection": "Seek Allah’s guidance and righteous company for a steady path.",
+    "sources": [
+      "https://quran.com/26/83",
+      "https://tanzil.net/#26:83"
+    ]
   },
   {
-    "id": "musa-28-24",
-    "prophet": {"ar": "موسى", "en": "Moses", "tr": "Musa"},
-    "source": {"type": "Quran", "reference": "28:24"},
-    "arabic": "رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
-    "transliteration": "Rabbi inni lima anzalta ilayya min khayrin faqeer.",
-    "english": "My Lord, indeed I am in need of whatever good You send down to me.",
-    "turkish": "Rabbim! Bana indirdiğin her türlü iyilikte muhtacım.",
+    "id": "ibrahim-26-84",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:84"
+    },
+    "arabic": "وَاجْعَل لِّي لِسَانَ صِدْقٍ فِي الْآخِرِينَ",
+    "transliteration": "Waj'al li lisan sidqin fi al-akhirin.",
+    "english": "Grant me a truthful reputation among later generations.",
+    "turkish": "Sonraki nesiller arasında benim için doğru bir ün nasip et.",
     "translation_note": "Paraphrase",
-    "topics": ["provision", "reliance"],
-    "context": "After fleeing Egypt, Prophet Musa prayed for Allah’s sustenance, acknowledging his dependence on Allah’s bounty.",
-    "reflection": "Encourages seeking Allah’s help in need and trusting His provision after our own efforts.",
-    "sources": ["https://myislam.org/rabbi-inni-lima-anzalta/"]
+    "topics": [
+      "guidance",
+      "gratitude"
+    ],
+    "context": "Ibrahim asked Allah for a lasting, truthful legacy.",
+    "reflection": "A good name comes from sincerity and Allah’s acceptance.",
+    "sources": [
+      "https://quran.com/26/84",
+      "https://tanzil.net/#26:84"
+    ]
+  },
+  {
+    "id": "ibrahim-26-85",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:85"
+    },
+    "arabic": "وَاجْعَلْنِي مِن وَرَثَةِ جَنَّةِ النَّعِيمِ",
+    "transliteration": "Waj'alni min warathati jannat al-na'im.",
+    "english": "Make me among the heirs of the Garden of Bliss.",
+    "turkish": "Beni nimet cennetinin mirasçılarından eyle.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "mercy",
+      "guidance"
+    ],
+    "context": "Ibrahim asked to be counted among those who inherit Paradise.",
+    "reflection": "We should ask Allah for a hopeful end in the Hereafter.",
+    "sources": [
+      "https://quran.com/26/85",
+      "https://tanzil.net/#26:85"
+    ]
+  },
+  {
+    "id": "ibrahim-26-86",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:86"
+    },
+    "arabic": "وَاغْفِرْ لِأَبِي إِنَّهُ كَانَ مِنَ الضَّالِّينَ",
+    "transliteration": "Waghfir li abi innahu kana mina al-dallin.",
+    "english": "Forgive my father; he was among those who went astray.",
+    "turkish": "Babamı bağışla; o sapkınlardan olmuştu.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "forgiveness",
+      "family"
+    ],
+    "context": "Ibrahim prayed for his father before knowing his final fate.",
+    "reflection": "We can ask Allah to guide and forgive our families with compassion.",
+    "sources": [
+      "https://quran.com/26/86",
+      "https://tanzil.net/#26:86"
+    ]
+  },
+  {
+    "id": "ibrahim-26-87",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:87"
+    },
+    "arabic": "وَلَا تُخْزِنِي يَوْمَ يُبْعَثُونَ",
+    "transliteration": "Wa la tukhzini yawma yub'athun.",
+    "english": "Do not disgrace me on the Day they are resurrected.",
+    "turkish": "Diriltilecekleri gün beni mahcup etme.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "mercy"
+    ],
+    "context": "Ibrahim sought protection from humiliation on the Day of Resurrection.",
+    "reflection": "We should pray for honor and safety in the Hereafter.",
+    "sources": [
+      "https://quran.com/26/87",
+      "https://tanzil.net/#26:87"
+    ]
+  },
+  {
+    "id": "ibrahim-37-100",
+    "prophet": {
+      "ar": "إبراهيم",
+      "en": "Abraham",
+      "tr": "İbrahim"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "37:100"
+    },
+    "arabic": "رَبِّ هَبْ لِي مِنَ الصَّالِحِينَ",
+    "transliteration": "Rabbi hab li mina al-salihin.",
+    "english": "My Lord, grant me a righteous child.",
+    "turkish": "Rabbim! Bana salih bir evlat bağışla.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "family",
+      "guidance"
+    ],
+    "context": "Ibrahim asked Allah for a righteous child.",
+    "reflection": "Righteous offspring are a blessing and a responsibility.",
+    "sources": [
+      "https://quran.com/37/100",
+      "https://tanzil.net/#37:100"
+    ]
   },
   {
     "id": "musa-20-25",
-    "prophet": {"ar": "موسى", "en": "Moses", "tr": "Musa"},
-    "source": {"type": "Quran", "reference": "20:25-28"},
-    "arabic": "رَبِّ ٱشْرَحْ لِي صَدْرِي وَيَسِّرْ لِيٓ أَمْرِي وَٱحْلُلْ عُقْدَةًۢ مِّن لِّسَانِي يَفْقَهُوا۟ قَوْلِي",
-    "transliteration": "Rabbi ishrah li sadri wa yassir li amri wa ḥḷul 'uqdata min lisani yafqahu qawli.",
-    "english": "My Lord, expand my chest for me, and ease my task for me, and untie the knot from my tongue that they may understand my speech.",
-    "turkish": "Rabbim! Gönlümü genişlet, işimi kolaylaştır, dilimin bağını çöz ki sözümü anlasınlar.",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "20:25"
+    },
+    "arabic": "رَبِّ اشْرَحْ لِي صَدْرِي",
+    "transliteration": "Rabbi ishrah li sadri.",
+    "english": "My Lord, expand my chest for me.",
+    "turkish": "Rabbim! Gönlümü genişlet.",
     "translation_note": "Paraphrase",
-    "topics": ["guidance", "communication", "courage"],
-    "context": "Prophet Musa asked Allah for confidence and clarity when delivering Allah’s message to Pharaoh.",
-    "reflection": "Encourages asking Allah for confidence and eloquence in difficult tasks, acknowledging our dependence on Him.",
-    "sources": ["https://quran.com/20/25-28"]
+    "topics": [
+      "guidance",
+      "sabr"
+    ],
+    "context": "Musa asked Allah for inner strength before confronting Pharaoh.",
+    "reflection": "We need Allah’s support to face daunting tasks.",
+    "sources": [
+      "https://quran.com/20/25",
+      "https://tanzil.net/#20:25"
+    ]
   },
   {
-    "id": "sulaiman-27-19",
-    "prophet": {"ar": "سليمان", "en": "Solomon", "tr": "Süleyman"},
-    "source": {"type": "Quran", "reference": "27:19"},
-    "arabic": "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَصْلِحْ لِي فِي ذُرِّيَّتِيۖ إِنِّي تُبْتُ إِلَيْكَ وَإِنِّي مِنَ الْمُسْلِمِينَ",
-    "transliteration": "Rabbi awzi'ni an ashkura ni'mataka allatee an'amta 'alayya wa 'ala walidayya wa an a'mala salihan tardahu wa aslih li fi dhurriyyati innī tubtu ilayka wa innī mina al-muslimeen.",
-    "english": "My Lord, enable me to be grateful for Your favor which You have bestowed upon me and my parents, and to do righteous deeds that You approve. And make righteous for me my offspring. Indeed, I have repented to You, and indeed, I am of the Muslims.",
-    "turkish": "Rabbim! Bana ve anne babama bahşettiğin nimetlere şükretmeyi ve senin razı olacağın salih ameller yapmayı nasip et; soyumdan da salih kimseler yarat. Şüphesiz Sana tövbe ettim ve ben müslümanlardanım.",
+    "id": "musa-20-26",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "20:26"
+    },
+    "arabic": "وَيَسِّرْ لِي أَمْرِي",
+    "transliteration": "Wa yassir li amri.",
+    "english": "Make my task easy for me.",
+    "turkish": "İşimi bana kolaylaştır.",
     "translation_note": "Paraphrase",
-    "topics": ["gratitude", "righteousness", "legacy"],
-    "context": "Prophet Sulaiman asked Allah to make him and his parents grateful and righteous, and to grant him righteous offspring.",
-    "reflection": "Encourages gratitude for blessings and seeking Allah’s guidance for ourselves and our descendants in righteousness.",
-    "sources": ["https://www.alim.org/duas/masnoon-duas/for-being-grateful-to-allah/"]
+    "topics": [
+      "guidance",
+      "sabr"
+    ],
+    "context": "Musa asked for ease in carrying out his mission.",
+    "reflection": "Ask Allah to ease difficult responsibilities.",
+    "sources": [
+      "https://quran.com/20/26",
+      "https://tanzil.net/#20:26"
+    ]
   },
   {
-    "id": "ayub-21-83",
-    "prophet": {"ar": "أيوب", "en": "Job", "tr": "Eyüp"},
-    "source": {"type": "Quran", "reference": "21:83"},
-    "arabic": "أَنِّي مَسَّنِيَ ٱلضُّرُّ وَأَنتَ أَرْحَمُ ٱلرَّحِمِينَ",
-    "transliteration": "Annee massaniyad durru wa anta arhamur rahimeen.",
-    "english": "Indeed, adversity has touched me, and You are the Most Merciful of the merciful.",
-    "turkish": "Rabbim! Gerçekten başıma bir felaket çöktü; Sen merhametlilerin en merhametlisisin.",
+    "id": "musa-20-27",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "20:27"
+    },
+    "arabic": "وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي",
+    "transliteration": "Wahlul 'uqdatan min lisani.",
+    "english": "Untie the knot from my tongue.",
+    "turkish": "Dilimin düğümünü çöz.",
     "translation_note": "Paraphrase",
-    "topics": ["patience", "suffering", "mercy"],
-    "context": "Prophet Ayyub called upon Allah during severe illness, acknowledging Allah's infinite mercy.",
-    "reflection": "Reminds us to turn to Allah in hardship with patience, trusting His mercy even in suffering.",
-    "sources": ["https://myislam.org/prophet-ayub-dua-for-illness/"]
+    "topics": [
+      "guidance",
+      "knowledge"
+    ],
+    "context": "Musa asked Allah to grant him clarity in speech.",
+    "reflection": "Clear speech is a gift that comes from Allah.",
+    "sources": [
+      "https://quran.com/20/27",
+      "https://tanzil.net/#20:27"
+    ]
+  },
+  {
+    "id": "musa-20-28",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "20:28"
+    },
+    "arabic": "يَفْقَهُوا قَوْلِي",
+    "transliteration": "Yafqahu qawli.",
+    "english": "So they may understand my speech.",
+    "turkish": "Sözümü anlasınlar.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "guidance",
+      "knowledge"
+    ],
+    "context": "Musa wanted his message to be understood clearly.",
+    "reflection": "Effective communication is part of conveying truth.",
+    "sources": [
+      "https://quran.com/20/28",
+      "https://tanzil.net/#20:28"
+    ]
+  },
+  {
+    "id": "musa-7-151",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "7:151"
+    },
+    "arabic": "قَالَ رَبِّ اغْفِرْ لِي وَلِأَخِي وَأَدْخِلْنَا فِي رَحْمَتِكَ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ",
+    "transliteration": "Rabbi ighfir li wa li akhi wa adkhilna fi rahmatika wa anta arham al-rahimin.",
+    "english": "My Lord, forgive me and my brother and admit us into Your mercy; You are the most merciful of the merciful.",
+    "turkish": "Rabbim! Beni ve kardeşimi bağışla; bizi rahmetine dahil et. Sen merhametlilerin en merhametlisisin.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "forgiveness",
+      "mercy",
+      "family"
+    ],
+    "context": "Musa sought forgiveness and mercy for himself and Harun.",
+    "reflection": "We can ask Allah to cover our family with His mercy.",
+    "sources": [
+      "https://quran.com/7/151",
+      "https://tanzil.net/#7:151"
+    ]
+  },
+  {
+    "id": "musa-7-156",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "7:156"
+    },
+    "arabic": "وَاكْتُبْ لَنَا فِي هَٰذِهِ الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ إِنَّا هُدْنَا إِلَيْكَ",
+    "transliteration": "Waktub lana fi hadhihi al-dunya hasanatan wa fi al-akhirati inna hudna ilayk.",
+    "english": "Decree for us goodness in this world and in the Hereafter; we have turned to You.",
+    "turkish": "Bu dünyada da ahirette de bize güzellik yaz; biz Sana yöneldik.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "tawbah",
+      "guidance",
+      "mercy"
+    ],
+    "context": "Musa asked for goodness in both worlds after turning back to Allah.",
+    "reflection": "Repentance should be paired with seeking lasting goodness in both worlds.",
+    "sources": [
+      "https://quran.com/7/156",
+      "https://tanzil.net/#7:156"
+    ]
+  },
+  {
+    "id": "musa-28-16",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "28:16"
+    },
+    "arabic": "قَالَ رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي فَغَفَرَ لَهُ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ",
+    "transliteration": "Rabbi inni zalamtu nafsi faghfir li faghafara lahu innahu huwa al-ghafur al-rahim.",
+    "english": "My Lord, I have wronged myself, so forgive me. And He forgave him; indeed He is the Most Forgiving, Most Merciful.",
+    "turkish": "Rabbim! Kendime zulmettim, beni bağışla. Allah onu bağışladı; şüphesiz O çok bağışlayan, çok merhamet edendir.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "tawbah",
+      "forgiveness",
+      "mercy"
+    ],
+    "context": "After his mistake in Egypt, Musa sought Allah’s forgiveness.",
+    "reflection": "Immediate repentance opens the door to Allah’s mercy.",
+    "sources": [
+      "https://quran.com/28/16",
+      "https://tanzil.net/#28:16"
+    ]
+  },
+  {
+    "id": "musa-28-21",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "28:21"
+    },
+    "arabic": "رَبِّ نَجِّنِي مِنَ الْقَوْمِ الظَّالِمِينَ",
+    "transliteration": "Rabbi najjini mina al-qawmi al-zalimin.",
+    "english": "My Lord, save me from the wrongdoing people.",
+    "turkish": "Rabbim! Beni zalim topluluktan kurtar.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "justice"
+    ],
+    "context": "Musa prayed for safety as he fled oppression.",
+    "reflection": "In danger, we can ask Allah for rescue and protection.",
+    "sources": [
+      "https://quran.com/28/21",
+      "https://tanzil.net/#28:21"
+    ]
+  },
+  {
+    "id": "musa-28-24",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "28:24"
+    },
+    "arabic": "رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
+    "transliteration": "Rabbi inni lima anzalta ilayya min khayrin faqir.",
+    "english": "My Lord, I am truly in need of any good You send down to me.",
+    "turkish": "Rabbim! Bana indireceğin her türlü hayra muhtacım.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "rizq",
+      "mercy"
+    ],
+    "context": "Musa asked Allah for provision when he was alone and in need.",
+    "reflection": "We should openly acknowledge our dependence on Allah’s provision.",
+    "sources": [
+      "https://quran.com/28/24",
+      "https://tanzil.net/#28:24"
+    ]
+  },
+  {
+    "id": "musa-10-88",
+    "prophet": {
+      "ar": "موسى",
+      "en": "Moses",
+      "tr": "Musa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "10:88"
+    },
+    "arabic": "رَبَّنَا إِنَّكَ آتَيْتَ فِرْعَوْنَ وَمَلَأَهُ زِينَةً وَأَمْوَالًا فِي الْحَيَاةِ الدُّنْيَا رَبَّنَا لِيُضِلُّوا عَن سَبِيلِكَ رَبَّنَا اطْمِسْ عَلَىٰ أَمْوَالِهِمْ وَاشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا حَتَّىٰ يَرَوُا الْعَذَابَ الْأَلِيمَ",
+    "transliteration": "Rabbana innaka atayta fir'awna wa mala'ahu zinatan wa amwalan fi al-hayat al-dunya rabbana liyudillu 'an sabilika rabbana itmis 'ala amwalihim wa ushdud 'ala qulubihim fala yu'minu hatta yaraw al-'adhab al-alim.",
+    "english": "Our Lord, You have given Pharaoh and his chiefs splendor and wealth in worldly life so they mislead from Your way. Our Lord, obliterate their wealth and harden their hearts so they will not believe until they see the painful punishment.",
+    "turkish": "Rabbimiz! Firavun’a ve ileri gelenlerine dünya hayatında süs ve mal verdin; böylece Senin yolundan saptırıyorlar. Rabbimiz! Mallarını yok et, kalplerini sıkılaştır ki acı azabı görmedikçe iman etmesinler.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "justice",
+      "protection"
+    ],
+    "context": "Musa and Harun asked Allah to stop Pharaoh’s oppression and misguidance.",
+    "reflection": "We can ask Allah to restrain injustice and protect people from wrongdoing.",
+    "sources": [
+      "https://quran.com/10/88",
+      "https://tanzil.net/#10:88"
+    ]
+  },
+  {
+    "id": "yunus-21-87",
+    "prophet": {
+      "ar": "يونس",
+      "en": "Jonah",
+      "tr": "Yunus"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "21:87"
+    },
+    "arabic": "فَنَادَىٰ فِي الظُّلُمَاتِ أَن لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+    "transliteration": "La ilaha illa anta subhanaka inni kuntu mina al-zalimin.",
+    "english": "There is no god but You; exalted are You. I was indeed among the wrongdoers.",
+    "turkish": "Senden başka ilah yok; Seni her türlü eksiklikten tenzih ederim. Ben zalimlerden oldum.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "tawbah",
+      "mercy",
+      "distress"
+    ],
+    "context": "Yunus called on Allah from the darkness, admitting his mistake.",
+    "reflection": "Even in deep distress, repentance and tawhid bring relief.",
+    "sources": [
+      "https://quran.com/21/87",
+      "https://tanzil.net/#21:87"
+    ]
+  },
+  {
+    "id": "ayyub-21-83",
+    "prophet": {
+      "ar": "أيوب",
+      "en": "Job",
+      "tr": "Eyüp"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "21:83"
+    },
+    "arabic": "أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ",
+    "transliteration": "Anni massaniya al-durru wa anta arham al-rahimin.",
+    "english": "Adversity has touched me, and You are the most merciful of the merciful.",
+    "turkish": "Bana sıkıntı dokundu; Sen merhametlilerin en merhametlisisin.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "healing",
+      "mercy",
+      "distress"
+    ],
+    "context": "Ayyub called upon Allah during severe illness.",
+    "reflection": "We can seek healing while affirming Allah’s mercy.",
+    "sources": [
+      "https://quran.com/21/83",
+      "https://tanzil.net/#21:83"
+    ]
+  },
+  {
+    "id": "ayyub-38-41",
+    "prophet": {
+      "ar": "أيوب",
+      "en": "Job",
+      "tr": "Eyüp"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "38:41"
+    },
+    "arabic": "رَبِّ إِنِّي مَسَّنِيَ الشَّيْطَانُ بِنُصْبٍ وَعَذَابٍ",
+    "transliteration": "Rabbi inni massaniya al-shaytanu binusbin wa 'adhab.",
+    "english": "My Lord, Satan has touched me with hardship and suffering.",
+    "turkish": "Rabbim! Şeytan bana yorgunluk ve azap dokundurdu.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "distress",
+      "healing",
+      "protection"
+    ],
+    "context": "Ayyub described his suffering and turned to Allah for relief.",
+    "reflection": "We may describe our hardship to Allah while seeking His protection.",
+    "sources": [
+      "https://quran.com/38/41",
+      "https://tanzil.net/#38:41"
+    ]
   },
   {
     "id": "zakariya-3-38",
-    "prophet": {"ar": "زكريا", "en": "Zechariah", "tr": "Zekeriya"},
-    "source": {"type": "Quran", "reference": "3:38"},
-    "arabic": "رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةًۖ إِنَّكَ سَمِيعُ الدُّعَاءِ",
-    "transliteration": "Rabbi hab li min ladunka dhurriyyatan tayyibatan innaka sami'u du'a.",
-    "english": "My Lord, grant me from Yourself a good offspring. Indeed, You are the Hearer of supplication.",
-    "turkish": "Rabbim! Bana katından salih bir nesil bahşet. Sen duayı işitensin.",
+    "prophet": {
+      "ar": "زكريا",
+      "en": "Zechariah",
+      "tr": "Zekeriya"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "3:38"
+    },
+    "arabic": "رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً إِنَّكَ سَمِيعُ الدُّعَاءِ",
+    "transliteration": "Rabbi hab li min ladunka dhurriyyatan tayyibatan innaka sami'u al-du'a.",
+    "english": "My Lord, grant me from Yourself a good offspring. You are the Hearer of supplication.",
+    "turkish": "Rabbim! Bana katından temiz bir nesil bağışla; Sen duayı işitensin.",
     "translation_note": "Paraphrase",
-    "topics": ["family", "hope", "miracle"],
-    "context": "Prophet Zakariya prayed for a righteous child in old age, trusting Allah as the Hearer of prayers.",
-    "reflection": "Encourages praying for righteous offspring and having faith that Allah hears all prayers.",
-    "sources": ["https://quran.com/3/38"]
+    "topics": [
+      "family",
+      "mercy"
+    ],
+    "context": "Zakariya prayed for righteous offspring despite old age.",
+    "reflection": "Allah hears every sincere prayer, even against the odds.",
+    "sources": [
+      "https://quran.com/3/38",
+      "https://tanzil.net/#3:38"
+    ]
+  },
+  {
+    "id": "zakariya-19-5",
+    "prophet": {
+      "ar": "زكريا",
+      "en": "Zechariah",
+      "tr": "Zekeriya"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "19:5"
+    },
+    "arabic": "فَهَبْ لِي مِن لَّدُنكَ وَلِيًّا",
+    "transliteration": "Fahab li min ladunka waliyyan.",
+    "english": "So grant me from Yourself an heir.",
+    "turkish": "Katından bana bir veli bağışla.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "family",
+      "mercy"
+    ],
+    "context": "Zakariya asked for a righteous successor to carry the message.",
+    "reflection": "We can ask Allah to provide successors who keep faith alive.",
+    "sources": [
+      "https://quran.com/19/5",
+      "https://tanzil.net/#19:5"
+    ]
+  },
+  {
+    "id": "zakariya-21-89",
+    "prophet": {
+      "ar": "زكريا",
+      "en": "Zechariah",
+      "tr": "Zekeriya"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "21:89"
+    },
+    "arabic": "رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنتَ خَيْرُ الْوَارِثِينَ",
+    "transliteration": "Rabbi la tadharni fardan wa anta khayru al-warithin.",
+    "english": "My Lord, do not leave me without an heir; You are the best of inheritors.",
+    "turkish": "Rabbim! Beni tek başıma bırakma; Sen varislerin en hayırlısısın.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "family",
+      "mercy"
+    ],
+    "context": "Zakariya asked for a child and trusted Allah’s wisdom.",
+    "reflection": "Hope in Allah remains even when reasons seem far.",
+    "sources": [
+      "https://quran.com/21/89",
+      "https://tanzil.net/#21:89"
+    ]
   },
   {
     "id": "yusuf-12-101",
-    "prophet": {"ar": "يوسف", "en": "Joseph", "tr": "Yusuf"},
-    "source": {"type": "Quran", "reference": "12:101"},
-    "arabic": "رَبِّ قَدْ آتَيْتَنِي مِنَ ٱلْمُلْكِ وَعَلَّمْتَنِي مِن تَأْوِيلِ ٱلْأَحَادِيثِۖ فَاطِرَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ أَنتَ وَلِيِّي فِي ٱلدُّنْيَا وَٱلْآخِرَةِۖ تَوَفَّنِي مُسْلِمًا وَأَلْحِقْنِي بِٱلصَّٰلِحِينَ",
-    "transliteration": "Rabbi qad aataytani minal-mulki wa 'allamtani min ta'wili al-ahadeeth; fatir as-samawati wal-ard, anta waliyyi fid-dunya wal-akhirah; tawaffani musliman wa alhiqni bis-salihin.",
-    "english": "My Lord, You have given me of the sovereignty and taught me interpretation of dreams. You are my Protector in this world and in the Hereafter. Cause me to die a Muslim and join me with the righteous.",
-    "turkish": "Rabbim! Bana hükümdarlık ve rüya tabirini öğrettin. Sen dünyada da ahirette de benim koruyucumsun. Beni Müslüman olarak vefat ettir ve beni salihlerle birlikte kıl.",
+    "prophet": {
+      "ar": "يوسف",
+      "en": "Joseph",
+      "tr": "Yusuf"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "12:101"
+    },
+    "arabic": "رَبِّ قَدْ آتَيْتَنِي مِنَ الْمُلْكِ وَعَلَّمْتَنِي مِن تَأْوِيلِ الْأَحَادِيثِ فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ أَنتَ وَلِيِّي فِي الدُّنْيَا وَالْآخِرَةِ تَوَفَّنِي مُسْلِمًا وَأَلْحِقْنِي بِالصَّالِحِينَ",
+    "transliteration": "Rabbi qad ataytani mina al-mulk wa 'allamtani min ta'wil al-ahadith fatir al-samawati wal-ard anta waliyyi fi al-dunya wal-akhirah tawaffani musliman wa alhiqni bil-salihin.",
+    "english": "My Lord, You have granted me authority and taught me interpretation. Creator of the heavens and earth, You are my Protector in this world and the Hereafter. Let me die as a Muslim and join me with the righteous.",
+    "turkish": "Rabbim! Bana hüküm verdin ve rüya yorumunu öğrettin. Göklerin ve yerin yaratıcısı! Dünyada da ahirette de dostum Sensin. Beni Müslüman olarak vefat ettir ve beni salihlerle birlikte kıl.",
     "translation_note": "Paraphrase",
-    "topics": ["gratitude", "guidance", "faith"],
-    "context": "Prophet Yusuf thanked Allah for his kingship and wisdom, praying to remain a believer and join the righteous after death.",
-    "reflection": "Shows gratitude for blessings and trust in Allah’s protection, and reminds us to seek to join the righteous in the hereafter.",
-    "sources": ["https://myislam.org/surah-yusuf/ayat-101/"]
+    "topics": [
+      "gratitude",
+      "guidance",
+      "mercy"
+    ],
+    "context": "Yusuf thanked Allah for his gifts and prayed for a faithful end.",
+    "reflection": "Blessings should lead us to seek a righteous conclusion.",
+    "sources": [
+      "https://quran.com/12/101",
+      "https://tanzil.net/#12:101"
+    ]
+  },
+  {
+    "id": "sulaiman-27-19",
+    "prophet": {
+      "ar": "سليمان",
+      "en": "Solomon",
+      "tr": "Süleyman"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "27:19"
+    },
+    "arabic": "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَصْلِحْ لِي فِي ذُرِّيَّتِي إِنِّي تُبْتُ إِلَيْكَ وَإِنِّي مِنَ الْمُسْلِمِينَ",
+    "transliteration": "Rabbi awzi'ni an ashkura ni'mataka allati an'amta 'alayya wa 'ala walidayya wa an a'mala salihan tardah wa aslih li fi dhurriyyati inni tubtu ilayka wa inni mina al-muslimin.",
+    "english": "My Lord, enable me to be grateful for Your favor upon me and my parents, and to do righteous deeds that please You. Set my offspring right; I turn to You, and I am among the Muslims.",
+    "turkish": "Rabbim! Bana ve anne babama verdiğin nimetlere şükretmeyi ve razı olacağın salih ameller yapmayı nasip et. Soyumu ıslah et. Sana yöneldim ve Müslümanlardanım.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "gratitude",
+      "family",
+      "guidance"
+    ],
+    "context": "Sulaiman thanked Allah and asked for righteous deeds and offspring.",
+    "reflection": "Gratitude grows when it is paired with righteous action.",
+    "sources": [
+      "https://quran.com/27/19",
+      "https://tanzil.net/#27:19"
+    ]
   },
   {
     "id": "sulaiman-38-35",
-    "prophet": {"ar": "سليمان", "en": "Solomon", "tr": "Süleyman"},
-    "source": {"type": "Quran", "reference": "38:35"},
-    "arabic": "رَبِّ ٱغْفِرْ لِي وَهَبْ لِي مُلْكًا لَا يَنْبَغِي لِأَحَدٍۢ مِّن بَعْدِيۖ إِنَّكَ أَنتَ ٱلْوَهَّابُ",
-    "transliteration": "Rabbi ighfir li wahab li mulkan la yanbaghi li ahadin min ba'di innaka anta al-wahhab.",
-    "english": "My Lord, forgive me and grant me a kingdom that will not befit anyone after me. Indeed, You are the Bestower.",
-    "turkish": "Rabbim! Beni bağışla, bana benden sonra kimseye yaraşmayacak bir saltanat bahşet. Şüphesiz Sen çok vericisin.",
+    "prophet": {
+      "ar": "سليمان",
+      "en": "Solomon",
+      "tr": "Süleyman"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "38:35"
+    },
+    "arabic": "رَبِّ اغْفِرْ لِي وَهَبْ لِي مُلْكًا لَا يَنبَغِي لِأَحَدٍ مِّن بَعْدِي إِنَّكَ أَنتَ الْوَهَّابُ",
+    "transliteration": "Rabbi ighfir li wa hab li mulkan la yanbaghi li ahadin min ba'di innaka anta al-wahhab.",
+    "english": "My Lord, forgive me and grant me a kingdom that none after me will have. You are the Bestower.",
+    "turkish": "Rabbim! Beni bağışla ve benden sonra kimseye verilmeyecek bir hüküm ver. Sen çok vericisin.",
     "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "desire", "humility"],
-    "context": "Prophet Solomon asked Allah for a unique kingdom, acknowledging Allah as the ultimate Giver.",
-    "reflection": "Reminds us to humbly seek Allah’s blessings and mercy, trusting in His generosity for exceptional guidance or success.",
-    "sources": ["https://quran.com/38/35"]
-  },
-  {
-    "id": "musa-7-155",
-    "prophet": {"ar": "موسى", "en": "Moses", "tr": "Musa"},
-    "source": {"type": "Quran", "reference": "7:155"},
-    "arabic": "فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنتَ خَيْرُ الْغَافِرِينَ",
-    "transliteration": "Faghfir lana warhamna wa anta khayrul-ghaafireen.",
-    "english": "So forgive us and have mercy on us. Indeed, You are the best of those who forgive.",
-    "turkish": "Bizi affet, bize merhamet et; sen şüphesiz bağışlayanların en hayırlısısın.",
-    "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "mercy"],
-    "context": "Prophet Musa prayed for forgiveness and mercy for himself and his people after their trial with the golden calf.",
-    "reflection": "Encourages seeking Allah’s forgiveness and mercy especially after sin, knowing He is the Most Forgiving.",
-    "sources": ["https://quran.com/7/155"]
-  },
-  {
-    "id": "dawud-2-251",
-    "prophet": {"ar": "داود", "en": "David", "tr": "Davut"},
-    "source": {"type": "Quran", "reference": "2:251"},
-    "arabic": "رَبَّنَا ٱفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَٱنْصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
-    "transliteration": "Rabbana afrigh 'alayna sabran wa thabbit aqdamana wa ansurna 'ala al-qawmi al-kaafireen.",
-    "english": "Our Lord, pour patience on us, make our feet firm, and give us victory over the disbelieving people.",
-    "turkish": "Rabbimiz! Bize sabır ver, ayaklarımızı sağlamlaştır ve bize kâfirler kavmi karşısında zafer ver.",
-    "translation_note": "Paraphrase",
-    "topics": ["patience", "steadfastness", "victory"],
-    "context": "Prophet Dawud (David) made this prayer before battling Goliath, seeking Allah’s steadfastness and help against the enemy.",
-    "reflection": "Reminds us to seek Allah’s support in trials, asking for patience and success when facing overwhelming odds.",
-    "sources": ["https://quran.com/2/251"]
+    "topics": [
+      "forgiveness",
+      "gratitude"
+    ],
+    "context": "Sulaiman sought forgiveness and a unique kingdom by Allah’s gift.",
+    "reflection": "Even power is a gift that should be requested with humility.",
+    "sources": [
+      "https://quran.com/38/35",
+      "https://tanzil.net/#38:35"
+    ]
   },
   {
     "id": "isa-5-114",
-    "prophet": {"ar": "عيسى", "en": "Jesus", "tr": "İsa"},
-    "source": {"type": "Quran", "reference": "5:114"},
-    "arabic": "اللَّهُمَّ رَبَّنَآ أَنزِلْ عَلَيْنَا مَآئِدَةً مِّنَ ٱلسَّمَآءِ تَكُونُ لَنَا عِيدًا لِّأَوَّلِنَا وَءَاخِرِنَا وَءَايَةً مِّنكَۖ وَٱرْزُقْنَا وَأَنتَ خَيْرُ ٱلرَّٰزِقِينَ",
-    "transliteration": "Allahumma Rabbana anzil 'alayna ma'idatan minal-sama'i takoonu lana 'eedan li awwalina wa akhirina wa aayatan minka wa arzuqna wa anta khayru ar-raziqeen.",
-    "english": "O Allah, our Lord! Send down to us a table spread with food from heaven, to be a festival for us and a sign from You. Provide for us; You are the best of providers.",
-    "turkish": "Allah'ımız! Gökte bize bir yemek sofrası indir. Bu bizim için bayram olsun ve Senin bir mucizen olsun. Bize rızık ver; Sen rızık verenlerin en hayırlısısın.",
+    "prophet": {
+      "ar": "عيسى",
+      "en": "Jesus",
+      "tr": "İsa"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "5:114"
+    },
+    "arabic": "اللَّهُمَّ رَبَّنَا أَنزِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا لِّأَوَّلِنَا وَآخِرِنَا وَآيَةً مِّنكَ وَارْزُقْنَا وَأَنتَ خَيْرُ الرَّازِقِينَ",
+    "transliteration": "Allahumma rabbana anzil 'alayna ma'idatan mina al-sama'i takunu lana 'idan li-awwalina wa akhirina wa ayatan minka warzuqna wa anta khayru al-raziqin.",
+    "english": "O Allah, our Lord, send down to us a table from heaven to be a festival for the first and last of us and a sign from You. Provide for us; You are the best of providers.",
+    "turkish": "Allah’ım, Rabbimiz! Gökten bize bir sofra indir; bize bayram olsun ve Senden bir ayet olsun. Bizi rızıklandır; Sen rızık verenlerin en hayırlısısın.",
     "translation_note": "Paraphrase",
-    "topics": ["provision", "miracle", "gratitude"],
-    "context": "Prophet Isa (Jesus) and his disciples asked for a feast from heaven; he prayed to Allah as the Lord and Provider.",
-    "reflection": "Encourages trusting Allah for needs and viewing His provisions as blessings and signs of His care.",
-    "sources": ["https://quran.com/5/114"]
+    "topics": [
+      "rizq",
+      "gratitude",
+      "mercy"
+    ],
+    "context": "Isa asked Allah for a heavenly table as a sign and provision.",
+    "reflection": "We should see Allah’s provision as a sign of His care.",
+    "sources": [
+      "https://quran.com/5/114",
+      "https://tanzil.net/#5:114"
+    ]
   },
   {
-    "id": "muhammad-ibnmajah-925",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Ibn Majah 925", "book": "Sunan Ibn Majah", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
-    "transliteration": "Allahumma inni as'aluka 'ilman nafi'an wa rizqan tayyiban wa 'amalan mutaqabbalan.",
-    "english": "O Allah, I ask You for beneficial knowledge, goodly provision, and deeds that are accepted.",
-    "turkish": "Allahım! Sen’den faydalı bilgi, helal ve güzel rızık, ve kabul edilen salih ameller dilerim.",
+    "id": "lut-26-169",
+    "prophet": {
+      "ar": "لوط",
+      "en": "Lot",
+      "tr": "Lut"
+    },
+    "source": {
+      "type": "Quran",
+      "reference": "26:169"
+    },
+    "arabic": "رَبِّ نَجِّنِي وَأَهْلِي مِمَّا يَعْمَلُونَ",
+    "transliteration": "Rabbi najjini wa ahli mimma ya'malun.",
+    "english": "My Lord, save me and my family from what they do.",
+    "turkish": "Rabbim! Beni ve ailemi onların yaptıklarından kurtar.",
     "translation_note": "Paraphrase",
-    "topics": ["knowledge", "provision", "worship"],
-    "context": "Prophet Muhammad recited this du’a seeking useful knowledge, lawful sustenance, and righteous deeds.",
-    "reflection": "Encourages prioritizing beneficial knowledge, lawful sustenance and accepted deeds in our supplications.",
-    "sources": ["https://myislam.org/allahumma-inni-as-aluka-ilman/"]
+    "topics": [
+      "protection",
+      "family"
+    ],
+    "context": "Lut asked Allah to rescue him and his family from a corrupt society.",
+    "reflection": "We can ask Allah to protect our families from harmful environments.",
+    "sources": [
+      "https://quran.com/26/169",
+      "https://tanzil.net/#26:169"
+    ]
   },
   {
-    "id": "muhammad-tirmidhi-298",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Tirmidhi 298", "book": "Jami` at-Tirmidhi", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ ذَا الْجَلاَلِ وَالإِكْرَامِ",
-    "transliteration": "Allahumma anta as-salam wa minka as-salam tabarakta dha al-jalali wal-ikram.",
-    "english": "O Allah, You are Peace and from You comes peace. Blessed are You, O Possessor of Majesty and Honor.",
-    "turkish": "Allahım! Sen Selametsin; esenlik Senden gelir. Büyüklük ve lütuf sahibi olarak mübareksin.",
+    "id": "muhammad-bukhari-834",
+    "prophet": {
+      "ar": "محمد",
+      "en": "Muhammad",
+      "tr": "Muhammed"
+    },
+    "source": {
+      "type": "Hadith",
+      "reference": "Bukhari 834",
+      "book": "Sahih al-Bukhari",
+      "grade": "Sahih"
+    },
+    "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+    "transliteration": "Allahumma inni zalamtu nafsi zulman kathiran wa la yaghfiru al-dhunuba illa anta faghfir li maghfiratan min 'indika warhamni innaka anta al-ghafur al-rahim.",
+    "english": "O Allah, I have greatly wronged myself, and none forgives sins except You. Forgive me and have mercy on me; You are the Most Forgiving, Most Merciful.",
+    "turkish": "Allah’ım! Kendime çok zulmettim; günahları ancak Sen bağışlarsın. Beni bağışla ve bana merhamet et; Sen çok bağışlayan, çok merhamet edensin.",
     "translation_note": "Paraphrase",
-    "topics": ["peace", "praise"],
-    "context": "After concluding prayer, the Prophet Muhammad said this du’a praising Allah as the source of peace and blessing His Majesty.",
-    "reflection": "Reminds us that true peace and blessings come from Allah alone, and teaches us to honor Him as the source of all goodness.",
-    "sources": ["https://sunnah.com/tirmidhi/5/37"]
+    "topics": [
+      "tawbah",
+      "forgiveness",
+      "mercy"
+    ],
+    "context": "The Prophet taught this supplication to seek forgiveness and mercy.",
+    "reflection": "Sincere repentance recognizes that only Allah can forgive sins.",
+    "sources": [
+      "https://sunnah.com/bukhari:834"
+    ]
   },
   {
     "id": "muhammad-muslim-843",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Muslim 843", "book": "Sahih Muslim", "grade": "Sahih"},
+    "prophet": {
+      "ar": "محمد",
+      "en": "Muhammad",
+      "tr": "Muhammed"
+    },
+    "source": {
+      "type": "Hadith",
+      "reference": "Muslim 843",
+      "book": "Sahih Muslim",
+      "grade": "Sahih"
+    },
     "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَمِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ",
-    "transliteration": "Allahumma inni a'udhu bika min 'adhabi jahannam wa min 'adhabi-l-qabr wa min fitnati-l-mahya wa-l-mamat wa min sharri fitnati-l-masihid-dajjal.",
-    "english": "O Allah, I seek refuge in You from the punishment of Hell, from the punishment of the grave, from the trials of life and death, and from the evil of the Antichrist.",
-    "turkish": "Allahım! Sana cehennem azabından, kabir azabından, hayat ve ölüm fitnelerinden ve Deccal’ın şerrinden sığınırım.",
+    "transliteration": "Allahumma inni a'udhu bika min 'adhabi jahannam wa min 'adhabi al-qabr wa min fitnati al-mahya wal-mamat wa min sharri fitnati al-masih al-dajjal.",
+    "english": "O Allah, I seek refuge in You from the punishment of Hell, the punishment of the grave, the trials of life and death, and the evil of the Antichrist.",
+    "turkish": "Allah’ım! Cehennem azabından, kabir azabından, hayat ve ölüm fitnelerinden ve Deccal fitnesinin şerrinden Sana sığınırım.",
     "translation_note": "Paraphrase",
-    "topics": ["protection", "trials"],
-    "context": "Prophet Muhammad would seek Allah’s protection from major trials and punishments at the end of his prayer.",
-    "reflection": "Encourages relying on Allah’s protection from severe trials, emphasizing belief in the Hereafter and the Day of Judgment.",
-    "sources": ["https://sunnah.com/riyadussalihin/15/30"]
-  },
-  {
-    "id": "muhammad-abu-dawud-5304",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Abu Dawud 5304", "book": "Sunan Abu Dawud", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ أَعِنِّي عَلَىٰ ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
-    "transliteration": "Allahumma a'inni 'ala dhikrika wa shukrika wa husni 'ibadatika.",
-    "english": "O Allah, help me to remember You, to thank You, and to worship You in the best of ways.",
-    "turkish": "Allahım! Sizi anmamda, size şükretmemde ve ibadetimi en güzel şekilde yapmamda bana yardım et.",
-    "translation_note": "Paraphrase",
-    "topics": ["remembrance", "gratitude", "worship"],
-    "context": "Prophet Muhammad recommended this supplication after prayer, asking Allah’s help in remembering Him, showing gratitude, and proper worship.",
-    "reflection": "Reminds us to ask Allah’s help in staying mindful, grateful, and sincere in our worship.",
-    "sources": ["https://sunnah.com/riyadussalihin/15/29"]
-  },
-  {
-    "id": "muhammad-nasai-5449",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "An-Nasa'i 5449", "book": "Sunan an-Nasa'i", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ ٱلْهَمِّ وَٱلْحُزْنِ وَٱلْعَجْزِ وَٱلْكَسَلِ وَٱلْبُخْلِ وَٱلْجُبْنِ وَغَلَبَةِ ٱلدَّيْنِ وَقَهْرِ ٱلرِّجَالِ",
-    "transliteration": "Allahumma inni a'udhu bika minal-hammi wal-hazan, wal-'ajzi wal-kasal, wal-bukhli wal-jubn, wa ghalabati-d-dayni wa qahrir-rijal.",
-    "english": "O Allah, I seek refuge in You from anxiety and grief, from incapacity and laziness, from miserliness and cowardice, and from being overwhelmed by debt or by men.",
-    "turkish": "Allah'ım! Sana sıkıntı ve kederden, güçsüzlük ve tembellikten, cimrilik ve korkaklıktan, borç yükünün ve insanların baskısının altında kalmaktan sana sığınırım.",
-    "translation_note": "Paraphrase",
-    "topics": ["protection", "hardship"],
-    "context": "Prophet Muhammad taught this supplication seeking Allah’s protection from various forms of hardship and evil.",
-    "reflection": "Highlights the importance of seeking Allah’s help to avoid common life’s difficulties and dangers.",
-    "sources": ["https://sunnah.com/nasai/38/42"]
-  },
-  {
-    "id": "muhammad-bukhari-6958",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Bukhari 6958", "book": "Sahih al-Bukhari", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ ...",
-    "transliteration": "Allahumma inni zalamtu nafsi zulman kathiran, wa la yaghfiru adh-dhunuba illa anta, faghfir li maghfiratan min 'indika, warhamni, innaka anta al-ghafoorur-rahim.",
-    "english": "O Allah, I have greatly wronged myself and none forgives sins except You. Grant me forgiveness and mercy, for You are the Most Forgiving, Most Merciful.",
-    "turkish": "Allah'ım! Kendime çok büyük zulmettim, günahları affedecek olan ancak Sensin. Senden mağfiret ve rahmet dilerim; çünkü Sen en çok bağışlayansın, en çok merhametlisin.",
-    "translation_note": "Paraphrase",
-    "topics": ["repentance", "humility"],
-    "context": "The Prophet said this after hearing about minor sins, demonstrating deep repentance before Allah.",
-    "reflection": "Shows the importance of sincere repentance and recognizing that only Allah can forgive sins, encouraging us to seek His mercy.",
-    "sources": ["https://sunnah.com/riyadussalihin/14/34"]
-  },
-  {
-    "id": "muhammad-ibnmajah-3880",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Ibn Majah 3880", "book": "Sunan Ibn Majah", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ العَفْوَ فَاعْفُ عَنِّي",
-    "transliteration": "Allahumma innaka 'afuwwun tuhibbu al-'afwa fa'fu 'anni.",
-    "english": "O Allah, You are Most Forgiving; You love forgiveness, so forgive me.",
-    "turkish": "Allah'ım! Sen affedicilerin en enginsin; affetmeyi seversin; o halde beni affet.",
-    "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "repentance"],
-    "context": "This du’a was taught for Laylat al-Qadr, the Night of Power, to seek Allah’s forgiveness.",
-    "reflection": "Highlights Allah’s attribute of forgiveness and teaches us to sincerely ask for His pardon.",
-    "sources": ["https://sunnah.com/ibnmajah/34/3854"]
-  },
-  {
-    "id": "muhammad-tirmidhi-3507",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Tirmidhi 3507", "book": "Jami` at-Tirmidhi", "grade": "Hasan"},
-    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
-    "transliteration": "Allahumma inni as'aluka al-'afwa wal-'afiyata fid-dunya wal-akhirah.",
-    "english": "O Allah, I ask You for forgiveness and well-being in this world and the Hereafter.",
-    "turkish": "Allahım! Senden dünyada ve ahirette af ve esenlik dilerim.",
-    "translation_note": "Paraphrase",
-    "topics": ["forgiveness", "well-being"],
-    "context": "The Prophet recited this supplication regularly, seeking Allah’s forgiveness and wellness in both lives.",
-    "reflection": "Encourages asking Allah for a balanced life – forgiveness of sins and good in this life and the next.",
-    "sources": ["https://sunnah.com/tirmidhi/5/36"]
-  },
-  {
-    "id": "muhammad-nasai-5215",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "An-Nasa'i 5215", "book": "Sunan an-Nasa'i", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ رَبَّ السَّمَاوَاتِ وَالأَرْضِ وَمَا بَيْنَهُمَا، آتِنِي فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنِي عَذَابَ النَّارِ",
-    "transliteration": "Allahumma Rabbas-samawati wal-ard, atini fid-dunya hasanatan wa fil-akhirati hasanatan wa qini 'adhaban-nar.",
-    "english": "O Allah, Lord of the heavens and earth, grant me good in this world and good in the Hereafter, and protect me from the punishment of the Fire.",
-    "turkish": "Allah'ım! Göklerin ve yerin Rabbi, bana dünyada güzellik, ahirette güzellik ver ve cehennem azabından koru.",
-    "translation_note": "Paraphrase",
-    "topics": ["provision", "hereafter", "protection"],
-    "context": "This was among the Prophet’s du’as, asking for all-around goodness and salvation from Hell.",
-    "reflection": "Teaches seeking Allah’s blessings comprehensively – good in all affairs, and protection from punishment.",
-    "sources": ["https://sunnah.com/nasai/38/33"]
-  },
-  {
-    "id": "muhammad-abu-dawud-5087",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Abu Dawud 5087", "book": "Sunan Abu Dawud", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ وَتَحَوُّلِ عَافِيَتِكَ وَفُجَاءَةِ نِقْمَتِكَ",
-    "transliteration": "Allahumma inni a'udhu bika min zawali ni'matika wa tahawwuli 'afiyatika wa fujaa'ati niqmatika.",
-    "english": "O Allah, I seek refuge in You from the loss of Your blessing, the change of Your protection, and the sudden onset of Your punishment.",
-    "turkish": "Allah'ım! Senden nimetlerinin gitmesinden, esenliğinin kaybolmasından, ansızın azaba yakalanmaktan sana sığınırım.",
-    "translation_note": "Paraphrase",
-    "topics": ["protection", "gratitude"],
-    "context": "Prophet Muhammad sought refuge from losing Allah’s blessings and being suddenly afflicted.",
-    "reflection": "Reminds us to be grateful for blessings and seek Allah’s protection from losing them or facing trials.",
-    "sources": ["https://sunnah.com/abudawud/43/5136"]
-  },
-  {
-    "id": "ibrahim-25-74",
-    "prophet": {"ar": "إبراهيم", "en": "Abraham", "tr": "İbrahim"},
-    "source": {"type": "Quran", "reference": "25:74"},
-    "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
-    "transliteration": "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lilmuttaqeena imama.",
-    "english": "Our Lord, grant us from among our spouses and offspring comfort to our eyes and make us leaders of the righteous.",
-    "turkish": "Rabbimiz! Bize eşlerimizden ve çocuklarımızdan gözlerimizi aydınlatacak güzellikler ver ve bizi takvâ sahiplerinin önderi kıl.",
-    "translation_note": "Paraphrase",
-    "topics": ["family", "guidance", "leadership"],
-    "context": "Prophet Ibrahim prayed for righteous families and to be leaders among the pious.",
-    "reflection": "Encourages praying for blessing in one’s family and striving to be examples of faith.",
-    "sources": ["https://quran.com/25/74"]
-  },
-  {
-    "id": "muhammad-sahihmuslim-2733",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Muslim 2733", "book": "Sahih Muslim", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ",
-    "transliteration": "Allahumma inni as'aluka al-jannah wa a'udhu bika min an-nar.",
-    "english": "O Allah, I ask You for Paradise and seek refuge in You from the Fire.",
-    "turkish": "Allah'ım! Senden cenneti dilerim ve cehennem ateşinden Sana sığınırım.",
-    "translation_note": "Paraphrase",
-    "topics": ["hereafter", "paradise"],
-    "context": "Prophet Muhammad recommended reciting this after prayers, seeking entry into Paradise and protection from Hell.",
-    "reflection": "Highlights the believer’s ultimate hope in Paradise and seeking refuge from Hell in du’a.",
-    "sources": ["https://sunnah.com/muslim/35/2"]
-  },
-  {
-    "id": "muhammad-abu-dawud-2922",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Abu Dawud 2922", "book": "Sunan Abu Dawud", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ إِنِّي تَوَكَّلْتُ عَلَىٰ كَلِمَتِكَ لَا يَبْلَىٰ",
-    "transliteration": "Allahumma inni tawakkaltu 'ala kalimatika la yablaa.",
-    "english": "O Allah, I rely on Your Word which never perishes.",
-    "turkish": "Allah'ım! Sözünün yok olmayacağına inanarak Sana güveniyorum.",
-    "translation_note": "Paraphrase",
-    "topics": ["reliance", "trust"],
-    "context": "Prophet Muhammad said this to express absolute trust in Allah’s eternal promise.",
-    "reflection": "Encourages relying on Allah’s unchanging word and promises rather than on worldly support.",
-    "sources": ["https://sunnah.com/abudawud/41/4737"]
+    "topics": [
+      "protection"
+    ],
+    "context": "The Prophet taught this supplication for protection from major trials and punishments.",
+    "reflection": "We seek Allah’s protection from both worldly and end-time trials.",
+    "sources": [
+      "https://sunnah.com/muslim:843"
+    ]
   },
   {
     "id": "muhammad-muslim-2720",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "Muslim 2720", "book": "Sahih Muslim", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ أَصْلِحْ لِي دِينِي الَّذِي هُوَ عِصْمَةُ أَمْرِي",
-    "transliteration": "Allahumma aslih li deeni alladhi huwa 'ismatu amri.",
-    "english": "O Allah, set right my religion, which is the safeguard of all my affairs.",
-    "turkish": "Allah'ım! Tüm işlerimin sigortası olan dinimi benim için sağlamlaştır.",
+    "prophet": {
+      "ar": "محمد",
+      "en": "Muhammad",
+      "tr": "Muhammed"
+    },
+    "source": {
+      "type": "Hadith",
+      "reference": "Muslim 2720",
+      "book": "Sahih Muslim",
+      "grade": "Sahih"
+    },
+    "arabic": "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي وَأَصْلِحْ لِي آخِرَتِيَ الَّتِي فِيهَا مَعَادِي",
+    "transliteration": "Allahumma aslih li diniya alladhi huwa 'ismatu amri wa aslih li dunyaya allati fiha ma'ashi wa aslih li akhirati allati fiha ma'adi.",
+    "english": "O Allah, set right for me my religion which safeguards my affairs, set right for me my worldly life in which is my living, and set right for me my Hereafter to which is my return.",
+    "turkish": "Allah’ım! İşlerimin teminatı olan dinimi düzelt; geçimimin olduğu dünyamı düzelt; dönüşümün olduğu ahiretimi de düzelt.",
     "translation_note": "Paraphrase",
-    "topics": ["guidance", "faith"],
-    "context": "Prophet Muhammad taught this after prayer, asking Allah to keep his faith firm, as it safeguards all affairs.",
-    "reflection": "Emphasizes that the integrity of one’s faith is central to one’s life and that we should seek Allah’s help to maintain it.",
-    "sources": ["https://sunnah.com/muslim/46/4"]
+    "topics": [
+      "guidance",
+      "mercy"
+    ],
+    "context": "The Prophet taught a comprehensive prayer for faith, worldly life, and the Hereafter.",
+    "reflection": "Balance our needs by asking Allah to rectify all aspects of life.",
+    "sources": [
+      "https://sunnah.com/muslim:2720"
+    ]
   },
   {
-    "id": "muhammad-nasai-5390",
-    "prophet": {"ar": "محمد", "en": "Muhammad", "tr": "Muhammed"},
-    "source": {"type": "Hadith", "reference": "An-Nasa'i 5390", "book": "Sunan an-Nasa'i", "grade": "Sahih"},
-    "arabic": "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لَا إِلَهَ إِلَّا أَنْتَ",
-    "transliteration": "Allahumma 'afini fi badani, Allahumma 'afini fi sam'i, Allahumma 'afini fi basari, la ilaha illa anta.",
-    "english": "O Allah, grant health to my body, to my hearing, and to my sight; there is no deity but You.",
-    "turkish": "Allah'ım! Bedenime, işitme duyuma ve görme duyuma sağlık ver; Senden başka ilah yoktur.",
+    "id": "muhammad-muslim-2721",
+    "prophet": {
+      "ar": "محمد",
+      "en": "Muhammad",
+      "tr": "Muhammed"
+    },
+    "source": {
+      "type": "Hadith",
+      "reference": "Muslim 2721",
+      "book": "Sahih Muslim",
+      "grade": "Sahih"
+    },
+    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
+    "transliteration": "Allahumma inni as'aluka al-huda wa al-tuqa wa al-'afaf wa al-ghina.",
+    "english": "O Allah, I ask You for guidance, piety, chastity, and contentment.",
+    "turkish": "Allah’ım! Senden hidayet, takva, iffet ve gönül zenginliği dilerim.",
     "translation_note": "Paraphrase",
-    "topics": ["health", "well-being", "gratitude"],
-    "context": "The Prophet used this supplication to ask Allah for protection and health of his body, hearing, and sight.",
-    "reflection": "Reminds us to ask Allah to preserve our faculties and to be grateful for the health He provides.",
-    "sources": ["https://sunnah.com/nasai/28/42"]
+    "topics": [
+      "guidance",
+      "mercy"
+    ],
+    "context": "The Prophet asked Allah for inner virtues and contentment.",
+    "reflection": "True richness is guidance and contentment granted by Allah.",
+    "sources": [
+      "https://sunnah.com/muslim:2721"
+    ]
+  },
+  {
+    "id": "muhammad-bukhari-6369",
+    "prophet": {
+      "ar": "محمد",
+      "en": "Muhammad",
+      "tr": "Muhammed"
+    },
+    "source": {
+      "type": "Hadith",
+      "reference": "Bukhari 6369",
+      "book": "Sahih al-Bukhari",
+      "grade": "Sahih"
+    },
+    "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+    "transliteration": "Allahumma inni a'udhu bika min al-hamm wal-hazan wal-'ajz wal-kasal wal-bukhl wal-jubn wa dala' al-dayn wa ghalabat al-rijal.",
+    "english": "O Allah, I seek refuge in You from anxiety and grief, incapacity and laziness, miserliness and cowardice, the burden of debt, and being overpowered by people.",
+    "turkish": "Allah’ım! Hüzün ve kederden, acizlik ve tembellikten, cimrilik ve korkaklıktan, borç yükünden ve insanların baskısından Sana sığınırım.",
+    "translation_note": "Paraphrase",
+    "topics": [
+      "protection",
+      "distress"
+    ],
+    "context": "The Prophet taught this for seeking protection from common hardships.",
+    "reflection": "Seek Allah’s refuge from inner and outer pressures.",
+    "sources": [
+      "https://sunnah.com/bukhari:6369"
+    ]
   }
 ]
