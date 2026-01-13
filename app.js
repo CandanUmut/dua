@@ -37,7 +37,7 @@
       filters: { prophet: "Prophet", topic: "Topic", source: "Source", allProphets: "All Prophets", allTopics: "All Topics", allSources: "All Sources" },
       meta: { found: "found", prayers: "prayers", shown: "shown", tip: "Tip" },
       actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset", clearFilters: "Clear filters" },
-      labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection & Context", meaning: "Meaning" },
+      labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection", context: "Context", meaning: "Meaning" },
       toasts: {
         copiedArabic: "Copied Arabic",
         copiedFull: "Copied full dua",
@@ -76,7 +76,7 @@
       filters: { prophet: "Peygamber", topic: "Konu", source: "Kaynak", allProphets: "Tüm Peygamberler", allTopics: "Tüm Konular", allSources: "Tüm Kaynaklar" },
       meta: { found: "bulundu", prayers: "dua", shown: "gösteriliyor", tip: "İpucu" },
       actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla", clearFilters: "Filtreleri temizle" },
-      labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Bağlam & Tefekkür", meaning: "Anlam" },
+      labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Tefekkür", context: "Bağlam", meaning: "Anlam" },
       toasts: {
         copiedArabic: "Arapça kopyalandı",
         copiedFull: "Dua kopyalandı",
@@ -121,6 +121,7 @@
   let TOPICS = [];   // derived list
   let SOURCE_TYPES = ["Quran", "Hadith", "Other"];
   let TOPIC_COUNTS = new Map();
+  let TOPIC_LABELS = new Map();
 
   const state = {
     prefs: loadPrefs(),
@@ -183,6 +184,17 @@
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, " ")
       .trim();
+  }
+
+  function slugify(s) {
+    const base = safeText(s)
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+    return base
+      .replace(/[^\p{L}\p{N}]+/gu, "-")
+      .replace(/^-+|-+$/g, "");
   }
 
   function debounce(fn, ms = 160) {
@@ -310,8 +322,8 @@
     state.routeParam = parsed.dua || null;
 
     if (parsed.q != null) state.q = parsed.q;
-    if (parsed.prophet != null) state.prophet = parsed.prophet;
-    if (parsed.topic != null) state.topic = parsed.topic;
+    if (parsed.prophet != null) state.prophet = slugify(parsed.prophet);
+    if (parsed.topic != null) state.topic = normalize(parsed.topic);
     if (parsed.source != null) state.source = parsed.source;
 
     if (state.route !== "dua") {
@@ -356,6 +368,7 @@
       if (!Array.isArray(json)) throw new Error("Invalid data format: root must be array");
       DATA = json;
       buildDerived();
+      validateDataOnce(DATA);
       showSkeletons(false);
 
       // initial render
@@ -374,8 +387,8 @@
 
   function buildDerived() {
     // Build fast search index and distinct lists
-    const prophetsSet = new Map(); // key -> {en,tr,ar}
-    const topicsSet = new Set();
+    const prophetsSet = new Map(); // key -> {label,en,tr,ar}
+    const topicsSet = new Map(); // normalized -> display
     const topicCounts = new Map();
     const sourceSet = new Set();
 
@@ -384,16 +397,36 @@
       const prophetEN = safeText(p?.prophet?.en);
       const prophetTR = safeText(p?.prophet?.tr);
       const prophetAR = safeText(p?.prophet?.ar);
-      const prophetKey = prophetEN || prophetTR || prophetAR;
+      const prophetLabel = prophetEN || prophetTR || prophetAR || "Unknown";
+      const prophetKey = slugify(prophetLabel) || "unknown";
 
-      if (prophetKey && !prophetsSet.has(prophetKey)) {
-        prophetsSet.set(prophetKey, { en: prophetEN, tr: prophetTR, ar: prophetAR, key: prophetKey });
+      if (!prophetsSet.has(prophetKey)) {
+        prophetsSet.set(prophetKey, {
+          key: prophetKey,
+          label: prophetLabel,
+          en: prophetEN,
+          tr: prophetTR,
+          ar: prophetAR
+        });
+      } else {
+        const existing = prophetsSet.get(prophetKey);
+        if (existing) {
+          if (!existing.en && prophetEN) existing.en = prophetEN;
+          if (!existing.tr && prophetTR) existing.tr = prophetTR;
+          if (!existing.ar && prophetAR) existing.ar = prophetAR;
+          if (!existing.label && prophetLabel) existing.label = prophetLabel;
+        }
       }
 
       const topics = Array.isArray(p.topics) ? p.topics.filter(Boolean).map(String) : [];
-      topics.forEach(t => {
-        topicsSet.add(t);
-        topicCounts.set(t, (topicCounts.get(t) || 0) + 1);
+      const topicsNorm = new Set();
+      topics.forEach((raw) => {
+        const label = safeText(raw).trim();
+        const key = normalize(label);
+        if (!key) return;
+        topicsNorm.add(key);
+        if (!topicsSet.has(key)) topicsSet.set(key, label);
+        topicCounts.set(key, (topicCounts.get(key) || 0) + 1);
       });
 
       const sourceType = safeText(p?.source?.type) || "Other";
@@ -420,18 +453,19 @@
       return {
         id,
         prophetKey,
-        topics: new Set(topics),
-        topicsNorm: new Set(topics.map(t => normalize(t))),
+        topicsNorm,
         sourceType,
         search: hay
       };
     });
 
     PROPHETS = Array.from(prophetsSet.values())
-      .sort((a, b) => (normalize(a.key) > normalize(b.key) ? 1 : -1));
+      .sort((a, b) => (normalize(a.label) > normalize(b.label) ? 1 : -1));
 
-    TOPICS = Array.from(topicsSet.values())
-      .sort((a, b) => (normalize(a) > normalize(b) ? 1 : -1));
+    TOPIC_LABELS = new Map(topicsSet);
+    TOPICS = Array.from(topicsSet.entries())
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => (normalize(a.label) > normalize(b.label) ? 1 : -1));
 
     SOURCE_TYPES = Array.from(sourceSet.values());
     // prefer ordering
@@ -445,6 +479,59 @@
     fillFilterOptions();
     fillProphetIndex();
     fillQuickChips(TOPIC_COUNTS);
+  }
+
+  function validateDataOnce(entries) {
+    if (validateDataOnce.ran) return;
+    validateDataOnce.ran = true;
+
+    const ids = new Set();
+    const arabicRefSet = new Set();
+    const prophetNames = new Map();
+
+    entries.forEach((p, idx) => {
+      const id = safeText(p.id);
+      if (!id) {
+        console.warn(`Validation: missing id at index ${idx}`);
+      } else if (ids.has(id)) {
+        console.warn(`Validation: duplicate id "${id}"`);
+      } else {
+        ids.add(id);
+      }
+
+      const missing = [];
+      if (!safeText(p.arabic)) missing.push("arabic");
+      if (!safeText(p.transliteration)) missing.push("transliteration");
+      if (!safeText(p.english)) missing.push("english");
+      if (!safeText(p.turkish)) missing.push("turkish");
+      if (!safeText(p?.source?.reference)) missing.push("source.reference");
+      if (safeText(p?.source?.type) === "Hadith" && !safeText(p.occasion)) missing.push("occasion");
+      if (missing.length) {
+        console.warn(`Validation: entry "${id || `#${idx}`}" missing ${missing.join(", ")}`);
+      }
+
+      const arabic = normalize(p.arabic);
+      const ref = normalize(p?.source?.reference);
+      if (arabic && ref) {
+        const key = `${arabic}|${ref}`;
+        if (arabicRefSet.has(key)) {
+          console.warn(`Validation: duplicate arabic+reference for "${id || `#${idx}`}"`);
+        } else {
+          arabicRefSet.add(key);
+        }
+      }
+
+      const prophetLabel = getProphetLabel(p);
+      const prophetKey = slugify(prophetLabel) || "unknown";
+      if (!prophetNames.has(prophetKey)) prophetNames.set(prophetKey, new Set());
+      prophetNames.get(prophetKey).add(prophetLabel);
+    });
+
+    prophetNames.forEach((names, key) => {
+      if (names.size > 1) {
+        console.warn(`Validation: inconsistent prophet naming for "${key}": ${Array.from(names).join(" | ")}`);
+      }
+    });
   }
 
   /* ------------------------------
@@ -767,14 +854,14 @@
     if (elProphet) {
       elProphet.innerHTML = "";
       elProphet.appendChild(new Option(t.filters.allProphets, "__all__"));
-      PROPHETS.forEach(p => elProphet.appendChild(new Option(p.key, p.key)));
+      PROPHETS.forEach(p => elProphet.appendChild(new Option(p.label, p.key)));
     }
 
     const elTopic = $("#topic");
     if (elTopic) {
       elTopic.innerHTML = "";
       elTopic.appendChild(new Option(t.filters.allTopics, "__all__"));
-      TOPICS.forEach(tp => elTopic.appendChild(new Option(tp, tp)));
+      TOPICS.forEach(tp => elTopic.appendChild(new Option(tp.label, tp.key)));
     }
 
     const elSource = $("#source");
@@ -792,16 +879,19 @@
 
     chipGrid.innerHTML = PROPHETS
       .slice(0, 30)
-      .map(p => `<button class="chip" type="button" data-prophet="${escapeHTML(p.key)}">${escapeHTML(p.key)}</button>`)
+      .map(p => `<button class="chip" type="button" data-prophet="${escapeHTML(p.key)}">${escapeHTML(p.label)}</button>`)
       .join("");
 
-    chipGrid.addEventListener("click", (e) => {
-      const btn = e.target instanceof HTMLElement ? e.target.closest("[data-prophet]") : null;
-      if (!btn) return;
-      const key = btn.getAttribute("data-prophet") || "";
-      state.prophet = key;
-      setHashFromState({ route: "prophets", prophet: key });
-    });
+    if (!chipGrid.dataset.bound) {
+      chipGrid.addEventListener("click", (e) => {
+        const btn = e.target instanceof HTMLElement ? e.target.closest("[data-prophet]") : null;
+        if (!btn) return;
+        const key = btn.getAttribute("data-prophet") || "";
+        state.prophet = key;
+        setHashFromState({ route: "prophets", prophet: key });
+      });
+      chipGrid.dataset.bound = "true";
+    }
   }
 
   function fillQuickChips(topicCounts) {
@@ -811,11 +901,14 @@
     const popular = Array.from(topicCounts.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([topic]) => topic);
-    const items = (popular.length ? popular : TOPICS).slice(0, 8);
+    const items = (popular.length ? popular : TOPICS.map(tp => tp.key)).slice(0, 8);
 
     chipRow.innerHTML = [
       `<button class="chip" type="button" data-topic="__all__">${escapeHTML(allLabel)}</button>`,
-      ...items.map(topic => `<button class="chip" type="button" data-topic="${escapeHTML(topic)}">${escapeHTML(topic)}</button>`)
+      ...items.map((topicKey) => {
+        const label = TOPIC_LABELS.get(topicKey) || topicKey;
+        return `<button class="chip" type="button" data-topic="${escapeHTML(topicKey)}">${escapeHTML(label)}</button>`;
+      })
     ].join("");
 
     updateTopChipsActive();
@@ -965,6 +1058,20 @@
     }
 
     // update meta pill counts (best-effort: we’ll set it in renderResults)
+    updateProphetIndexHeader();
+  }
+
+  function updateProphetIndexHeader() {
+    const panel = $(".prophet-index");
+    if (!panel) return;
+    const title = $(".panel-title", panel);
+    const sub = $(".panel-sub", panel);
+    if (title) title.textContent = state.prefs.uiLang === "tr" ? "Peygamber Dizini" : "Prophet Index";
+    if (sub) {
+      sub.textContent = state.prefs.uiLang === "tr"
+        ? "İsme göre hızlı geçiş yapın."
+        : "Jump quickly by name.";
+    }
   }
 
   function showSkeletons(show) {
@@ -1015,45 +1122,9 @@
   }
 
   function renderProphetsSection() {
-    // This route focuses on prophets list; we render a lightweight panel above results.
-    const t = I18N[state.prefs.uiLang] || I18N.en;
-
-    const placeholderPanel = ensureDynamicPanel("route-panel");
-    placeholderPanel.innerHTML = `
-      <div class="panel-head">
-        <div>
-          <h2 class="panel-title">${escapeHTML(t.sections.prophets)}</h2>
-          <p class="panel-sub">${escapeHTML(t.states.loadingDesc)}</p>
-        </div>
-        <div class="panel-actions">
-          <button class="pill-btn ghost" type="button" data-action="reset-filters">${escapeHTML(t.actions.reset)}</button>
-        </div>
-      </div>
-      <div class="chip-grid" id="route-prophets-grid" aria-label="Prophet list"></div>
-    `;
-
-    const grid = $("#route-prophets-grid", placeholderPanel);
-    if (grid) {
-      grid.innerHTML = PROPHETS.map(p => {
-        const active = state.prophet && normalize(state.prophet) === normalize(p.key);
-        return `<button class="chip ${active ? "is-active" : ""}" type="button" data-route-prophet="${escapeHTML(p.key)}">${escapeHTML(p.key)}</button>`;
-      }).join("");
-
-      grid.onclick = (e) => {
-        const btn = e.target instanceof HTMLElement ? e.target.closest("[data-route-prophet]") : null;
-        if (!btn) return;
-        state.prophet = btn.getAttribute("data-route-prophet") || "";
-        setHashFromState({ route: "prophets", prophet: state.prophet });
-      };
-    }
-
-    placeholderPanel.addEventListener("click", (e) => {
-      const btn = e.target instanceof HTMLElement ? e.target.closest("[data-action='reset-filters']") : null;
-      if (!btn) return;
-      state.q = ""; state.prophet = ""; state.topic = ""; state.source = "";
-      const elSearch = $("#search"); if (elSearch) elSearch.value = "";
-      setHashFromState({ route: "prophets", q: "", prophet: "", topic: "", source: "" });
-    });
+    // The prophet index panel is static in the layout; keep it up to date and let results render below.
+    fillProphetIndex();
+    updateProphetIndexHeader();
   }
 
   function renderTopicsSection() {
@@ -1076,8 +1147,8 @@
     const grid = $("#route-topics-grid", placeholderPanel);
     if (grid) {
       grid.innerHTML = TOPICS.map(tp => {
-        const active = state.topic && normalize(state.topic) === normalize(tp);
-        return `<button class="chip ${active ? "is-active" : ""}" type="button" data-route-topic="${escapeHTML(tp)}">${escapeHTML(tp)}</button>`;
+        const active = state.topic && normalize(state.topic) === normalize(tp.key);
+        return `<button class="chip ${active ? "is-active" : ""}" type="button" data-route-topic="${escapeHTML(tp.key)}">${escapeHTML(tp.label)}</button>`;
       }).join("");
 
       grid.onclick = (e) => {
@@ -1191,9 +1262,7 @@
   }
 
   function renderResults(opts = {}) {
-    removeDynamicPanel(); // unless route adds it later; route render will recreate
-    if (state.route === "prophets") renderProphetsSection();
-    if (state.route === "topics") renderTopicsSection();
+    if (state.route !== "topics") removeDynamicPanel();
     if (state.route === "about") return; // handled separately
 
     const list = ensureListContainer();
@@ -1378,7 +1447,7 @@
 
       if (favoritesOnly && !favSet.has(it.id)) continue;
 
-      if (np && normalize(it.prophetKey) !== np) continue;
+      if (np && it.prophetKey !== np) continue;
       if (nt && !it.topicsNorm.has(nt)) continue;
       if (ns && normalize(it.sourceType) !== ns) continue;
 
@@ -1429,6 +1498,52 @@
     return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
+  function getProphetLabel(p) {
+    return safeText(p?.prophet?.en) || safeText(p?.prophet?.tr) || safeText(p?.prophet?.ar) || "Unknown";
+  }
+
+  function getProphetDisplayName(p) {
+    const name = getProphetLabel(p);
+    if (state.prefs.uiLang === "tr") return `Peygamber ${name}`;
+    return `Prophet ${name}`;
+  }
+
+  function extractTaughtTo(context) {
+    const text = safeText(context);
+    const match = text.match(/taught\s+([^.,;]+?)(?:\s+to\s+say|\s+this|\s+in\s+prayer|\s+to)/i);
+    if (!match) return "";
+    return match[1].trim();
+  }
+
+  function getProphetAttribution(p) {
+    const srcType = safeText(p?.source?.type) || "Other";
+    if (srcType === "Quran") {
+      const quranLabel = state.prefs.uiLang === "tr" ? "Kur’an" : "Qur’an";
+      return `${getProphetDisplayName(p)} (${quranLabel})`;
+    }
+    if (srcType === "Hadith") {
+      const taughtTo = safeText(p?.occasion) === "Taught to a companion" ? extractTaughtTo(p?.context) : "";
+      const tr = state.prefs.uiLang === "tr";
+      const suffix = taughtTo
+        ? (tr ? ` — ${taughtTo} öğretti` : ` — taught to ${taughtTo}`)
+        : (safeText(p?.occasion) === "Taught to a companion" ? (tr ? " — bir sahabeye öğretti" : " — taught to a companion") : "");
+      return `${getProphetDisplayName(p)} ﷺ${suffix}`;
+    }
+    return getProphetDisplayName(p);
+  }
+
+  function getTopicLabels(topics = []) {
+    const out = [];
+    const seen = new Set();
+    topics.forEach((raw) => {
+      const key = normalize(raw);
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      out.push(TOPIC_LABELS.get(key) || raw);
+    });
+    return out;
+  }
+
   /* ------------------------------
      Cards HTML
   ------------------------------ */
@@ -1436,15 +1551,16 @@
     const t = I18N[state.prefs.uiLang] || I18N.en;
 
     const id = safeText(p.id);
-    const prophetName = safeText(p?.prophet?.en) || safeText(p?.prophet?.tr) || safeText(p?.prophet?.ar) || "Unknown";
+    const prophetName = getProphetAttribution(p);
     const srcType = safeText(p?.source?.type) || "Other";
     const srcRef = safeText(p?.source?.reference);
     const srcBook = safeText(p?.source?.book);
     const srcGrade = safeText(p?.source?.grade);
+    const occasion = safeText(p?.occasion);
 
     const fav = (state.prefs.favorites || []).includes(id);
 
-    const tags = Array.isArray(p.topics) ? p.topics.slice(0, 8) : [];
+    const tags = Array.isArray(p.topics) ? getTopicLabels(p.topics).slice(0, 8) : [];
 
     const showArabic = !!state.prefs.showArabic;
     const showTranslit = !!state.prefs.showTranslit;
@@ -1485,15 +1601,17 @@
       </div>
     `;
 
-    const reflection = safeText(p.reflection || p.context || p.notes);
-    const reflectionBlock = reflection ? `
+    const context = safeText(p.context);
+    const reflection = safeText(p.reflection);
+    const reflectionBlock = (context || reflection) ? `
       <details class="accordion">
-        <summary aria-label="${escapeHTML(t.labels.reflection)}">
-          <span>${escapeHTML(t.labels.reflection)}</span>
+        <summary aria-label="${escapeHTML(t.labels.context)}">
+          <span>${escapeHTML(t.labels.context)}</span>
           <span class="chev" aria-hidden="true">⌄</span>
         </summary>
         <div class="accordion-body">
-          <p class="muted">${highlightHTML(reflection, highlight)}</p>
+          ${context ? `<p class="muted"><strong>${escapeHTML(t.labels.context)}:</strong> ${highlightHTML(context, highlight)}</p>` : ""}
+          ${reflection ? `<p class="muted"><strong>${escapeHTML(t.labels.reflection)}:</strong> ${highlightHTML(reflection, highlight)}</p>` : ""}
           ${renderSourcesInline(p)}
         </div>
       </details>
@@ -1504,11 +1622,12 @@
       + (srcGrade ? ` • ${srcGrade}` : "");
 
     return `
-      <article class="card" data-card-id="${escapeHTML(id)}" tabindex="0" role="button" aria-label="Open dua: ${escapeHTML(prophetName)}">
+      <article class="card" data-card-id="${escapeHTML(id)}" tabindex="0" role="button" aria-label="Open dua: ${escapeHTML(prophetLabel)}">
         <div class="card-top">
           <div class="card-title">
             <h3>${highlightHTML(prophetName, highlight)}</h3>
             <p class="ref">${highlightHTML(refLine, highlight)}</p>
+            ${occasion ? `<div class="reading-top"><span class="badge ghost">${escapeHTML(occasion)}</span></div>` : ""}
           </div>
 
           <div class="card-controls" aria-label="Card actions">
@@ -1545,7 +1664,7 @@
 
   function miniCardHTML(p) {
     const id = safeText(p.id);
-    const prophetName = safeText(p?.prophet?.en) || safeText(p?.prophet?.tr) || safeText(p?.prophet?.ar) || "Unknown";
+    const prophetName = getProphetLabel(p);
     const ref = safeText(p?.source?.reference) || "";
 
     return `
@@ -1577,7 +1696,7 @@
   }
 
   function buildFullCopy(p) {
-    const prophetName = safeText(p?.prophet?.en) || safeText(p?.prophet?.tr) || safeText(p?.prophet?.ar) || "Unknown";
+    const prophetName = getProphetLabel(p);
     const srcType = safeText(p?.source?.type) || "Other";
     const srcRef = safeText(p?.source?.reference);
 
@@ -1697,11 +1816,13 @@
     const t = I18N[state.prefs.uiLang] || I18N.en;
 
     const id = safeText(p.id);
-    const prophetName = safeText(p?.prophet?.en) || safeText(p?.prophet?.tr) || safeText(p?.prophet?.ar) || "Unknown";
+    const prophetName = getProphetAttribution(p);
+    const prophetLabel = getProphetLabel(p);
     const srcType = safeText(p?.source?.type) || "Other";
     const srcRef = safeText(p?.source?.reference);
     const srcBook = safeText(p?.source?.book);
     const srcGrade = safeText(p?.source?.grade);
+    const occasion = safeText(p?.occasion);
     const fav = (state.prefs.favorites || []).includes(id);
 
     const showArabic = !!state.prefs.showArabic;
@@ -1713,13 +1834,15 @@
       + (srcBook ? ` • ${srcBook}` : "")
       + (srcGrade ? ` • ${srcGrade}` : "");
 
-    const reflection = safeText(p.reflection || p.context || p.notes);
+    const context = safeText(p.context);
+    const reflection = safeText(p.reflection);
 
     return `
       <div class="reading-mode" style="padding:16px;">
         <div class="reading-top">
           <span class="badge">${escapeHTML(state.prefs.uiLang === "tr" ? "Detay" : "Detail")}</span>
           <span class="badge ghost">${escapeHTML(srcType)}</span>
+          ${occasion ? `<span class="badge ghost">${escapeHTML(occasion)}</span>` : ""}
         </div>
 
         <h3 class="reading-title">${escapeHTML(prophetName)}</h3>
@@ -1745,10 +1868,11 @@
             <p style="margin:0;">${escapeHTML(p.turkish || "")}</p>
           </div>` : ""}
 
-        ${reflection ? `
+        ${(context || reflection) ? `
           <div class="reading-block">
-            <div class="label">${escapeHTML(t.labels.reflection)}</div>
-            <p class="muted" style="margin:0;">${escapeHTML(reflection)}</p>
+            <div class="label">${escapeHTML(t.labels.context)}</div>
+            ${context ? `<p class="muted" style="margin:0 0 6px;">${escapeHTML(context)}</p>` : ""}
+            ${reflection ? `<p class="muted" style="margin:0;">${escapeHTML(reflection)}</p>` : ""}
             ${renderSourcesInline(p)}
           </div>` : ""}
 
@@ -1979,8 +2103,8 @@
       state.route = parsed.route || "home";
       state.routeParam = parsed.dua || null;
       state.q = parsed.q || "";
-      state.prophet = parsed.prophet || "";
-      state.topic = parsed.topic || "";
+      state.prophet = parsed.prophet ? slugify(parsed.prophet) : "";
+      state.topic = parsed.topic ? normalize(parsed.topic) : "";
       state.source = parsed.source || "";
     }
 
