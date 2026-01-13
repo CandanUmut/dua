@@ -463,6 +463,12 @@ code, .kbd{
   backdrop-filter: var(--blur);
   padding: var(--s-4);
 }
+.panel.notice{
+  border-left: 3px solid var(--warn);
+}
+.panel.error{
+  border-left: 3px solid color-mix(in srgb, var(--warn) 70%, transparent);
+}
 
 .panel-head{
   display:flex;
@@ -919,6 +925,11 @@ code, .kbd{
 .badge.ghost{
   background: transparent;
   color: var(--muted);
+}
+.badge.warn{
+  background: color-mix(in srgb, var(--warn) 22%, transparent);
+  border-color: color-mix(in srgb, var(--warn) 36%, transparent);
+  color: var(--textc);
 }
 .reading-title{
   margin: 6px 0 0;

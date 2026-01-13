@@ -37,7 +37,7 @@
       filters: { prophet: "Prophet", topic: "Topic", source: "Source", allProphets: "All Prophets", allTopics: "All Topics", allSources: "All Sources" },
       meta: { found: "found", prayers: "prayers", shown: "shown", tip: "Tip" },
       actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset", clearFilters: "Clear filters" },
-      labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection", context: "Context", meaning: "Meaning" },
+      labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection", context: "Context", meaning: "Meaning", hadithVerify: "Hadith (verify reference)" },
       toasts: {
         copiedArabic: "Copied Arabic",
         copiedFull: "Copied full dua",
@@ -50,6 +50,10 @@
         loadingDesc: "Preparing the collection.",
         errorTitle: "Couldn’t load data",
         errorDesc: "Please check your connection or try again.",
+        formatErrorTitle: "Dataset format error",
+        formatErrorDesc: "Check data/prayers.json.",
+        localFileTitle: "Local file mode",
+        localFileDesc: "Some browsers block loading JSON when opened as a local file. Use GitHub Pages or run a simple local server.",
         noResultsTitle: "No results",
         noResultsDesc: "Try a different spelling, a topic tag, or search in Arabic.",
         noFavTitle: "No favorites yet",
@@ -76,7 +80,7 @@
       filters: { prophet: "Peygamber", topic: "Konu", source: "Kaynak", allProphets: "Tüm Peygamberler", allTopics: "Tüm Konular", allSources: "Tüm Kaynaklar" },
       meta: { found: "bulundu", prayers: "dua", shown: "gösteriliyor", tip: "İpucu" },
       actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla", clearFilters: "Filtreleri temizle" },
-      labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Tefekkür", context: "Bağlam", meaning: "Anlam" },
+      labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Tefekkür", context: "Bağlam", meaning: "Anlam", hadithVerify: "Hadis (kaynağı doğrulayın)" },
       toasts: {
         copiedArabic: "Arapça kopyalandı",
         copiedFull: "Dua kopyalandı",
@@ -89,6 +93,10 @@
         loadingDesc: "Koleksiyon hazırlanıyor.",
         errorTitle: "Veri yüklenemedi",
         errorDesc: "Bağlantınızı kontrol edin veya tekrar deneyin.",
+        formatErrorTitle: "Veri biçimi hatası",
+        formatErrorDesc: "data/prayers.json dosyasını kontrol edin.",
+        localFileTitle: "Yerel dosya modu",
+        localFileDesc: "Bazı tarayıcılar yerel dosyadan açıldığında JSON yüklemesini engeller. GitHub Pages kullanın veya basit bir yerel sunucu çalıştırın.",
         noResultsTitle: "Sonuç yok",
         noResultsDesc: "Farklı yazım deneyin, etiket seçin veya Arapça arayın.",
         noFavTitle: "Henüz favori yok",
@@ -164,6 +172,10 @@
 
   function safeText(v) {
     return (v == null) ? "" : String(v);
+  }
+
+  function trimText(v) {
+    return safeText(v).trim();
   }
 
   function escapeHTML(str) {
@@ -362,13 +374,22 @@
       showError(false);
 
       const res = await fetch(DATA_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${res.url}`);
 
-      if (!Array.isArray(json)) throw new Error("Invalid data format: root must be array");
-      DATA = json;
+      const rawText = await res.text();
+      let json;
+      try {
+        json = JSON.parse(rawText);
+      } catch (err) {
+        console.error("Dataset parse error:", err);
+        console.info("Dataset preview:", rawText.slice(0, 200));
+        throw new Error("DATA_FORMAT_ERROR");
+      }
+
+      if (!Array.isArray(json)) throw new Error("DATA_FORMAT_ERROR");
+      DATA = normalizeAndValidateData(json);
+      findById.map = null;
       buildDerived();
-      validateDataOnce(DATA);
       showSkeletons(false);
 
       // initial render
@@ -381,8 +402,114 @@
     } catch (err) {
       console.error("Failed to load data:", err);
       showSkeletons(false);
-      showError(true);
+      const isFormat = safeText(err?.message) === "DATA_FORMAT_ERROR";
+      showError(true, { kind: isFormat ? "format" : "load" });
     }
+  }
+
+  function normalizeAndValidateData(entries) {
+    const normalized = [];
+    const seenIds = new Set();
+    const seenKeys = new Set();
+    const duplicateIds = [];
+    const duplicateKeys = [];
+    const missingEntries = [];
+
+    entries.forEach((raw, idx) => {
+      const entry = { ...raw };
+
+      entry.id = trimText(entry.id) || `missing-${idx + 1}`;
+
+      const prophet = (entry.prophet && typeof entry.prophet === "object") ? { ...entry.prophet } : {};
+      prophet.ar = trimText(prophet.ar);
+      prophet.en = trimText(prophet.en);
+      prophet.tr = trimText(prophet.tr);
+      const hasProphetName = !!(prophet.ar || prophet.en || prophet.tr);
+      if (!hasProphetName) {
+        prophet.en = "Unknown";
+      }
+      entry.prophet = prophet;
+      entry.prophet_key = slugify(prophet.en || prophet.tr || prophet.ar || "Unknown") || "unknown";
+
+      const source = (entry.source && typeof entry.source === "object") ? { ...entry.source } : {};
+      source.type = trimText(source.type) || "Other";
+      source.reference = trimText(source.reference);
+      source.book = trimText(source.book);
+      source.grade = trimText(source.grade);
+      entry.source = source;
+
+      entry.arabic = trimText(entry.arabic);
+      entry.transliteration = trimText(entry.transliteration);
+      entry.english = trimText(entry.english);
+      entry.turkish = trimText(entry.turkish);
+      entry.context = trimText(entry.context);
+      entry.reflection = trimText(entry.reflection);
+      entry.notes = trimText(entry.notes);
+
+      const hadTopics = Array.isArray(entry.topics);
+      entry.topics = hadTopics
+        ? entry.topics.map((t) => normalize(t)).filter(Boolean)
+        : [];
+      const hadSources = Array.isArray(entry.sources);
+      entry.sources = hadSources
+        ? entry.sources.map((s) => trimText(s)).filter(Boolean)
+        : [];
+
+      const missing = [];
+      if (!entry.id || entry.id.startsWith("missing-")) missing.push("id");
+      if (!hasProphetName) missing.push("prophet");
+      if (!source.type) missing.push("source.type");
+      if (!source.reference) missing.push("source.reference");
+      if (!entry.arabic) missing.push("arabic");
+      if (!entry.transliteration) missing.push("transliteration");
+      if (!entry.english) missing.push("english");
+      if (!entry.turkish) missing.push("turkish");
+      if (!hadTopics) missing.push("topics");
+      if (!entry.context) missing.push("context");
+      if (!entry.reflection) missing.push("reflection");
+      if (!hadSources) missing.push("sources");
+
+      if (missing.length) {
+        missingEntries.push({ id: entry.id, missing });
+      }
+
+      if (seenIds.has(entry.id)) {
+        duplicateIds.push(entry.id);
+        return;
+      }
+      seenIds.add(entry.id);
+
+      const dedupeKey = [
+        normalize(source.type),
+        normalize(source.reference),
+        normalize(entry.arabic)
+      ].join("|");
+      if (seenKeys.has(dedupeKey)) {
+        duplicateKeys.push(entry.id);
+        return;
+      }
+      seenKeys.add(dedupeKey);
+
+      normalized.push(entry);
+    });
+
+    if (missingEntries.length) {
+      console.groupCollapsed("Validation: entries with missing fields");
+      missingEntries.forEach((item) => {
+        console.warn(`${item.id}: ${item.missing.join(", ")}`);
+      });
+      console.groupEnd();
+    }
+
+    if (duplicateIds.length) {
+      console.warn("Validation: duplicate ids skipped:", duplicateIds);
+    }
+
+    if (duplicateKeys.length) {
+      console.warn("Validation: duplicate entries skipped:", duplicateKeys);
+    }
+
+    return normalized;
   }
 
   function buildDerived() {
@@ -398,7 +525,7 @@
       const prophetTR = safeText(p?.prophet?.tr);
       const prophetAR = safeText(p?.prophet?.ar);
       const prophetLabel = prophetEN || prophetTR || prophetAR || "Unknown";
-      const prophetKey = slugify(prophetLabel) || "unknown";
+      const prophetKey = safeText(p.prophet_key) || slugify(prophetEN) || slugify(prophetLabel) || "unknown";
 
       if (!prophetsSet.has(prophetKey)) {
         prophetsSet.set(prophetKey, {
@@ -479,59 +606,6 @@
     fillFilterOptions();
     fillProphetIndex();
     fillQuickChips(TOPIC_COUNTS);
-  }
-
-  function validateDataOnce(entries) {
-    if (validateDataOnce.ran) return;
-    validateDataOnce.ran = true;
-
-    const ids = new Set();
-    const arabicRefSet = new Set();
-    const prophetNames = new Map();
-
-    entries.forEach((p, idx) => {
-      const id = safeText(p.id);
-      if (!id) {
-        console.warn(`Validation: missing id at index ${idx}`);
-      } else if (ids.has(id)) {
-        console.warn(`Validation: duplicate id "${id}"`);
-      } else {
-        ids.add(id);
-      }
-
-      const missing = [];
-      if (!safeText(p.arabic)) missing.push("arabic");
-      if (!safeText(p.transliteration)) missing.push("transliteration");
-      if (!safeText(p.english)) missing.push("english");
-      if (!safeText(p.turkish)) missing.push("turkish");
-      if (!safeText(p?.source?.reference)) missing.push("source.reference");
-      if (safeText(p?.source?.type) === "Hadith" && !safeText(p.occasion)) missing.push("occasion");
-      if (missing.length) {
-        console.warn(`Validation: entry "${id || `#${idx}`}" missing ${missing.join(", ")}`);
-      }
-
-      const arabic = normalize(p.arabic);
-      const ref = normalize(p?.source?.reference);
-      if (arabic && ref) {
-        const key = `${arabic}|${ref}`;
-        if (arabicRefSet.has(key)) {
-          console.warn(`Validation: duplicate arabic+reference for "${id || `#${idx}`}"`);
-        } else {
-          arabicRefSet.add(key);
-        }
-      }
-
-      const prophetLabel = getProphetLabel(p);
-      const prophetKey = slugify(prophetLabel) || "unknown";
-      if (!prophetNames.has(prophetKey)) prophetNames.set(prophetKey, new Set());
-      prophetNames.get(prophetKey).add(prophetLabel);
-    });
-
-    prophetNames.forEach((names, key) => {
-      if (names.size > 1) {
-        console.warn(`Validation: inconsistent prophet naming for "${key}": ${Array.from(names).join(" | ")}`);
-      }
-    });
   }
 
   /* ------------------------------
@@ -721,55 +795,28 @@
       openOnboarding({ force: true });
     });
 
-    // Global click handlers for card actions (event delegation)
-    document.addEventListener("click", async (e) => {
+    const results = $(".results");
+    if (results) {
+      results.addEventListener("click", (e) => {
+        const target = e.target instanceof HTMLElement ? e.target : null;
+        if (!target) return;
+        const actionBtn = target.closest("[data-action]");
+        if (!actionBtn) return;
+        if (handleActionClick(actionBtn)) {
+          e.stopPropagation();
+        }
+      });
+    }
+
+    // Global click handlers for card actions (event delegation outside results)
+    document.addEventListener("click", (e) => {
       const target = e.target instanceof HTMLElement ? e.target : null;
       if (!target) return;
+      if (target.closest(".results")) return;
 
       const actionBtn = target.closest("[data-action]");
       if (!actionBtn) return;
-
-      const action = actionBtn.getAttribute("data-action");
-      const id = actionBtn.getAttribute("data-id");
-      if (!action || !id) return;
-
-      const entry = findById(id);
-      if (!entry) return;
-
-      if (action === "open") {
-        openDua(id, { pushRecent: true, focus: true, updateHash: true });
-        return;
-      }
-
-      if (action === "fav") {
-        toggleFavorite(id);
-        const isFav = (state.prefs.favorites || []).includes(id);
-        // update button states in list + sheet
-        updateFavoriteButtons(id);
-        renderIfRouteFavorites();
-        toast((I18N[state.prefs.uiLang] || I18N.en).toasts[isFav ? "saved" : "removed"]);
-        return;
-      }
-
-      if (action === "share") {
-        const link = makeShareLink({ dua: id });
-        await copyToClipboard(link);
-        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.linkCopied);
-        return;
-      }
-
-      if (action === "copyArabic") {
-        await copyToClipboard(safeText(entry.arabic));
-        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedArabic);
-        return;
-      }
-
-      if (action === "copyFull") {
-        const full = buildFullCopy(entry);
-        await copyToClipboard(full);
-        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedFull);
-        return;
-      }
+      handleActionClick(actionBtn);
     });
 
     document.addEventListener("click", (e) => {
@@ -808,6 +855,74 @@
       b.classList.toggle("is-active", b === activeBtn);
       b.setAttribute("aria-pressed", b === activeBtn ? "true" : "false");
     });
+  }
+
+  function normalizeAction(action) {
+    const key = safeText(action);
+    if (key === "copyArabic") return "copy-arabic";
+    if (key === "copyFull") return "copy-full";
+    if (key === "fav") return "favorite";
+    if (key === "toggleContext") return "toggle-context";
+    return key;
+  }
+
+  function handleActionClick(actionBtn) {
+    const action = normalizeAction(actionBtn.getAttribute("data-action"));
+    const id = actionBtn.getAttribute("data-id");
+    if (!action) return false;
+
+    if (action === "toggle-context") {
+      const card = actionBtn.closest(".card");
+      if (!card) return true;
+      const details = card.querySelector("details.accordion");
+      if (!details) return true;
+      details.open = !details.open;
+      actionBtn.setAttribute("aria-expanded", details.open ? "true" : "false");
+      return true;
+    }
+
+    if (!id) return false;
+    const entry = findById(id);
+    if (!entry) return false;
+
+    if (action === "open") {
+      openDua(id, { pushRecent: true, focus: true, updateHash: true });
+      return true;
+    }
+
+    if (action === "favorite") {
+      toggleFavorite(id);
+      const isFav = (state.prefs.favorites || []).includes(id);
+      updateFavoriteButtons(id);
+      renderIfRouteFavorites();
+      toast((I18N[state.prefs.uiLang] || I18N.en).toasts[isFav ? "saved" : "removed"]);
+      return true;
+    }
+
+    if (action === "share") {
+      const link = makeShareLink({ dua: id });
+      copyToClipboard(link).then(() => {
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.linkCopied);
+      });
+      return true;
+    }
+
+    if (action === "copy-arabic") {
+      copyToClipboard(safeText(entry.arabic)).then(() => {
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedArabic);
+      });
+      return true;
+    }
+
+    if (action === "copy-full") {
+      const full = buildFullCopy(entry);
+      copyToClipboard(full).then(() => {
+        toast((I18N[state.prefs.uiLang] || I18N.en).toasts.copiedFull);
+      });
+      return true;
+    }
+
+    return false;
   }
 
   function toast(message) {
@@ -1059,6 +1174,7 @@
 
     // update meta pill counts (best-effort: we’ll set it in renderResults)
     updateProphetIndexHeader();
+    showLocalFileHint();
   }
 
   function updateProphetIndexHeader() {
@@ -1079,7 +1195,7 @@
     if (sk) sk.style.display = show ? "" : "none";
   }
 
-  function showError(show) {
+  function showError(show, { kind = "load" } = {}) {
     // We'll render an error panel at top of results when needed
     const existing = $("#data-error");
     if (!show) {
@@ -1094,16 +1210,54 @@
 
     const panel = document.createElement("section");
     panel.id = "data-error";
-    panel.className = "panel";
+    panel.className = "panel error";
     panel.setAttribute("role", "alert");
+    const title = kind === "format" ? t.states.formatErrorTitle : t.states.errorTitle;
+    const desc = kind === "format" ? t.states.formatErrorDesc : t.states.errorDesc;
+    const localHint = location.protocol === "file:"
+      ? `<p class="muted" style="margin:8px 0 0;">${escapeHTML(t.states.localFileDesc)}</p>`
+      : "";
     panel.innerHTML = `
       <div class="panel-head">
         <div>
-          <h2 class="panel-title">${escapeHTML(t.states.errorTitle)}</h2>
-          <p class="panel-sub">${escapeHTML(t.states.errorDesc)}</p>
+          <h2 class="panel-title">${escapeHTML(title)}</h2>
+          <p class="panel-sub">${escapeHTML(desc)}</p>
+          ${localHint}
         </div>
         <div class="panel-actions">
           <button class="pill-btn" type="button" data-action="retry">${escapeHTML(t.actions.retry)}</button>
+        </div>
+      </div>
+    `;
+    container.prepend(panel);
+  }
+
+  function showLocalFileHint() {
+    const existing = $("#local-file-hint");
+    if (location.protocol !== "file:") {
+      if (existing) existing.remove();
+      return;
+    }
+
+    const t = I18N[state.prefs.uiLang] || I18N.en;
+    const container = $(".content") || document.body;
+    if (existing) {
+      const title = $(".panel-title", existing);
+      const desc = $(".panel-sub", existing);
+      if (title) title.textContent = t.states.localFileTitle;
+      if (desc) desc.textContent = t.states.localFileDesc;
+      return;
+    }
+
+    const panel = document.createElement("section");
+    panel.id = "local-file-hint";
+    panel.className = "panel notice";
+    panel.setAttribute("role", "status");
+    panel.innerHTML = `
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">${escapeHTML(t.states.localFileTitle)}</h2>
+          <p class="panel-sub">${escapeHTML(t.states.localFileDesc)}</p>
         </div>
       </div>
     `;
@@ -1409,10 +1563,9 @@
     const results = $(".results");
     if (!results) return;
 
-    // hide the original sample cards and panels inside .results except .results-head and our #dynamic-list
-    $$(".results > .card, .results > .panel", results).forEach(el => {
-      // keep skeletons when loading; skeletons are toggled separately
-      if (el.classList.contains("skeletons")) return;
+    // hide the original template content inside .results except our dynamic list + skeletons
+    Array.from(results.children).forEach((el) => {
+      if (el.id === "dynamic-list" || el.classList.contains("skeletons")) return;
       el.style.display = "none";
     });
   }
@@ -1508,13 +1661,6 @@
     return `Prophet ${name}`;
   }
 
-  function extractTaughtTo(context) {
-    const text = safeText(context);
-    const match = text.match(/taught\s+([^.,;]+?)(?:\s+to\s+say|\s+this|\s+in\s+prayer|\s+to)/i);
-    if (!match) return "";
-    return match[1].trim();
-  }
-
   function getProphetAttribution(p) {
     const srcType = safeText(p?.source?.type) || "Other";
     if (srcType === "Quran") {
@@ -1522,11 +1668,8 @@
       return `${getProphetDisplayName(p)} (${quranLabel})`;
     }
     if (srcType === "Hadith") {
-      const taughtTo = safeText(p?.occasion) === "Taught to a companion" ? extractTaughtTo(p?.context) : "";
-      const tr = state.prefs.uiLang === "tr";
-      const suffix = taughtTo
-        ? (tr ? ` — ${taughtTo} öğretti` : ` — taught to ${taughtTo}`)
-        : (safeText(p?.occasion) === "Taught to a companion" ? (tr ? " — bir sahabeye öğretti" : " — taught to a companion") : "");
+      const occasion = safeText(p?.occasion);
+      const suffix = occasion ? ` — ${occasion}` : "";
       return `${getProphetDisplayName(p)} ﷺ${suffix}`;
     }
     return getProphetDisplayName(p);
@@ -1551,6 +1694,7 @@
     const t = I18N[state.prefs.uiLang] || I18N.en;
 
     const id = safeText(p.id);
+    const prophetLabel = getProphetLabel(p);
     const prophetName = getProphetAttribution(p);
     const srcType = safeText(p?.source?.type) || "Other";
     const srcRef = safeText(p?.source?.reference);
@@ -1603,8 +1747,9 @@
 
     const context = safeText(p.context);
     const reflection = safeText(p.reflection);
+    const contextId = `context-${id}`;
     const reflectionBlock = (context || reflection) ? `
-      <details class="accordion">
+      <details class="accordion" id="${escapeHTML(contextId)}">
         <summary aria-label="${escapeHTML(t.labels.context)}">
           <span>${escapeHTML(t.labels.context)}</span>
           <span class="chev" aria-hidden="true">⌄</span>
@@ -1621,17 +1766,25 @@
       + (srcBook ? ` • ${srcBook}` : "")
       + (srcGrade ? ` • ${srcGrade}` : "");
 
+    const needsHadithVerify = srcType === "Hadith" && !occasion;
+    const contextBadge = occasion ? `<span class="badge ghost">${escapeHTML(occasion)}</span>` : "";
+    const hadithBadge = needsHadithVerify ? `<span class="badge warn">${escapeHTML(t.labels.hadithVerify)}</span>` : "";
+
+    const contextButton = reflectionBlock
+      ? `<button class="pill-btn ghost" type="button" data-action="toggle-context" data-id="${escapeHTML(id)}" aria-controls="${escapeHTML(contextId)}" aria-expanded="false">${escapeHTML(t.labels.context)}</button>`
+      : "";
+
     return `
       <article class="card" data-card-id="${escapeHTML(id)}" tabindex="0" role="button" aria-label="Open dua: ${escapeHTML(prophetLabel)}">
         <div class="card-top">
           <div class="card-title">
             <h3>${highlightHTML(prophetName, highlight)}</h3>
             <p class="ref">${highlightHTML(refLine, highlight)}</p>
-            ${occasion ? `<div class="reading-top"><span class="badge ghost">${escapeHTML(occasion)}</span></div>` : ""}
+            ${(contextBadge || hadithBadge) ? `<div class="reading-top">${contextBadge}${hadithBadge}</div>` : ""}
           </div>
 
           <div class="card-controls" aria-label="Card actions">
-            <button class="icon-btn" type="button" data-action="fav" data-id="${escapeHTML(id)}" aria-label="${fav ? "Unsave" : "Save"}" aria-pressed="${fav ? "true" : "false"}" title="${escapeHTML(fav ? (t.actions.saved || "Saved") : (t.actions.save || "Save"))}">${fav ? "★" : "☆"}</button>
+            <button class="icon-btn" type="button" data-action="favorite" data-id="${escapeHTML(id)}" aria-label="${fav ? "Unsave" : "Save"}" aria-pressed="${fav ? "true" : "false"}" title="${escapeHTML(fav ? (t.actions.saved || "Saved") : (t.actions.save || "Save"))}">${fav ? "★" : "☆"}</button>
             <button class="icon-btn" type="button" data-action="share" data-id="${escapeHTML(id)}" aria-label="Share" title="${escapeHTML(t.actions.share)}">↗</button>
           </div>
         </div>
@@ -1649,10 +1802,11 @@
           </div>
 
           <div class="card-actions">
-            <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
-            <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
+            <button class="pill-btn" type="button" data-action="copy-arabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
+            <button class="pill-btn" type="button" data-action="copy-full" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
             <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.share)}">${escapeHTML(t.actions.share)}</button>
-            <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
+            <button class="pill-btn ghost" type="button" data-action="favorite" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
+            ${contextButton}
             <button class="pill-btn ghost" type="button" data-action="open" data-id="${escapeHTML(id)}" title="${escapeHTML(state.prefs.uiLang === "tr" ? "Aç" : "Open")}">${escapeHTML(state.prefs.uiLang === "tr" ? "Aç" : "Open")}</button>
           </div>
 
@@ -1824,6 +1978,7 @@
     const srcGrade = safeText(p?.source?.grade);
     const occasion = safeText(p?.occasion);
     const fav = (state.prefs.favorites || []).includes(id);
+    const needsHadithVerify = srcType === "Hadith" && !occasion;
 
     const showArabic = !!state.prefs.showArabic;
     const showTranslit = !!state.prefs.showTranslit;
@@ -1843,6 +1998,7 @@
           <span class="badge">${escapeHTML(state.prefs.uiLang === "tr" ? "Detay" : "Detail")}</span>
           <span class="badge ghost">${escapeHTML(srcType)}</span>
           ${occasion ? `<span class="badge ghost">${escapeHTML(occasion)}</span>` : ""}
+          ${needsHadithVerify ? `<span class="badge warn">${escapeHTML(t.labels.hadithVerify)}</span>` : ""}
         </div>
 
         <h3 class="reading-title">${escapeHTML(prophetName)}</h3>
@@ -1877,10 +2033,10 @@
           </div>` : ""}
 
         <div class="card-actions" style="margin-top:14px;">
-          <button class="pill-btn" type="button" data-action="copyArabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
-          <button class="pill-btn" type="button" data-action="copyFull" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
+          <button class="pill-btn" type="button" data-action="copy-arabic" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyArabic)}">${escapeHTML(t.actions.copyArabic)}</button>
+          <button class="pill-btn" type="button" data-action="copy-full" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.copyFull)}">${escapeHTML(t.actions.copyFull)}</button>
           <button class="pill-btn ghost" type="button" data-action="share" data-id="${escapeHTML(id)}" title="${escapeHTML(t.actions.share)}">${escapeHTML(t.actions.share)}</button>
-          <button class="pill-btn ghost" type="button" data-action="fav" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
+          <button class="pill-btn ghost" type="button" data-action="favorite" data-id="${escapeHTML(id)}" title="${escapeHTML(fav ? t.actions.saved : t.actions.save)}">${escapeHTML(fav ? t.actions.saved : t.actions.save)}</button>
         </div>
       </div>
     `;
@@ -1907,7 +2063,7 @@
   function updateFavoriteButtons(id) {
     // Update all buttons that refer to this id
     const fav = (state.prefs.favorites || []).includes(id);
-    document.querySelectorAll(`[data-action="fav"][data-id="${CSS.escape(id)}"]`).forEach(btn => {
+    document.querySelectorAll(`[data-action="fav"][data-id="${CSS.escape(id)}"], [data-action="favorite"][data-id="${CSS.escape(id)}"]`).forEach(btn => {
       btn.setAttribute("aria-pressed", fav ? "true" : "false");
       // icon-btn uses ☆/★
       if (btn.classList.contains("icon-btn")) btn.textContent = fav ? "★" : "☆";
@@ -2090,6 +2246,7 @@
     applyFontSizes();
     bindUI();
     setupOnboarding();
+    showLocalFileHint();
 
     // If there is no script tag in HTML, app.js won't run. This file assumes it is included.
     // We continue regardless.
