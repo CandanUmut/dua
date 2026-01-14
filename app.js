@@ -13,9 +13,10 @@
   /* ------------------------------
      Configuration / Constants
   ------------------------------ */
-  const DATA_URL = "./data/prayers.json";
+  const DATA_URL = new URL("./data/prayers.json", document.baseURI).toString();
   const LS_KEY = "prophets_duas_v1";
   const ONBOARDING_KEY = "prophets_duas_onboarding_seen";
+  const DEBUG_ENABLED = new URLSearchParams(location.search).get("debug") === "1";
 
   const DEFAULT_PREFS = {
     theme: "auto",            // auto | light | dark
@@ -36,7 +37,7 @@
       sections: { home: "Home", prophets: "Prophets", topics: "Topics", favorites: "Favorites", about: "About" },
       filters: { prophet: "Prophet", topic: "Topic", source: "Source", allProphets: "All Prophets", allTopics: "All Topics", allSources: "All Sources" },
       meta: { found: "found", prayers: "prayers", shown: "shown", tip: "Tip" },
-      actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset", clearFilters: "Clear filters" },
+      actions: { copyArabic: "Copy Arabic", copyFull: "Copy Full", share: "Share", save: "Save", saved: "Saved", retry: "Retry", reset: "Reset", clearFilters: "Clear filters", reportDebug: "Report / Copy debug" },
       labels: { translit: "Transliteration", english: "English", turkish: "Türkçe", tags: "Tags", reflection: "Reflection", context: "Context", meaning: "Meaning", hadithVerify: "Hadith (verify reference)" },
       toasts: {
         copiedArabic: "Copied Arabic",
@@ -50,6 +51,8 @@
         loadingDesc: "Preparing the collection.",
         errorTitle: "Couldn’t load data",
         errorDesc: "Please check your connection or try again.",
+        appErrorTitle: "App error",
+        appErrorDesc: "Something went wrong while rendering this page. Try reloading or copy debug info.",
         formatErrorTitle: "Dataset format error",
         formatErrorDesc: "Check data/prayers.json.",
         localFileTitle: "Local file mode",
@@ -79,7 +82,7 @@
       sections: { home: "Ana Sayfa", prophets: "Peygamberler", topics: "Konular", favorites: "Favoriler", about: "Hakkında" },
       filters: { prophet: "Peygamber", topic: "Konu", source: "Kaynak", allProphets: "Tüm Peygamberler", allTopics: "Tüm Konular", allSources: "Tüm Kaynaklar" },
       meta: { found: "bulundu", prayers: "dua", shown: "gösteriliyor", tip: "İpucu" },
-      actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla", clearFilters: "Filtreleri temizle" },
+      actions: { copyArabic: "Arapçayı Kopyala", copyFull: "Tamamını Kopyala", share: "Paylaş", save: "Kaydet", saved: "Kaydedildi", retry: "Tekrar Dene", reset: "Sıfırla", clearFilters: "Filtreleri temizle", reportDebug: "Hata Bilgisi Kopyala" },
       labels: { translit: "Okunuş", english: "İngilizce", turkish: "Türkçe", tags: "Etiketler", reflection: "Tefekkür", context: "Bağlam", meaning: "Anlam", hadithVerify: "Hadis (kaynağı doğrulayın)" },
       toasts: {
         copiedArabic: "Arapça kopyalandı",
@@ -93,6 +96,8 @@
         loadingDesc: "Koleksiyon hazırlanıyor.",
         errorTitle: "Veri yüklenemedi",
         errorDesc: "Bağlantınızı kontrol edin veya tekrar deneyin.",
+        appErrorTitle: "Uygulama hatası",
+        appErrorDesc: "Sayfa işlenirken bir hata oluştu. Yenileyin veya hata bilgisini kopyalayın.",
         formatErrorTitle: "Veri biçimi hatası",
         formatErrorDesc: "data/prayers.json dosyasını kontrol edin.",
         localFileTitle: "Yerel dosya modu",
@@ -170,6 +175,15 @@
     };
   })();
 
+  const debugState = {
+    fatal: false,
+    lastError: null,
+    lastErrorType: "",
+    lastInfo: ""
+  };
+
+  let debugOverlayEl = null;
+
   function safeText(v) {
     return (v == null) ? "" : String(v);
   }
@@ -198,14 +212,97 @@
       .trim();
   }
 
+  function getDebugInfo() {
+    const err = debugState.lastError;
+    const message = err ? safeText(err.message || err) : "";
+    const stack = err ? safeText(err.stack || "") : "";
+    return {
+      message,
+      stack,
+      userAgent: safeText(navigator.userAgent),
+      dataUrl: DATA_URL,
+      info: debugState.lastInfo
+    };
+  }
+
+  function getDebugText() {
+    const info = getDebugInfo();
+    return [
+      "Prophets’ Duas Debug",
+      `Message: ${info.message || "n/a"}`,
+      info.info ? `Info: ${info.info}` : "",
+      `Data URL: ${info.dataUrl}`,
+      `User Agent: ${info.userAgent}`,
+      info.stack ? `Stack:\n${info.stack}` : ""
+    ].filter(Boolean).join("\n");
+  }
+
+  function ensureDebugOverlay() {
+    if (debugOverlayEl) return debugOverlayEl;
+    const overlay = document.createElement("section");
+    overlay.id = "debug-overlay";
+    overlay.className = "debug-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-live", "polite");
+    overlay.innerHTML = `
+      <div class="debug-overlay-inner">
+        <div class="debug-overlay-head">
+          <strong>Debug</strong>
+          <button class="icon-btn" type="button" data-action="close-debug" aria-label="Close debug overlay">✕</button>
+        </div>
+        <div class="debug-overlay-body">
+          <div class="debug-row"><span class="debug-label">Message</span><div data-debug="message" class="debug-value"></div></div>
+          <div class="debug-row"><span class="debug-label">Info</span><div data-debug="info" class="debug-value muted"></div></div>
+          <div class="debug-row"><span class="debug-label">Stack</span><pre data-debug="stack" class="debug-value"></pre></div>
+          <div class="debug-row"><span class="debug-label">User Agent</span><div data-debug="ua" class="debug-value muted"></div></div>
+          <div class="debug-row"><span class="debug-label">Data URL</span><div data-debug="data-url" class="debug-value muted"></div></div>
+        </div>
+        <div class="debug-overlay-actions">
+          <button class="pill-btn ghost" type="button" data-action="copy-debug">Copy Debug</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    debugOverlayEl = overlay;
+    return overlay;
+  }
+
+  function updateDebugOverlay({ forceShow = false } = {}) {
+    if (!DEBUG_ENABLED && !debugState.fatal && !forceShow) return;
+    const overlay = ensureDebugOverlay();
+    const info = getDebugInfo();
+    const msgEl = overlay.querySelector("[data-debug='message']");
+    const stackEl = overlay.querySelector("[data-debug='stack']");
+    const uaEl = overlay.querySelector("[data-debug='ua']");
+    const dataUrlEl = overlay.querySelector("[data-debug='data-url']");
+    const infoEl = overlay.querySelector("[data-debug='info']");
+
+    if (msgEl) msgEl.textContent = info.message || (DEBUG_ENABLED ? "Debug mode enabled." : "Unknown error.");
+    if (stackEl) stackEl.textContent = info.stack || "No stack available.";
+    if (uaEl) uaEl.textContent = info.userAgent;
+    if (dataUrlEl) dataUrlEl.textContent = info.dataUrl;
+    if (infoEl) infoEl.textContent = info.info || "";
+
+    overlay.classList.add("is-visible");
+  }
+
+  function hideDebugOverlay() {
+    if (!debugOverlayEl) return;
+    debugOverlayEl.classList.remove("is-visible");
+  }
+
   function slugify(s) {
     const base = safeText(s)
       .toLowerCase()
       .normalize("NFKD")
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
+    const latin = base
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    if (latin) return latin;
     return base
-      .replace(/[^\p{L}\p{N}]+/gu, "-")
+      .replace(/[^\u0600-\u06FF0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
   }
 
@@ -230,14 +327,18 @@
   /* ------------------------------
      Local Storage
   ------------------------------ */
+  function cloneDefaults() {
+    return JSON.parse(JSON.stringify(DEFAULT_PREFS));
+  }
+
   function loadPrefs() {
     try {
       const raw = localStorage.getItem(LS_KEY);
-      if (!raw) return structuredClone(DEFAULT_PREFS);
+      if (!raw) return cloneDefaults();
       const parsed = JSON.parse(raw);
-      return { ...structuredClone(DEFAULT_PREFS), ...parsed };
+      return { ...cloneDefaults(), ...parsed };
     } catch {
-      return structuredClone(DEFAULT_PREFS);
+      return cloneDefaults();
     }
   }
 
@@ -372,9 +473,15 @@
     try {
       showSkeletons(true);
       showError(false);
+      showAppError(false);
 
       const res = await fetch(DATA_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${res.url}`);
+      if (!res.ok) {
+        const err = new Error(`HTTP ${res.status}${res.statusText ? ` ${res.statusText}` : ""}`);
+        err.status = res.status;
+        err.url = DATA_URL;
+        throw err;
+      }
 
       const rawText = await res.text();
       let json;
@@ -383,7 +490,9 @@
       } catch (err) {
         console.error("Dataset parse error:", err);
         console.info("Dataset preview:", rawText.slice(0, 200));
-        throw new Error("DATA_FORMAT_ERROR");
+        const parseError = new Error("DATA_FORMAT_ERROR");
+        parseError.preview = rawText.slice(0, 200);
+        throw parseError;
       }
 
       if (!Array.isArray(json)) throw new Error("DATA_FORMAT_ERROR");
@@ -403,7 +512,11 @@
       console.error("Failed to load data:", err);
       showSkeletons(false);
       const isFormat = safeText(err?.message) === "DATA_FORMAT_ERROR";
-      showError(true, { kind: isFormat ? "format" : "load" });
+      const detail = isFormat
+        ? "JSON parse failed. See debug overlay for details."
+        : `Failed to fetch ${DATA_URL}${err?.status ? ` (HTTP ${err.status})` : ""}`;
+      reportDataError(err, detail);
+      showError(true, { kind: isFormat ? "format" : "load", detail });
     }
   }
 
@@ -429,7 +542,7 @@
         prophet.en = "Unknown";
       }
       entry.prophet = prophet;
-      entry.prophet_key = slugify(prophet.en || prophet.tr || prophet.ar || "Unknown") || "unknown";
+      entry.prophet_key = slugify(prophet.en) || slugify(prophet.tr || prophet.ar || "Unknown") || "unknown";
 
       const source = (entry.source && typeof entry.source === "object") ? { ...entry.source } : {};
       source.type = trimText(source.type) || "Other";
@@ -525,7 +638,7 @@
       const prophetTR = safeText(p?.prophet?.tr);
       const prophetAR = safeText(p?.prophet?.ar);
       const prophetLabel = prophetEN || prophetTR || prophetAR || "Unknown";
-      const prophetKey = safeText(p.prophet_key) || slugify(prophetEN) || slugify(prophetLabel) || "unknown";
+      const prophetKey = slugify(prophetEN) || safeText(p.prophet_key) || "unknown";
 
       if (!prophetsSet.has(prophetKey)) {
         prophetsSet.set(prophetKey, {
@@ -784,6 +897,12 @@
       const t = e.target;
       if (!(t instanceof HTMLElement)) return;
       if (t.matches("[data-action='retry']")) fetchData();
+      if (t.matches("[data-action='close-debug']")) hideDebugOverlay();
+      if (t.matches("[data-action='copy-debug']")) copyToClipboard(getDebugText());
+      if (t.matches("[data-action='report-debug']")) {
+        updateDebugOverlay({ forceShow: true });
+        copyToClipboard(getDebugText());
+      }
     });
 
     // Replay onboarding
@@ -1083,6 +1202,14 @@
      Rendering
   ------------------------------ */
   function renderApp() {
+    try {
+      renderAppUnsafe();
+    } catch (err) {
+      reportAppError(err, `Render failed: ${safeText(err?.message || err)}`);
+    }
+  }
+
+  function renderAppUnsafe() {
     if (!Array.isArray(DATA) || DATA.length === 0) {
       // data not loaded yet; skeletons handle UI
       return;
@@ -1195,7 +1322,7 @@
     if (sk) sk.style.display = show ? "" : "none";
   }
 
-  function showError(show, { kind = "load" } = {}) {
+  function showError(show, { kind = "load", detail = "" } = {}) {
     // We'll render an error panel at top of results when needed
     const existing = $("#data-error");
     if (!show) {
@@ -1214,6 +1341,9 @@
     panel.setAttribute("role", "alert");
     const title = kind === "format" ? t.states.formatErrorTitle : t.states.errorTitle;
     const desc = kind === "format" ? t.states.formatErrorDesc : t.states.errorDesc;
+    const detailHTML = detail
+      ? `<p class="muted" style="margin:8px 0 0;">${escapeHTML(detail)}</p>`
+      : "";
     const localHint = location.protocol === "file:"
       ? `<p class="muted" style="margin:8px 0 0;">${escapeHTML(t.states.localFileDesc)}</p>`
       : "";
@@ -1222,6 +1352,7 @@
         <div>
           <h2 class="panel-title">${escapeHTML(title)}</h2>
           <p class="panel-sub">${escapeHTML(desc)}</p>
+          ${detailHTML}
           ${localHint}
         </div>
         <div class="panel-actions">
@@ -1262,6 +1393,56 @@
       </div>
     `;
     container.prepend(panel);
+  }
+
+  function showAppError(show, { detail = "" } = {}) {
+    const existing = $("#app-error");
+    if (!show) {
+      if (existing) existing.remove();
+      return;
+    }
+
+    const t = I18N[state.prefs.uiLang] || I18N.en;
+    const container = $(".content") || document.body;
+    if (existing) return;
+
+    const panel = document.createElement("section");
+    panel.id = "app-error";
+    panel.className = "panel error";
+    panel.setAttribute("role", "alert");
+    panel.innerHTML = `
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">${escapeHTML(t.states.appErrorTitle)}</h2>
+          <p class="panel-sub">${escapeHTML(t.states.appErrorDesc)}</p>
+          ${detail ? `<p class="muted" style="margin:8px 0 0;">${escapeHTML(detail)}</p>` : ""}
+        </div>
+        <div class="panel-actions">
+          <button class="pill-btn ghost" type="button" data-action="report-debug">${escapeHTML(t.actions.reportDebug)}</button>
+        </div>
+      </div>
+    `;
+    container.prepend(panel);
+  }
+
+  function reportDataError(error, info) {
+    console.error("Data load error:", error);
+    debugState.lastError = error;
+    debugState.lastErrorType = "data";
+    debugState.lastInfo = info || "";
+    debugState.fatal = true;
+    updateDebugOverlay();
+  }
+
+  function reportAppError(error, info) {
+    console.error("App error:", error);
+    debugState.lastError = error;
+    debugState.lastErrorType = "app";
+    debugState.lastInfo = info || "";
+    debugState.fatal = true;
+    showError(false);
+    showAppError(true, { detail: info });
+    updateDebugOverlay();
   }
 
   function renderHomeSection() {
@@ -1416,93 +1597,97 @@
   }
 
   function renderResults(opts = {}) {
-    if (state.route !== "topics") removeDynamicPanel();
-    if (state.route === "about") return; // handled separately
+    try {
+      if (state.route !== "topics") removeDynamicPanel();
+      if (state.route === "about") return; // handled separately
 
-    const list = ensureListContainer();
-    const t = I18N[state.prefs.uiLang] || I18N.en;
+      const list = ensureListContainer();
+      const t = I18N[state.prefs.uiLang] || I18N.en;
 
-    // Compute filtered IDs
-    const filtered = filterData({
-      q: state.q,
-      prophet: state.prophet,
-      topic: state.topic,
-      source: state.source,
-      favoritesOnly: !!opts.favoritesOnly || state.route === "favorites"
-    });
+      // Compute filtered IDs
+      const filtered = filterData({
+        q: state.q,
+        prophet: state.prophet,
+        topic: state.topic,
+        source: state.source,
+        favoritesOnly: !!opts.favoritesOnly || state.route === "favorites"
+      });
 
-    // Update meta pill
-    updateMetaPill(DATA.length, filtered.length, { shown: filtered.length });
+      // Update meta pill
+      updateMetaPill(DATA.length, filtered.length, { shown: filtered.length });
 
-    // Empty states
-    const showNoResults = filtered.length === 0 && !(opts.favoritesOnly || state.route === "favorites");
-    const showNoFav = filtered.length === 0 && (opts.favoritesOnly || state.route === "favorites");
+      // Empty states
+      const showNoResults = filtered.length === 0 && !(opts.favoritesOnly || state.route === "favorites");
+      const showNoFav = filtered.length === 0 && (opts.favoritesOnly || state.route === "favorites");
 
-    // Render blocks:
-    // - Daily Dua (optional)
-    // - Recently Viewed (optional)
-    // - Results list
-    let html = "";
+      // Render blocks:
+      // - Daily Dua (optional)
+      // - Recently Viewed (optional)
+      // - Results list
+      let html = "";
 
-    if (opts.includeDaily) {
-      const daily = getDailyDua();
-      if (daily) {
-        html += sectionHeaderHTML(t.home.daily);
-        html += cardHTML(daily, { featured: true, highlight: state.q });
+      if (opts.includeDaily) {
+        const daily = getDailyDua();
+        if (daily) {
+          html += sectionHeaderHTML(t.home.daily);
+          html += cardHTML(daily, { featured: true, highlight: state.q });
+        }
       }
-    }
 
-    if (opts.includeRecent) {
-      const rec = (state.prefs.recent || []).slice(0, 8).map(id => findById(id)).filter(Boolean);
-      if (rec.length) {
-        html += sectionHeaderHTML(t.home.recentlyViewed);
-        html += `<div class="recent-grid">${rec.map(e => miniCardHTML(e)).join("")}</div>`;
+      if (opts.includeRecent) {
+        const rec = (state.prefs.recent || []).slice(0, 8).map(id => findById(id)).filter(Boolean);
+        if (rec.length) {
+          html += sectionHeaderHTML(t.home.recentlyViewed);
+          html += `<div class="recent-grid">${rec.map(e => miniCardHTML(e)).join("")}</div>`;
+        }
       }
-    }
 
-    if (showNoResults) {
-      html += emptyStateHTML("no-results", t.states.noResultsTitle, t.states.noResultsDesc, [
-        { label: state.prefs.uiLang === "tr" ? "Tümünü Göster" : "Show All", action: "resetAll" },
-        { label: state.prefs.uiLang === "tr" ? "Konular" : "Topics", action: "goTopics" },
-      ]);
+      if (showNoResults) {
+        html += emptyStateHTML("no-results", t.states.noResultsTitle, t.states.noResultsDesc, [
+          { label: state.prefs.uiLang === "tr" ? "Tümünü Göster" : "Show All", action: "resetAll" },
+          { label: state.prefs.uiLang === "tr" ? "Konular" : "Topics", action: "goTopics" },
+        ]);
+        list.innerHTML = html;
+        bindEmptyActions(list);
+        hideTemplateCards();
+        return;
+      }
+
+      if (showNoFav) {
+        html += emptyStateHTML("no-favorites", t.states.noFavTitle, t.states.noFavDesc, [
+          { label: state.prefs.uiLang === "tr" ? "Peygamberler" : "Browse Prophets", action: "goProphets" },
+          { label: state.prefs.uiLang === "tr" ? "Konular" : "Browse Topics", action: "goTopics" },
+        ]);
+        list.innerHTML = html;
+        bindEmptyActions(list);
+        hideTemplateCards();
+        return;
+      }
+
+      // Add results header (only when not includeDaily which already has header)
+      const title =
+        state.route === "favorites" ? t.sections.favorites :
+        state.route === "prophets" ? t.sections.prophets :
+        state.route === "topics" ? t.sections.topics :
+        t.home.featured;
+
+      html += sectionHeaderHTML(title);
+
+      // Render list efficiently
+      // Limit for performance? show all; can later add pagination
+      html += filtered.map(id => {
+        const entry = findById(id);
+        return entry ? cardHTML(entry, { highlight: state.q }) : "";
+      }).join("");
+
       list.innerHTML = html;
-      bindEmptyActions(list);
       hideTemplateCards();
-      return;
+
+      // Bind mini cards
+      bindMiniCards(list);
+    } catch (err) {
+      reportAppError(err, `Render results failed: ${safeText(err?.message || err)}`);
     }
-
-    if (showNoFav) {
-      html += emptyStateHTML("no-favorites", t.states.noFavTitle, t.states.noFavDesc, [
-        { label: state.prefs.uiLang === "tr" ? "Peygamberler" : "Browse Prophets", action: "goProphets" },
-        { label: state.prefs.uiLang === "tr" ? "Konular" : "Browse Topics", action: "goTopics" },
-      ]);
-      list.innerHTML = html;
-      bindEmptyActions(list);
-      hideTemplateCards();
-      return;
-    }
-
-    // Add results header (only when not includeDaily which already has header)
-    const title =
-      state.route === "favorites" ? t.sections.favorites :
-      state.route === "prophets" ? t.sections.prophets :
-      state.route === "topics" ? t.sections.topics :
-      t.home.featured;
-
-    html += sectionHeaderHTML(title);
-
-    // Render list efficiently
-    // Limit for performance? show all; can later add pagination
-    html += filtered.map(id => {
-      const entry = findById(id);
-      return entry ? cardHTML(entry, { highlight: state.q }) : "";
-    }).join("");
-
-    list.innerHTML = html;
-    hideTemplateCards();
-
-    // Bind mini cards
-    bindMiniCards(list);
   }
 
   function sectionHeaderHTML(title) {
@@ -1617,38 +1802,35 @@
      Highlighting
   ------------------------------ */
   function highlightHTML(text, query) {
-    const q = normalize(query);
-    if (!q) return escapeHTML(text);
-
-    // For display we do a simple case-insensitive highlight for Latin scripts.
-    // For Arabic, the match may not align after normalization, so we fallback to no highlight.
     const raw = safeText(text);
-    const nraw = normalize(raw);
-
-    // if normalization loses positions (Arabic), skip highlight
-    // heuristic: if raw contains Arabic range, skip highlight
-    if (/[\u0600-\u06FF]/.test(raw)) return escapeHTML(raw);
-
-    // Find occurrences in normalized string and map to raw by best-effort:
-    // We'll do a simple lowercase search on raw for the query (de-accented query used).
-    const rawLower = raw.toLowerCase();
-    const qLower = q; // already normalized, but may not match rawLower for diacritics
-
-    // Try direct includes; if fails, no highlight.
-    if (!normalize(rawLower).includes(qLower)) return escapeHTML(raw);
-
-    // Best effort: highlight using regex with escaped query on normalized version won't map safely.
-    // We'll instead highlight direct occurrences of the query as typed by user (not normalized).
-    // This is safer and more predictable. If user typed "forg", it will highlight those.
     const typed = safeText(query).trim();
-    if (typed.length < 2) return escapeHTML(raw);
+    if (!typed) return escapeHTML(raw);
 
-    const re = new RegExp(escapeRegExp(typed), "ig");
-    return escapeHTML(raw).replace(re, (m) => `<mark class="hl">${escapeHTML(m)}</mark>`);
+    const hasArabic = /[\u0600-\u06FF]/.test(raw);
+    const queryHasArabic = /[\u0600-\u06FF]/.test(typed);
+    if (hasArabic && !queryHasArabic) return escapeHTML(raw);
+
+    return buildHighlightHTML(raw, typed, !hasArabic);
   }
 
-  function escapeRegExp(s) {
-    return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  function buildHighlightHTML(raw, needle, caseInsensitive) {
+    const haystack = caseInsensitive ? raw.toLowerCase() : raw;
+    const query = caseInsensitive ? needle.toLowerCase() : needle;
+    if (!query) return escapeHTML(raw);
+
+    let idx = haystack.indexOf(query);
+    if (idx === -1) return escapeHTML(raw);
+
+    let out = "";
+    let cursor = 0;
+    while (idx !== -1) {
+      out += escapeHTML(raw.slice(cursor, idx));
+      out += `<mark class="hl">${escapeHTML(raw.slice(idx, idx + needle.length))}</mark>`;
+      cursor = idx + needle.length;
+      idx = haystack.indexOf(query, cursor);
+    }
+    out += escapeHTML(raw.slice(cursor));
+    return out;
   }
 
   function getProphetLabel(p) {
@@ -2241,12 +2423,34 @@
   /* ------------------------------
      Init
   ------------------------------ */
+  function bindGlobalErrorHandlers() {
+    window.addEventListener("error", (event) => {
+      console.error("Global error:", event.error || event.message);
+      const detail = [
+        safeText(event.message),
+        event.filename ? `at ${event.filename}:${event.lineno || 0}:${event.colno || 0}` : ""
+      ].filter(Boolean).join(" ");
+      reportAppError(event.error || new Error(event.message || "Unknown error"), detail);
+    });
+
+    window.addEventListener("unhandledrejection", (event) => {
+      console.error("Unhandled rejection:", event.reason);
+      const reason = event.reason || new Error("Unhandled promise rejection");
+      const detail = safeText(reason.message || reason);
+      reportAppError(reason, detail);
+    });
+  }
+
   function init() {
+    bindGlobalErrorHandlers();
     applyTheme();
     applyFontSizes();
     bindUI();
     setupOnboarding();
     showLocalFileHint();
+    if (DEBUG_ENABLED) {
+      updateDebugOverlay({ forceShow: true });
+    }
 
     // If there is no script tag in HTML, app.js won't run. This file assumes it is included.
     // We continue regardless.
