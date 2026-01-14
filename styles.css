@@ -470,6 +470,56 @@ code, .kbd{
   border-left: 3px solid color-mix(in srgb, var(--warn) 70%, transparent);
 }
 
+/* ---------- Debug Overlay ---------- */
+.debug-overlay{
+  position: fixed;
+  inset: auto 16px 16px auto;
+  z-index: 9999;
+  display: none;
+  max-width: min(92vw, 360px);
+  font-size: var(--text-xs);
+}
+.debug-overlay.is-visible{
+  display: block;
+}
+.debug-overlay-inner{
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  padding: 12px;
+}
+.debug-overlay-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.debug-overlay-body{
+  display:grid;
+  gap: 8px;
+}
+.debug-row{
+  display:grid;
+  gap: 4px;
+}
+.debug-label{
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.debug-value{
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.debug-overlay-actions{
+  display:flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
 .panel-head{
   display:flex;
   align-items:flex-start;
