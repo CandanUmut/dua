@@ -1,0 +1,930 @@
+[
+  {
+    "id": "adam-rabbana-zalamna-anfusana",
+    "ref": "7:23",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا ظَلَمْنَآ أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ ٱلْخَٰسِرِينَ",
+    "sha256": "713178346e0414a449164031c5812c471953c07565bffc248209bba3030a9fd9",
+    "wordCount": 11,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَا رَبَّنَا ظَلَمْنَآ أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ ٱلْخَٰسِرِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "They said: Our Lord! We have wronged ourselves. If thou forgive us not and have not mercy on us, surely we are of the lost!",
+      "en.yusufali": "They said: \"Our Lord! We have wronged our own souls: If thou forgive us not and bestow not upon us Thy Mercy, we shall certainly be lost.\""
+    }
+  },
+  {
+    "id": "nuh-rabbi-ighfir-li-wa-liwalidayya",
+    "ref": "71:28",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِمَن دَخَلَ بَيْتِىَ مُؤْمِنًۭا وَلِلْمُؤْمِنِينَ وَٱلْمُؤْمِنَٰتِ وَلَا تَزِدِ ٱلظَّٰلِمِينَ إِلَّا تَبَارًۢا",
+    "sha256": "35cfd368015a64dab6aed22fdfede211d87f4eff22dca2ae87242c24d6fb6947",
+    "wordCount": 15,
+    "isExcerpt": false,
+    "fullText": "رَّبِّ ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِمَن دَخَلَ بَيْتِىَ مُؤْمِنًۭا وَلِلْمُؤْمِنِينَ وَٱلْمُؤْمِنَٰتِ وَلَا تَزِدِ ٱلظَّٰلِمِينَ إِلَّا تَبَارًۢا",
+    "surahName": "سُورَةُ نُوحٍ",
+    "surahNameEn": "Nooh",
+    "translations": {
+      "en.pickthall": "My Lord! Forgive me and my parents and him who entereth my house believing, and believing men and believing women, and increase not the wrong-doers in aught save ruin.",
+      "en.yusufali": "\"O my Lord! Forgive me, my parents, all who enter my house in Faith, and (all) believing men and believing women: and to the wrong-doers grant Thou no increase but in perdition!\""
+    }
+  },
+  {
+    "id": "nuh-rabbi-anzilni-munzalan-mubarakan",
+    "ref": "23:29",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ أَنزِلْنِى مُنزَلًۭا مُّبَارَكًۭا وَأَنتَ خَيْرُ ٱلْمُنزِلِينَ",
+    "sha256": "ecd091eecafeb52f4219fa868128a3a52ad29b401037f4766ab33c7b03dbcb67",
+    "wordCount": 7,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَقُل رَّبِّ أَنزِلْنِى مُنزَلًۭا مُّبَارَكًۭا وَأَنتَ خَيْرُ ٱلْمُنزِلِينَ",
+    "surahName": "سُورَةُ المُؤۡمِنُونَ",
+    "surahNameEn": "Al-Muminoon",
+    "translations": {
+      "en.pickthall": "And say: My Lord! Cause me to land at a blessed landing-place, for Thou art Best of all who bring to land.",
+      "en.yusufali": "And say: \"O my Lord! enable me to disembark with thy blessing: for Thou art the Best to enable (us) to disembark.\""
+    }
+  },
+  {
+    "id": "nuh-anni-maghlubun-fantasir",
+    "ref": "54:10",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "أَنِّى مَغْلُوبٌۭ فَٱنتَصِرْ",
+    "sha256": "33b06a5dac4b90598066c8ab0d8a58ecd113b578bbaff83ba834571e358f1c19",
+    "wordCount": 3,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "فَدَعَا رَبَّهُۥٓ أَنِّى مَغْلُوبٌۭ فَٱنتَصِرْ",
+    "surahName": "سُورَةُ القَمَرِ",
+    "surahNameEn": "Al-Qamar",
+    "translations": {
+      "en.pickthall": "So he cried unto his Lord, saying: I am vanquished, so give help.",
+      "en.yusufali": "Then he called on his Lord: \"I am one overcome: do Thou then help (me)!\""
+    }
+  },
+  {
+    "id": "nuh-rabbi-unsurni-bima-kadhdhabun",
+    "ref": "23:26",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱنصُرْنِى بِمَا كَذَّبُونِ",
+    "sha256": "6a1abdcbeeb496fd00d8c0d3c37366f4535915da832acfd413bbe9cb8ea74e4c",
+    "wordCount": 4,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱنصُرْنِى بِمَا كَذَّبُونِ",
+    "surahName": "سُورَةُ المُؤۡمِنُونَ",
+    "surahNameEn": "Al-Muminoon",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Help me because they deny me.",
+      "en.yusufali": "(Noah) said: \"O my Lord! help me: for that they accuse me of falsehood!\""
+    }
+  },
+  {
+    "id": "nuh-rabbi-inni-audhu-bika",
+    "ref": "11:47",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّىٓ أَعُوذُ بِكَ أَنْ أَسْـَٔلَكَ مَا لَيْسَ لِى بِهِۦ عِلْمٌۭ وَإِلَّا تَغْفِرْ لِى وَتَرْحَمْنِىٓ أَكُن مِّنَ ٱلْخَٰسِرِينَ",
+    "sha256": "63dcb17c312078f78f2e1777e5e5d74e1dc83fad5735cb544bde0c1c92ce4a61",
+    "wordCount": 18,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ إِنِّىٓ أَعُوذُ بِكَ أَنْ أَسْـَٔلَكَ مَا لَيْسَ لِى بِهِۦ عِلْمٌۭ وَإِلَّا تَغْفِرْ لِى وَتَرْحَمْنِىٓ أَكُن مِّنَ ٱلْخَٰسِرِينَ",
+    "surahName": "سُورَةُ هُودٍ",
+    "surahNameEn": "Hud",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Lo! in Thee do I seek refuge (from the sin) that I should ask of Thee that whereof I have no knowledge. Unless Thou forgive me and have mercy on me I shall be among the lost.",
+      "en.yusufali": "Noah said: \"O my Lord! I do seek refuge with Thee, lest I ask Thee for that of which I have no knowledge. And unless thou forgive me and have Mercy on me, I should indeed be lost!\""
+    }
+  },
+  {
+    "id": "nuh-rabbi-la-tadhar-ala-al-ard",
+    "ref": "71:26",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ لَا تَذَرْ عَلَى ٱلْأَرْضِ مِنَ ٱلْكَٰفِرِينَ دَيَّارًا",
+    "sha256": "80c0421b016c7a78ffb9bc45d47146f65176d32d1bf3c1bf942c001e138f60bf",
+    "wordCount": 8,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَقَالَ نُوحٌۭ رَّبِّ لَا تَذَرْ عَلَى ٱلْأَرْضِ مِنَ ٱلْكَٰفِرِينَ دَيَّارًا",
+    "surahName": "سُورَةُ نُوحٍ",
+    "surahNameEn": "Nooh",
+    "translations": {
+      "en.pickthall": "And Noah said: My Lord! Leave not one of the disbelievers in the land.",
+      "en.yusufali": "And Noah, said: \"O my Lord! Leave not of the Unbelievers, a single one on earth!"
+    }
+  },
+  {
+    "id": "nuh-rabbi-inna-qawmi-kadhdhabuni",
+    "ref": "26:117-118",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنَّ قَوْمِى كَذَّبُونِ فَٱفْتَحْ بَيْنِى وَبَيْنَهُمْ فَتْحًۭا وَنَجِّنِى وَمَن مَّعِىَ مِنَ ٱلْمُؤْمِنِينَ",
+    "sha256": "25a75b1129b1c9a769a67067ba9bfe29f9d5a7cdf48b0e32e664876be6666cd8",
+    "wordCount": 13,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ إِنَّ قَوْمِى كَذَّبُونِ فَٱفْتَحْ بَيْنِى وَبَيْنَهُمْ فَتْحًۭا وَنَجِّنِى وَمَن مَّعِىَ مِنَ ٱلْمُؤْمِنِينَ",
+    "surahName": "سُورَةُ الشُّعَرَاءِ",
+    "surahNameEn": "Ash-Shu'araa",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Lo! my own folk deny me. Therefor judge Thou between us, a (conclusive) judgment, and save me and those believers who are with me.",
+      "en.yusufali": "He said: \"O my Lord! truly my people have rejected me. \"Judge Thou, then, between me and them openly, and deliver me and those of the Believers who are with me.\""
+    }
+  },
+  {
+    "id": "ibrahim-rabbi-ijal-hadha-baladan-aminan",
+    "ref": "2:126",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱجْعَلْ هَٰذَا بَلَدًا ءَامِنًۭا وَٱرْزُقْ أَهْلَهُۥ مِنَ ٱلثَّمَرَٰتِ مَنْ ءَامَنَ مِنْهُم بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ",
+    "sha256": "8f96e2645f0417d2a8a5784970f92e49f0d00eef515a5dd75e3c3594634cd448",
+    "wordCount": 15,
+    "isExcerpt": true,
+    "excerptNote": "Both the narrative introduction and the closing narration are outside the supplication.",
+    "fullText": "وَإِذْ قَالَ إِبْرَٰهِۦمُ رَبِّ ٱجْعَلْ هَٰذَا بَلَدًا ءَامِنًۭا وَٱرْزُقْ أَهْلَهُۥ مِنَ ٱلثَّمَرَٰتِ مَنْ ءَامَنَ مِنْهُم بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ قَالَ وَمَن كَفَرَ فَأُمَتِّعُهُۥ قَلِيلًۭا ثُمَّ أَضْطَرُّهُۥٓ إِلَىٰ عَذَابِ ٱلنَّارِ وَبِئْسَ ٱلْمَصِيرُ",
+    "surahName": "سُورَةُ البَقَرَةِ",
+    "surahNameEn": "Al-Baqara",
+    "translations": {
+      "en.pickthall": "And when Abraham prayed: My Lord! Make this a region of security and bestow upon its people fruits, such of them as believe in Allah and the Last Day, He answered: As for him who disbelieveth, I shall leave him in contentment for a while, then I shall compel him to the doom of Fire - a hapless journey's end!",
+      "en.yusufali": "And remember Abraham said: \"My Lord, make this a City of Peace, and feed its people with fruits,-such of them as believe in Allah and the Last Day.\" He said: \"(Yea), and such as reject Faith,-for a while will I grant them their pleasure, but will soon drive them to the torment of Fire,- an evil destination (indeed)!\""
+    }
+  },
+  {
+    "id": "ibrahim-rabbana-taqabbal-minna",
+    "ref": "2:127-129",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا تَقَبَّلْ مِنَّآ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ رَبَّنَا وَٱبْعَثْ فِيهِمْ رَسُولًۭا مِّنْهُمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَٰتِكَ وَيُعَلِّمُهُمُ ٱلْكِتَٰبَ وَٱلْحِكْمَةَ وَيُزَكِّيهِمْ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "sha256": "36608128edf489fb179a173f3278f2b7639105a71aed94cbead166f4acb2b283",
+    "wordCount": 40,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ رَبَّنَا وَٱبْعَثْ فِيهِمْ رَسُولًۭا مِّنْهُمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَٰتِكَ وَيُعَلِّمُهُمُ ٱلْكِتَٰبَ وَٱلْحِكْمَةَ وَيُزَكِّيهِمْ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "surahName": "سُورَةُ البَقَرَةِ",
+    "surahNameEn": "Al-Baqara",
+    "translations": {
+      "en.pickthall": "And when Abraham and Ishmael were raising the foundations of the House, (Abraham prayed): Our Lord! Accept from us (this duty). Lo! Thou, only Thou, art the Hearer, the Knower. Our Lord! And make us submissive unto Thee and of our seed a nation submissive unto Thee, and show us our ways of worship, and relent toward us. Lo! Thou, only Thou, art the Relenting, the Merciful. Our Lord! And raise up in their midst a messenger from among them who shall recite unto them Thy revelations, and shall instruct them in the Scripture and in wisdom and shall make them grow. Lo! Thou, only Thou, art the Mighty, Wise.",
+      "en.yusufali": "And remember Abraham and Isma'il raised the foundations of the House (With this prayer): \"Our Lord! Accept (this service) from us: For Thou art the All-Hearing, the All-knowing. \"Our Lord! make of us Muslims, bowing to Thy (Will), and of our progeny a people Muslim, bowing to Thy (will); and show us our place for the celebration of (due) rites; and turn unto us (in Mercy); for Thou art the Oft-Returning, Most Merciful. \"Our Lord! send amongst them a Messenger of their own, who shall rehearse Thy Signs to them and instruct them in scripture and wisdom, and sanctify them: For Thou art the Exalted in Might, the Wise.\""
+    }
+  },
+  {
+    "id": "ibrahim-rabbi-ijal-hadha-al-balada-aminan",
+    "ref": "14:35",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱجْعَلْ هَٰذَا ٱلْبَلَدَ ءَامِنًۭا وَٱجْنُبْنِى وَبَنِىَّ أَن نَّعْبُدَ ٱلْأَصْنَامَ",
+    "sha256": "68eac84d27979e755c2b2c129525cf1ba0b3f7bc0572e28880132ea2daf73214",
+    "wordCount": 10,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَإِذْ قَالَ إِبْرَٰهِيمُ رَبِّ ٱجْعَلْ هَٰذَا ٱلْبَلَدَ ءَامِنًۭا وَٱجْنُبْنِى وَبَنِىَّ أَن نَّعْبُدَ ٱلْأَصْنَامَ",
+    "surahName": "سُورَةُ إِبۡرَاهِيمَ",
+    "surahNameEn": "Ibrahim",
+    "translations": {
+      "en.pickthall": "And when Abraham said: My Lord! Make safe this territory, and preserve me and my sons from serving idols.",
+      "en.yusufali": "Remember Abraham said: \"O my Lord! make this city one of peace and security: and preserve me and my sons from worshipping idols."
+    }
+  },
+  {
+    "id": "ibrahim-rabbana-inni-askantu",
+    "ref": "14:36-41",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنَّهُنَّ أَضْلَلْنَ كَثِيرًۭا مِّنَ ٱلنَّاسِ فَمَن تَبِعَنِى فَإِنَّهُۥ مِنِّى وَمَنْ عَصَانِى فَإِنَّكَ غَفُورٌۭ رَّحِيمٌۭ رَّبَّنَآ إِنِّىٓ أَسْكَنتُ مِن ذُرِّيَّتِى بِوَادٍ غَيْرِ ذِى زَرْعٍ عِندَ بَيْتِكَ ٱلْمُحَرَّمِ رَبَّنَا لِيُقِيمُوا۟ ٱلصَّلَوٰةَ فَٱجْعَلْ أَفْـِٔدَةًۭ مِّنَ ٱلنَّاسِ تَهْوِىٓ إِلَيْهِمْ وَٱرْزُقْهُم مِّنَ ٱلثَّمَرَٰتِ لَعَلَّهُمْ يَشْكُرُونَ رَبَّنَآ إِنَّكَ تَعْلَمُ مَا نُخْفِى وَمَا نُعْلِنُ وَمَا يَخْفَىٰ عَلَى ٱللَّهِ مِن شَىْءٍۢ فِى ٱلْأَرْضِ وَلَا فِى ٱلسَّمَآءِ ٱلْحَمْدُ لِلَّهِ ٱلَّذِى وَهَبَ لِى عَلَى ٱلْكِبَرِ إِسْمَٰعِيلَ وَإِسْحَٰقَ إِنَّ رَبِّى لَسَمِيعُ ٱلدُّعَآءِ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى رَبَّنَا وَتَقَبَّلْ دُعَآءِ رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ",
+    "sha256": "625bab371e9135289dd012336e4274177d51cb8fa3b32d98f042591378814225",
+    "wordCount": 89,
+    "isExcerpt": false,
+    "fullText": "رَبِّ إِنَّهُنَّ أَضْلَلْنَ كَثِيرًۭا مِّنَ ٱلنَّاسِ فَمَن تَبِعَنِى فَإِنَّهُۥ مِنِّى وَمَنْ عَصَانِى فَإِنَّكَ غَفُورٌۭ رَّحِيمٌۭ رَّبَّنَآ إِنِّىٓ أَسْكَنتُ مِن ذُرِّيَّتِى بِوَادٍ غَيْرِ ذِى زَرْعٍ عِندَ بَيْتِكَ ٱلْمُحَرَّمِ رَبَّنَا لِيُقِيمُوا۟ ٱلصَّلَوٰةَ فَٱجْعَلْ أَفْـِٔدَةًۭ مِّنَ ٱلنَّاسِ تَهْوِىٓ إِلَيْهِمْ وَٱرْزُقْهُم مِّنَ ٱلثَّمَرَٰتِ لَعَلَّهُمْ يَشْكُرُونَ رَبَّنَآ إِنَّكَ تَعْلَمُ مَا نُخْفِى وَمَا نُعْلِنُ وَمَا يَخْفَىٰ عَلَى ٱللَّهِ مِن شَىْءٍۢ فِى ٱلْأَرْضِ وَلَا فِى ٱلسَّمَآءِ ٱلْحَمْدُ لِلَّهِ ٱلَّذِى وَهَبَ لِى عَلَى ٱلْكِبَرِ إِسْمَٰعِيلَ وَإِسْحَٰقَ إِنَّ رَبِّى لَسَمِيعُ ٱلدُّعَآءِ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى رَبَّنَا وَتَقَبَّلْ دُعَآءِ رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ",
+    "surahName": "سُورَةُ إِبۡرَاهِيمَ",
+    "surahNameEn": "Ibrahim",
+    "translations": {
+      "en.pickthall": "My Lord! Lo! they have led many of mankind astray. But whoso followeth me, he verily is of me. And whoso disobeyeth me - Still Thou art Forgiving, Merciful. Our Lord! Lo! I have settled some of my posterity in an uncultivable valley near unto Thy holy House, our Lord! that they may establish proper worship; so incline some hearts of men that they may yearn toward them, and provide Thou them with fruits in order that they may be thankful. Our Lord! Lo! Thou knowest that which we hide and that which we proclaim. Nothing in the earth or in the heaven is hidden from Allah. Praise be to Allah Who hath given me, in my old age, Ishmael and Isaac! Lo! my Lord is indeed the Hearer of Prayer. My Lord! Make me to establish proper worship, and some of my posterity (also); our Lord! and accept my prayer. Our Lord! Forgive me and my parents and believers on the day when the account is cast.",
+      "en.yusufali": "\"O my Lord! they have indeed led astray many among mankind; He then who follows my (ways) is of me, and he that disobeys me,- but Thou art indeed Oft-forgiving, Most Merciful. \"O our Lord! I have made some of my offspring to dwell in a valley without cultivation, by Thy Sacred House; in order, O our Lord, that they may establish regular Prayer: so fill the hearts of some among men with love towards them, and feed them with fruits: so that they may give thanks. \"O our Lord! truly Thou dost know what we conceal and what we reveal: for nothing whatever is hidden from Allah, whether on earth or in heaven. \"Praise be to Allah, Who hath granted unto me in old age Isma'il and Isaac: for truly my Lord is He, the Hearer of Prayer! O my Lord! make me one who establishes regular Prayer, and also (raise such) among my offspring O our Lord! and accept Thou my Prayer. \"O our Lord! cover (us) with Thy Forgiveness - me, my parents, and (all) Believers, on the Day that the Reckoning will be established!"
+    }
+  },
+  {
+    "id": "ibrahim-rabbi-hab-li-hukman",
+    "ref": "26:83-89",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْءَاخِرِينَ وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ وَٱغْفِرْ لِأَبِىٓ إِنَّهُۥ كَانَ مِنَ ٱلضَّآلِّينَ وَلَا تُخْزِنِى يَوْمَ يُبْعَثُونَ يَوْمَ لَا يَنفَعُ مَالٌۭ وَلَا بَنُونَ إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍۢ سَلِيمٍۢ",
+    "sha256": "621a431b30091b5cd19f5edda2caaff7427c4675e7b55f2d55a7e4703e97b737",
+    "wordCount": 39,
+    "isExcerpt": false,
+    "fullText": "رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْءَاخِرِينَ وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ وَٱغْفِرْ لِأَبِىٓ إِنَّهُۥ كَانَ مِنَ ٱلضَّآلِّينَ وَلَا تُخْزِنِى يَوْمَ يُبْعَثُونَ يَوْمَ لَا يَنفَعُ مَالٌۭ وَلَا بَنُونَ إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍۢ سَلِيمٍۢ",
+    "surahName": "سُورَةُ الشُّعَرَاءِ",
+    "surahNameEn": "Ash-Shu'araa",
+    "translations": {
+      "en.pickthall": "My Lord! Vouchsafe me wisdom and unite me to the righteous. And give unto me a good report in later generations. And place me among the inheritors of the Garden of Delight, And forgive my father. Lo! he is of those who err. And abase me not on the day when they are raised, The day when wealth and sons avail not (any man) Save him who bringeth unto Allah a whole heart.",
+      "en.yusufali": "\"O my Lord! bestow wisdom on me, and join me with the righteous; \"Grant me honourable mention on the tongue of truth among the latest (generations); \"Make me one of the inheritors of the Garden of Bliss; \"Forgive my father, for that he is among those astray; \"And let me not be in disgrace on the Day when (men) will be raised up;- \"The Day whereon neither wealth nor sons will avail, \"But only he (will prosper) that brings to Allah a sound heart;"
+    }
+  },
+  {
+    "id": "ibrahim-rabbi-hab-li-mina-al-salihin",
+    "ref": "37:100",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ هَبْ لِى مِنَ ٱلصَّٰلِحِينَ",
+    "sha256": "4196043348102ddd673a6f5a7927aa5526ff6bd87094a74dab301eefe16487be",
+    "wordCount": 5,
+    "isExcerpt": false,
+    "fullText": "رَبِّ هَبْ لِى مِنَ ٱلصَّٰلِحِينَ",
+    "surahName": "سُورَةُ الصَّافَّاتِ",
+    "surahNameEn": "As-Saaffaat",
+    "translations": {
+      "en.pickthall": "My Lord! Vouchsafe me of the righteous.",
+      "en.yusufali": "\"O my Lord! Grant me a righteous (son)!\""
+    }
+  },
+  {
+    "id": "ibrahim-rabbana-alayka-tawakkalna",
+    "ref": "60:4",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبَّنَا عَلَيْكَ تَوَكَّلْنَا وَإِلَيْكَ أَنَبْنَا وَإِلَيْكَ ٱلْمَصِيرُ",
+    "sha256": "812a459654e69a676e9edb2913884478bcc75173cb8b974ce8b918e7e0b9c30d",
+    "wordCount": 7,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "قَدْ كَانَتْ لَكُمْ أُسْوَةٌ حَسَنَةٌۭ فِىٓ إِبْرَٰهِيمَ وَٱلَّذِينَ مَعَهُۥٓ إِذْ قَالُوا۟ لِقَوْمِهِمْ إِنَّا بُرَءَٰٓؤُا۟ مِنكُمْ وَمِمَّا تَعْبُدُونَ مِن دُونِ ٱللَّهِ كَفَرْنَا بِكُمْ وَبَدَا بَيْنَنَا وَبَيْنَكُمُ ٱلْعَدَٰوَةُ وَٱلْبَغْضَآءُ أَبَدًا حَتَّىٰ تُؤْمِنُوا۟ بِٱللَّهِ وَحْدَهُۥٓ إِلَّا قَوْلَ إِبْرَٰهِيمَ لِأَبِيهِ لَأَسْتَغْفِرَنَّ لَكَ وَمَآ أَمْلِكُ لَكَ مِنَ ٱللَّهِ مِن شَىْءٍۢ رَّبَّنَا عَلَيْكَ تَوَكَّلْنَا وَإِلَيْكَ أَنَبْنَا وَإِلَيْكَ ٱلْمَصِيرُ",
+    "surahName": "سُورَةُ المُمۡتَحنَةِ",
+    "surahNameEn": "Al-Mumtahana",
+    "translations": {
+      "en.pickthall": "There is a goodly pattern for you in Abraham and those with him, when they told their folk: Lo! we are guiltless of you and all that ye worship beside Allah. We have done with you. And there hath arisen between us and you hostility and hate for ever until ye believe in Allah only - save that which Abraham promised his father (when he said): I will ask forgiveness for thee, though I own nothing for thee from Allah - Our Lord! In Thee we put our trust, and unto Thee we turn repentant, and unto Thee is the journeying.",
+      "en.yusufali": "There is for you an excellent example (to follow) in Abraham and those with him, when they said to their people: \"We are clear of you and of whatever ye worship besides Allah: we have rejected you, and there has arisen, between us and you, enmity and hatred for ever,- unless ye believe in Allah and Him alone\": But not when Abraham said to his father: \"I will pray for forgiveness for thee, though I have no power (to get) aught on thy behalf from Allah.\" (They prayed): \"Our Lord! in Thee do we trust, and to Thee do we turn in repentance: to Thee is (our) Final Goal."
+    }
+  },
+  {
+    "id": "ibrahim-rabbana-la-tajalna-fitnatan",
+    "ref": "60:5",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا لَا تَجْعَلْنَا فِتْنَةًۭ لِّلَّذِينَ كَفَرُوا۟ وَٱغْفِرْ لَنَا رَبَّنَآ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "sha256": "b1baf63e2dffe5719078cf47f4914df03687777a4d315d5f4baa54db3d09fefb",
+    "wordCount": 13,
+    "isExcerpt": false,
+    "fullText": "رَبَّنَا لَا تَجْعَلْنَا فِتْنَةًۭ لِّلَّذِينَ كَفَرُوا۟ وَٱغْفِرْ لَنَا رَبَّنَآ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "surahName": "سُورَةُ المُمۡتَحنَةِ",
+    "surahNameEn": "Al-Mumtahana",
+    "translations": {
+      "en.pickthall": "Our Lord! Make us not a prey for those who disbelieve, and forgive us, our Lord! Lo! Thou, only Thou, are the Mighty, the Wise.",
+      "en.yusufali": "\"Our Lord! Make us not a (test and) trial for the Unbelievers, but forgive us, our Lord! for Thou art the Exalted in Might, the Wise.\""
+    }
+  },
+  {
+    "id": "lut-rabbi-najjini-wa-ahli",
+    "ref": "26:169",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ نَجِّنِى وَأَهْلِى مِمَّا يَعْمَلُونَ",
+    "sha256": "2b73075bc4ffc624598f6b99aa3ffd25d77f5e687aed23e927442f19bb43113a",
+    "wordCount": 5,
+    "isExcerpt": false,
+    "fullText": "رَبِّ نَجِّنِى وَأَهْلِى مِمَّا يَعْمَلُونَ",
+    "surahName": "سُورَةُ الشُّعَرَاءِ",
+    "surahNameEn": "Ash-Shu'araa",
+    "translations": {
+      "en.pickthall": "My Lord! Save me and my household from what they do.",
+      "en.yusufali": "\"O my Lord! deliver me and my family from such things as they do!\""
+    }
+  },
+  {
+    "id": "lut-rabbi-unsurni-ala-al-qawm-al-mufsidin",
+    "ref": "29:30",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱنصُرْنِى عَلَى ٱلْقَوْمِ ٱلْمُفْسِدِينَ",
+    "sha256": "f4b7474c82bf6dcd7eb7093e31ba7f9fa70c773f663cbbc64f37ee2215711cbf",
+    "wordCount": 5,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱنصُرْنِى عَلَى ٱلْقَوْمِ ٱلْمُفْسِدِينَ",
+    "surahName": "سُورَةُ العَنكَبُوتِ",
+    "surahNameEn": "Al-Ankaboot",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Give me victory over folk who work corruption.",
+      "en.yusufali": "He said: \"O my Lord! help Thou me against people who do mischief!\""
+    }
+  },
+  {
+    "id": "yaqub-innama-ashku-baththi",
+    "ref": "12:86",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "إِنَّمَآ أَشْكُوا۟ بَثِّى وَحُزْنِىٓ إِلَى ٱللَّهِ وَأَعْلَمُ مِنَ ٱللَّهِ مَا لَا تَعْلَمُونَ",
+    "sha256": "a4d2524a800c814277d9df56e67392338b4c18beeca8b912484cf4c9254a2305",
+    "wordCount": 12,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ إِنَّمَآ أَشْكُوا۟ بَثِّى وَحُزْنِىٓ إِلَى ٱللَّهِ وَأَعْلَمُ مِنَ ٱللَّهِ مَا لَا تَعْلَمُونَ",
+    "surahName": "سُورَةُ يُوسُفَ",
+    "surahNameEn": "Yusuf",
+    "translations": {
+      "en.pickthall": "He said: I expose my distress and anguish only unto Allah, and I know from Allah that which ye know not.",
+      "en.yusufali": "He said: \"I only complain of my distraction and anguish to Allah, and I know from Allah that which ye know not..."
+    }
+  },
+  {
+    "id": "yaqub-fa-sabrun-jamil",
+    "ref": "12:18",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "فَصَبْرٌۭ جَمِيلٌۭ وَٱللَّهُ ٱلْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ",
+    "sha256": "9907fc733117dacda425e168c3c26fe74a01c880f6b671f02c9bfea39605fade",
+    "wordCount": 7,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَجَآءُو عَلَىٰ قَمِيصِهِۦ بِدَمٍۢ كَذِبٍۢ قَالَ بَلْ سَوَّلَتْ لَكُمْ أَنفُسُكُمْ أَمْرًۭا فَصَبْرٌۭ جَمِيلٌۭ وَٱللَّهُ ٱلْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ",
+    "surahName": "سُورَةُ يُوسُفَ",
+    "surahNameEn": "Yusuf",
+    "translations": {
+      "en.pickthall": "And they came with false blood on his shirt. He said: Nay, but your minds have beguiled you into something. (My course is) comely patience. And Allah it is Whose help is to be sought in that (predicament) which ye describe.",
+      "en.yusufali": "They stained his shirt with false blood. He said: \"Nay, but your minds have made up a tale (that may pass) with you, (for me) patience is most fitting: Against that which ye assert, it is Allah (alone) Whose help can be sought\".."
+    }
+  },
+  {
+    "id": "yusuf-rabbi-al-sijnu-ahabbu-ilayya",
+    "ref": "12:33",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱلسِّجْنُ أَحَبُّ إِلَىَّ مِمَّا يَدْعُونَنِىٓ إِلَيْهِ وَإِلَّا تَصْرِفْ عَنِّى كَيْدَهُنَّ أَصْبُ إِلَيْهِنَّ وَأَكُن مِّنَ ٱلْجَٰهِلِينَ",
+    "sha256": "4eb6b02d23c8905234459ea1a620d5001db386c0bc578afe6558b0ef14e29b72",
+    "wordCount": 16,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱلسِّجْنُ أَحَبُّ إِلَىَّ مِمَّا يَدْعُونَنِىٓ إِلَيْهِ وَإِلَّا تَصْرِفْ عَنِّى كَيْدَهُنَّ أَصْبُ إِلَيْهِنَّ وَأَكُن مِّنَ ٱلْجَٰهِلِينَ",
+    "surahName": "سُورَةُ يُوسُفَ",
+    "surahNameEn": "Yusuf",
+    "translations": {
+      "en.pickthall": "He said: O my Lord! Prison is more dear than that unto which they urge me, and if Thou fend not off their wiles from me I shall incline unto them and become of the foolish.",
+      "en.yusufali": "He said: \"O my Lord! the prison is more to my liking than that to which they invite me: Unless Thou turn away their snare from me, I should (in my youthful folly) feel inclined towards them and join the ranks of the ignorant.\""
+    }
+  },
+  {
+    "id": "yusuf-tawaffani-musliman",
+    "ref": "12:101",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ قَدْ ءَاتَيْتَنِى مِنَ ٱلْمُلْكِ وَعَلَّمْتَنِى مِن تَأْوِيلِ ٱلْأَحَادِيثِ فَاطِرَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ أَنتَ وَلِىِّۦ فِى ٱلدُّنْيَا وَٱلْءَاخِرَةِ تَوَفَّنِى مُسْلِمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ",
+    "sha256": "ecae85a95fbe5035122255763b31e5bc52ce3467b91c1926d3495f3d31afd2f0",
+    "wordCount": 21,
+    "isExcerpt": false,
+    "fullText": "رَبِّ قَدْ ءَاتَيْتَنِى مِنَ ٱلْمُلْكِ وَعَلَّمْتَنِى مِن تَأْوِيلِ ٱلْأَحَادِيثِ فَاطِرَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ أَنتَ وَلِىِّۦ فِى ٱلدُّنْيَا وَٱلْءَاخِرَةِ تَوَفَّنِى مُسْلِمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ",
+    "surahName": "سُورَةُ يُوسُفَ",
+    "surahNameEn": "Yusuf",
+    "translations": {
+      "en.pickthall": "O my Lord! Thou hast given me (something) of sovereignty and hast taught me (something) of the interpretation of events - Creator of the heavens and the earth! Thou art my Protecting Guardian in the world and the Hereafter. Make me to die muslim (unto Thee), and join me to the righteous.",
+      "en.yusufali": "\"O my Lord! Thou hast indeed bestowed on me some power, and taught me something of the interpretation of dreams and events,- O Thou Creator of the heavens and the earth! Thou art my Protector in this world and in the Hereafter. Take Thou my soul (at death) as one submitting to Thy will (as a Muslim), and unite me with the righteous.\""
+    }
+  },
+  {
+    "id": "ayyub-anni-massaniya-al-durr",
+    "ref": "21:83",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "أَنِّى مَسَّنِىَ ٱلضُّرُّ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ",
+    "sha256": "80e6a96d2b2b9779a76ccea8cdb45e00efffb90ea96d5002324ad894c2013492",
+    "wordCount": 6,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَأَيُّوبَ إِذْ نَادَىٰ رَبَّهُۥٓ أَنِّى مَسَّنِىَ ٱلضُّرُّ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ",
+    "surahName": "سُورَةُ الأَنبِيَاءِ",
+    "surahNameEn": "Al-Anbiyaa",
+    "translations": {
+      "en.pickthall": "And Job, when he cried unto his Lord, (saying): Lo! adversity afflicteth me, and Thou art Most Merciful of all who show mercy.",
+      "en.yusufali": "And (remember) Job, when He cried to his Lord, \"Truly distress has seized me, but Thou art the Most Merciful of those that are merciful.\""
+    }
+  },
+  {
+    "id": "ayyub-anni-massaniya-al-shaytan",
+    "ref": "38:41",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "أَنِّى مَسَّنِىَ ٱلشَّيْطَٰنُ بِنُصْبٍۢ وَعَذَابٍ",
+    "sha256": "46d9556f660a3b283fd736809890527698c861aa2bdb301caca03cb3d4f2f2c1",
+    "wordCount": 5,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَٱذْكُرْ عَبْدَنَآ أَيُّوبَ إِذْ نَادَىٰ رَبَّهُۥٓ أَنِّى مَسَّنِىَ ٱلشَّيْطَٰنُ بِنُصْبٍۢ وَعَذَابٍ",
+    "surahName": "سُورَةُ صٓ",
+    "surahNameEn": "Saad",
+    "translations": {
+      "en.pickthall": "And make mention (O Muhammad) of Our bondman Job, when he cried unto his Lord (saying): Lo! the devil doth afflict me with distress and torment.",
+      "en.yusufali": "Commemorate Our Servant Job. Behold he cried to his Lord: \"The Evil One has afflicted me with distress and suffering!\""
+    }
+  },
+  {
+    "id": "shuayb-rabbana-iftah-baynana",
+    "ref": "7:89",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا ٱفْتَحْ بَيْنَنَا وَبَيْنَ قَوْمِنَا بِٱلْحَقِّ وَأَنتَ خَيْرُ ٱلْفَٰتِحِينَ",
+    "sha256": "b108fae28c2e2ec8b2c4d57942c20612d3732ff2734e07467db1d58ba6435b65",
+    "wordCount": 9,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "قَدِ ٱفْتَرَيْنَا عَلَى ٱللَّهِ كَذِبًا إِنْ عُدْنَا فِى مِلَّتِكُم بَعْدَ إِذْ نَجَّىٰنَا ٱللَّهُ مِنْهَا وَمَا يَكُونُ لَنَآ أَن نَّعُودَ فِيهَآ إِلَّآ أَن يَشَآءَ ٱللَّهُ رَبُّنَا وَسِعَ رَبُّنَا كُلَّ شَىْءٍ عِلْمًا عَلَى ٱللَّهِ تَوَكَّلْنَا رَبَّنَا ٱفْتَحْ بَيْنَنَا وَبَيْنَ قَوْمِنَا بِٱلْحَقِّ وَأَنتَ خَيْرُ ٱلْفَٰتِحِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "We should have invented a lie against Allah if we returned to your religion after Allah hath rescued us from it. It is not for us to return to it unless Allah our Lord should (so) will. Our Lord comprehendeth all things in knowledge. In Allah do we put our trust. Our Lord! Decide with truth between us and our folk, for Thou art the best of those who make decision.",
+      "en.yusufali": "\"We should indeed invent a lie against Allah, if we returned to your ways after Allah hath rescued us therefrom; nor could we by any manner of means return thereto unless it be as in the will and plan of Allah, Our Lord. Our Lord can reach out to the utmost recesses of things by His knowledge. In the Allah is our trust. our Lord! decide Thou between us and our people in truth, for Thou art the best to decide.\""
+    }
+  },
+  {
+    "id": "musa-rabbi-ishrah-li-sadri",
+    "ref": "20:25-28",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱشْرَحْ لِى صَدْرِى وَيَسِّرْ لِىٓ أَمْرِى وَٱحْلُلْ عُقْدَةًۭ مِّن لِّسَانِى يَفْقَهُوا۟ قَوْلِى",
+    "sha256": "dde75725c99d42ee7ed0dd71d86da15e23db1dc2a0edf9a351f1def71d97ae5d",
+    "wordCount": 13,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى وَيَسِّرْ لِىٓ أَمْرِى وَٱحْلُلْ عُقْدَةًۭ مِّن لِّسَانِى يَفْقَهُوا۟ قَوْلِى",
+    "surahName": "سُورَةُ طه",
+    "surahNameEn": "Taa-Haa",
+    "translations": {
+      "en.pickthall": "(Moses) said: My Lord! relieve my mind And ease my task for me; And loose a knot from my tongue, That they may understand my saying.",
+      "en.yusufali": "(Moses) said: \"O my Lord! expand me my breast; \"Ease my task for me; \"And remove the impediment from my speech, \"So they may understand what I say:"
+    }
+  },
+  {
+    "id": "musa-rabbi-inni-zalamtu-nafsi",
+    "ref": "28:16",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّى ظَلَمْتُ نَفْسِى فَٱغْفِرْ لِى",
+    "sha256": "c4d841289d0691b15c413044864a8b353737d9385d8659b5f1d015311b4b1c0b",
+    "wordCount": 6,
+    "isExcerpt": true,
+    "excerptNote": "Both the narrative introduction and the closing narration are outside the supplication.",
+    "fullText": "قَالَ رَبِّ إِنِّى ظَلَمْتُ نَفْسِى فَٱغْفِرْ لِى فَغَفَرَ لَهُۥٓ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيمُ",
+    "surahName": "سُورَةُ القَصَصِ",
+    "surahNameEn": "Al-Qasas",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Lo! I have wronged my soul, so forgive me. Then He forgave him. Lo! He is the Forgiving, the Merciful.",
+      "en.yusufali": "He prayed: \"O my Lord! I have indeed wronged my soul! Do Thou then forgive me!\" So (Allah) forgave him: for He is the Oft-Forgiving, Most Merciful."
+    }
+  },
+  {
+    "id": "musa-rabbi-najjini-mina-al-qawm-al-zalimin",
+    "ref": "28:21",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ",
+    "sha256": "b06c7778c9145060cd26dc1b7f82a3e3a63b11d95e6b2cdd447afcb1f281d5ad",
+    "wordCount": 5,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "فَخَرَجَ مِنْهَا خَآئِفًۭا يَتَرَقَّبُ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ",
+    "surahName": "سُورَةُ القَصَصِ",
+    "surahNameEn": "Al-Qasas",
+    "translations": {
+      "en.pickthall": "So he escaped from thence, fearing, vigilant. He said: My Lord! Deliver me from the wrongdoing folk.",
+      "en.yusufali": "He therefore got away therefrom, looking about, in a state of fear. He prayed \"O my Lord! save me from people given to wrong-doing.\""
+    }
+  },
+  {
+    "id": "musa-rabbi-inni-lima-anzalta-ilayya-faqir",
+    "ref": "28:24",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّى لِمَآ أَنزَلْتَ إِلَىَّ مِنْ خَيْرٍۢ فَقِيرٌۭ",
+    "sha256": "747d3fe15d105bb6e600040d8ddec10b036f7d553540bde91f1eef1c0939aa99",
+    "wordCount": 8,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "فَسَقَىٰ لَهُمَا ثُمَّ تَوَلَّىٰٓ إِلَى ٱلظِّلِّ فَقَالَ رَبِّ إِنِّى لِمَآ أَنزَلْتَ إِلَىَّ مِنْ خَيْرٍۢ فَقِيرٌۭ",
+    "surahName": "سُورَةُ القَصَصِ",
+    "surahNameEn": "Al-Qasas",
+    "translations": {
+      "en.pickthall": "So he watered (their flock) for them. Then he turned aside into the shade, and said: My Lord! I am needy of whatever good Thou sendest down for me.",
+      "en.yusufali": "So he watered (their flocks) for them; then he turned back to the shade, and said:\"O my Lord! truly am I in (desperate) need of any good that Thou dost send me!\""
+    }
+  },
+  {
+    "id": "musa-rabbi-arini-anzur-ilayk",
+    "ref": "7:143",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ أَرِنِىٓ أَنظُرْ إِلَيْكَ",
+    "sha256": "fb3091aa8445ef12cf850373322b5adb87f159c997d5455f9e3ceaea3e9ef997",
+    "wordCount": 4,
+    "isExcerpt": true,
+    "excerptNote": "Both the narrative introduction and the closing narration are outside the supplication.",
+    "fullText": "وَلَمَّا جَآءَ مُوسَىٰ لِمِيقَٰتِنَا وَكَلَّمَهُۥ رَبُّهُۥ قَالَ رَبِّ أَرِنِىٓ أَنظُرْ إِلَيْكَ قَالَ لَن تَرَىٰنِى وَلَٰكِنِ ٱنظُرْ إِلَى ٱلْجَبَلِ فَإِنِ ٱسْتَقَرَّ مَكَانَهُۥ فَسَوْفَ تَرَىٰنِى فَلَمَّا تَجَلَّىٰ رَبُّهُۥ لِلْجَبَلِ جَعَلَهُۥ دَكًّۭا وَخَرَّ مُوسَىٰ صَعِقًۭا فَلَمَّآ أَفَاقَ قَالَ سُبْحَٰنَكَ تُبْتُ إِلَيْكَ وَأَنَا۠ أَوَّلُ ٱلْمُؤْمِنِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "And when Moses came to Our appointed tryst and his Lord had spoken unto him, he said: My Lord! Show me (Thy Self), that I may gaze upon Thee. He said: Thou wilt not see Me, but gaze upon the mountain! If it stand still in its place, then thou wilt see Me. And when his Lord revealed (His) glory to the mountain He sent it crashing down. And Moses fell down senseless. And when he woke he said: Glory unto Thee! I turn unto Thee repentant, and I am the first of (true) believers.",
+      "en.yusufali": "When Moses came to the place appointed by Us, and his Lord addressed him, He said: \"O my Lord! show (Thyself) to me, that I may look upon thee.\" Allah said: \"By no means canst thou see Me (direct); But look upon the mount; if it abide in its place, then shalt thou see Me.\" When his Lord manifested His glory on the Mount, He made it as dust. And Moses fell down in a swoon. When he recovered his senses he said: \"Glory be to Thee! to Thee I turn in repentance, and I am the first to believe.\""
+    }
+  },
+  {
+    "id": "musa-subhanaka-tubtu-ilayk",
+    "ref": "7:143",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "سُبْحَٰنَكَ تُبْتُ إِلَيْكَ وَأَنَا۠ أَوَّلُ ٱلْمُؤْمِنِينَ",
+    "sha256": "7adf59f9d8e9e9d70101c61808911ae0b4fdc12ff8cc14396b7630fa7cc5ee76",
+    "wordCount": 6,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَلَمَّا جَآءَ مُوسَىٰ لِمِيقَٰتِنَا وَكَلَّمَهُۥ رَبُّهُۥ قَالَ رَبِّ أَرِنِىٓ أَنظُرْ إِلَيْكَ قَالَ لَن تَرَىٰنِى وَلَٰكِنِ ٱنظُرْ إِلَى ٱلْجَبَلِ فَإِنِ ٱسْتَقَرَّ مَكَانَهُۥ فَسَوْفَ تَرَىٰنِى فَلَمَّا تَجَلَّىٰ رَبُّهُۥ لِلْجَبَلِ جَعَلَهُۥ دَكًّۭا وَخَرَّ مُوسَىٰ صَعِقًۭا فَلَمَّآ أَفَاقَ قَالَ سُبْحَٰنَكَ تُبْتُ إِلَيْكَ وَأَنَا۠ أَوَّلُ ٱلْمُؤْمِنِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "And when Moses came to Our appointed tryst and his Lord had spoken unto him, he said: My Lord! Show me (Thy Self), that I may gaze upon Thee. He said: Thou wilt not see Me, but gaze upon the mountain! If it stand still in its place, then thou wilt see Me. And when his Lord revealed (His) glory to the mountain He sent it crashing down. And Moses fell down senseless. And when he woke he said: Glory unto Thee! I turn unto Thee repentant, and I am the first of (true) believers.",
+      "en.yusufali": "When Moses came to the place appointed by Us, and his Lord addressed him, He said: \"O my Lord! show (Thyself) to me, that I may look upon thee.\" Allah said: \"By no means canst thou see Me (direct); But look upon the mount; if it abide in its place, then shalt thou see Me.\" When his Lord manifested His glory on the Mount, He made it as dust. And Moses fell down in a swoon. When he recovered his senses he said: \"Glory be to Thee! to Thee I turn in repentance, and I am the first to believe.\""
+    }
+  },
+  {
+    "id": "musa-rabbi-ighfir-li-wa-li-akhi",
+    "ref": "7:151",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱغْفِرْ لِى وَلِأَخِى وَأَدْخِلْنَا فِى رَحْمَتِكَ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ",
+    "sha256": "9aa8d625195f7960ebce375e5d693e79120b3b8b0002f11b34e72c2499e901c9",
+    "wordCount": 10,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱغْفِرْ لِى وَلِأَخِى وَأَدْخِلْنَا فِى رَحْمَتِكَ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Have mercy on me and on my brother; bring us into Thy mercy, Thou the Most Merciful of all who show mercy.",
+      "en.yusufali": "Moses prayed: \"O my Lord! forgive me and my brother! admit us to Thy mercy! for Thou art the Most Merciful of those who show mercy!\""
+    }
+  },
+  {
+    "id": "musa-anta-waliyyuna-faghfir-lana",
+    "ref": "7:155-156",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ لَوْ شِئْتَ أَهْلَكْتَهُم مِّن قَبْلُ وَإِيَّٰىَ أَتُهْلِكُنَا بِمَا فَعَلَ ٱلسُّفَهَآءُ مِنَّآ إِنْ هِىَ إِلَّا فِتْنَتُكَ تُضِلُّ بِهَا مَن تَشَآءُ وَتَهْدِى مَن تَشَآءُ أَنتَ وَلِيُّنَا فَٱغْفِرْ لَنَا وَٱرْحَمْنَا وَأَنتَ خَيْرُ ٱلْغَٰفِرِينَ وَٱكْتُبْ لَنَا فِى هَٰذِهِ ٱلدُّنْيَا حَسَنَةًۭ وَفِى ٱلْءَاخِرَةِ إِنَّا هُدْنَآ إِلَيْكَ",
+    "sha256": "d3007b4e32500ad036e7bbe3f974bf0e7ccf74d17df828571d6f7dbf61213762",
+    "wordCount": 42,
+    "isExcerpt": true,
+    "excerptNote": "Both the narrative introduction and the closing narration are outside the supplication.",
+    "fullText": "وَٱخْتَارَ مُوسَىٰ قَوْمَهُۥ سَبْعِينَ رَجُلًۭا لِّمِيقَٰتِنَا فَلَمَّآ أَخَذَتْهُمُ ٱلرَّجْفَةُ قَالَ رَبِّ لَوْ شِئْتَ أَهْلَكْتَهُم مِّن قَبْلُ وَإِيَّٰىَ أَتُهْلِكُنَا بِمَا فَعَلَ ٱلسُّفَهَآءُ مِنَّآ إِنْ هِىَ إِلَّا فِتْنَتُكَ تُضِلُّ بِهَا مَن تَشَآءُ وَتَهْدِى مَن تَشَآءُ أَنتَ وَلِيُّنَا فَٱغْفِرْ لَنَا وَٱرْحَمْنَا وَأَنتَ خَيْرُ ٱلْغَٰفِرِينَ وَٱكْتُبْ لَنَا فِى هَٰذِهِ ٱلدُّنْيَا حَسَنَةًۭ وَفِى ٱلْءَاخِرَةِ إِنَّا هُدْنَآ إِلَيْكَ قَالَ عَذَابِىٓ أُصِيبُ بِهِۦ مَنْ أَشَآءُ وَرَحْمَتِى وَسِعَتْ كُلَّ شَىْءٍۢ فَسَأَكْتُبُهَا لِلَّذِينَ يَتَّقُونَ وَيُؤْتُونَ ٱلزَّكَوٰةَ وَٱلَّذِينَ هُم بِـَٔايَٰتِنَا يُؤْمِنُونَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "And Moses chose of his people seventy men for Our appointed tryst and, when the trembling came on them, he said: My Lord! If Thou hadst willed Thou hadst destroyed them long before, and me with them. Wilt thou destroy us for that which the ignorant among us did? It is but Thy trial (of us). Thou sendest whom Thou wilt astray and guidest whom Thou wilt: Thou art our Protecting Friend, therefore forgive us and have mercy on us, Thou, the Best of all who show forgiveness. And ordain for us in this world that which is good, and in the Hereafter (that which is good), Lo! We have turned unto Thee. He said: I smite with My punishment whom I will, and My mercy embraceth all things, therefore I shall ordain it for those who ward off (evil) and pay the poor-due, and those who believe Our revelations;",
+      "en.yusufali": "And Moses chose seventy of his people for Our place of meeting: when they were seized with violent quaking, he prayed: \"O my Lord! if it had been Thy will Thou couldst have destroyed, long before, both them and me: wouldst Thou destroy us for the deeds of the foolish ones among us? this is no more than Thy trial: by it Thou causest whom Thou wilt to stray, and Thou leadest whom Thou wilt into the right path. Thou art our Protector: so forgive us and give us Thy mercy; for Thou art the best of those who forgive. \"And ordain for us that which is good, in this life and in the Hereafter: for we have turned unto Thee.\" He said: \"With My punishment I visit whom I will; but My mercy extendeth to all things. That (mercy) I shall ordain for those who do right, and practise regular charity, and those who believe in Our signs;-"
+    }
+  },
+  {
+    "id": "musa-rabbi-inni-la-amliku-illa-nafsi",
+    "ref": "5:25",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّى لَآ أَمْلِكُ إِلَّا نَفْسِى وَأَخِى فَٱفْرُقْ بَيْنَنَا وَبَيْنَ ٱلْقَوْمِ ٱلْفَٰسِقِينَ",
+    "sha256": "9c8775212c5da4c00404e889bfc3f3045f6e67a93cd0dc6aec21a8b5b10e5386",
+    "wordCount": 12,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ إِنِّى لَآ أَمْلِكُ إِلَّا نَفْسِى وَأَخِى فَٱفْرُقْ بَيْنَنَا وَبَيْنَ ٱلْقَوْمِ ٱلْفَٰسِقِينَ",
+    "surahName": "سُورَةُ المَائـِدَةِ",
+    "surahNameEn": "Al-Maaida",
+    "translations": {
+      "en.pickthall": "He said: My Lord! I have control of none but myself and my brother, so distinguish between us and the wrong-doing folk.",
+      "en.yusufali": "He said: \"O my Lord! I have power only over myself and my brother: so separate us from this rebellious people!\""
+    }
+  },
+  {
+    "id": "musa-rabbana-innaka-atayta-firawn",
+    "ref": "10:88",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَآ إِنَّكَ ءَاتَيْتَ فِرْعَوْنَ وَمَلَأَهُۥ زِينَةًۭ وَأَمْوَٰلًۭا فِى ٱلْحَيَوٰةِ ٱلدُّنْيَا رَبَّنَا لِيُضِلُّوا۟ عَن سَبِيلِكَ رَبَّنَا ٱطْمِسْ عَلَىٰٓ أَمْوَٰلِهِمْ وَٱشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا۟ حَتَّىٰ يَرَوُا۟ ٱلْعَذَابَ ٱلْأَلِيمَ",
+    "sha256": "83a8a83cb3a99b077413d626b1655db9286f20c495c9335590d84cc8af6539e4",
+    "wordCount": 27,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَقَالَ مُوسَىٰ رَبَّنَآ إِنَّكَ ءَاتَيْتَ فِرْعَوْنَ وَمَلَأَهُۥ زِينَةًۭ وَأَمْوَٰلًۭا فِى ٱلْحَيَوٰةِ ٱلدُّنْيَا رَبَّنَا لِيُضِلُّوا۟ عَن سَبِيلِكَ رَبَّنَا ٱطْمِسْ عَلَىٰٓ أَمْوَٰلِهِمْ وَٱشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا۟ حَتَّىٰ يَرَوُا۟ ٱلْعَذَابَ ٱلْأَلِيمَ",
+    "surahName": "سُورَةُ يُونُسَ",
+    "surahNameEn": "Yunus",
+    "translations": {
+      "en.pickthall": "And Moses said: Our Lord! Lo! Thou hast given Pharaoh and his chiefs splendour and riches in the life of the world, Our Lord! that they may lead men astray from Thy way. Our Lord! Destroy their riches and harden their hearts so that they believe not till they see the painful doom.",
+      "en.yusufali": "Moses prayed: \"Our Lord! Thou hast indeed bestowed on Pharaoh and his chiefs splendour and wealth in the life of the present, and so, Our Lord, they mislead (men) from Thy Path. Deface, our Lord, the features of their wealth, and send hardness to their hearts, so they will not believe until they see the grievous penalty.\""
+    }
+  },
+  {
+    "id": "sulayman-rabbi-awzini-an-ashkura",
+    "ref": "27:19",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَٰلِحًۭا تَرْضَىٰهُ وَأَدْخِلْنِى بِرَحْمَتِكَ فِى عِبَادِكَ ٱلصَّٰلِحِينَ",
+    "sha256": "29629654dbde87ba633a17a09fd5180b37b3ba37c76847e0cf01d85cd70e72d6",
+    "wordCount": 19,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "فَتَبَسَّمَ ضَاحِكًۭا مِّن قَوْلِهَا وَقَالَ رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَٰلِحًۭا تَرْضَىٰهُ وَأَدْخِلْنِى بِرَحْمَتِكَ فِى عِبَادِكَ ٱلصَّٰلِحِينَ",
+    "surahName": "سُورَةُ النَّمۡلِ",
+    "surahNameEn": "An-Naml",
+    "translations": {
+      "en.pickthall": "And (Solomon) smiled, laughing at her speech, and said: My Lord, arouse me to be thankful for Thy favour wherewith Thou hast favoured me and my parents, and to do good that shall be pleasing unto Thee, and include me in (the number of) Thy righteous slaves.",
+      "en.yusufali": "So he smiled, amused at her speech; and he said: \"O my Lord! so order me that I may be grateful for Thy favours, which thou hast bestowed on me and on my parents, and that I may work the righteousness that will please Thee: And admit me, by Thy Grace, to the ranks of Thy righteous Servants.\""
+    }
+  },
+  {
+    "id": "sulayman-rabbi-ighfir-li-wa-hab-li-mulkan",
+    "ref": "38:35",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱغْفِرْ لِى وَهَبْ لِى مُلْكًۭا لَّا يَنۢبَغِى لِأَحَدٍۢ مِّنۢ بَعْدِىٓ إِنَّكَ أَنتَ ٱلْوَهَّابُ",
+    "sha256": "467a901453194dcfe20ef7cb8422f20a06b3dcb832d213a31c51985761c0d3db",
+    "wordCount": 14,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ ٱغْفِرْ لِى وَهَبْ لِى مُلْكًۭا لَّا يَنۢبَغِى لِأَحَدٍۢ مِّنۢ بَعْدِىٓ إِنَّكَ أَنتَ ٱلْوَهَّابُ",
+    "surahName": "سُورَةُ صٓ",
+    "surahNameEn": "Saad",
+    "translations": {
+      "en.pickthall": "He said: My Lord! Forgive me and bestow on me sovereignty such as shall not belong to any after me. Lo! Thou art the Bestower.",
+      "en.yusufali": "He said, \"O my Lord! Forgive me, and grant me a kingdom which, (it may be), suits not another after me: for Thou art the Grantor of Bounties (without measure)."
+    }
+  },
+  {
+    "id": "zakariyya-rabbi-hab-li-dhurriyyatan-tayyibah",
+    "ref": "3:38",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً إِنَّكَ سَمِيعُ ٱلدُّعَآءِ",
+    "sha256": "f53f4f02e9951615ce199ac0de7be395da4b7accaa4d75f142b52280130e8305",
+    "wordCount": 10,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُۥ قَالَ رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً إِنَّكَ سَمِيعُ ٱلدُّعَآءِ",
+    "surahName": "سُورَةُ آلِ عِمۡرَانَ",
+    "surahNameEn": "Aal-i-Imraan",
+    "translations": {
+      "en.pickthall": "Then Zachariah prayed unto his Lord and said: My Lord! Bestow upon me of Thy bounty goodly offspring. Lo! Thou art the Hearer of Prayer.",
+      "en.yusufali": "There did Zakariya pray to his Lord, saying: \"O my Lord! Grant unto me from Thee a progeny that is pure: for Thou art He that heareth prayer!"
+    }
+  },
+  {
+    "id": "zakariyya-rabbi-inni-wahana-al-azmu-minni",
+    "ref": "19:4-6",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا يَرِثُنِى وَيَرِثُ مِنْ ءَالِ يَعْقُوبَ وَٱجْعَلْهُ رَبِّ رَضِيًّۭا",
+    "sha256": "b014ebfaf5823f0d3e9f2086c5d5c236f74472108b90e63f2075efddffcc1be9",
+    "wordCount": 34,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا يَرِثُنِى وَيَرِثُ مِنْ ءَالِ يَعْقُوبَ وَٱجْعَلْهُ رَبِّ رَضِيًّۭا",
+    "surahName": "سُورَةُ مَرۡيَمَ",
+    "surahNameEn": "Maryam",
+    "translations": {
+      "en.pickthall": "Saying: My Lord! Lo! the bones of me wax feeble and my head is shining with grey hair, and I have never been unblest in prayer to Thee, my Lord. Lo! I fear my kinsfolk after me, since my wife is barren. Oh, give me from Thy presence a successor Who shall inherit of me and inherit (also) of the house of Jacob. And make him, my Lord, acceptable (unto Thee).",
+      "en.yusufali": "Praying: \"O my Lord! infirm indeed are my bones, and the hair of my head doth glisten with grey: but never am I unblest, O my Lord, in my prayer to Thee! \"Now I fear (what) my relatives (and colleagues) (will do) after me: but my wife is barren: so give me an heir as from Thyself,- \"(One that) will (truly) represent me, and represent the posterity of Jacob; and make him, O my Lord! one with whom Thou art well-pleased!\""
+    }
+  },
+  {
+    "id": "zakariyya-rabbi-la-tadharni-fardan",
+    "ref": "21:89",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ لَا تَذَرْنِى فَرْدًۭا وَأَنتَ خَيْرُ ٱلْوَٰرِثِينَ",
+    "sha256": "4453ffef07d82cf5cf8a8e37c87f95e403680485358261cf09a9d3585c1eb099",
+    "wordCount": 7,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَزَكَرِيَّآ إِذْ نَادَىٰ رَبَّهُۥ رَبِّ لَا تَذَرْنِى فَرْدًۭا وَأَنتَ خَيْرُ ٱلْوَٰرِثِينَ",
+    "surahName": "سُورَةُ الأَنبِيَاءِ",
+    "surahNameEn": "Al-Anbiyaa",
+    "translations": {
+      "en.pickthall": "And Zachariah, when he cried unto his Lord: My Lord! Leave me not childless, though Thou art the Best of inheritors.",
+      "en.yusufali": "And (remember) Zakariya, when he cried to his Lord: \"O my Lord! leave me not without offspring, though thou art the best of inheritors.\""
+    }
+  },
+  {
+    "id": "yunus-la-ilaha-illa-anta",
+    "ref": "21:87",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "لَّآ إِلَٰهَ إِلَّآ أَنتَ سُبْحَٰنَكَ إِنِّى كُنتُ مِنَ ٱلظَّٰلِمِينَ",
+    "sha256": "83c8f086c2f188768b698403d0084391b9066e6aed1122056bc2661fbf38d7a9",
+    "wordCount": 9,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَذَا ٱلنُّونِ إِذ ذَّهَبَ مُغَٰضِبًۭا فَظَنَّ أَن لَّن نَّقْدِرَ عَلَيْهِ فَنَادَىٰ فِى ٱلظُّلُمَٰتِ أَن لَّآ إِلَٰهَ إِلَّآ أَنتَ سُبْحَٰنَكَ إِنِّى كُنتُ مِنَ ٱلظَّٰلِمِينَ",
+    "surahName": "سُورَةُ الأَنبِيَاءِ",
+    "surahNameEn": "Al-Anbiyaa",
+    "translations": {
+      "en.pickthall": "And (mention) Dhu'n-Nun, when he went off in anger and deemed that We had no power over him, but he cried out in the darkness, saying: There is no Allah save Thee. Be Thou Glorified! Lo! I have been a wrong-doer.",
+      "en.yusufali": "And remember Zun-nun, when he departed in wrath: He imagined that We had no power over him! But he cried through the deptHs of darkness, \"There is no god but thou: glory to thee: I was indeed wrong!\""
+    }
+  },
+  {
+    "id": "isa-allahumma-rabbana-anzil-alayna-maidah",
+    "ref": "5:114",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "ٱللَّهُمَّ رَبَّنَآ أَنزِلْ عَلَيْنَا مَآئِدَةًۭ مِّنَ ٱلسَّمَآءِ تَكُونُ لَنَا عِيدًۭا لِّأَوَّلِنَا وَءَاخِرِنَا وَءَايَةًۭ مِّنكَ وَٱرْزُقْنَا وَأَنتَ خَيْرُ ٱلرَّٰزِقِينَ",
+    "sha256": "6ba6ab0cda0f37b0647978688dee9dd0492a90768800803fe915e43073f537c6",
+    "wordCount": 18,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَ عِيسَى ٱبْنُ مَرْيَمَ ٱللَّهُمَّ رَبَّنَآ أَنزِلْ عَلَيْنَا مَآئِدَةًۭ مِّنَ ٱلسَّمَآءِ تَكُونُ لَنَا عِيدًۭا لِّأَوَّلِنَا وَءَاخِرِنَا وَءَايَةًۭ مِّنكَ وَٱرْزُقْنَا وَأَنتَ خَيْرُ ٱلرَّٰزِقِينَ",
+    "surahName": "سُورَةُ المَائـِدَةِ",
+    "surahNameEn": "Al-Maaida",
+    "translations": {
+      "en.pickthall": "Jesus, son of Mary, said: O Allah, Lord of us! Send down for us a table spread with food from heaven, that it may be a feast for us, for the first of us and for the last of us, and a sign from Thee. Give us sustenance, for Thou art the Best of Sustainers.",
+      "en.yusufali": "Said Jesus the son of Mary: \"O Allah our Lord! Send us from heaven a table set (with viands), that there may be for us - for the first and the last of us - a solemn festival and a sign from thee; and provide for our sustenance, for thou art the best Sustainer (of our needs).\""
+    }
+  },
+  {
+    "id": "isa-in-tuadhdhibhum-fa-innahum-ibaduk",
+    "ref": "5:118",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "إِن تُعَذِّبْهُمْ فَإِنَّهُمْ عِبَادُكَ وَإِن تَغْفِرْ لَهُمْ فَإِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "sha256": "cb7a778a5627723d7d3c720215c104413227872fff9b397d1066615135d06e51",
+    "wordCount": 11,
+    "isExcerpt": false,
+    "fullText": "إِن تُعَذِّبْهُمْ فَإِنَّهُمْ عِبَادُكَ وَإِن تَغْفِرْ لَهُمْ فَإِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ",
+    "surahName": "سُورَةُ المَائـِدَةِ",
+    "surahNameEn": "Al-Maaida",
+    "translations": {
+      "en.pickthall": "If Thou punish them, lo! they are Thy slaves, and if Thou forgive them (lo! they are Thy slaves). Lo! Thou, only Thou, art the Mighty, the Wise.",
+      "en.yusufali": "\"If Thou dost punish them, they are Thy servant: If Thou dost forgive them, Thou art the Exalted in power, the Wise.\""
+    }
+  },
+  {
+    "id": "muhammad-rabbi-zidni-ilman",
+    "ref": "20:114",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ زِدْنِى عِلْمًۭا",
+    "sha256": "00ae909efef779e64cfbdfbad5d947b790d32e8b8b832e90a3aab9e39825beb9",
+    "wordCount": 3,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "فَتَعَٰلَى ٱللَّهُ ٱلْمَلِكُ ٱلْحَقُّ وَلَا تَعْجَلْ بِٱلْقُرْءَانِ مِن قَبْلِ أَن يُقْضَىٰٓ إِلَيْكَ وَحْيُهُۥ وَقُل رَّبِّ زِدْنِى عِلْمًۭا",
+    "surahName": "سُورَةُ طه",
+    "surahNameEn": "Taa-Haa",
+    "translations": {
+      "en.pickthall": "Then exalted be Allah, the True King! And hasten not (O Muhammad) with the Qur'an ere its revelation hath been perfected unto thee, and say: My Lord! Increase me in knowledge.",
+      "en.yusufali": "High above all is Allah, the King, the Truth! Be not in haste with the Qur'an before its revelation to thee is completed, but say, \"O my Lord! advance me in knowledge.\""
+    }
+  },
+  {
+    "id": "muhammad-rabbi-adkhilni-mudkhala-sidq",
+    "ref": "17:80",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ أَدْخِلْنِى مُدْخَلَ صِدْقٍۢ وَأَخْرِجْنِى مُخْرَجَ صِدْقٍۢ وَٱجْعَل لِّى مِن لَّدُنكَ سُلْطَٰنًۭا نَّصِيرًۭا",
+    "sha256": "2e3909955cc9922bd47ec562689b9546bc295e66a5654a78f92cc8858e487123",
+    "wordCount": 13,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَقُل رَّبِّ أَدْخِلْنِى مُدْخَلَ صِدْقٍۢ وَأَخْرِجْنِى مُخْرَجَ صِدْقٍۢ وَٱجْعَل لِّى مِن لَّدُنكَ سُلْطَٰنًۭا نَّصِيرًۭا",
+    "surahName": "سُورَةُ الإِسۡرَاءِ",
+    "surahNameEn": "Al-Israa",
+    "translations": {
+      "en.pickthall": "And say: My Lord! Cause me to come in with a firm incoming and to go out with a firm outgoing. And give me from Thy presence a sustaining Power.",
+      "en.yusufali": "Say: \"O my Lord! Let my entry be by the Gate of Truth and Honour, and likewise my exit by the Gate of Truth and Honour; and grant me from Thy Presence an authority to aid (me).\""
+    }
+  },
+  {
+    "id": "muhammad-rabbi-ighfir-warham",
+    "ref": "23:118",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ",
+    "sha256": "eaaa81cc33b3cd00b2ed9b73a79cedf39802861f1695033926c3f5cef4f99b0e",
+    "wordCount": 6,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَقُل رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ",
+    "surahName": "سُورَةُ المُؤۡمِنُونَ",
+    "surahNameEn": "Al-Muminoon",
+    "translations": {
+      "en.pickthall": "And (O Muhammad) say: My Lord! Forgive and have mercy, for Thou art Best of all who show mercy.",
+      "en.yusufali": "So say: \"O my Lord! grant Thou forgiveness and mercy for Thou art the Best of those who show mercy!\""
+    }
+  },
+  {
+    "id": "ashab-al-kahf-rabbana-atina-min-ladunka-rahmah",
+    "ref": "18:10",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةًۭ وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًۭا",
+    "sha256": "25579352b9c2105d3a2d29d3183b11f41fef35003dad34a7a4e3aa98a65ec3fc",
+    "wordCount": 10,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "إِذْ أَوَى ٱلْفِتْيَةُ إِلَى ٱلْكَهْفِ فَقَالُوا۟ رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةًۭ وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًۭا",
+    "surahName": "سُورَةُ الكَهۡفِ",
+    "surahNameEn": "Al-Kahf",
+    "translations": {
+      "en.pickthall": "When the young men fled for refuge to the Cave and said: Our Lord! Give us mercy from Thy presence, and shape for us right conduct in our plight.",
+      "en.yusufali": "Behold, the youths betook themselves to the Cave: they said, \"Our Lord! bestow on us Mercy from Thyself, and dispose of our affair for us in the right way!\""
+    }
+  },
+  {
+    "id": "asiyah-rabbi-ibni-li-indaka-baytan",
+    "ref": "66:11",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ ٱبْنِ لِى عِندَكَ بَيْتًۭا فِى ٱلْجَنَّةِ وَنَجِّنِى مِن فِرْعَوْنَ وَعَمَلِهِۦ وَنَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ",
+    "sha256": "b94513792bad0d12a9b041d0a6f8105c448a8303c6d2c94257bf61402112fe24",
+    "wordCount": 15,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَضَرَبَ ٱللَّهُ مَثَلًۭا لِّلَّذِينَ ءَامَنُوا۟ ٱمْرَأَتَ فِرْعَوْنَ إِذْ قَالَتْ رَبِّ ٱبْنِ لِى عِندَكَ بَيْتًۭا فِى ٱلْجَنَّةِ وَنَجِّنِى مِن فِرْعَوْنَ وَعَمَلِهِۦ وَنَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ",
+    "surahName": "سُورَةُ التَّحۡرِيمِ",
+    "surahNameEn": "At-Tahrim",
+    "translations": {
+      "en.pickthall": "And Allah citeth an example for those who believe: the wife of Pharaoh when she said: My Lord! Build for me a home with thee in the Garden, and deliver me from Pharaoh and his work, and deliver me from evil-doing folk;",
+      "en.yusufali": "And Allah sets forth, as an example to those who believe the wife of Pharaoh: Behold she said: \"O my Lord! Build for me, in nearness to Thee, a mansion in the Garden, and save me from Pharaoh and his doings, and save me from those that do wrong\";"
+    }
+  },
+  {
+    "id": "umm-maryam-rabbi-inni-nadhartu-laka",
+    "ref": "3:35",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبِّ إِنِّى نَذَرْتُ لَكَ مَا فِى بَطْنِى مُحَرَّرًۭا فَتَقَبَّلْ مِنِّىٓ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+    "sha256": "6488d85c26726e597eac41b77232ff5e4bf231fbb7f6a94476b7a2d34019ebb8",
+    "wordCount": 14,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "إِذْ قَالَتِ ٱمْرَأَتُ عِمْرَٰنَ رَبِّ إِنِّى نَذَرْتُ لَكَ مَا فِى بَطْنِى مُحَرَّرًۭا فَتَقَبَّلْ مِنِّىٓ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+    "surahName": "سُورَةُ آلِ عِمۡرَانَ",
+    "surahNameEn": "Aal-i-Imraan",
+    "translations": {
+      "en.pickthall": "(Remember) when the wife of 'Imran said: My Lord! I have vowed unto Thee that which is in my belly as a consecrated (offering). Accept it from me. Lo! Thou, only Thou, art the Hearer, the Knower!",
+      "en.yusufali": "Behold! a woman of 'Imran said: \"O my Lord! I do dedicate unto Thee what is in my womb for Thy special service: So accept this of me: For Thou hearest and knowest all things.\""
+    }
+  },
+  {
+    "id": "maryam-inni-audhu-bil-rahman-minka",
+    "ref": "19:18",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "إِنِّىٓ أَعُوذُ بِٱلرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّۭا",
+    "sha256": "51a56d93f98b845cb4346d546290664ebfab6cbcba8c447c88c650812984f92c",
+    "wordCount": 7,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "قَالَتْ إِنِّىٓ أَعُوذُ بِٱلرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّۭا",
+    "surahName": "سُورَةُ مَرۡيَمَ",
+    "surahNameEn": "Maryam",
+    "translations": {
+      "en.pickthall": "She said: Lo! I seek refuge in the Beneficent One from thee, if thou art Allah-fearing.",
+      "en.yusufali": "She said: \"I seek refuge from thee to (Allah) Most Gracious: (come not near) if thou dost fear Allah.\""
+    }
+  },
+  {
+    "id": "saharat-firawn-rabbana-afrigh-alayna-sabran",
+    "ref": "7:126",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَتَوَفَّنَا مُسْلِمِينَ",
+    "sha256": "9a815270f320e4182bfb18226230663a2f16cb956b8e56f54bc6574724a5c22c",
+    "wordCount": 6,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَمَا تَنقِمُ مِنَّآ إِلَّآ أَنْ ءَامَنَّا بِـَٔايَٰتِ رَبِّنَا لَمَّا جَآءَتْنَا رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَتَوَفَّنَا مُسْلِمِينَ",
+    "surahName": "سُورَةُ الأَعۡرَافِ",
+    "surahNameEn": "Al-A'raaf",
+    "translations": {
+      "en.pickthall": "Thou takest vengeance on us only forasmuch as we believed the tokens of our Lord when they came unto us. Our Lord! Vouchsafe unto us steadfastness and make us die as men who have surrendered (unto Thee).",
+      "en.yusufali": "\"But thou dost wreak thy vengeance on us simply because we believed in the Signs of our Lord when they reached us! Our Lord! pour out on us patience and constancy, and take our souls unto thee as Muslims (who bow to thy will)!"
+    }
+  },
+  {
+    "id": "ashab-talut-rabbana-afrigh-alayna-sabran",
+    "ref": "2:250",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "sha256": "c66f17122b0f172048bfda4b08cae309de44061c23287dbc395d83235ba46746",
+    "wordCount": 10,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَلَمَّا بَرَزُوا۟ لِجَالُوتَ وَجُنُودِهِۦ قَالُوا۟ رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "surahName": "سُورَةُ البَقَرَةِ",
+    "surahNameEn": "Al-Baqara",
+    "translations": {
+      "en.pickthall": "And when they went into the field against Goliath and his hosts they said: Our Lord! Bestow on us endurance, make our foothold sure, and give us help against the disbelieving folk.",
+      "en.yusufali": "When they advanced to meet Goliath and his forces, they prayed: \"Our Lord! Pour out constancy on us and make our steps firm: Help us against those that reject faith.\""
+    }
+  }
+]

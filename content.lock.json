@@ -1,0 +1,373 @@
+{
+  "source": "https://api.alquran.cloud/v1",
+  "script": "uthmani",
+  "edition": "quran-uthmani",
+  "generatedAt": "2026-07-27T22:25:21.369Z",
+  "note": "SHA-256 of the resolved Arabic per duʿāʾ. Regenerate with `npm run content:fetch`. Never edit Arabic by hand — `npm run content:verify` will fail.",
+  "entries": {
+    "adam-rabbana-zalamna-anfusana": {
+      "ref": "7:23",
+      "edition": "quran-uthmani",
+      "sha256": "713178346e0414a449164031c5812c471953c07565bffc248209bba3030a9fd9",
+      "words": 11,
+      "excerpt": true
+    },
+    "nuh-rabbi-ighfir-li-wa-liwalidayya": {
+      "ref": "71:28",
+      "edition": "quran-uthmani",
+      "sha256": "35cfd368015a64dab6aed22fdfede211d87f4eff22dca2ae87242c24d6fb6947",
+      "words": 15,
+      "excerpt": false
+    },
+    "nuh-rabbi-anzilni-munzalan-mubarakan": {
+      "ref": "23:29",
+      "edition": "quran-uthmani",
+      "sha256": "ecd091eecafeb52f4219fa868128a3a52ad29b401037f4766ab33c7b03dbcb67",
+      "words": 7,
+      "excerpt": true
+    },
+    "nuh-anni-maghlubun-fantasir": {
+      "ref": "54:10",
+      "edition": "quran-uthmani",
+      "sha256": "33b06a5dac4b90598066c8ab0d8a58ecd113b578bbaff83ba834571e358f1c19",
+      "words": 3,
+      "excerpt": true
+    },
+    "nuh-rabbi-unsurni-bima-kadhdhabun": {
+      "ref": "23:26",
+      "edition": "quran-uthmani",
+      "sha256": "6a1abdcbeeb496fd00d8c0d3c37366f4535915da832acfd413bbe9cb8ea74e4c",
+      "words": 4,
+      "excerpt": true
+    },
+    "nuh-rabbi-inni-audhu-bika": {
+      "ref": "11:47",
+      "edition": "quran-uthmani",
+      "sha256": "63dcb17c312078f78f2e1777e5e5d74e1dc83fad5735cb544bde0c1c92ce4a61",
+      "words": 18,
+      "excerpt": true
+    },
+    "nuh-rabbi-la-tadhar-ala-al-ard": {
+      "ref": "71:26",
+      "edition": "quran-uthmani",
+      "sha256": "80c0421b016c7a78ffb9bc45d47146f65176d32d1bf3c1bf942c001e138f60bf",
+      "words": 8,
+      "excerpt": true
+    },
+    "nuh-rabbi-inna-qawmi-kadhdhabuni": {
+      "ref": "26:117-118",
+      "edition": "quran-uthmani",
+      "sha256": "25a75b1129b1c9a769a67067ba9bfe29f9d5a7cdf48b0e32e664876be6666cd8",
+      "words": 13,
+      "excerpt": true
+    },
+    "ibrahim-rabbi-ijal-hadha-baladan-aminan": {
+      "ref": "2:126",
+      "edition": "quran-uthmani",
+      "sha256": "8f96e2645f0417d2a8a5784970f92e49f0d00eef515a5dd75e3c3594634cd448",
+      "words": 15,
+      "excerpt": true
+    },
+    "ibrahim-rabbana-taqabbal-minna": {
+      "ref": "2:127-129",
+      "edition": "quran-uthmani",
+      "sha256": "36608128edf489fb179a173f3278f2b7639105a71aed94cbead166f4acb2b283",
+      "words": 40,
+      "excerpt": true
+    },
+    "ibrahim-rabbi-ijal-hadha-al-balada-aminan": {
+      "ref": "14:35",
+      "edition": "quran-uthmani",
+      "sha256": "68eac84d27979e755c2b2c129525cf1ba0b3f7bc0572e28880132ea2daf73214",
+      "words": 10,
+      "excerpt": true
+    },
+    "ibrahim-rabbana-inni-askantu": {
+      "ref": "14:36-41",
+      "edition": "quran-uthmani",
+      "sha256": "625bab371e9135289dd012336e4274177d51cb8fa3b32d98f042591378814225",
+      "words": 89,
+      "excerpt": false
+    },
+    "ibrahim-rabbi-hab-li-hukman": {
+      "ref": "26:83-89",
+      "edition": "quran-uthmani",
+      "sha256": "621a431b30091b5cd19f5edda2caaff7427c4675e7b55f2d55a7e4703e97b737",
+      "words": 39,
+      "excerpt": false
+    },
+    "ibrahim-rabbi-hab-li-mina-al-salihin": {
+      "ref": "37:100",
+      "edition": "quran-uthmani",
+      "sha256": "4196043348102ddd673a6f5a7927aa5526ff6bd87094a74dab301eefe16487be",
+      "words": 5,
+      "excerpt": false
+    },
+    "ibrahim-rabbana-alayka-tawakkalna": {
+      "ref": "60:4",
+      "edition": "quran-uthmani",
+      "sha256": "812a459654e69a676e9edb2913884478bcc75173cb8b974ce8b918e7e0b9c30d",
+      "words": 7,
+      "excerpt": true
+    },
+    "ibrahim-rabbana-la-tajalna-fitnatan": {
+      "ref": "60:5",
+      "edition": "quran-uthmani",
+      "sha256": "b1baf63e2dffe5719078cf47f4914df03687777a4d315d5f4baa54db3d09fefb",
+      "words": 13,
+      "excerpt": false
+    },
+    "lut-rabbi-najjini-wa-ahli": {
+      "ref": "26:169",
+      "edition": "quran-uthmani",
+      "sha256": "2b73075bc4ffc624598f6b99aa3ffd25d77f5e687aed23e927442f19bb43113a",
+      "words": 5,
+      "excerpt": false
+    },
+    "lut-rabbi-unsurni-ala-al-qawm-al-mufsidin": {
+      "ref": "29:30",
+      "edition": "quran-uthmani",
+      "sha256": "f4b7474c82bf6dcd7eb7093e31ba7f9fa70c773f663cbbc64f37ee2215711cbf",
+      "words": 5,
+      "excerpt": true
+    },
+    "yaqub-innama-ashku-baththi": {
+      "ref": "12:86",
+      "edition": "quran-uthmani",
+      "sha256": "a4d2524a800c814277d9df56e67392338b4c18beeca8b912484cf4c9254a2305",
+      "words": 12,
+      "excerpt": true
+    },
+    "yaqub-fa-sabrun-jamil": {
+      "ref": "12:18",
+      "edition": "quran-uthmani",
+      "sha256": "9907fc733117dacda425e168c3c26fe74a01c880f6b671f02c9bfea39605fade",
+      "words": 7,
+      "excerpt": true
+    },
+    "yusuf-rabbi-al-sijnu-ahabbu-ilayya": {
+      "ref": "12:33",
+      "edition": "quran-uthmani",
+      "sha256": "4eb6b02d23c8905234459ea1a620d5001db386c0bc578afe6558b0ef14e29b72",
+      "words": 16,
+      "excerpt": true
+    },
+    "yusuf-tawaffani-musliman": {
+      "ref": "12:101",
+      "edition": "quran-uthmani",
+      "sha256": "ecae85a95fbe5035122255763b31e5bc52ce3467b91c1926d3495f3d31afd2f0",
+      "words": 21,
+      "excerpt": false
+    },
+    "ayyub-anni-massaniya-al-durr": {
+      "ref": "21:83",
+      "edition": "quran-uthmani",
+      "sha256": "80e6a96d2b2b9779a76ccea8cdb45e00efffb90ea96d5002324ad894c2013492",
+      "words": 6,
+      "excerpt": true
+    },
+    "ayyub-anni-massaniya-al-shaytan": {
+      "ref": "38:41",
+      "edition": "quran-uthmani",
+      "sha256": "46d9556f660a3b283fd736809890527698c861aa2bdb301caca03cb3d4f2f2c1",
+      "words": 5,
+      "excerpt": true
+    },
+    "shuayb-rabbana-iftah-baynana": {
+      "ref": "7:89",
+      "edition": "quran-uthmani",
+      "sha256": "b108fae28c2e2ec8b2c4d57942c20612d3732ff2734e07467db1d58ba6435b65",
+      "words": 9,
+      "excerpt": true
+    },
+    "musa-rabbi-ishrah-li-sadri": {
+      "ref": "20:25-28",
+      "edition": "quran-uthmani",
+      "sha256": "dde75725c99d42ee7ed0dd71d86da15e23db1dc2a0edf9a351f1def71d97ae5d",
+      "words": 13,
+      "excerpt": true
+    },
+    "musa-rabbi-inni-zalamtu-nafsi": {
+      "ref": "28:16",
+      "edition": "quran-uthmani",
+      "sha256": "c4d841289d0691b15c413044864a8b353737d9385d8659b5f1d015311b4b1c0b",
+      "words": 6,
+      "excerpt": true
+    },
+    "musa-rabbi-najjini-mina-al-qawm-al-zalimin": {
+      "ref": "28:21",
+      "edition": "quran-uthmani",
+      "sha256": "b06c7778c9145060cd26dc1b7f82a3e3a63b11d95e6b2cdd447afcb1f281d5ad",
+      "words": 5,
+      "excerpt": true
+    },
+    "musa-rabbi-inni-lima-anzalta-ilayya-faqir": {
+      "ref": "28:24",
+      "edition": "quran-uthmani",
+      "sha256": "747d3fe15d105bb6e600040d8ddec10b036f7d553540bde91f1eef1c0939aa99",
+      "words": 8,
+      "excerpt": true
+    },
+    "musa-rabbi-arini-anzur-ilayk": {
+      "ref": "7:143",
+      "edition": "quran-uthmani",
+      "sha256": "fb3091aa8445ef12cf850373322b5adb87f159c997d5455f9e3ceaea3e9ef997",
+      "words": 4,
+      "excerpt": true
+    },
+    "musa-subhanaka-tubtu-ilayk": {
+      "ref": "7:143",
+      "edition": "quran-uthmani",
+      "sha256": "7adf59f9d8e9e9d70101c61808911ae0b4fdc12ff8cc14396b7630fa7cc5ee76",
+      "words": 6,
+      "excerpt": true
+    },
+    "musa-rabbi-ighfir-li-wa-li-akhi": {
+      "ref": "7:151",
+      "edition": "quran-uthmani",
+      "sha256": "9aa8d625195f7960ebce375e5d693e79120b3b8b0002f11b34e72c2499e901c9",
+      "words": 10,
+      "excerpt": true
+    },
+    "musa-anta-waliyyuna-faghfir-lana": {
+      "ref": "7:155-156",
+      "edition": "quran-uthmani",
+      "sha256": "d3007b4e32500ad036e7bbe3f974bf0e7ccf74d17df828571d6f7dbf61213762",
+      "words": 42,
+      "excerpt": true
+    },
+    "musa-rabbi-inni-la-amliku-illa-nafsi": {
+      "ref": "5:25",
+      "edition": "quran-uthmani",
+      "sha256": "9c8775212c5da4c00404e889bfc3f3045f6e67a93cd0dc6aec21a8b5b10e5386",
+      "words": 12,
+      "excerpt": true
+    },
+    "musa-rabbana-innaka-atayta-firawn": {
+      "ref": "10:88",
+      "edition": "quran-uthmani",
+      "sha256": "83a8a83cb3a99b077413d626b1655db9286f20c495c9335590d84cc8af6539e4",
+      "words": 27,
+      "excerpt": true
+    },
+    "sulayman-rabbi-awzini-an-ashkura": {
+      "ref": "27:19",
+      "edition": "quran-uthmani",
+      "sha256": "29629654dbde87ba633a17a09fd5180b37b3ba37c76847e0cf01d85cd70e72d6",
+      "words": 19,
+      "excerpt": true
+    },
+    "sulayman-rabbi-ighfir-li-wa-hab-li-mulkan": {
+      "ref": "38:35",
+      "edition": "quran-uthmani",
+      "sha256": "467a901453194dcfe20ef7cb8422f20a06b3dcb832d213a31c51985761c0d3db",
+      "words": 14,
+      "excerpt": true
+    },
+    "zakariyya-rabbi-hab-li-dhurriyyatan-tayyibah": {
+      "ref": "3:38",
+      "edition": "quran-uthmani",
+      "sha256": "f53f4f02e9951615ce199ac0de7be395da4b7accaa4d75f142b52280130e8305",
+      "words": 10,
+      "excerpt": true
+    },
+    "zakariyya-rabbi-inni-wahana-al-azmu-minni": {
+      "ref": "19:4-6",
+      "edition": "quran-uthmani",
+      "sha256": "b014ebfaf5823f0d3e9f2086c5d5c236f74472108b90e63f2075efddffcc1be9",
+      "words": 34,
+      "excerpt": true
+    },
+    "zakariyya-rabbi-la-tadharni-fardan": {
+      "ref": "21:89",
+      "edition": "quran-uthmani",
+      "sha256": "4453ffef07d82cf5cf8a8e37c87f95e403680485358261cf09a9d3585c1eb099",
+      "words": 7,
+      "excerpt": true
+    },
+    "yunus-la-ilaha-illa-anta": {
+      "ref": "21:87",
+      "edition": "quran-uthmani",
+      "sha256": "83c8f086c2f188768b698403d0084391b9066e6aed1122056bc2661fbf38d7a9",
+      "words": 9,
+      "excerpt": true
+    },
+    "isa-allahumma-rabbana-anzil-alayna-maidah": {
+      "ref": "5:114",
+      "edition": "quran-uthmani",
+      "sha256": "6ba6ab0cda0f37b0647978688dee9dd0492a90768800803fe915e43073f537c6",
+      "words": 18,
+      "excerpt": true
+    },
+    "isa-in-tuadhdhibhum-fa-innahum-ibaduk": {
+      "ref": "5:118",
+      "edition": "quran-uthmani",
+      "sha256": "cb7a778a5627723d7d3c720215c104413227872fff9b397d1066615135d06e51",
+      "words": 11,
+      "excerpt": false
+    },
+    "muhammad-rabbi-zidni-ilman": {
+      "ref": "20:114",
+      "edition": "quran-uthmani",
+      "sha256": "00ae909efef779e64cfbdfbad5d947b790d32e8b8b832e90a3aab9e39825beb9",
+      "words": 3,
+      "excerpt": true
+    },
+    "muhammad-rabbi-adkhilni-mudkhala-sidq": {
+      "ref": "17:80",
+      "edition": "quran-uthmani",
+      "sha256": "2e3909955cc9922bd47ec562689b9546bc295e66a5654a78f92cc8858e487123",
+      "words": 13,
+      "excerpt": true
+    },
+    "muhammad-rabbi-ighfir-warham": {
+      "ref": "23:118",
+      "edition": "quran-uthmani",
+      "sha256": "eaaa81cc33b3cd00b2ed9b73a79cedf39802861f1695033926c3f5cef4f99b0e",
+      "words": 6,
+      "excerpt": true
+    },
+    "ashab-al-kahf-rabbana-atina-min-ladunka-rahmah": {
+      "ref": "18:10",
+      "edition": "quran-uthmani",
+      "sha256": "25579352b9c2105d3a2d29d3183b11f41fef35003dad34a7a4e3aa98a65ec3fc",
+      "words": 10,
+      "excerpt": true
+    },
+    "asiyah-rabbi-ibni-li-indaka-baytan": {
+      "ref": "66:11",
+      "edition": "quran-uthmani",
+      "sha256": "b94513792bad0d12a9b041d0a6f8105c448a8303c6d2c94257bf61402112fe24",
+      "words": 15,
+      "excerpt": true
+    },
+    "umm-maryam-rabbi-inni-nadhartu-laka": {
+      "ref": "3:35",
+      "edition": "quran-uthmani",
+      "sha256": "6488d85c26726e597eac41b77232ff5e4bf231fbb7f6a94476b7a2d34019ebb8",
+      "words": 14,
+      "excerpt": true
+    },
+    "maryam-inni-audhu-bil-rahman-minka": {
+      "ref": "19:18",
+      "edition": "quran-uthmani",
+      "sha256": "51a56d93f98b845cb4346d546290664ebfab6cbcba8c447c88c650812984f92c",
+      "words": 7,
+      "excerpt": true
+    },
+    "saharat-firawn-rabbana-afrigh-alayna-sabran": {
+      "ref": "7:126",
+      "edition": "quran-uthmani",
+      "sha256": "9a815270f320e4182bfb18226230663a2f16cb956b8e56f54bc6574724a5c22c",
+      "words": 6,
+      "excerpt": true
+    },
+    "ashab-talut-rabbana-afrigh-alayna-sabran": {
+      "ref": "2:250",
+      "edition": "quran-uthmani",
+      "sha256": "c66f17122b0f172048bfda4b08cae309de44061c23287dbc395d83235ba46746",
+      "words": 10,
+      "excerpt": true
+    }
+  }
+}

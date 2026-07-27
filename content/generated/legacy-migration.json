@@ -1,0 +1,606 @@
+{
+  "note": "Editorial content lifted from data/prayers.json. Turkish is verbatim and must not be regenerated. English paraphrases are deliberately excluded — see the header of scripts/migrate-legacy.ts.",
+  "migrated": [
+    {
+      "id": "adam-rabbana-zalamna-anfusana",
+      "legacyId": "adam-7-23",
+      "legacyRef": "7:23",
+      "turkish": "Rabbimiz! Kendimize zulmettik. Bizi bağışlamaz ve bize merhamet etmezsen, kaybedenlerden oluruz.",
+      "transliteration": "Rabbana zalamna anfusana wa in lam taghfir lana wa tarhamna lanakunna mina al-khasirin.",
+      "context": "In the Qur’an (7:23), Adam and Hawwa turn to Allah, admitting their wrong and asking for forgiveness and mercy.",
+      "reflection": "Use this dua to own mistakes and ask Allah’s mercy without excuses.",
+      "topics": [
+        "tawbah",
+        "forgiveness",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "nuh-rabbi-ighfir-li-wa-liwalidayya",
+      "legacyId": "nuh-71-28",
+      "legacyRef": "71:28",
+      "turkish": "Rabbim! Beni, anne babamı, evime mümin olarak girenleri ve tüm mümin erkekleri ile mümin kadınları bağışla; zalimlerin helakini artır.",
+      "transliteration": "Rabbi ighfir li wa liwalidayya wa liman dakhala baytiya mu'minan wa lil-mu'minina wal-mu'minat wa la tazid al-zalimin illa tabara.",
+      "context": "In the Qur’an (71:28), Nuh prays for forgiveness for himself, his parents, and all believing men and women.",
+      "reflection": "Include family and the wider ummah in your prayers for forgiveness.",
+      "topics": [
+        "forgiveness",
+        "mercy",
+        "family"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "nuh-rabbi-anzilni-munzalan-mubarakan",
+      "legacyId": "nuh-23-29",
+      "legacyRef": "23:29",
+      "turkish": "Rabbim! Beni bereketli bir menzile indir. Sen indirenlerin en hayırlısısın.",
+      "transliteration": "Rabbi anzilni munzalan mubarakan wa anta khayru al-munzilin.",
+      "context": "In the Qur’an (23:29), Nuh asks for a blessed landing after being saved.",
+      "reflection": "Ask Allah’s blessing when entering a new phase or place.",
+      "topics": [
+        "protection",
+        "gratitude"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "nuh-rabbi-inni-audhu-bika",
+      "legacyId": "nuh-11-47",
+      "legacyRef": "11:47",
+      "turkish": "Rabbim! Bilmediğim şeyi Senden istemekten Sana sığınırım. Beni bağışlamaz ve bana merhamet etmezsen kaybedenlerden olurum.",
+      "transliteration": "Rabbi inni a'udhu bika an as'alaka ma laysa li bihi ilm wa illa taghfir li wa tarhamni akun mina al-khasirin.",
+      "context": "In the Qur’an (11:47), Nuh seeks refuge after being corrected and asks for Allah’s forgiveness and mercy.",
+      "reflection": "Accept correction with humility and return to Allah.",
+      "topics": [
+        "tawbah",
+        "forgiveness",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "nuh-rabbi-la-tadhar-ala-al-ard",
+      "legacyId": "nuh-71-26",
+      "legacyRef": "71:26",
+      "turkish": "Rabbim! Yeryüzünde inkârcılardan tek bir kimseyi bırakma.",
+      "transliteration": "Rabbi la tadhar 'ala al-ardi mina al-kafirina dayyara.",
+      "context": "In the Qur’an (71:26), Nuh asks Allah to end persistent disbelief and corruption.",
+      "reflection": "When oppression persists, ask Allah to establish justice while staying patient.",
+      "topics": [
+        "justice",
+        "protection"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbi-ijal-hadha-baladan-aminan",
+      "legacyId": "ibrahim-2-126",
+      "legacyRef": "2:126",
+      "turkish": "Rabbim! Burasını güvenli bir belde yap ve Allah’a ve ahiret gününe iman eden halkını meyvelerle rızıklandır.",
+      "transliteration": "Rabbi ij'al hadha baladan amina warzuq ahlahu mina al-thamarat man amana minhum billahi wal-yawm al-akhir.",
+      "context": "In the Qur’an (2:126), Ibrahim prays for a secure city and provision for its believing people.",
+      "reflection": "Pray for safety and lawful provision for your community.",
+      "topics": [
+        "protection",
+        "rizq"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbana-taqabbal-minna",
+      "legacyId": "ibrahim-2-127",
+      "legacyRef": "2:127",
+      "turkish": "Rabbimiz! Bizden kabul buyur; şüphesiz Sen işiten ve bilensin.",
+      "transliteration": "Rabbana taqabbal minna innaka anta al-sami'u al-'alim.",
+      "context": "In the Qur’an (2:127), Ibrahim and Ismail ask Allah to accept their service while raising the Ka‘bah.",
+      "reflection": "Seek Allah’s acceptance for every act of worship.",
+      "topics": [
+        "gratitude",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbi-ijal-hadha-al-balada-aminan",
+      "legacyId": "ibrahim-14-35",
+      "legacyRef": "14:35",
+      "turkish": "Rabbim! Bu beldeyi güvenli kıl; beni ve çocuklarımı putlara tapmaktan uzak tut.",
+      "transliteration": "Rabbi ij'al hadha al-balad amina wajnubni wa baniyya an na'bud al-asnam.",
+      "context": "In the Qur’an (14:35), Ibrahim asks Allah to secure the city and protect his family from idolatry.",
+      "reflection": "Ask Allah to safeguard faith for yourself and your family.",
+      "topics": [
+        "protection",
+        "guidance",
+        "family"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbana-inni-askantu",
+      "legacyId": "ibrahim-14-36",
+      "legacyRef": "14:36",
+      "turkish": "Rabbim! Putlar birçok insanı saptırdı. Kim bana uyarsa bendendir; kim bana karşı gelirse, şüphesiz Sen bağışlayan ve merhamet edensin.",
+      "transliteration": "Rabbi innahunna adlalna kathiran mina al-nas fa man tabi'ani fa innahu minni wa man 'asani fa innaka ghafur rahim.",
+      "context": "In the Qur’an (14:36), Ibrahim acknowledges the misguidance of idols and entrusts people to Allah’s mercy.",
+      "reflection": "Hold to truth while relying on Allah’s mercy for others.",
+      "topics": [
+        "mercy",
+        "guidance"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbi-hab-li-hukman",
+      "legacyId": "ibrahim-26-83",
+      "legacyRef": "26:83",
+      "turkish": "Rabbim! Bana hikmet ver ve beni salihlerle birlikte kıl.",
+      "transliteration": "Rabbi hab li hukman wa alhiqni bil-salihin.",
+      "context": "In the Qur’an (26:83), Ibrahim asks for sound judgment and to be joined with the righteous.",
+      "reflection": "Seek wisdom and righteous company to stay on the right path.",
+      "topics": [
+        "guidance",
+        "knowledge"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ibrahim-rabbi-hab-li-mina-al-salihin",
+      "legacyId": "ibrahim-37-100",
+      "legacyRef": "37:100",
+      "turkish": "Rabbim! Bana salih bir evlat bağışla.",
+      "transliteration": "Rabbi hab li mina al-salihin.",
+      "context": "In the Qur’an (37:100), Ibrahim asks Allah to grant him a righteous child.",
+      "reflection": "Ask for children who bring you closer to Allah.",
+      "topics": [
+        "family",
+        "guidance"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "lut-rabbi-najjini-wa-ahli",
+      "legacyId": "lut-26-169",
+      "legacyRef": "26:169",
+      "turkish": "Rabbim! Beni ve ailemi onların yaptıklarından kurtar.",
+      "transliteration": "Rabbi najjini wa ahli mimma ya'malun.",
+      "context": "In the Qur’an (26:169), Lut asks Allah to save him and his family from what his people do.",
+      "reflection": "Seek Allah’s protection for your family amid harmful surroundings.",
+      "topics": [
+        "protection",
+        "family"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "yusuf-tawaffani-musliman",
+      "legacyId": "yusuf-12-101",
+      "legacyRef": "12:101",
+      "turkish": "Rabbim! Bana hüküm verdin ve rüya yorumunu öğrettin. Göklerin ve yerin yaratıcısı! Dünyada da ahirette de dostum Sensin. Beni Müslüman olarak vefat ettir ve beni salihlerle birlikte kıl.",
+      "transliteration": "Rabbi qad ataytani mina al-mulk wa 'allamtani min ta'wil al-ahadith fatir al-samawati wal-ard anta waliyyi fi al-dunya wal-akhirah tawaffani musliman wa alhiqni bil-salihin.",
+      "context": "In the Qur’an (12:101), Yusuf thanks Allah for authority and knowledge and asks for a faithful end.",
+      "reflection": "Let blessings lead you to gratitude and a righteous conclusion.",
+      "topics": [
+        "gratitude",
+        "guidance",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ayyub-anni-massaniya-al-durr",
+      "legacyId": "ayyub-21-83",
+      "legacyRef": "21:83",
+      "turkish": "Bana sıkıntı dokundu; Sen merhametlilerin en merhametlisisin.",
+      "transliteration": "Anni massaniya al-durru wa anta arham al-rahimin.",
+      "context": "In the Qur’an (21:83), Ayyub mentions his hardship and appeals to Allah’s mercy.",
+      "reflection": "When tested, speak to Allah with humility and hope.",
+      "topics": [
+        "healing",
+        "mercy",
+        "distress"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "ayyub-anni-massaniya-al-shaytan",
+      "legacyId": "ayyub-38-41",
+      "legacyRef": "38:41",
+      "turkish": "Rabbim! Şeytan bana yorgunluk ve azap dokundurdu.",
+      "transliteration": "Rabbi inni massaniya al-shaytanu binusbin wa 'adhab.",
+      "context": "In the Qur’an (38:41), Ayyub describes his suffering and turns to Allah for help.",
+      "reflection": "Present your hardship to Allah and seek His relief.",
+      "topics": [
+        "distress",
+        "healing",
+        "protection"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbi-ishrah-li-sadri",
+      "legacyId": "musa-20-25",
+      "legacyRef": "20:25",
+      "turkish": "Rabbim! Gönlümü genişlet.",
+      "transliteration": "Rabbi ishrah li sadri.",
+      "context": "In the Qur’an (20:25), Musa begins his supplication by asking Allah to expand his chest.",
+      "reflection": "Ask Allah for inner strength when carrying responsibility.",
+      "topics": [
+        "guidance",
+        "sabr"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbi-inni-zalamtu-nafsi",
+      "legacyId": "musa-28-16",
+      "legacyRef": "28:16",
+      "turkish": "Rabbim! Kendime zulmettim, beni bağışla. Allah onu bağışladı; şüphesiz O çok bağışlayan, çok merhamet edendir.",
+      "transliteration": "Rabbi inni zalamtu nafsi faghfir li faghafara lahu innahu huwa al-ghafur al-rahim.",
+      "context": "In the Qur’an (28:16), Musa admits his wrongdoing and asks Allah’s forgiveness.",
+      "reflection": "Admit mistakes quickly and seek Allah’s pardon.",
+      "topics": [
+        "tawbah",
+        "forgiveness",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbi-najjini-mina-al-qawm-al-zalimin",
+      "legacyId": "musa-28-21",
+      "legacyRef": "28:21",
+      "turkish": "Rabbim! Beni zalim topluluktan kurtar.",
+      "transliteration": "Rabbi najjini mina al-qawmi al-zalimin.",
+      "context": "In the Qur’an (28:21), Musa asks to be saved from wrongdoing people.",
+      "reflection": "Seek Allah’s protection when facing injustice.",
+      "topics": [
+        "protection",
+        "justice"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbi-inni-lima-anzalta-ilayya-faqir",
+      "legacyId": "musa-28-24",
+      "legacyRef": "28:24",
+      "turkish": "Rabbim! Bana indireceğin her türlü hayra muhtacım.",
+      "transliteration": "Rabbi inni lima anzalta ilayya min khayrin faqir.",
+      "context": "In the Qur’an (28:24), Musa asks for any good that Allah sends down.",
+      "reflection": "Recognize your dependence on Allah’s provision.",
+      "topics": [
+        "rizq",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbi-ighfir-li-wa-li-akhi",
+      "legacyId": "musa-7-151",
+      "legacyRef": "7:151",
+      "turkish": "Rabbim! Beni ve kardeşimi bağışla; bizi rahmetine dahil et. Sen merhametlilerin en merhametlisisin.",
+      "transliteration": "Rabbi ighfir li wa li akhi wa adkhilna fi rahmatika wa anta arham al-rahimin.",
+      "context": "In the Qur’an (7:151), Musa asks forgiveness for himself and his brother and seeks Allah’s mercy.",
+      "reflection": "Ask Allah’s mercy for yourself and those you love.",
+      "topics": [
+        "forgiveness",
+        "mercy",
+        "family"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-anta-waliyyuna-faghfir-lana",
+      "legacyId": "musa-7-156",
+      "legacyRef": "7:156",
+      "turkish": "Bu dünyada da ahirette de bize güzellik yaz; biz Sana yöneldik.",
+      "transliteration": "Waktub lana fi hadhihi al-dunya hasanatan wa fi al-akhirati inna hudna ilayk.",
+      "context": "In the Qur’an (7:156), Musa asks for goodness in this life and the Hereafter while turning to Allah.",
+      "reflection": "Balance worldly needs with hope for the Hereafter.",
+      "topics": [
+        "tawbah",
+        "guidance",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "musa-rabbana-innaka-atayta-firawn",
+      "legacyId": "musa-10-88",
+      "legacyRef": "10:88",
+      "turkish": "Rabbimiz! Firavun’a ve ileri gelenlerine dünya hayatında süs ve mal verdin; böylece Senin yolundan saptırıyorlar. Rabbimiz! Mallarını yok et, kalplerini sıkılaştır ki acı azabı görmedikçe iman etmesinler.",
+      "transliteration": "Rabbana innaka atayta fir'awna wa mala'ahu zinatan wa amwalan fi al-hayat al-dunya rabbana liyudillu 'an sabilika rabbana itmis 'ala amwalihim wa ushdud 'ala qulubihim fala yu'minu hatta yaraw al-'adhab al-alim.",
+      "context": "In the Qur’an (10:88), Musa and Harun ask Allah to restrain Pharaoh’s misguidance and oppression.",
+      "reflection": "Ask Allah to end wrongdoing and protect people from being led astray.",
+      "topics": [
+        "justice",
+        "protection"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "sulayman-rabbi-awzini-an-ashkura",
+      "legacyId": "sulaiman-27-19",
+      "legacyRef": "27:19",
+      "turkish": "Rabbim! Bana ve anne babama verdiğin nimetlere şükretmeyi ve razı olacağın salih ameller yapmayı nasip et. Soyumu ıslah et. Sana yöneldim ve Müslümanlardanım.",
+      "transliteration": "Rabbi awzi'ni an ashkura ni'mataka allati an'amta 'alayya wa 'ala walidayya wa an a'mala salihan tardah wa aslih li fi dhurriyyati inni tubtu ilayka wa inni mina al-muslimin.",
+      "context": "In the Qur’an (27:19), Sulaiman asks to be grateful and to do deeds pleasing to Allah.",
+      "reflection": "Pair gratitude with action that Allah loves.",
+      "topics": [
+        "gratitude",
+        "family",
+        "guidance"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "sulayman-rabbi-ighfir-li-wa-hab-li-mulkan",
+      "legacyId": "sulaiman-38-35",
+      "legacyRef": "38:35",
+      "turkish": "Rabbim! Beni bağışla ve benden sonra kimseye verilmeyecek bir hüküm ver. Sen çok vericisin.",
+      "transliteration": "Rabbi ighfir li wa hab li mulkan la yanbaghi li ahadin min ba'di innaka anta al-wahhab.",
+      "context": "In the Qur’an (38:35), Sulaiman asks forgiveness and a unique kingdom by Allah’s gift.",
+      "reflection": "Seek Allah’s forgiveness even when granted power.",
+      "topics": [
+        "forgiveness",
+        "gratitude"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "zakariyya-rabbi-hab-li-dhurriyyatan-tayyibah",
+      "legacyId": "zakariya-3-38",
+      "legacyRef": "3:38",
+      "turkish": "Rabbim! Bana katından temiz bir nesil bağışla; Sen duayı işitensin.",
+      "transliteration": "Rabbi hab li min ladunka dhurriyyatan tayyibatan innaka sami'u al-du'a.",
+      "context": "In the Qur’an (3:38), Zakariya asks Allah for good offspring.",
+      "reflection": "Ask Allah for righteous family and trust His timing.",
+      "topics": [
+        "family",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "zakariyya-rabbi-inni-wahana-al-azmu-minni",
+      "legacyId": "zakariya-19-5",
+      "legacyRef": "19:5",
+      "turkish": "Katından bana bir veli bağışla.",
+      "transliteration": "Fahab li min ladunka waliyyan.",
+      "context": "In the Qur’an (19:5), Zakariya asks for a successor from Allah.",
+      "reflection": "Pray for successors who preserve faith.",
+      "topics": [
+        "family",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "zakariyya-rabbi-la-tadharni-fardan",
+      "legacyId": "zakariya-21-89",
+      "legacyRef": "21:89",
+      "turkish": "Rabbim! Beni tek başıma bırakma; Sen varislerin en hayırlısısın.",
+      "transliteration": "Rabbi la tadharni fardan wa anta khayru al-warithin.",
+      "context": "In the Qur’an (21:89), Zakariya asks not to be left without an heir.",
+      "reflection": "Bring your deepest hopes to Allah with patience.",
+      "topics": [
+        "family",
+        "mercy"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "yunus-la-ilaha-illa-anta",
+      "legacyId": "yunus-21-87",
+      "legacyRef": "21:87",
+      "turkish": "Senden başka ilah yok; Seni her türlü eksiklikten tenzih ederim. Ben zalimlerden oldum.",
+      "transliteration": "La ilaha illa anta subhanaka inni kuntu mina al-zalimin.",
+      "context": "In the Qur’an (21:87), Yunus calls upon Allah, affirming tawhid and admitting his wrongdoing.",
+      "reflection": "In distress, return to Allah with tawhid and repentance.",
+      "topics": [
+        "tawbah",
+        "mercy",
+        "distress"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "isa-allahumma-rabbana-anzil-alayna-maidah",
+      "legacyId": "isa-5-114",
+      "legacyRef": "5:114",
+      "turkish": "Allah’ım, Rabbimiz! Gökten bize bir sofra indir; bize bayram olsun ve Senden bir ayet olsun. Bizi rızıklandır; Sen rızık verenlerin en hayırlısısın.",
+      "transliteration": "Allahumma rabbana anzil 'alayna ma'idatan mina al-sama'i takunu lana 'idan li-awwalina wa akhirina wa ayatan minka warzuqna wa anta khayru al-raziqin.",
+      "context": "In the Qur’an (5:114), Isa supplicates for a table from heaven as a sign and provision.",
+      "reflection": "Ask Allah for provision with gratitude and awareness of His signs.",
+      "topics": [
+        "rizq",
+        "gratitude",
+        "mercy"
+      ],
+      "status": "needs-review"
+    }
+  ],
+  "orphaned": [
+    {
+      "legacyId": "nuh-23-26",
+      "ref": "23:26",
+      "type": "Quran",
+      "prophet": "Noah",
+      "turkish": "Rabbim! Beni yalanlamalarına karşı bana yardım et.",
+      "transliteration": "Rabbi ansurni bima kadhdhabun.",
+      "context": "In the Qur’an (23:26), Nuh asks Allah for help against those who denied his message.",
+      "reflection": "Seek Allah’s help when facing rejection for truth."
+    },
+    {
+      "legacyId": "ibrahim-2-128",
+      "ref": "2:128",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Rabbimiz! Bizi Sana teslim olanlardan kıl; soyumuzdan da Sana teslim bir ümmet çıkar. Bize ibadet yollarımızı göster ve tövbemizi kabul et.",
+      "transliteration": "Rabbana waj'alna muslimayni laka wa min dhurriyyatina ummatan muslimatan laka wa arina manasikana wa tub 'alayna innaka anta al-tawwab al-rahim.",
+      "context": "In the Qur’an (2:128), Ibrahim and Ismail ask for steadfast submission and guidance in worship.",
+      "reflection": "Ask Allah to keep your worship sincere and guide your family."
+    },
+    {
+      "legacyId": "ibrahim-2-129",
+      "ref": "2:129",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Rabbimiz! Onların arasına kendilerinden bir elçi gönder; ayetlerini okusun, Kitabı ve hikmeti öğretsin, onları arındırsın.",
+      "transliteration": "Rabbana wab'ath fihim rasulan minhum yatlu 'alayhim ayatika wa yu'allimuhum al-kitab wal-hikmah wa yuzakkihim innaka anta al-'aziz al-hakim.",
+      "context": "In the Qur’an (2:129), Ibrahim asks for a messenger to teach and purify his descendants.",
+      "reflection": "True guidance comes through revelation and teaching—ask Allah for it."
+    },
+    {
+      "legacyId": "ibrahim-14-37",
+      "ref": "14:37",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Rabbimiz! Soyumdan bir kısmını, namazı dosdoğru kılsınlar diye Beyt-i Haram’ın yanında ekinsiz bir vadiye yerleştirdim. İnsanların kalplerini onlara yönelt ve onları meyvelerle rızıklandır ki şükretsinler.",
+      "transliteration": "Rabbana inni askantu min dhurriyyati biwadin ghayri dhi zar'in 'inda baytika al-muharram rabbana liyuqimu al-salah faj'al af'idatan mina al-nas tahwi ilayhim warzuqhum mina al-thamarat la'allahum yashkurun.",
+      "context": "In the Qur’an (14:37), Ibrahim mentions settling his descendants near the Sacred House and prays for hearts and provision.",
+      "reflection": "Communities need both devotion and provision—ask Allah for both."
+    },
+    {
+      "legacyId": "ibrahim-14-40",
+      "ref": "14:40",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Rabbim! Beni namazı dosdoğru kılanlardan eyle; soyumdan da. Rabbimiz, duamı kabul buyur.",
+      "transliteration": "Rabbi ij'alni muqima al-salah wa min dhurriyyati rabbana wa taqabbal du'a.",
+      "context": "In the Qur’an (14:40), Ibrahim asks to be steadfast in prayer and for his descendants to do the same.",
+      "reflection": "Ask Allah to make prayer consistent across generations."
+    },
+    {
+      "legacyId": "ibrahim-14-41",
+      "ref": "14:41",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Rabbimiz! Hesap görüleceği gün beni, anne babamı ve müminleri bağışla.",
+      "transliteration": "Rabbana ighfir li wa liwalidayya wa lil-mu'minina yawma yaqumu al-hisab.",
+      "context": "In the Qur’an (14:41), Ibrahim asks forgiveness for himself, his parents, and the believers on the Day of Account.",
+      "reflection": "Remember the Hereafter and include others in your prayers."
+    },
+    {
+      "legacyId": "ibrahim-26-84",
+      "ref": "26:84",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Sonraki nesiller arasında benim için doğru bir ün nasip et.",
+      "transliteration": "Waj'al li lisan sidqin fi al-akhirin.",
+      "context": "In the Qur’an (26:84), Ibrahim asks for a truthful reputation among later generations.",
+      "reflection": "Aim for a legacy of truthfulness, not fame."
+    },
+    {
+      "legacyId": "ibrahim-26-85",
+      "ref": "26:85",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Beni nimet cennetinin mirasçılarından eyle.",
+      "transliteration": "Waj'alni min warathati jannat al-na'im.",
+      "context": "In the Qur’an (26:85), Ibrahim asks to be among the inheritors of the Garden of Bliss.",
+      "reflection": "Let your goals be anchored in the Hereafter."
+    },
+    {
+      "legacyId": "ibrahim-26-86",
+      "ref": "26:86",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Babamı bağışla; o sapkınlardan olmuştu.",
+      "transliteration": "Waghfir li abi innahu kana mina al-dallin.",
+      "context": "In the Qur’an (26:86), Ibrahim asks forgiveness for his father.",
+      "reflection": "Pray for your family with compassion while staying within Allah’s guidance."
+    },
+    {
+      "legacyId": "ibrahim-26-87",
+      "ref": "26:87",
+      "type": "Quran",
+      "prophet": "Abraham",
+      "turkish": "Diriltilecekleri gün beni mahcup etme.",
+      "transliteration": "Wa la tukhzini yawma yub'athun.",
+      "context": "In the Qur’an (26:87), Ibrahim asks not to be disgraced on the Day of Resurrection.",
+      "reflection": "Ask Allah for honor and safety on the Day of Judgment."
+    },
+    {
+      "legacyId": "musa-20-26",
+      "ref": "20:26",
+      "type": "Quran",
+      "prophet": "Moses",
+      "turkish": "İşimi bana kolaylaştır.",
+      "transliteration": "Wa yassir li amri.",
+      "context": "In the Qur’an (20:26), Musa asks Allah to make his task easy.",
+      "reflection": "Turn to Allah for ease in difficult duties."
+    },
+    {
+      "legacyId": "musa-20-27",
+      "ref": "20:27",
+      "type": "Quran",
+      "prophet": "Moses",
+      "turkish": "Dilimin düğümünü çöz.",
+      "transliteration": "Wahlul 'uqdatan min lisani.",
+      "context": "In the Qur’an (20:27), Musa asks for clarity of speech.",
+      "reflection": "Seek Allah’s help to communicate truth clearly."
+    },
+    {
+      "legacyId": "musa-20-28",
+      "ref": "20:28",
+      "type": "Quran",
+      "prophet": "Moses",
+      "turkish": "Sözümü anlasınlar.",
+      "transliteration": "Yafqahu qawli.",
+      "context": "In the Qur’an (20:28), Musa asks that his speech be understood.",
+      "reflection": "Pray that your message is received with understanding."
+    },
+    {
+      "legacyId": "muhammad-bukhari-834",
+      "ref": "Bukhari 834",
+      "type": "Hadith",
+      "prophet": "Muhammad",
+      "turkish": "Allah’ım! Kendime çok zulmettim; günahları ancak Sen bağışlarsın. Beni bağışla ve bana merhamet et; Sen çok bağışlayan, çok merhamet edensin.",
+      "transliteration": "Allahumma inni zalamtu nafsi zulman kathiran wa la yaghfiru al-dhunuba illa anta faghfir li maghfiratan min 'indika warhamni innaka anta al-ghafur al-rahim.",
+      "context": "In Sahih al-Bukhari (834), the Prophet ﷺ taught Abu Bakr to say this in prayer when seeking forgiveness and mercy.",
+      "reflection": "Use this dua in prayer when asking Allah for sincere forgiveness."
+    },
+    {
+      "legacyId": "muhammad-muslim-843",
+      "ref": "Muslim 843",
+      "type": "Hadith",
+      "prophet": "Muhammad",
+      "turkish": "Allah’ım! Cehennem azabından, kabir azabından, hayat ve ölüm fitnelerinden ve Deccal fitnesinin şerrinden Sana sığınırım.",
+      "transliteration": "Allahumma inni a'udhu bika min 'adhabi jahannam wa min 'adhabi al-qabr wa min fitnati al-mahya wal-mamat wa min sharri fitnati al-masih al-dajjal.",
+      "context": "In Sahih Muslim (843), the Prophet ﷺ instructed this supplication for protection from major trials and punishments in prayer.",
+      "reflection": "Recite it to seek Allah’s protection from unseen and future trials."
+    },
+    {
+      "legacyId": "muhammad-muslim-2720",
+      "ref": "Muslim 2720",
+      "type": "Hadith",
+      "prophet": "Muhammad",
+      "turkish": "Allah’ım! İşlerimin teminatı olan dinimi düzelt; geçimimin olduğu dünyamı düzelt; dönüşümün olduğu ahiretimi de düzelt.",
+      "transliteration": "Allahumma aslih li diniya alladhi huwa 'ismatu amri wa aslih li dunyaya allati fiha ma'ashi wa aslih li akhirati allati fiha ma'adi.",
+      "context": "In Sahih Muslim (2720), it is reported that the Prophet ﷺ would supplicate for rectification of religion, worldly life, and the Hereafter.",
+      "reflection": "Ask Allah to set right all dimensions of life, not just one."
+    },
+    {
+      "legacyId": "muhammad-muslim-2721",
+      "ref": "Muslim 2721",
+      "type": "Hadith",
+      "prophet": "Muhammad",
+      "turkish": "Allah’ım! Senden hidayet, takva, iffet ve gönül zenginliği dilerim.",
+      "transliteration": "Allahumma inni as'aluka al-huda wa al-tuqa wa al-'afaf wa al-ghina.",
+      "context": "In Sahih Muslim (2721), it is reported that the Prophet ﷺ would ask for guidance, piety, chastity, and contentment.",
+      "reflection": "Prioritize inner character alongside material needs."
+    },
+    {
+      "legacyId": "muhammad-bukhari-6369",
+      "ref": "Bukhari 6369",
+      "type": "Hadith",
+      "prophet": "Muhammad",
+      "turkish": "Allah’ım! Hüzün ve kederden, acizlik ve tembellikten, cimrilik ve korkaklıktan, borç yükünden ve insanların baskısından Sana sığınırım.",
+      "transliteration": "Allahumma inni a'udhu bika min al-hamm wal-hazan wal-'ajz wal-kasal wal-bukhl wal-jubn wa dala' al-dayn wa ghalabat al-rijal.",
+      "context": "In Sahih al-Bukhari (6369), it is reported that the Prophet ﷺ would seek refuge from anxiety, laziness, and overpowering debt.",
+      "reflection": "Seek Allah’s refuge from inner burdens and social pressures."
+    }
+  ]
+}
