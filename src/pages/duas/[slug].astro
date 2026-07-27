@@ -1,0 +1,209 @@
+---
+import Base from "../../layouts/Base.astro";
+import Passage from "../../components/Passage.astro";
+import Honorific from "../../components/Honorific.astro";
+import { DUAS, prophet, dua as findDua, refLabel, translation, theme } from "../../lib/content";
+
+export function getStaticPaths() {
+  return DUAS.map((d) => ({ params: { slug: d.id }, props: { dua: d } }));
+}
+
+const { dua } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const speaker = prophet(dua.speaker)!;
+const en = translation(dua, "en");
+const related = dua.related.map(findDua).filter(Boolean);
+const needsReview = dua.reviewStatus === "needs-review";
+const isHadith = dua.source.type === "hadith";
+
+const formNote =
+  dua.form === "statement"
+    ? "Grammatically a statement rather than a supplication, though widely said as one."
+    : dua.form === "istiadha"
+      ? "A seeking of refuge, addressed to the one before her rather than a petition to Allah."
+      : null;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: dua.title.en,
+  inLanguage: "ar",
+  isPartOf: { "@type": "Collection", name: "The Duʿāʾ of the Prophets" },
+  citation: refLabel(dua),
+  translator: en?.translator,
+  license: en?.licence,
+};
+---
+
+<Base
+  title={`${dua.title.en} — ${speaker.name.en} — The Duʿāʾ of the Prophets`}
+  description={`${en?.text ?? dua.title.en} — ${refLabel(dua)}.`}
+  jsonLd={jsonLd}
+>
+  <p class="kicker" style="margin-top: var(--s-12)">
+    <a href={`${base}/prophets/${speaker.id}/`}>
+      {speaker.name.en} <Honorific honorific={speaker.honorific} />
+    </a>
+    {dua.situations.en[0] && <span> · {dua.situations.en[0]}</span>}
+  </p>
+
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-2); max-width: 24ch">
+    {dua.title.en}
+  </h1>
+
+  <Passage dua={dua} />
+
+  {
+    formNote && (
+      <p class="prose" style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)">
+        {formNote}
+      </p>
+    )
+  }
+
+  <div class="stack" style="margin-top: var(--s-12)">
+    {
+      dua.context.summary && (
+        <section>
+          <h2 class="section-label">When and why it was said</h2>
+          <p class="prose">{dua.context.summary}</p>
+          <p style="font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-soft)">
+            {dua.context.references.map((r) => `${r.work} ${r.locus ?? ""}`.trim()).join(" · ")}
+          </p>
+        </section>
+      )
+    }
+
+    {
+      dua.reflection && (
+        <section>
+          <h2 class="section-label">Reflection</h2>
+          {/*
+            Deliberately a different visual register from the context above.
+            This is the project's own voice, not transmitted knowledge, and the
+            reader is told so rather than left to infer it.
+          */}
+          <div class="reflection">
+            <p>{dua.reflection.text}</p>
+            <span class="byline">
+              Editorial note by {dua.reflection.author} — not a transmitted narration
+            </span>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      needsReview && (
+        <p class="notice">
+          {isHadith
+            ? "This entry's reference number and grading are awaiting verification against a printed edition, and its Arabic is hand-entered rather than fetched from an authenticated source."
+            : "The occasion described above is awaiting a tafsīr citation. The Arabic and its reference are verified."}
+        </p>
+      )
+    }
+
+    {
+      dua.situations.en.length > 0 && (
+        <section>
+          <h2 class="section-label">Said when</h2>
+          <ul class="prose" style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft); padding-left: var(--s-4)">
+            {dua.situations.en.map((s) => <li>{s}</li>)}
+          </ul>
+        </section>
+      )
+    }
+
+    <section>
+      <h2 class="section-label">Themes</h2>
+      <p style="font-family: var(--font-util); font-size: var(--t-sm)">
+        {
+          dua.themes.map((t, i) => {
+            const th = theme(t);
+            return th ? (
+              <>
+                {i > 0 && " · "}
+                <a href={`${base}/themes/${t}/`}>{th.label.en}</a>
+              </>
+            ) : null;
+          })
+        }
+      </p>
+    </section>
+  </div>
+
+  <div class="actions">
+    <button type="button" data-copy="arabic">Copy Arabic</button>
+    <button type="button" data-copy="translation">Copy translation</button>
+    <button type="button" data-copy="full">Copy with citation</button>
+    <button type="button" data-bookmark>Bookmark</button>
+    <span data-copy-status role="status" aria-live="polite" style="color: var(--ink-soft)"></span>
+  </div>
+
+  {
+    related.length > 0 && (
+      <section class="related" style="margin-top: var(--s-12)">
+        <h2 class="section-label">Near this</h2>
+        <ul class="index-list">
+          {related.map((r) => (
+            <li>
+              <a class="entry" href={`${base}/duas/${r!.id}/`}>
+                <span class="seq" />
+                <span class="name" style="font-size: var(--t-base)">{r!.title.en}</span>
+                <span class="meta">{prophet(r!.speaker)?.name.en}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <script
+    is:inline
+    define:vars={{
+      arabic: dua.arabic?.text ?? "",
+      translationText: en?.text ?? "",
+      citation: `${refLabel(dua)}${en ? ` — tr. ${en.translator}` : ""}`,
+      id: dua.id,
+    }}
+  >
+    (() => {
+      const status = document.querySelector("[data-copy-status]");
+      const say = (m) => {
+        if (status) { status.textContent = m; setTimeout(() => (status.textContent = ""), 2400); }
+      };
+      const payload = {
+        arabic,
+        translation: translationText,
+        // A copied duʿāʾ carries its source. Detaching scripture from its
+        // citation is how misattribution spreads.
+        full: `${arabic}\n\n${translationText}\n\n${citation}`,
+      };
+      document.querySelectorAll("[data-copy]").forEach((b) =>
+        b.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(payload[b.dataset.copy]);
+            say("Copied.");
+          } catch {
+            say("Copy failed — select the text instead.");
+          }
+        }),
+      );
+
+      const KEY = "dua.bookmarks";
+      const list = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { return []; } };
+      const btn = document.querySelector("[data-bookmark]");
+      const sync = () => { btn.textContent = list().includes(id) ? "Bookmarked ✓" : "Bookmark"; };
+      btn?.addEventListener("click", () => {
+        const l = list();
+        const i = l.indexOf(id);
+        if (i === -1) l.push(id); else l.splice(i, 1);
+        localStorage.setItem(KEY, JSON.stringify(l));
+        sync();
+        say(i === -1 ? "Bookmarked." : "Bookmark removed.");
+      });
+      sync();
+    })();
+  </script>
+</Base>

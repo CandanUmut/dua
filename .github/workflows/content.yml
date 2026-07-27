@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Typecheck (strict)
+        run: npm run typecheck
+
+      # Re-derives every duʿāʾ from the upstream edition and compares against
+      # content.lock.json. Fails if any Arabic has been edited by hand — which
+      # is the whole point: the Phase 1 audit found two corrupted entries that
+      # read fluently and survived human review.
+      - name: Verify Arabic against content.lock.json
+        run: npm run content:verify
+
+      - name: Check Turkish is not dropped
+        run: npx tsx scripts/migrate-legacy.ts
+
+      - name: Validate content against schema
+        run: npm run content:build
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,252 @@
+---
+import "../styles/global.css";
+import { LEGACY_REDIRECTS } from "../lib/content";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Structured data for this page, if any is honest to assert. */
+  jsonLd?: Record<string, unknown>;
+}
+const { title, description, jsonLd } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const nav = [
+  { href: `${base}/themes/`, label: "By need" },
+  { href: `${base}/prophets/`, label: "Prophets" },
+  { href: `${base}/search/`, label: "Search" },
+  { href: `${base}/about/`, label: "About" },
+];
+const here = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/*
+      Chrome will otherwise re-translate an already-vetted translation and
+      introduce semantic errors into scripture. This plus translate="no" on
+      every text container is the whole defence.
+    */}
+    <meta name="google" content="notranslate" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#e8e6df" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#191b1a" media="(prefers-color-scheme: dark)" />
+    <link rel="manifest" href={`${base}/manifest.webmanifest`} />
+    <link
+      rel="preload"
+      href={`${base}/fonts/amiri-arabic-1.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {/*
+      Applied before first paint so the chosen theme and type size never flash.
+      Kept inline and tiny for the same reason.
+    */}
+    <script is:inline>
+      (() => {
+        try {
+          const s = JSON.parse(localStorage.getItem("dua.settings") || "{}");
+          const r = document.documentElement;
+          if (s.theme && s.theme !== "auto") r.dataset.theme = s.theme;
+          if (s.type && s.type !== "normal") r.dataset.type = s.type;
+          if (s.translit === false) r.dataset.translit = "off";
+          if (s.honorific) r.dataset.honorific = s.honorific;
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="masthead-in">
+        <a class="wordmark" href={`${base}/`}>The Duʿāʾ of the Prophets</a>
+        <nav aria-label="Primary">
+          {
+            nav.map((n) => (
+              <a href={n.href} aria-current={here.startsWith(n.href) ? "page" : undefined}>
+                {n.label}
+              </a>
+            ))
+          }
+          <button class="settings-toggle" type="button" data-open-settings aria-haspopup="dialog">
+            Settings
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="page">
+        <p>
+          Arabic is fetched from an authenticated source and verified against a
+          checksum on every build — it is never typed by hand. English
+          translation by Marmaduke Pickthall (public domain). Turkish
+          translations are this project's own.
+        </p>
+        <p>
+          <a href={`${base}/about/`}>Sources and method</a> ·
+          <a href="https://github.com/CandanUmut/dua/issues/new">Report a correction</a>
+        </p>
+      </div>
+    </footer>
+
+    <dialog class="settings" data-settings aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings</h2>
+
+      <div class="setting">
+        <span id="set-theme">Appearance</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-theme">
+          {
+            ["auto", "light", "dark"].map((v) => (
+              <label>
+                <input type="radio" name="theme" value={v} />
+                <span>{v[0].toUpperCase() + v.slice(1)}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="setting">
+        <span id="set-type">Text size</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-type">
+          {
+            [
+              ["normal", "Normal"],
+              ["large", "Large"],
+              ["xlarge", "Larger"],
+            ].map(([v, l]) => (
+              <label>
+                <input type="radio" name="type" value={v} />
+                <span>{l}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="setting">
+        <span id="set-translit">Transliteration</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-translit">
+          {
+            [
+              ["on", "Show"],
+              ["off", "Hide"],
+            ].map(([v, l]) => (
+              <label>
+                <input type="radio" name="translit" value={v} />
+                <span>{l}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="setting">
+        <span id="set-hon">Honorifics</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-hon">
+          {
+            [
+              ["arabic", "Arabic"],
+              ["full", "In English"],
+              ["abbr", "Abbreviated"],
+            ].map(([v, l]) => (
+              <label>
+                <input type="radio" name="honorific" value={v} />
+                <span>{l}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <form method="dialog">
+        <button class="settings-toggle" style="font-size:var(--t-base)">Done</button>
+      </form>
+    </dialog>
+
+    <script is:inline>
+      (() => {
+        const KEY = "dua.settings";
+        const dlg = document.querySelector("[data-settings]");
+        if (!dlg) return;
+        const read = () => {
+          try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { return {}; }
+        };
+        const defaults = { theme: "auto", type: "normal", translit: true, honorific: "arabic" };
+        let s = { ...defaults, ...read() };
+
+        const apply = () => {
+          const r = document.documentElement;
+          if (s.theme === "auto") delete r.dataset.theme; else r.dataset.theme = s.theme;
+          if (s.type === "normal") delete r.dataset.type; else r.dataset.type = s.type;
+          r.dataset.translit = s.translit ? "on" : "off";
+          r.dataset.honorific = s.honorific;
+          document.querySelectorAll("[data-translit-block]").forEach((el) => {
+            el.classList.toggle("hidden", !s.translit);
+          });
+          document.querySelectorAll("[data-hon]").forEach((el) => {
+            el.textContent = el.dataset[s.honorific === "full" ? "honFull" : s.honorific === "abbr" ? "honAbbr" : "honArabic"] || "";
+          });
+          localStorage.setItem(KEY, JSON.stringify(s));
+        };
+
+        dlg.querySelectorAll("input[type=radio]").forEach((input) => {
+          const name = input.name;
+          const current = name === "translit" ? (s.translit ? "on" : "off") : s[name];
+          input.checked = input.value === current;
+          input.addEventListener("change", () => {
+            s[name] = name === "translit" ? input.value === "on" : input.value;
+            apply();
+          });
+        });
+
+        document.querySelectorAll("[data-open-settings]").forEach((b) =>
+          b.addEventListener("click", () => dlg.showModal()),
+        );
+        apply();
+      })();
+    </script>
+
+    {/*
+      The previous site used hash routes. Those links exist in bookmarks, in
+      messages, and in search results, so they redirect rather than 404.
+    */}
+    <script is:inline define:vars={{ base, redirects: LEGACY_REDIRECTS }}>
+      (() => {
+        const h = location.hash;
+        if (!h || h.length < 2) return;
+        const p = new URLSearchParams(h.slice(1).replace(/^view=/, "view="));
+        const view = p.get("view");
+        const id = p.get("id");
+        if (view === "dua" && id && redirects[id]) {
+          location.replace(base + "/duas/" + redirects[id] + "/");
+        } else if (view === "prophets") location.replace(base + "/prophets/");
+        else if (view === "topics") location.replace(base + "/themes/");
+        else if (view === "about") location.replace(base + "/about/");
+      })();
+    </script>
+
+    <script is:inline define:vars={{ base }}>
+      if ("serviceWorker" in navigator) {
+        addEventListener("load", () => navigator.serviceWorker.register(base + "/sw.js").catch(() => {}));
+      }
+    </script>
+  </body>
+</html>

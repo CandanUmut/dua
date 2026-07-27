@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import { THEMES, PROPHETS, DUAS, byTheme } from "../lib/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
+---
+
+<Base
+  title="The Duʿāʾ of the Prophets"
+  description={`The supplications of the Prophets as recorded in the Qurʾān and the authenticated Sunnah — ${DUAS.length} duʿāʾ with Arabic, transliteration, translation, and the occasion each was said.`}
+>
+  <div class="stack" style="margin-top: var(--s-16); margin-bottom: var(--s-24)">
+    <div>
+      <h1 style="font-size: var(--t-2xl); max-width: 20ch">
+        The words the Prophets used when they had nothing else.
+      </h1>
+      <p class="lede" style="margin-top: var(--s-6)">
+        {DUAS.length} supplications from the Qurʾān and the authenticated Sunnah, each
+        with its Arabic, how to say it, what it means, and the occasion on which
+        it was said.
+      </p>
+    </div>
+
+    <!--
+      Two doors, and nothing else. "By need" comes first because someone
+      arriving in difficulty does not yet know which prophet they want.
+    -->
+    <nav aria-label="Ways in" class="stack">
+      <div>
+        <h2 style="font-size: var(--t-lg)">
+          <a href={`${base}/themes/`}>I need words for…</a>
+        </h2>
+        <p class="lede" style="font-size: var(--t-base); margin-top: var(--s-2)">
+          Grief, fear, debt, illness, a decision, gratitude. Sixteen situations.
+        </p>
+        <ul class="themes" style="margin-top: var(--s-6)">
+          {
+            THEMES.map((t) => (
+              <li>
+                <a class="theme-link" href={`${base}/themes/${t.id}/`}>
+                  <span class="theme-name">{t.label.en}</span>
+                  <span class="theme-count">{byTheme(t.id).length} duʿāʾ</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 style="font-size: var(--t-lg)">
+          <a href={`${base}/prophets/`}>By prophet</a>
+        </h2>
+        <p class="lede" style="font-size: var(--t-base); margin-top: var(--s-2)">
+          {prophetCount} prophets in the order they came, from Ādam to Muḥammad ﷺ —
+          with the companion supplications kept separate.
+        </p>
+      </div>
+    </nav>
+  </div>
+</Base>
