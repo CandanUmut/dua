@@ -2,7 +2,7 @@
   "source": "https://api.alquran.cloud/v1",
   "script": "uthmani",
   "edition": "quran-uthmani",
-  "generatedAt": "2026-07-27T22:25:21.369Z",
+  "generatedAt": "2026-07-27T22:43:09.642Z",
   "note": "SHA-256 of the resolved Arabic per duʿāʾ. Regenerate with `npm run content:fetch`. Never edit Arabic by hand — `npm run content:verify` will fail.",
   "entries": {
     "adam-rabbana-zalamna-anfusana": {
@@ -367,6 +367,34 @@
       "edition": "quran-uthmani",
       "sha256": "c66f17122b0f172048bfda4b08cae309de44061c23287dbc395d83235ba46746",
       "words": 10,
+      "excerpt": true
+    },
+    "quran-rabbana-la-tuakhidhna": {
+      "ref": "2:286",
+      "edition": "quran-uthmani",
+      "sha256": "4e9121791d8c7a9637804507b045f34aff37dabea65365a20e683abc31c53770",
+      "words": 37,
+      "excerpt": true
+    },
+    "quran-rabbana-la-tuzigh-qulubana": {
+      "ref": "3:8",
+      "edition": "quran-uthmani",
+      "sha256": "6afb710d8b67ebf013892ad17fdfab213af279065e33757c82da3bc45a9e83f2",
+      "words": 15,
+      "excerpt": false
+    },
+    "quran-rabbana-ighfir-lana-dhunubana": {
+      "ref": "3:147",
+      "edition": "quran-uthmani",
+      "sha256": "b3b0a3f53589aac0432182dd5251e6f7e1b5c5379dd7d8ea05df50c4e442a8a3",
+      "words": 13,
+      "excerpt": true
+    },
+    "quran-rabbana-hab-lana-qurrata-ayun": {
+      "ref": "25:74",
+      "edition": "quran-uthmani",
+      "sha256": "c0703dcc27ec45ac5059de7177a79a501959e85ec0456c4de227cbf80184a6cf",
+      "words": 11,
       "excerpt": true
     }
   }

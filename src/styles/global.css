@@ -1,0 +1,654 @@
+/*
+ * Prophets' Duʿāʾ — type and colour system.
+ *
+ * Implements DESIGN.md. Two rules that shaped this file:
+ *
+ *   - Zero box-shadows. Separation is by rule and by space, the way a book
+ *     does it. Max border-radius is 2px.
+ *   - Every length is a token. There are no ad-hoc pixel values below.
+ */
+
+/* ------------------------------- fonts -------------------------------- */
+
+@font-face {
+  font-family: "Amiri";
+  src: url("/dua/fonts/amiri-arabic-1.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  /* block, not swap: a fallback flash on vocalised Arabic renders the
+     diacritics wrong and then reflows, which is worse than a brief blank. */
+  font-display: block;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
+    U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: "Source Serif";
+  src: url("/dua/fonts/serif-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif";
+  src: url("/dua/fonts/serif-latinext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  /* Turkish lives here — ğ ş İ ı ç ö ü. Separate file so it downloads only
+     for readers who need it. */
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Source Sans";
+  src: url("/dua/fonts/sans-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Sans";
+  src: url("/dua/fonts/sans-latinext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+/* ------------------------------- tokens ------------------------------- */
+
+:root {
+  /* Manuscript pigments — see DESIGN.md §1 for why not cream + terracotta. */
+  --paper: #e8e6df;
+  --paper-raised: #f1efe9;
+  --ink: #1b1e1c;
+  --ink-soft: #4e534e;
+  --lapis: #2c4a6e;
+  --rubric: #7e3b2e;
+  --rule: #c9c6bc;
+  --highlight: #d9d4be;
+
+  --font-body: "Source Serif", Georgia, "Times New Roman", serif;
+  --font-util: "Source Sans", system-ui, sans-serif;
+  --font-arabic: "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif;
+
+  /* 1.25 modular scale on 16px */
+  --t-xs: 0.64rem;
+  --t-sm: 0.8rem;
+  --t-base: 1rem;
+  --t-md: 1.25rem;
+  --t-lg: 1.563rem;
+  --t-xl: 1.953rem;
+  --t-2xl: 2.441rem;
+
+  /* 4px spacing scale */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-24: 6rem;
+
+  --measure: 62ch;
+  --page: 78rem;
+
+  /* Arabic: 1.5× the Latin body, per DESIGN.md §2. */
+  --ar-size: 1.5rem;
+  --ar-line: 2.1;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #191b1a;
+    --paper-raised: #212320;
+    --ink: #dad7cd;
+    --ink-soft: #9a9990;
+    --lapis: #8aa9cc;
+    --rubric: #c08b7b;
+    --rule: #33352f;
+    --highlight: #3b3d31;
+  }
+}
+
+/* Explicit override from Settings must win in both directions. */
+:root[data-theme="dark"] {
+  --paper: #191b1a;
+  --paper-raised: #212320;
+  --ink: #dad7cd;
+  --ink-soft: #9a9990;
+  --lapis: #8aa9cc;
+  --rubric: #c08b7b;
+  --rule: #33352f;
+  --highlight: #3b3d31;
+}
+:root[data-theme="light"] {
+  --paper: #e8e6df;
+  --paper-raised: #f1efe9;
+  --ink: #1b1e1c;
+  --ink-soft: #4e534e;
+  --lapis: #2c4a6e;
+  --rubric: #7e3b2e;
+  --rule: #c9c6bc;
+  --highlight: #d9d4be;
+}
+
+/* ------------------------------- reset -------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  font-synthesis-weight: none;
+}
+
+/* Type-size setting, applied to the root by the settings script. */
+:root[data-type="large"] body { font-size: 1.125rem; }
+:root[data-type="xlarge"] body { font-size: 1.25rem; }
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--s-4); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--lapis);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--lapis);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+img { max-width: 100%; height: auto; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-8) 0;
+}
+
+/* Motion is minimal by design; this makes it none. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------ layout -------------------------------- */
+
+.page {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--s-6);
+}
+
+.prose { max-width: var(--measure); }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--paper-raised);
+  color: var(--ink);
+  padding: var(--s-3) var(--s-4);
+  z-index: 100;
+}
+.skip:focus { left: var(--s-4); top: var(--s-2); }
+
+/* ------------------------------ masthead ------------------------------ */
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+}
+.masthead-in {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding: var(--s-4) var(--s-6);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+.wordmark {
+  font-family: var(--font-body);
+  font-size: var(--t-base);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.wordmark:hover { color: var(--lapis); }
+.masthead nav {
+  margin-inline-start: auto;
+  display: flex;
+  gap: var(--s-4);
+  align-items: baseline;
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+}
+.masthead nav a { color: var(--ink-soft); text-decoration: none; }
+.masthead nav a:hover,
+.masthead nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
+
+/* ------------------------------- footer ------------------------------- */
+
+.foot {
+  border-top: 1px solid var(--rule);
+  margin-top: var(--s-24);
+  padding: var(--s-8) 0 var(--s-12);
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+}
+.foot a { color: var(--ink-soft); }
+.foot p { max-width: var(--measure); }
+
+/* --------------------------- the duʿāʾ page --------------------------- */
+
+/*
+ * The signature element (DESIGN.md §3): the source apparatus sits in the left
+ * margin beside the text, as a critical edition sets its apparatus — not in a
+ * card underneath it.
+ */
+.passage {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--s-8);
+  align-items: start;
+  margin: var(--s-8) 0;
+}
+
+.apparatus {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--rubric);
+  text-align: right;
+  border-top: 2px solid var(--rubric);
+  padding-top: var(--s-3);
+}
+.apparatus dt {
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: var(--s-3);
+}
+.apparatus dt:first-of-type { margin-top: 0; }
+.apparatus dd { margin: 0; }
+.apparatus a { color: var(--rubric); }
+
+@media (max-width: 900px) {
+  .passage { grid-template-columns: 1fr; gap: var(--s-6); }
+  .apparatus {
+    order: 2;
+    text-align: left;
+    border-top: 1px solid var(--rubric);
+    padding-top: var(--s-4);
+  }
+  .passage-body { order: 1; }
+}
+
+/* ------------------------------- Arabic ------------------------------- */
+
+/*
+ * Constrained to the same measure as the translation. Without this the Arabic
+ * right-aligns to the full grid column and drifts away from the text it
+ * belongs with — they stop reading as one passage.
+ */
+.passage-body { max-width: var(--measure); }
+
+.arabic {
+  font-family: var(--font-arabic);
+  font-size: var(--ar-size);
+  line-height: var(--ar-line);
+  /* 400 always. Anything heavier triggers synthetic bolding, which smears
+     the diacritics into the letters beneath them. */
+  font-weight: 400;
+  /* Ragged, never justified — justified Arabic produces the gaps. */
+  text-align: right;
+  margin: 0 0 var(--s-6);
+  padding: var(--s-4) 0;
+  color: var(--ink);
+  /* Ensure diacritics above and below are never clipped by the line box. */
+  overflow-wrap: break-word;
+}
+
+/*
+ * The supplication itself, against the āyah's narrative framing. Weight is not
+ * available — anything above 400 triggers synthetic bolding and smears the
+ * diacritics — so the distinction is carried by colour alone, and the framing
+ * still clears AA against the paper.
+ */
+.ar-core { color: var(--ink); }
+.ar-frame { color: var(--ink-soft); opacity: 0.72; }
+:root[data-type="large"] .arabic { font-size: 1.7rem; }
+:root[data-type="xlarge"] .arabic { font-size: 1.95rem; }
+
+@media (max-width: 480px) {
+  :root { --ar-size: 1.35rem; --ar-line: 2.15; }
+}
+
+.translit {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: var(--measure);
+  margin: 0 0 var(--s-6);
+  font-style: normal;
+}
+
+.translation {
+  font-size: var(--t-base);
+  max-width: var(--measure);
+  line-height: 1.65;
+  margin: 0 0 var(--s-4);
+}
+.translation + .translation { margin-top: var(--s-6); }
+.translation-by {
+  display: block;
+  font-family: var(--font-util);
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--s-2);
+}
+
+/* ------------------------------ sections ------------------------------ */
+
+.section-label {
+  font-family: var(--font-util);
+  font-size: var(--t-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 var(--s-3);
+  font-weight: 600;
+}
+
+/*
+ * The editorial reflection. Rendered in a visibly different register from
+ * `context`, because it is this project's own voice rather than transmitted
+ * knowledge — the old site presented the two at identical weight.
+ */
+.reflection {
+  border-left: 2px solid var(--rule);
+  padding-left: var(--s-4);
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.reflection .byline {
+  display: block;
+  font-family: var(--font-util);
+  font-style: normal;
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: var(--s-2);
+}
+
+.notice {
+  border: 1px solid var(--rubric);
+  padding: var(--s-3) var(--s-4);
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--rubric);
+  max-width: var(--measure);
+  margin: var(--s-6) 0;
+}
+
+/* -------------------------------- lists ------------------------------- */
+
+.index-list { list-style: none; padding: 0; margin: 0; }
+.index-list li { border-bottom: 1px solid var(--rule); }
+.index-list li:first-child { border-top: 1px solid var(--rule); }
+
+.entry {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: var(--s-4);
+  align-items: baseline;
+  padding: var(--s-4) 0;
+  text-decoration: none;
+  color: inherit;
+}
+.entry:hover { background: var(--paper-raised); }
+.entry .seq {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.entry .name { font-size: var(--t-md); font-weight: 600; }
+.entry .name .honorific { font-weight: 400; color: var(--ink-soft); font-size: var(--t-sm); }
+.entry .meta {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  text-align: right;
+  white-space: nowrap;
+}
+.entry .blurb {
+  grid-column: 2 / -1;
+  color: var(--ink-soft);
+  font-size: var(--t-sm);
+  margin-top: var(--s-1);
+  max-width: var(--measure);
+}
+@media (max-width: 640px) {
+  .entry { grid-template-columns: 2rem 1fr; }
+  .entry .meta { grid-column: 2; text-align: left; }
+  .entry .blurb { grid-column: 2; }
+}
+
+/* Theme grid — two columns of needs, not a three-card feature grid. */
+.themes { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+@media (min-width: 720px) { .themes { grid-template-columns: 1fr 1fr; column-gap: var(--s-12); } }
+.themes li { border-bottom: 1px solid var(--rule); }
+.theme-link { display: block; padding: var(--s-4) 0; text-decoration: none; color: inherit; }
+.theme-link:hover .theme-name { color: var(--lapis); text-decoration: underline; }
+.theme-name { font-size: var(--t-md); font-weight: 600; display: block; }
+.theme-desc { color: var(--ink-soft); font-size: var(--t-sm); margin-top: var(--s-1); }
+.theme-count {
+  font-family: var(--font-util);
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------- quiet actions ---------------------------- */
+
+.actions {
+  display: flex;
+  gap: var(--s-4);
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s-4);
+  margin-top: var(--s-8);
+  flex-wrap: wrap;
+}
+.actions button {
+  background: none;
+  border: 0;
+  padding: var(--s-1) 0;
+  font: inherit;
+  color: var(--lapis);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.actions button:hover { text-decoration-thickness: 2px; }
+
+/* ------------------------------ settings ------------------------------ */
+
+.settings-toggle {
+  background: none;
+  border: 0;
+  font: inherit;
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+.settings-toggle:hover { color: var(--ink); text-decoration: underline; }
+
+dialog.settings {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  padding: var(--s-6);
+  max-width: 26rem;
+  width: calc(100% - var(--s-8));
+}
+dialog.settings::backdrop { background: rgb(0 0 0 / 0.4); }
+dialog.settings h2 { font-size: var(--t-md); margin-bottom: var(--s-4); }
+.setting { margin-bottom: var(--s-6); }
+.setting > span {
+  display: block;
+  font-family: var(--font-util);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--s-2);
+}
+.choices { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.choices label {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  border: 1px solid var(--rule);
+  padding: var(--s-2) var(--s-3);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.choices input { position: absolute; opacity: 0; width: 0; height: 0; }
+.choices input:checked + span { font-weight: 700; }
+.choices label:has(input:checked) { border-color: var(--lapis); color: var(--lapis); }
+.choices label:has(input:focus-visible) { outline: 2px solid var(--lapis); outline-offset: 2px; }
+
+/* ------------------------------- search ------------------------------- */
+
+.search-field {
+  font: inherit;
+  font-family: var(--font-util);
+  font-size: var(--t-base);
+  background: var(--paper-raised);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: var(--s-3) var(--s-4);
+  width: 100%;
+  max-width: 34rem;
+}
+mark { background: var(--highlight); color: inherit; }
+
+/* ------------------------------ timeline ------------------------------ */
+/*
+ * The one element kept from the braver direction, because it is genuinely the
+ * index rather than ornament laid over content.
+ */
+.timeline { position: relative; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--rule);
+}
+@media (max-width: 640px) { .timeline::before { left: 1rem; } }
+.timeline .entry { position: relative; }
+.timeline .entry::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 1.55rem;
+  width: 7px;
+  height: 7px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--rubric);
+}
+@media (max-width: 640px) { .timeline .entry::before { left: 1rem; } }
+
+/* -------------------------------- utils ------------------------------- */
+
+.lede { font-size: var(--t-md); color: var(--ink-soft); max-width: var(--measure); }
+.hidden { display: none !important; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.stack > * + * { margin-top: var(--s-8); }
+.kicker {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+}
+.kicker a { color: var(--ink-soft); }
+
+/* -------------------------------- print ------------------------------- */
+
+@media print {
+  :root {
+    --paper: #fff; --paper-raised: #fff; --ink: #000; --ink-soft: #333;
+    --lapis: #000; --rubric: #000; --rule: #999;
+  }
+  .masthead nav, .actions, .settings-toggle, .skip, .related, .foot nav { display: none !important; }
+  body { font-size: 11pt; }
+  .passage { grid-template-columns: 1fr; }
+  .apparatus { border-top: 1px solid #999; text-align: left; }
+  /* A printed duʿāʾ must carry its citation — that is the whole point of
+     printing it. Links are expanded so the source survives the paper. */
+  .apparatus a::after { content: " (" attr(href) ")"; font-size: 8pt; }
+  a { text-decoration: none; color: #000; }
+  h1, h2 { page-break-after: avoid; }
+  .arabic { page-break-inside: avoid; }
+}

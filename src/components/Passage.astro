@@ -1,0 +1,151 @@
+---
+/**
+ * The duʿāʾ passage: Arabic, transliteration, translations — with the source
+ * apparatus set as a marginal rubric beside it (DESIGN.md §3).
+ *
+ * On excerpts, this renders the **whole āyah** with the supplication in full
+ * ink and the surrounding narrative dimmed, rather than showing the excerpt
+ * alone. That is a correctness decision, not a stylistic one: the English is
+ * Pickthall's rendering of the complete āyah, so an excerpt-only Arabic would
+ * put nine words of Arabic beside forty words of English and quietly imply they
+ * said the same thing. Showing the full āyah makes the two correspond exactly
+ * while the emphasis still makes clear which words are the duʿāʾ — which is how
+ * a critical edition handles the same problem.
+ */
+import type { Dua } from "../../content/schema";
+import { refLabel, translation } from "../lib/content";
+
+interface Props {
+  dua: Dua;
+}
+const { dua } = Astro.props;
+
+const en = translation(dua, "en");
+const tr = translation(dua, "tr");
+const isQuran = dua.source.type === "quran";
+const excerpt = dua.source.type === "quran" ? dua.source.excerpt : undefined;
+
+/**
+ * Split the full āyah into [before, supplication, after] on the recorded word
+ * boundaries. Pure slicing of fetched text — nothing is rewritten.
+ */
+let before = "";
+let core = dua.arabic?.text ?? "";
+let after = "";
+if (excerpt && dua.arabic?.fullText) {
+  const words = dua.arabic.fullText.split(" ");
+  before = words.slice(0, excerpt.fromWord).join(" ");
+  core = words.slice(excerpt.fromWord, excerpt.toWord).join(" ");
+  after = words.slice(excerpt.toWord).join(" ");
+}
+---
+
+<div class="passage">
+  <dl class="apparatus" aria-label="Source">
+    <dt>Source</dt>
+    <dd>
+      {
+        dua.source.type === "quran" ? (
+          <>
+            Sūrat {dua.source.surahName}
+            <br />
+            <a
+              href={`https://quran.com/${dua.source.ayat[0].surah}/${dua.source.ayat[0].ayah}`}
+              rel="noreferrer"
+            >
+              {refLabel(dua)}
+            </a>
+          </>
+        ) : dua.source.type === "hadith" ? (
+          <>
+            {dua.source.collection}
+            <br />
+            <a href={dua.source.url} rel="noreferrer">
+              no. {dua.source.number}
+            </a>
+          </>
+        ) : null
+      }
+    </dd>
+
+    {
+      dua.source.type === "hadith" && (
+        <>
+          <dt>Grading</dt>
+          <dd>
+            {dua.source.grading} — {dua.source.gradedBy}
+          </dd>
+        </>
+      )
+    }
+
+    {
+      excerpt && (
+        <>
+          <dt>Extent</dt>
+          <dd>Excerpt within the āyah, shown in full ink against dimmed framing.</dd>
+        </>
+      )
+    }
+
+    {
+      isQuran && (
+        <>
+          <dt>Text</dt>
+          <dd>Uthmani, verified by checksum</dd>
+        </>
+      )
+    }
+
+    {
+      en && (
+        <>
+          <dt>Translation</dt>
+          <dd>
+            {en.translator}
+            <br />
+            {en.licence}
+          </dd>
+        </>
+      )
+    }
+  </dl>
+
+  <div class="passage-body">
+    {/*
+      lang and dir go on this node specifically, never on <html>. translate="no"
+      keeps Chrome from re-translating vetted scripture.
+    */}
+    <p class="arabic" lang="ar" dir="rtl" translate="no">
+      {before && <span class="ar-frame">{before} </span>}
+      <span class="ar-core">{core}</span>
+      {after && <span class="ar-frame"> {after}</span>}
+    </p>
+
+    {
+      dua.transliteration && (
+        <p class="translit" data-translit-block translate="no">
+          {dua.transliteration.text}
+        </p>
+      )
+    }
+
+    {
+      en && (
+        <div class="translation" translate="no">
+          <span class="translation-by">English · {en.translator}</span>
+          {en.text}
+        </div>
+      )
+    }
+
+    {
+      tr && (
+        <div class="translation" lang="tr" translate="no">
+          <span class="translation-by">Türkçe · {tr.translator}</span>
+          {tr.text}
+        </div>
+      )
+    }
+  </div>
+</div>

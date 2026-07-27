@@ -1,0 +1,11 @@
+{
+  "name": "The Duʿāʾ of the Prophets",
+  "short_name": "Duʿāʾ",
+  "description": "The supplications of the Prophets from the Qurʾān and the authenticated Sunnah.",
+  "start_url": "/dua/",
+  "scope": "/dua/",
+  "display": "standalone",
+  "background_color": "#e8e6df",
+  "theme_color": "#e8e6df",
+  "icons": []
+}

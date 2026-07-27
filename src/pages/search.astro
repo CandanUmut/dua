@@ -1,0 +1,103 @@
+---
+import Base from "../layouts/Base.astro";
+import { buildSearchIndex } from "../lib/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const index = buildSearchIndex();
+---
+
+<Base
+  title="Search — The Duʿāʾ of the Prophets"
+  description="Search every duʿāʾ by Arabic, transliteration, translation, prophet, or situation."
+>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">Search</h1>
+  <p class="lede" style="margin-top: var(--s-4)">
+    Arabic works without diacritics — type <span lang="ar" dir="rtl" translate="no">الظالمين</span>
+    and it will find <span lang="ar" dir="rtl" translate="no">ٱلظَّٰلِمِينَ</span>.
+    Transliteration works without the dots and macrons too.
+  </p>
+
+  <div style="margin-top: var(--s-8)">
+    <label for="q" class="section-label">Search</label>
+    <input
+      id="q"
+      class="search-field"
+      type="search"
+      autocomplete="off"
+      placeholder="grief · debt · Yūnus · zalimin · رزق"
+      aria-describedby="count"
+    />
+  </div>
+
+  <p id="count" role="status" aria-live="polite" class="kicker" style="margin-top: var(--s-4)"></p>
+  <ul class="index-list" id="results" style="margin-top: var(--s-4)"></ul>
+
+  <script is:inline define:vars={{ index, base }}>
+    (() => {
+      const q = document.getElementById("q");
+      const out = document.getElementById("results");
+      const count = document.getElementById("count");
+
+      // Must match src/lib/content.ts normalise() — strip Arabic diacritics,
+      // unify alef/ta-marbuta/ya, and fold Latin diacritics so a reader typing
+      // from memory in either script still lands on the entry.
+      // Must stay in step with normalise() in src/lib/content.ts. The dagger
+      // alif becomes a full alif rather than being stripped - see the note
+      // there; without it Arabic search matches nothing on an Uthmani corpus.
+      const DAGGER = /\u0670/g;
+      const MARKS = /[\u0610-\u061A\u064B-\u065F\u06D6-\u06ED\u0640]/g;
+      const norm = (s) =>
+        s.normalize("NFC")
+          .replace(DAGGER, "ا")
+          .replace(MARKS, "")
+          .replace(/[آأإٱ]/g, "ا")
+          .replace(/ة/g, "ه")
+          .replace(/ى/g, "ي")
+          .normalize("NFD")
+          .replace(/[̀-ͯ]/g, "")
+          .replace(/[ʿʾ'’‘`]/g, "")
+          .toLowerCase()
+          .trim();
+
+      const render = (rows, term) => {
+        out.innerHTML = rows
+          .map(
+            (r) => `<li><a class="entry" href="${base}/duas/${r.id}/">
+              <span class="seq"></span>
+              <span class="name" style="font-size:var(--t-base)">${r.title}</span>
+              <span class="meta">${r.speaker} · ${r.ref}</span>
+            </a></li>`,
+          )
+          .join("");
+        count.textContent = term
+          ? `${rows.length} ${rows.length === 1 ? "result" : "results"} for “${term}”`
+          : "";
+      };
+
+      const run = () => {
+        const term = q.value.trim();
+        if (!term) { out.innerHTML = ""; count.textContent = ""; return; }
+        const n = norm(term);
+        const rows = index
+          .map((d) => {
+            const at = d.haystack.indexOf(n);
+            if (at === -1) return null;
+            // Earlier matches rank higher; a title hit beats a body hit.
+            const titleHit = norm(d.title).includes(n) ? -1000 : 0;
+            return { ...d, rank: at + titleHit };
+          })
+          .filter(Boolean)
+          .sort((a, b) => a.rank - b.rank)
+          .slice(0, 40);
+        render(rows, term);
+      };
+
+      let t;
+      q.addEventListener("input", () => { clearTimeout(t); t = setTimeout(run, 120); });
+
+      const initial = new URLSearchParams(location.search).get("q");
+      if (initial) { q.value = initial; run(); }
+      q.focus();
+    })();
+  </script>
+</Base>

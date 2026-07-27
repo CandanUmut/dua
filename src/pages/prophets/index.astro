@@ -1,0 +1,59 @@
+---
+import Base from "../../layouts/Base.astro";
+import Honorific from "../../components/Honorific.astro";
+import { inOrder, bySpeaker } from "../../lib/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const sections = [
+  { key: "prophet" as const, title: "The Prophets", note: "In prophetic order, not alphabetical." },
+  {
+    key: "quran-taught" as const,
+    title: "Duʿāʾ the Qurʾān teaches",
+    note: "Given to be said, without a named speaker. Kept separate because attributing them to a prophet would overstate the text.",
+  },
+  {
+    key: "companion" as const,
+    title: "Others in the Qurʾān",
+    note: "Among the most-searched supplications in the Qurʾān — and not prophets, so not filed under them.",
+  },
+];
+---
+
+<Base
+  title="The Prophets — The Duʿāʾ of the Prophets"
+  description="Every prophet whose supplications the Qurʾān records, in prophetic order, with the trial each is remembered for."
+>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">The Prophets</h1>
+
+  {
+    sections.map((section) => {
+      const people = inOrder(section.key);
+      if (people.length === 0) return null;
+      return (
+        <section style="margin-top: var(--s-12)">
+          <h2 class="section-label">{section.title}</h2>
+          <p class="lede" style="font-size: var(--t-base); margin-bottom: var(--s-6)">
+            {section.note}
+          </p>
+          <ul class={`index-list ${section.key === "prophet" ? "timeline" : ""}`}>
+            {people.map((p, i) => (
+              <li>
+                <a class="entry" href={`${base}/prophets/${p.id}/`}>
+                  <span class="seq">{section.key === "prophet" ? String(i + 1).padStart(2, "0") : ""}</span>
+                  <span class="name">
+                    {p.name.en} <Honorific honorific={p.honorific} />
+                    {p.name.enCommon && (
+                      <span class="honorific"> · {p.name.enCommon}</span>
+                    )}
+                  </span>
+                  <span class="meta">{bySpeaker(p.id).length} duʿāʾ</span>
+                  {p.trial && <span class="blurb">{p.trial.en}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+</Base>

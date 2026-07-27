@@ -46,6 +46,20 @@
       "status": "needs-review"
     },
     {
+      "id": "nuh-rabbi-unsurni-bima-kadhdhabun",
+      "legacyId": "nuh-23-26",
+      "legacyRef": "23:26",
+      "turkish": "Rabbim! Beni yalanlamalarına karşı bana yardım et.",
+      "transliteration": "Rabbi ansurni bima kadhdhabun.",
+      "context": "In the Qur’an (23:26), Nuh asks Allah for help against those who denied his message.",
+      "reflection": "Seek Allah’s help when facing rejection for truth.",
+      "topics": [
+        "victory",
+        "protection"
+      ],
+      "status": "needs-review"
+    },
+    {
       "id": "nuh-rabbi-inni-audhu-bika",
       "legacyId": "nuh-11-47",
       "legacyRef": "11:47",
@@ -422,16 +436,6 @@
     }
   ],
   "orphaned": [
-    {
-      "legacyId": "nuh-23-26",
-      "ref": "23:26",
-      "type": "Quran",
-      "prophet": "Noah",
-      "turkish": "Rabbim! Beni yalanlamalarına karşı bana yardım et.",
-      "transliteration": "Rabbi ansurni bima kadhdhabun.",
-      "context": "In the Qur’an (23:26), Nuh asks Allah for help against those who denied his message.",
-      "reflection": "Seek Allah’s help when facing rejection for truth."
-    },
     {
       "legacyId": "ibrahim-2-128",
       "ref": "2:128",

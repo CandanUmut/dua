@@ -134,6 +134,16 @@ export const ArabicText = z.object({
   sha256: z.string().regex(/^[a-f0-9]{64}$/),
   /** Edition identifier at the upstream source, for provenance. */
   edition: z.string().min(1),
+  /**
+   * The complete āyah(s) the excerpt was taken from.
+   *
+   * Needed because the English translation is Pickthall's rendering of the
+   * *whole* āyah, while `text` may be only the supplication within it. Showing
+   * a nine-word Arabic excerpt beside a forty-word English translation is
+   * quietly misleading — so the page renders the full āyah with the
+   * supplication distinguished, and the two correspond exactly.
+   */
+  fullText: z.string().min(1).optional(),
 });
 
 /* ------------------------------------------------------------------ *
@@ -311,7 +321,14 @@ export const Prophet = z.object({
    * Distinguishes prophets from the companion section — the People of the Cave,
    * Āsiyah, Maryam, the magicians. On the site but never filed under "prophets".
    */
-  section: z.enum(["prophet", "companion"]),
+  /**
+   * `quran-taught` holds supplications the Qurʾān gives to be said without
+   * quoting a named speaker — 2:286, 3:8, 25:74. They belong on a complete
+   * site, but filing them under a prophet would overstate the text, and the
+   * companion section is for named people. A third grouping is the honest
+   * answer rather than forcing them into one of the other two.
+   */
+  section: z.enum(["prophet", "companion", "quran-taught"]),
 });
 export type Prophet = z.infer<typeof Prophet>;
 

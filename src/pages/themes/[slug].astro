@@ -1,0 +1,46 @@
+---
+import Base from "../../layouts/Base.astro";
+import Honorific from "../../components/Honorific.astro";
+import { THEMES, byTheme, prophet, refLabel, translation } from "../../lib/content";
+
+export function getStaticPaths() {
+  return THEMES.map((t) => ({ params: { slug: t.id }, props: { theme: t } }));
+}
+
+const { theme } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const duas = byTheme(theme.id);
+---
+
+<Base
+  title={`${theme.label.en} — The Duʿāʾ of the Prophets`}
+  description={theme.description.en}
+>
+  <p class="kicker" style="margin-top: var(--s-12)">
+    <a href={`${base}/themes/`}>I need words for…</a>
+  </p>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-2); max-width: 22ch">
+    {theme.label.en}
+  </h1>
+  <p class="lede" style="margin-top: var(--s-4)">{theme.description.en}</p>
+
+  <ul class="index-list" style="margin-top: var(--s-8)">
+    {
+      duas.map((d) => {
+        const p = prophet(d.speaker);
+        return (
+          <li>
+            <a class="entry" href={`${base}/duas/${d.id}/`}>
+              <span class="seq" />
+              <span class="name" style="font-size: var(--t-base)">{d.title.en}</span>
+              <span class="meta">
+                {p?.name.en} <Honorific honorific={p!.honorific} /> · {refLabel(d)}
+              </span>
+              <span class="blurb">{translation(d, "en")?.text}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Base>

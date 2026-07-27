@@ -328,6 +328,22 @@ export const PROPHETS: Prophet[] = [
     references: [QURAN("7:113–126"), QURAN("20:70–73"), QURAN("26:38–51")],
   },
   {
+    id: "quran-taught",
+    name: {
+      en: "Duʿāʾ the Qurʾān teaches",
+      tr: "Kur'ân'ın öğrettiği dualar",
+      ar: "أدعية القرآن",
+    },
+    honorific: "none",
+    order: 800,
+    section: "quran-taught",
+    summary: {
+      en: "Supplications the Qurʾān gives to be said, rather than quoting from a named speaker. They are here because they belong on a complete site, and separate because attributing them to a prophet would overstate the text.",
+      tr: "Kur'ân'ın belirli bir söyleyenden nakletmek yerine söylenmek üzere verdiği dualar. Eksiksiz bir derlemeye ait oldukları için buradalar; bir peygambere nispet etmek metnin ötesine geçeceği için de ayrı tutuldular.",
+    },
+    references: [QURAN("2:285–286"), QURAN("3:8"), QURAN("25:74")],
+  },
+  {
     id: "ashab-talut",
     name: { en: "The companions of Ṭālūt", tr: "Tâlût'un askerleri", ar: "أصحاب طالوت" },
     honorific: "none",

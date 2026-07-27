@@ -1,0 +1,82 @@
+---
+import Base from "../../layouts/Base.astro";
+import Honorific from "../../components/Honorific.astro";
+import { PROPHETS, bySpeaker, refLabel, translation } from "../../lib/content";
+
+export function getStaticPaths() {
+  return PROPHETS.map((p) => ({ params: { slug: p.id }, props: { prophet: p } }));
+}
+
+const { prophet } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const duas = bySpeaker(prophet.id);
+---
+
+<Base
+  title={`${prophet.name.en} — The Duʿāʾ of the Prophets`}
+  description={prophet.summary.en}
+>
+  <p class="kicker" style="margin-top: var(--s-12)">
+    <a href={`${base}/prophets/`}>The Prophets</a>
+  </p>
+
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-2)">
+    {prophet.name.en} <Honorific honorific={prophet.honorific} />
+  </h1>
+  <p class="kicker" lang="ar" dir="rtl" translate="no" style="font-family: var(--font-arabic); font-size: var(--t-md); margin-top: var(--s-2)">
+    {prophet.name.ar}
+  </p>
+
+  <div class="stack" style="margin-top: var(--s-8)">
+    <p class="prose">{prophet.summary.en}</p>
+
+    {
+      prophet.trial && (
+        <div>
+          <h2 class="section-label">His trial</h2>
+          <p class="prose">{prophet.trial.en}</p>
+        </div>
+      )
+    }
+
+    <div>
+      <h2 class="section-label">In the Qurʾān</h2>
+      <p class="prose" style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)">
+        {prophet.references.map((r) => `${r.work} ${r.locus}`).join(" · ")}
+      </p>
+    </div>
+
+    {
+      duas.length > 0 ? (
+        <div>
+          <h2 style="font-size: var(--t-lg); margin-bottom: var(--s-4)">
+            {duas.length === 1 ? "His duʿāʾ" : `His duʿāʾ (${duas.length})`}
+          </h2>
+          <ul class="index-list">
+            {duas.map((d) => (
+              <li>
+                <a class="entry" href={`${base}/duas/${d.id}/`}>
+                  <span class="seq" />
+                  <span class="name" style="font-size: var(--t-base)">{d.title.en}</span>
+                  <span class="meta">{refLabel(d)}</span>
+                  <span class="blurb">{translation(d, "en")?.text}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div class="notice">
+          <p style="margin:0">
+            The Qurʾān records no supplication in his own words. 38:24 narrates
+            that he sought forgiveness and prostrated, but does not quote what he
+            said, and 2:250 is the collective duʿāʾ of those who crossed the
+            river with Ṭālūt — it is filed under
+            {" "}<a href={`${base}/prophets/ashab-talut/`}>the companions of Ṭālūt</a>,
+            where he was present but is not the speaker.
+          </p>
+        </div>
+      )
+    }
+  </div>
+</Base>

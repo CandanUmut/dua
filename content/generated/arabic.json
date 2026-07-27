@@ -926,5 +926,76 @@
       "en.pickthall": "And when they went into the field against Goliath and his hosts they said: Our Lord! Bestow on us endurance, make our foothold sure, and give us help against the disbelieving folk.",
       "en.yusufali": "When they advanced to meet Goliath and his forces, they prayed: \"Our Lord! Pour out constancy on us and make our steps firm: Help us against those that reject faith.\""
     }
+  },
+  {
+    "id": "quran-rabbana-la-tuakhidhna",
+    "ref": "2:286",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًۭا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "sha256": "4e9121791d8c7a9637804507b045f34aff37dabea65365a20e683abc31c53770",
+    "wordCount": 37,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا ٱكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًۭا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "surahName": "سُورَةُ البَقَرَةِ",
+    "surahNameEn": "Al-Baqara",
+    "translations": {
+      "en.pickthall": "Allah tasketh not a soul beyond its scope. For it (is only) that which it hath earned, and against it (only) that which it hath deserved. Our Lord! Condemn us not if we forget, or miss the mark! Our Lord! Lay not on us such a burden as thou didst lay on those before us! Our Lord! Impose not on us that which we have not the strength to bear! Pardon us, absolve us and have mercy on us, Thou, our Protector, and give us victory over the disbelieving folk.",
+      "en.yusufali": "On no soul doth Allah Place a burden greater than it can bear. It gets every good that it earns, and it suffers every ill that it earns. (Pray:) \"Our Lord! Condemn us not if we forget or fall into error; our Lord! Lay not on us a burden Like that which Thou didst lay on those before us; Our Lord! Lay not on us a burden greater than we have strength to bear. Blot out our sins, and grant us forgiveness. Have mercy on us. Thou art our Protector; Help us against those who stand against faith.\""
+    }
+  },
+  {
+    "id": "quran-rabbana-la-tuzigh-qulubana",
+    "ref": "3:8",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ ٱلْوَهَّابُ",
+    "sha256": "6afb710d8b67ebf013892ad17fdfab213af279065e33757c82da3bc45a9e83f2",
+    "wordCount": 15,
+    "isExcerpt": false,
+    "fullText": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ ٱلْوَهَّابُ",
+    "surahName": "سُورَةُ آلِ عِمۡرَانَ",
+    "surahNameEn": "Aal-i-Imraan",
+    "translations": {
+      "en.pickthall": "Our Lord! Cause not our hearts to stray after Thou hast guided us, and bestow upon us mercy from Thy Presence. Lo! Thou, only Thou, art the Bestower.",
+      "en.yusufali": "\"Our Lord!\" (they say), \"Let not our hearts deviate now after Thou hast guided us, but grant us mercy from Thine own Presence; for Thou art the Grantor of bounties without measure."
+    }
+  },
+  {
+    "id": "quran-rabbana-ighfir-lana-dhunubana",
+    "ref": "3:147",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا ٱغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِىٓ أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "sha256": "b3b0a3f53589aac0432182dd5251e6f7e1b5c5379dd7d8ea05df50c4e442a8a3",
+    "wordCount": 13,
+    "isExcerpt": true,
+    "excerptNote": "Opens mid-āyah; the narrative introduction is not part of the supplication.",
+    "fullText": "وَمَا كَانَ قَوْلَهُمْ إِلَّآ أَن قَالُوا۟ رَبَّنَا ٱغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِىٓ أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    "surahName": "سُورَةُ آلِ عِمۡرَانَ",
+    "surahNameEn": "Aal-i-Imraan",
+    "translations": {
+      "en.pickthall": "Their cry was only that they said: Our Lord! forgive us for our sins and wasted efforts, make our foothold sure, and give us victory over the disbelieving folk.",
+      "en.yusufali": "All that they said was: \"Our Lord! Forgive us our sins and anything We may have done that transgressed our duty: Establish our feet firmly, and help us against those that resist Faith.\""
+    }
+  },
+  {
+    "id": "quran-rabbana-hab-lana-qurrata-ayun",
+    "ref": "25:74",
+    "edition": "quran-uthmani",
+    "script": "uthmani",
+    "text": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+    "sha256": "c0703dcc27ec45ac5059de7177a79a501959e85ec0456c4de227cbf80184a6cf",
+    "wordCount": 11,
+    "isExcerpt": true,
+    "excerptNote": "Opens after the verb of speech introducing the supplication.",
+    "fullText": "وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+    "surahName": "سُورَةُ الفُرۡقَانِ",
+    "surahNameEn": "Al-Furqaan",
+    "translations": {
+      "en.pickthall": "And who say: Our Lord! Vouchsafe us comfort of our wives and of our offspring, and make us patterns for (all) those who ward off (evil).",
+      "en.yusufali": "And those who pray, \"Our Lord! Grant unto us wives and offspring who will be the comfort of our eyes, and give us (the grace) to lead the righteous.\""
+    }
   }
 ]

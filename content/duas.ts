@@ -736,6 +736,55 @@ export const DUA_SEEDS: DuaSeed[] = [
       tr: ["sayıca azken", "kaybetmeyi beklediğiniz bir şeyden önce"],
     },
   },
+
+  /* ------------- duʿāʾ the Qurʾān teaches (no named speaker) ------------- */
+  {
+    id: "quran-rabbana-la-tuakhidhna",
+    speaker: "quran-taught",
+    title: { en: "Do not take us to task if we forget", tr: "Unutursak bizi sorumlu tutma" },
+    ayat: a(2, 286),
+    excerpt: { fromWord: 12, toWord: 49, note: CUT.preamble },
+    themes: ["forgiveness", "strength", "steadfastness", "protection"],
+    situations: {
+      en: ["at the end of the day", "when you are carrying more than you can hold", "before sleep"],
+      tr: ["günün sonunda", "taşıyabileceğinizden fazlasını taşırken", "uykudan önce"],
+    },
+  },
+  {
+    id: "quran-rabbana-la-tuzigh-qulubana",
+    speaker: "quran-taught",
+    title: { en: "Do not let our hearts deviate", tr: "Kalplerimizi kaydırma" },
+    ayat: a(3, 8),
+    themes: ["guidance", "steadfastness", "fear"],
+    situations: {
+      en: ["after finding something you do not want to lose", "when you fear your own drift"],
+      tr: ["kaybetmek istemediğiniz bir şey bulduktan sonra", "kendi savrulmanızdan korktuğunuzda"],
+    },
+  },
+  {
+    id: "quran-rabbana-ighfir-lana-dhunubana",
+    speaker: "quran-taught",
+    title: { en: "Our sins and our excesses", tr: "Günahlarımız ve aşırılıklarımız" },
+    ayat: a(3, 147),
+    excerpt: { fromWord: 6, toWord: 19, note: CUT.preamble },
+    themes: ["forgiveness", "steadfastness", "strength"],
+    situations: {
+      en: ["after a setback that was partly your own doing", "when you need to keep going anyway"],
+      tr: ["kısmen kendi hatanızdan kaynaklanan bir aksilikten sonra", "buna rağmen devam etmeniz gerektiğinde"],
+    },
+  },
+  {
+    id: "quran-rabbana-hab-lana-qurrata-ayun",
+    speaker: "quran-taught",
+    title: { en: "Comfort of our eyes", tr: "Gözümüzün aydınlığı" },
+    ayat: a(25, 74),
+    excerpt: { fromWord: 2, toWord: 13, note: CUT.saidThat },
+    themes: ["family", "children", "guidance"],
+    situations: {
+      en: ["praying for a spouse and children", "when you want your family to be a source of rest"],
+      tr: ["eş ve çocuklar için dua ederken", "ailenizin bir huzur kaynağı olmasını istediğinizde"],
+    },
+  },
 ];
 
 export const DUA_IDS = DUA_SEEDS.map((d) => d.id);
