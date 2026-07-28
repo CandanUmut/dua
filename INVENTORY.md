@@ -66,24 +66,31 @@ Combining marks attached to letters are never touched.
 
 ## 2. Turkish
 
-**Every entry now carries Turkish.** The primary rendering is **Elmalılı Hamdi
-Yazır** (d. 1942, public domain), fetched per-āyah from the same API as the
-Arabic and the English.
+**Every entry carries exactly one Turkish translation**, and the page says
+where it came from.
 
-That change fixed a real defect rather than just filling gaps. The project's own
-Turkish had been written one āyah at a time against the old corpus, so on the
-entries that now span a range — 20:25–28, 14:36–41, 2:127–129, 26:83–89 — it
-covered only the first āyah. A reader saw four āyāt of Arabic and one sentence
-of Turkish. Fetching per-āyah makes the extent match by construction.
+| Entries | Turkish | Why |
+|---|---|---|
+| 57 Qurʾānic | **Elmalılı Hamdi Yazır** (d. 1942, public domain) | Published, attributed work, fetched per-āyah so it always covers the same extent as the Arabic beside it. |
+| 5 ḥadīth | **Umut Candan** | No public-domain ḥadīth translation exists to fetch. |
+| 1 attributed | Project draft, labelled | No Turkish edition of the passage to fetch. |
 
-All 47 legacy Turkish translations are still here, kept as a second
-contemporary rendering wherever they exist and attributed to Umut Candan.
-Nothing was dropped; `scripts/migrate-legacy.ts` still fails the build if any
-would be.
+**Why one and not two.** An earlier pass showed Elmalılı and the project's own
+Turkish side by side. That was a mistake: two renderings of the same scripture
+invite the reader to adjudicate between them, which is not a question a reader
+should be handed, and it lengthened the page for no gain.
+`scripts/check-coverage.ts` now fails the build on more than one translation per
+language per entry.
 
-The five ḥadīth entries have no established public-domain translation to fetch,
-so their English and Turkish are this project's own and render with an
-"unreviewed project draft" label.
+**Nothing was lost by choosing.** All 47 legacy Turkish translations remain in
+`data/prayers.json` and `content/generated/legacy-migration.json`, and
+`scripts/migrate-legacy.ts` still fails the build if any goes missing from the
+repository. The ḥadīth entries display them.
+
+Fetching per-āyah also fixed a real defect. The project's own Turkish was
+written one āyah at a time against the old corpus, so on entries that now span a
+range — 20:25–28, 14:36–41, 2:127–129, 26:83–89 — it covered only the first
+āyah. A reader saw four āyāt of Arabic and one sentence of Turkish.
 
 ---
 

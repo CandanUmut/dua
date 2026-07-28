@@ -23,7 +23,10 @@ const { dua } = Astro.props;
 const src = dua.source;
 const excerpt = src.type === "quran" ? src.excerpt : undefined;
 
-/** All renderings, grouped — an entry may carry two Turkish translations. */
+/**
+ * Exactly one translation per language — enforced by scripts/check-coverage.ts.
+ * English first, then Turkish.
+ */
 const en = dua.translations.filter((t) => t.lang === "en");
 const tr = dua.translations.filter((t) => t.lang === "tr");
 

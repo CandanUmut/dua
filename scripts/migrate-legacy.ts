@@ -2,13 +2,18 @@
  * Carries the existing editorial content out of `data/prayers.json` and into
  * the new structure, and reports anything that would be lost.
  *
- * The Turkish translations are the point of this script. They are the corpus's
- * most distinctive asset — there is no comparable Turkish duʿāʾ reference in
- * this space — and the brief is explicit that they are not to be dropped. So
- * rather than re-authoring them, this migration lifts all 47 verbatim, keyed by
- * the new duʿāʾ id, and *fails loudly* about any legacy entry that has no home
- * in `content/duas.ts`. Losing one silently is the failure mode this exists to
- * prevent.
+ * The Turkish translations are the point of this script. It lifts all 47
+ * verbatim, keyed by the new duʿāʾ id, and *fails loudly* about any legacy
+ * entry that has no home in `content/duas.ts`. Losing one silently is the
+ * failure mode this exists to prevent.
+ *
+ * Note what "preserved" means now. The Qurʾānic entries display Elmalılı Hamdi
+ * Yazır, because it is published, attributed, public-domain work and — being
+ * fetched per-āyah — always covers the same extent as the Arabic beside it. The
+ * project's own Turkish is not shown on those pages, but it is not gone: it
+ * lives here and in `data/prayers.json`, and this script still fails the build
+ * if any of it goes missing from the repository. The five ḥadīth entries, which
+ * have no edition to fetch, display it.
  *
  * The English is deliberately NOT migrated. Every legacy entry is marked
  * `"translation_note": "Paraphrase"` with no translator recorded, and unsourced

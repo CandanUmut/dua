@@ -21,8 +21,14 @@ const problems: string[] = [];
 
 for (const d of duas) {
   for (const lang of ["en", "tr"] as const) {
-    if (!d.translations.some((t) => t.lang === lang)) {
-      problems.push(`${d.id}: no ${lang} translation`);
+    const found = d.translations.filter((t) => t.lang === lang);
+    if (found.length === 0) problems.push(`${d.id}: no ${lang} translation`);
+    // Exactly one. Two renderings of the same scripture side by side ask the
+    // reader to adjudicate between them, which is not their job.
+    if (found.length > 1) {
+      problems.push(
+        `${d.id}: ${found.length} ${lang} translations (${found.map((t) => t.translator).join(", ")})`,
+      );
     }
   }
   // Only `attributed` entries are allowed to have no Arabic.
