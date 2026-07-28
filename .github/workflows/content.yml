@@ -29,6 +29,9 @@ jobs:
       - name: Check Turkish is not dropped
         run: npx tsx scripts/migrate-legacy.ts
 
+      - name: Verify tafsīr sources are distinct
+        run: npx tsx scripts/fetch-tafsir.ts
+
       - name: Validate content against schema
         run: npm run content:build
 

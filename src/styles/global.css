@@ -547,6 +547,29 @@ hr {
 }
 
 /*
+ * Quoted classical commentary. Set at the same measure as the translation but
+ * a step down and indented, so it reads as someone else's voice being quoted
+ * rather than as the site speaking.
+ */
+.tafsir {
+  margin: 0;
+  padding-left: var(--s-4);
+  border-left: 1px solid var(--rule);
+  max-width: var(--measure);
+  font-size: var(--t-sm);
+  line-height: 1.7;
+  color: var(--ink);
+}
+.tafsir-cite {
+  font-family: var(--font-util);
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+  margin-top: var(--s-2);
+  padding-left: var(--s-4);
+  max-width: var(--measure);
+}
+
+/*
  * Situations and themes, collapsed into one line. Small, muted, and out of the
  * reading path — they are how someone arrives at a page, not what they came to
  * read once they are on it.

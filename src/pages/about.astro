@@ -4,7 +4,8 @@ import { DUAS } from "../lib/content";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const withTurkish = DUAS.filter((d) => d.translations.some((t) => t.lang === "tr")).length;
 const excerpts = DUAS.filter((d) => d.source.type === "quran" && d.source.excerpt).length;
-const needsReview = DUAS.filter((d) => d.reviewStatus === "needs-review").length;
+const withTafsir = DUAS.filter((d) => d.tafsir.length > 0).length;
+
 ---
 
 <Base
@@ -128,11 +129,28 @@ const needsReview = DUAS.filter((d) => d.reviewStatus === "needs-review").length
     </section>
 
     <section>
-      <h2 class="section-label">Review status</h2>
+      <h2 class="section-label">Commentary</h2>
       <p>
-        {needsReview} entries are marked as awaiting review — in most cases
-        because the occasion described needs a tafsīr citation attached. The
-        Arabic and its reference are verified independently of that.
+        {withTafsir} entries carry classical commentary, quoted and attributed:
+        <strong>Tafsīr al-Jalālayn</strong> (al-Maḥallī d. 1459, al-Suyūṭī
+        d. 1505) as a general gloss, translated by Feras Hamza.
+      </p>
+      <p>
+        Al-Wāḥidī's <em>Asbāb al-Nuzūl</em> — the transmitted occasions of
+        revelation — would be the more valuable source, and it was nearly added.
+        It was dropped because the text served under that name turned out to be
+        byte-identical to two other commentaries served under different names,
+        and reads in a register nothing like al-Wāḥidī. At least two of those
+        labels are wrong and there is no way to tell which. Attributing one
+        scholar's words to another is the same failure as mis-citing an āyah, so
+        nothing was shipped rather than guessed at.
+      </p>
+      <p>
+        The Arabic original is centuries out of copyright. The English
+        translation was produced for the Royal Aal al-Bayt Institute for Islamic
+        Thought and published freely at altafsir.com. That is a permission to
+        distribute rather than a public-domain dedication, so it is attributed
+        in full wherever it appears.
       </p>
     </section>
 

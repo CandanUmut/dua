@@ -107,14 +107,16 @@ if (excerpt && dua.arabic?.fullText) {
       )
     }
 
-    {
-      src.type === "quran" && (
-        <>
-          <dt>Text</dt>
-          <dd>Uthmani, verified by checksum</dd>
-        </>
-      )
-    }
+    <dt>Text</dt>
+    <dd>
+      {
+        src.type === "quran"
+          ? "Uthmani, verified by checksum"
+          : src.type === "hadith"
+            ? "Hand-entered — no ḥadīth edition exists to fetch"
+            : "World English Bible, verified by checksum"
+      }
+    </dd>
   </dl>
 
   <div class="passage-body">

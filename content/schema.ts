@@ -215,6 +215,25 @@ export const Context = z.object({
 });
 
 /**
+ * A passage of classical commentary, quoted and attributed.
+ *
+ * This is what replaced the "awaiting a tafsīr citation" placeholder that used
+ * to sit on every entry. A note saying a citation is missing is not a citation;
+ * either the source is there or the claim should not be.
+ */
+export const Tafsir = z.object({
+  work: z.string().min(1),
+  author: z.string().min(1),
+  translator: z.string().min(1),
+  licence: z.string().min(1),
+  text: z.string().min(1),
+  url: z.string().url().optional(),
+  /** "commentary" for a general gloss, "occasion" for asbāb al-nuzūl. */
+  kind: z.enum(["commentary", "occasion"]),
+});
+export type Tafsir = z.infer<typeof Tafsir>;
+
+/**
  * This project's own reflection on applying the duʿāʾ.
  *
  * Kept deliberately separate from `context`, and rendered in a visually distinct
@@ -229,8 +248,13 @@ export const Context = z.object({
  */
 export const Reflection = z.object({
   text: z.string().min(1),
-  /** Who wrote it. Attribution is the point. */
-  author: z.string().min(1),
+  /**
+   * Optional. A reflection makes no factual claim — it is explicitly labelled
+   * as an editorial note rather than transmitted knowledge — so naming a person
+   * on every one of them adds nothing a reader can act on. The label carries the
+   * distinction; the byline was just noise.
+   */
+  author: z.string().min(1).optional(),
 });
 
 /* ------------------------------------------------------------------ *
@@ -276,6 +300,8 @@ export const Dua = z.object({
   translations: z.array(Translation).min(1),
 
   context: Context,
+  /** Classical commentary, quoted and attributed. */
+  tafsir: z.array(Tafsir).default([]),
   reflection: Reflection.optional(),
 
   themes: z.array(Slug).min(1),

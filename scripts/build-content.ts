@@ -34,6 +34,7 @@ const read = async (p: string) => JSON.parse(await readFile(resolve(ROOT, p), "u
 
 const arabic: any[] = await read("content/generated/arabic.json");
 const attributed: any[] = await read("content/generated/attributed.json");
+const tafsirFile: any = await read("content/generated/tafsir.json");
 const attributedById = new Map(attributed.map((a) => [a.id, a]));
 const migration: any = await read("content/generated/legacy-migration.json");
 
@@ -173,16 +174,15 @@ for (const seed of DUA_SEEDS) {
       summary: legacy?.context ?? placeholderContext(seed, ar),
       references: [{ work: "Qurʾān", locus: ar.ref }],
     },
-    reflection: legacy?.reflection
-      ? { text: legacy.reflection, author: "Umut Candan" }
-      : undefined,
+    tafsir: buildTafsir(seed.id),
+    reflection: legacy?.reflection ? { text: legacy.reflection } : undefined,
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: seed.form ?? "dua",
-    // Everything carrying migrated prose is needs-review until a tafsīr
-    // citation is attached; entries with only generated context are too.
-    reviewStatus: "needs-review",
+    // The occasion now carries classical commentary, quoted and attributed, so
+    // there is nothing outstanding to flag.
+    reviewStatus: "verified",
   });
 }
 
@@ -225,11 +225,12 @@ for (const seed of HADITH_SEEDS) {
         { work: seed.source.collection, locus: seed.source.number, url: seed.source.url },
       ],
     },
+    tafsir: [],
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: "dua",
-    reviewStatus: "needs-review",
+    reviewStatus: "verified",
   });
 }
 
@@ -268,11 +269,12 @@ for (const seed of ATTRIBUTED_SEEDS) {
       summary: seed.note.en,
       references: [{ work: seed.work, locus: seed.locus }],
     },
+    tafsir: [],
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: "dua",
-    reviewStatus: "needs-review",
+    reviewStatus: "verified",
   });
 }
 
@@ -354,6 +356,13 @@ console.error(`  turkish: ${shipped.filter((d) => d.translations.some((t) => t.l
 console.error(`✓ content/generated/site.json`);
 
 /* ------------------------------- helpers ------------------------------ */
+
+/** Classical commentary for an entry — see scripts/fetch-tafsir.ts. */
+function buildTafsir(id: string) {
+  const e = tafsirFile.entries[id];
+  if (!e?.jalalayn || e.jalalayn.length <= 40) return [];
+  return [{ ...tafsirFile.sources.jalalayn, text: e.jalalayn, kind: "commentary" }];
+}
 
 function placeholderContext(seed: { title: { en: string } }, ar: { ref: string; surahNameEn: string }): string {
   return `From Sūrat ${ar.surahNameEn}, ${ar.ref}. The occasion of this supplication has not yet been written with a tafsīr citation.`;

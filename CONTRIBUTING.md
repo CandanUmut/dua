@@ -112,10 +112,19 @@ These are different things and the distinction is load-bearing.
 
 **`context`** is *when and why it was said*. It is transmitted knowledge and it
 **requires a citation** — a tafsīr or sīrah work, named, with a locus. If you
-cannot cite it, do not write it.
+cannot cite it, do not write it. Every Qurʾānic entry also carries Tafsīr
+al-Jalālayn, fetched and attributed by `scripts/fetch-tafsir.ts`.
+
+If you add another commentary, **check it is actually that commentary.** An
+earlier attempt to add al-Wāḥidī's Asbāb al-Nuzūl found the aggregator serving
+identical text under three different scholars' names. `assertDistinct` in the
+fetcher guards against this; do not remove it, and do not ship a source that
+trips it.
 
 **`reflection`** is this project's own thought on applying the duʿāʾ. It renders
-in a visually distinct register and is labelled as an editorial note. It may
+in a visually distinct register, labelled "Editorial note — not a transmitted
+narration". It carries no byline: it makes no factual claim, so naming a person
+on each one adds nothing a reader can act on. It may
 **not** make a factual claim about reward, virtue, or occasion. "Use this when
 you cannot find your own words" is a reflection. "Reciting this seventy times
 removes debt" is a claim, and needs a graded narration or it does not ship.

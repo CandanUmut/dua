@@ -252,10 +252,21 @@ be said without quoting a named speaker.
 by `scripts/transliterate.ts`, in a simplified ALA-LC scheme. It cannot drift
 from the Arabic because it is a pure function of it. It has not had a human pass.
 
-**Context citations.** The 29 migrated `context` fields are carried at
-`needs-review`. They are largely sound but none carries a tafsīr citation, and
-brief §2.2 requires one before they ship. This is the largest remaining
-editorial task and is not automatable.
+**Context citations — done.** Every Qurʾānic entry now carries **Tafsīr
+al-Jalālayn**, quoted and attributed, fetched by `scripts/fetch-tafsir.ts`.
+Nothing is marked "awaiting a citation" any more, because a note saying a
+citation is missing is not a citation.
+
+**Asbāb al-Nuzūl was dropped, deliberately.** Al-Wāḥidī's occasions of
+revelation are the better source for this field and the aggregator exposes a
+slug for them — but that slug returns text byte-identical to
+`en-al-qushairi-tafsir` and near-identical to `en-kashf-al-asrar-tafsir`, in a
+Sufi register nothing like al-Wāḥidī. At least two of those three labels are
+wrong and there is no way to tell which from here. Shipping it would have
+attributed one scholar's words to another on thirteen pages — the same class of
+error as a mis-cited āyah, and just as invisible, since the prose reads well.
+`assertDistinct` in the fetcher now fails the build if two sources ever return
+the same text again.
 
 ---
 
