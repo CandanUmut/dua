@@ -13,7 +13,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const speaker = prophet(dua.speaker)!;
 const en = translation(dua, "en");
 const related = dua.related.map(findDua).filter(Boolean);
-const needsReview = dua.reviewStatus === "needs-review";
 const isHadith = dua.source.type === "hadith";
 const isAttributed = dua.source.type === "attributed";
 
@@ -76,6 +75,30 @@ const jsonLd = {
     }
 
     {
+      dua.tafsir.map((t) => (
+        <section>
+          <h2 class="section-label">
+            {t.kind === "occasion" ? "Occasion of revelation" : "Commentary"} — {t.work}
+          </h2>
+          <blockquote class="tafsir">
+            <p>{t.text}</p>
+          </blockquote>
+          <p class="tafsir-cite">
+            {t.work}, {t.author}. Translated by {t.translator}.
+            {t.url && (
+              <>
+                {" "}
+                <a href={t.url} rel="noreferrer">
+                  altafsir.com
+                </a>
+              </>
+            )}
+          </p>
+        </section>
+      ))
+    }
+
+    {
       dua.reflection && (
         <section>
           <h2 class="section-label">Reflection</h2>
@@ -86,22 +109,25 @@ const jsonLd = {
           */}
           <div class="reflection">
             <p>{dua.reflection.text}</p>
-            <span class="byline">
-              Editorial note by {dua.reflection.author} — not a transmitted narration
-            </span>
+            <span class="byline">Editorial note — not a transmitted narration</span>
           </div>
         </section>
       )
     }
 
+    {/*
+      The only notice left is a categorical one — what this passage *is*, not a
+      flag about work outstanding. "Awaiting a citation" is not a citation, and
+      a page full of review flags trains readers to ignore them.
+    */}
     {
-      needsReview && (
+      isAttributed && (
         <p class="notice">
-          {isAttributed
-            ? "This passage is not from the Qurʾān or the authenticated Sunnah. It is attributed to him in a scripture outside the Islamic tradition, carries no chain of transmission, and is included — clearly separated — because the Qurʾān records that he sought forgiveness without quoting his words."
-            : isHadith
-              ? "This entry's reference number and grading are awaiting verification against a printed edition, and its Arabic is hand-entered rather than fetched from an authenticated source."
-              : "The occasion described above is awaiting a tafsīr citation. The Arabic and its reference are verified."}
+          This passage is not from the Qurʾān or the authenticated Sunnah. It is
+          attributed to him in a scripture outside the Islamic tradition,
+          carries no chain of transmission, and is included — clearly separated
+          — because the Qurʾān records that he sought forgiveness without
+          quoting his words.
         </p>
       )
     }

@@ -112,10 +112,19 @@ These are different things and the distinction is load-bearing.
 
 **`context`** is *when and why it was said*. It is transmitted knowledge and it
 **requires a citation** — a tafsīr or sīrah work, named, with a locus. If you
-cannot cite it, do not write it.
+cannot cite it, do not write it. Every Qurʾānic entry also carries Tafsīr
+al-Jalālayn, fetched and attributed by `scripts/fetch-tafsir.ts`.
+
+If you add another commentary, **check it is actually that commentary.** An
+earlier attempt to add al-Wāḥidī's Asbāb al-Nuzūl found the aggregator serving
+identical text under three different scholars' names. `assertDistinct` in the
+fetcher guards against this; do not remove it, and do not ship a source that
+trips it.
 
 **`reflection`** is this project's own thought on applying the duʿāʾ. It renders
-in a visually distinct register and is labelled as an editorial note. It may
+in a visually distinct register, labelled "Editorial note — not a transmitted
+narration". It carries no byline: it makes no factual claim, so naming a person
+on each one adds nothing a reader can act on. It may
 **not** make a factual claim about reward, virtue, or occasion. "Use this when
 you cannot find your own words" is a reflection. "Reciting this seventy times
 removes debt" is a claim, and needs a graded narration or it does not ship.
@@ -137,9 +146,20 @@ against a multi-āyah entry is how the earlier Turkish came to cover only the
 first āyah of 20:25–28 while the Arabic covered all four. If you add a language,
 fetch it the same way.
 
-The project's own translations are kept as additional renderings and are marked
-`draft: true` where unreviewed, which renders an explicit label. Ḥadīth
-translations have no edition to fetch and are always project drafts.
+**One translation per language, per entry.** `scripts/check-coverage.ts` fails
+the build on a second one. Two renderings of the same scripture side by side ask
+the reader to adjudicate between them, which is not their job.
+
+Precedence, highest first:
+
+1. An established, attributed, public-domain translation fetched per-āyah.
+2. This project's own, attributed to its translator — what the ḥadīth entries
+   use, since nothing exists to fetch for them.
+3. An unreviewed draft, marked `draft: true`, which renders an explicit label.
+
+Choosing does not mean discarding: translations that are not displayed stay in
+`data/prayers.json` and the migration file, and `migrate-legacy.ts` fails the
+build if one goes missing from the repository.
 
 If you add a translation in a new language, check its licence before you commit
 it. If the licence is unclear, do not ship it.

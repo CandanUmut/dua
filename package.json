@@ -13,9 +13,10 @@
     "build": "astro build && tsx scripts/build-sw.ts",
     "preview": "astro preview",
     "content:build": "tsx scripts/build-content.ts",
-    "content:all": "tsx scripts/fetch-content.ts && tsx scripts/fetch-attributed.ts && tsx scripts/migrate-legacy.ts && tsx scripts/build-content.ts",
+    "content:all": "tsx scripts/fetch-content.ts && tsx scripts/fetch-attributed.ts && tsx scripts/fetch-tafsir.ts && tsx scripts/migrate-legacy.ts && tsx scripts/build-content.ts",
     "prebuild": "npm run content:build",
-    "content:fetch-attributed": "tsx scripts/fetch-attributed.ts"
+    "content:fetch-attributed": "tsx scripts/fetch-attributed.ts",
+    "content:fetch-tafsir": "tsx scripts/fetch-tafsir.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

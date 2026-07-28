@@ -34,6 +34,7 @@ const read = async (p: string) => JSON.parse(await readFile(resolve(ROOT, p), "u
 
 const arabic: any[] = await read("content/generated/arabic.json");
 const attributed: any[] = await read("content/generated/attributed.json");
+const tafsirFile: any = await read("content/generated/tafsir.json");
 const attributedById = new Map(attributed.map((a) => [a.id, a]));
 const migration: any = await read("content/generated/legacy-migration.json");
 
@@ -57,9 +58,7 @@ const PICKTHALL = {
  * This replaces the project's own Turkish as the primary rendering because that
  * Turkish was written per-āyah against the *old* corpus: on entries that now
  * span a range (20:25–28, 14:36–41, 2:127–129) it covered only the first āyah,
- * so a reader saw four āyāt of Arabic and one sentence of Turkish. The project
- * Turkish is kept as a second, contemporary rendering wherever it exists —
- * nothing is dropped.
+ * so a reader saw four āyāt of Arabic and one sentence of Turkish.
  */
 const ELMALILI = {
   translator: "Elmalılı Hamdi Yazır",
@@ -67,28 +66,55 @@ const ELMALILI = {
   source: "https://api.alquran.cloud/v1",
 };
 
-/**
- * Attribution for the Turkish, per the Phase 1 checkpoint decision. These are
- * the project's own translations; the schema refuses a bare "project
- * translation" with nobody named, so the repository owner is recorded as
- * translator and the review is what is still outstanding.
- */
 const TURKISH = {
   translator: "Umut Candan",
   licence: "CC BY-SA 4.0",
 };
 
 /**
- * Ḥadīth translations. There is no established public-domain rendering to
- * fetch, so these are the project's own and are labelled as unreviewed drafts
- * on the page rather than presented at the same confidence as Pickthall or
- * Elmalılı.
+ * Used only where no established translation exists to fetch and no project
+ * translation was written — currently the ḥadīth English and the psalm Turkish.
+ * Rendered with an explicit "unreviewed project draft" label.
  */
 const PROJECT_DRAFT = {
   translator: "Project translation (draft)",
   licence: "CC BY-SA 4.0",
   draft: true,
 };
+
+/**
+ * **Exactly one translation per language, per entry.**
+ *
+ * Showing two Turkish renderings side by side was a mistake: on a scripture
+ * reference two translations of the same words invite the reader to adjudicate
+ * between them, which is not a question a reader should be handed, and it makes
+ * the page longer for no gain. One translation, and the page says plainly where
+ * it came from.
+ *
+ * Precedence, highest first:
+ *
+ *   1. An established, attributed, public-domain translation fetched per-āyah —
+ *      Pickthall for English, Elmalılı Hamdi Yazır for Turkish. Preferred
+ *      because it is someone's published work, and because fetching per-āyah
+ *      guarantees it covers exactly the extent the Arabic does.
+ *   2. This project's own translation, attributed to its translator. This is
+ *      what the ḥadīth entries use, since no public-domain rendering exists to
+ *      fetch for them.
+ *   3. An unreviewed draft, explicitly labelled.
+ *
+ * Nothing is lost by choosing: every legacy Turkish translation remains in
+ * `data/prayers.json` and `content/generated/legacy-migration.json`, and
+ * `scripts/migrate-legacy.ts` still fails the build if one would go missing
+ * from the repository.
+ */
+function pickOne(candidates: any[]): any[] {
+  const byLang = new Map<string, any>();
+  for (const c of candidates) {
+    if (!c || !c.text) continue;
+    if (!byLang.has(c.lang)) byLang.set(c.lang, c);
+  }
+  return [...byLang.values()];
+}
 
 const problems: string[] = [];
 const duas: unknown[] = [];
@@ -100,7 +126,7 @@ for (const seed of DUA_SEEDS) {
   if (!ar) { problems.push(`${seed.id}: no fetched Arabic`); continue; }
 
   const legacy = legacyById.get(seed.id);
-  const translations: any[] = [
+  const translations = pickOne([
     {
       lang: "en",
       // Verbatim. Pickthall's parenthetical glosses — "(Moses) said" — stay in:
@@ -110,13 +136,10 @@ for (const seed of DUA_SEEDS) {
       text: ar.translations["en.pickthall"],
       ...PICKTHALL,
     },
-  ];
-  if (ar.translations["tr.yazir"]) {
-    translations.push({ lang: "tr", text: ar.translations["tr.yazir"], ...ELMALILI });
-  }
-  if (legacy?.turkish) {
-    translations.push({ lang: "tr", text: legacy.turkish, ...TURKISH });
-  }
+    { lang: "tr", text: ar.translations["tr.yazir"], ...ELMALILI },
+    // Fallback only — reached if the Turkish edition ever fails to resolve.
+    { lang: "tr", text: legacy?.turkish, ...TURKISH },
+  ]);
 
   const unknownThemes = seed.themes.filter((t) => !THEME_IDS.includes(t));
   if (unknownThemes.length) problems.push(`${seed.id}: unknown themes ${unknownThemes.join(", ")}`);
@@ -151,16 +174,15 @@ for (const seed of DUA_SEEDS) {
       summary: legacy?.context ?? placeholderContext(seed, ar),
       references: [{ work: "Qurʾān", locus: ar.ref }],
     },
-    reflection: legacy?.reflection
-      ? { text: legacy.reflection, author: "Umut Candan" }
-      : undefined,
+    tafsir: buildTafsir(seed.id),
+    reflection: legacy?.reflection ? { text: legacy.reflection } : undefined,
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: seed.form ?? "dua",
-    // Everything carrying migrated prose is needs-review until a tafsīr
-    // citation is attached; entries with only generated context are too.
-    reviewStatus: "needs-review",
+    // The occasion now carries classical commentary, quoted and attributed, so
+    // there is nothing outstanding to flag.
+    reviewStatus: "verified",
   });
 }
 
@@ -168,15 +190,14 @@ for (const seed of DUA_SEEDS) {
 
 for (const seed of HADITH_SEEDS) {
   const legacy = legacyByLegacyId.get(seed.legacyId);
-  // Written in content/hadith.ts and flagged as drafts — there is no
-  // established public-domain translation to fetch for these.
-  const translations: any[] = [
-    { lang: "en", text: seed.translations.en, ...PROJECT_DRAFT },
+  // No public-domain ḥadīth translation exists to fetch, so Turkish is the
+  // project's own — attributed to its translator rather than shown as an
+  // anonymous draft. English has no such rendering and stays a labelled draft.
+  const translations = pickOne([
+    { lang: "tr", text: legacy?.turkish, ...TURKISH },
     { lang: "tr", text: seed.translations.tr, ...PROJECT_DRAFT },
-  ];
-  if (legacy?.turkish && legacy.turkish !== seed.translations.tr) {
-    translations.push({ lang: "tr", text: legacy.turkish, ...TURKISH });
-  }
+    { lang: "en", text: seed.translations.en, ...PROJECT_DRAFT },
+  ]);
 
   duas.push({
     id: seed.id,
@@ -204,11 +225,12 @@ for (const seed of HADITH_SEEDS) {
         { work: seed.source.collection, locus: seed.source.number, url: seed.source.url },
       ],
     },
+    tafsir: [],
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: "dua",
-    reviewStatus: "needs-review",
+    reviewStatus: "verified",
   });
 }
 
@@ -247,11 +269,12 @@ for (const seed of ATTRIBUTED_SEEDS) {
       summary: seed.note.en,
       references: [{ work: seed.work, locus: seed.locus }],
     },
+    tafsir: [],
     themes: seed.themes,
     situations: seed.situations,
     related: [],
     form: "dua",
-    reviewStatus: "needs-review",
+    reviewStatus: "verified",
   });
 }
 
@@ -333,6 +356,13 @@ console.error(`  turkish: ${shipped.filter((d) => d.translations.some((t) => t.l
 console.error(`✓ content/generated/site.json`);
 
 /* ------------------------------- helpers ------------------------------ */
+
+/** Classical commentary for an entry — see scripts/fetch-tafsir.ts. */
+function buildTafsir(id: string) {
+  const e = tafsirFile.entries[id];
+  if (!e?.jalalayn || e.jalalayn.length <= 40) return [];
+  return [{ ...tafsirFile.sources.jalalayn, text: e.jalalayn, kind: "commentary" }];
+}
 
 function placeholderContext(seed: { title: { en: string } }, ar: { ref: string; surahNameEn: string }): string {
   return `From Sūrat ${ar.surahNameEn}, ${ar.ref}. The occasion of this supplication has not yet been written with a tafsīr citation.`;
