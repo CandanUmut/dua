@@ -81,14 +81,23 @@
   --font-util: "Source Sans", system-ui, sans-serif;
   --font-arabic: "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif;
 
-  /* 1.25 modular scale on 16px */
-  --t-xs: 0.64rem;
-  --t-sm: 0.8rem;
+  /*
+   * Modular scale, ~1.22 ratio. Deliberately flatter than the 1.25 first
+   * drafted, and with a much higher floor: at a 16px base the old --t-xs
+   * landed on 10px, which is where the source apparatus and every metadata
+   * label were set. That is unreadable, and it made the whole page feel small
+   * even though the body text was nominally fine.
+   *
+   * The base itself is now 18px (see html below), not 16px. This is a reading
+   * site, not an application.
+   */
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
   --t-base: 1rem;
-  --t-md: 1.25rem;
-  --t-lg: 1.563rem;
-  --t-xl: 1.953rem;
-  --t-2xl: 2.441rem;
+  --t-md: 1.222rem;
+  --t-lg: 1.5rem;
+  --t-xl: 1.9rem;
+  --t-2xl: 2.4rem;
 
   /* 4px spacing scale */
   --s-1: 0.25rem;
@@ -104,9 +113,9 @@
   --measure: 62ch;
   --page: 78rem;
 
-  /* Arabic: 1.5× the Latin body, per DESIGN.md §2. */
-  --ar-size: 1.5rem;
-  --ar-line: 2.1;
+  /* Arabic: 1.55× the Latin body, per DESIGN.md §2. */
+  --ar-size: 1.55rem;
+  --ar-line: 2.15;
 
   color-scheme: light dark;
 }
@@ -154,9 +163,18 @@
   box-sizing: border-box;
 }
 
+/*
+ * 18px base. Every size on the site is a rem, so the text-size setting scales
+ * the root rather than the body — which means it moves headings, labels, the
+ * apparatus and the Arabic together instead of only paragraph text. Scaling
+ * `body` alone was why the setting appeared to do almost nothing.
+ */
 html {
+  font-size: 112.5%;
   -webkit-text-size-adjust: 100%;
 }
+:root[data-type="large"] { font-size: 128%; }
+:root[data-type="xlarge"] { font-size: 145%; }
 
 body {
   margin: 0;
@@ -167,10 +185,6 @@ body {
   line-height: 1.6;
   font-synthesis-weight: none;
 }
-
-/* Type-size setting, applied to the root by the settings script. */
-:root[data-type="large"] body { font-size: 1.125rem; }
-:root[data-type="xlarge"] body { font-size: 1.25rem; }
 
 h1, h2, h3, h4 {
   font-weight: 600;
@@ -249,6 +263,9 @@ hr {
   flex-wrap: wrap;
 }
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
   font-family: var(--font-body);
   font-size: var(--t-base);
   font-weight: 600;
@@ -257,13 +274,31 @@ hr {
   letter-spacing: 0.01em;
 }
 .wordmark:hover { color: var(--lapis); }
+.mark { display: block; border: 1px solid var(--rule); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mark { filter: invert(1) hue-rotate(180deg); }
+}
+:root[data-theme="dark"] .mark { filter: invert(1) hue-rotate(180deg); }
+:root[data-theme="light"] .mark { filter: none; }
 .masthead nav {
   margin-inline-start: auto;
   display: flex;
   gap: var(--s-4);
   align-items: baseline;
+  flex-wrap: wrap;
   font-family: var(--font-util);
   font-size: var(--t-sm);
+}
+/* At 320px five nav items plus the wordmark do not fit on one line at the
+   18px base, so the nav drops to its own full-width row rather than pushing
+   the document wider. */
+@media (max-width: 560px) {
+  .masthead-in { gap: var(--s-3); }
+  .masthead nav {
+    margin-inline-start: 0;
+    width: 100%;
+    gap: var(--s-3) var(--s-4);
+  }
 }
 .masthead nav a { color: var(--ink-soft); text-decoration: none; }
 .masthead nav a:hover,
@@ -361,11 +396,8 @@ hr {
  */
 .ar-core { color: var(--ink); }
 .ar-frame { color: var(--ink-soft); opacity: 0.72; }
-:root[data-type="large"] .arabic { font-size: 1.7rem; }
-:root[data-type="xlarge"] .arabic { font-size: 1.95rem; }
-
 @media (max-width: 480px) {
-  :root { --ar-size: 1.35rem; --ar-line: 2.15; }
+  :root { --ar-size: 1.4rem; --ar-line: 2.2; }
 }
 
 .translit {
@@ -385,8 +417,24 @@ hr {
   margin: 0 0 var(--s-4);
 }
 .translation + .translation { margin-top: var(--s-6); }
+/*
+ * Reading-language filter. Hiding by attribute rather than removing the nodes
+ * keeps the page static and the switch instant, and means a reader who picks
+ * one language still has the other in the DOM for copy and for search engines.
+ */
+/*
+ * Filter on an explicit data-lang, not on the lang attribute: the label inside
+ * each block is lang="en" regardless of the translation's language, so a
+ * :has([lang="en"]) rule matched every block and hid all of them.
+ */
+:root[data-reading="en"] .translation[data-lang="tr"],
+:root[data-reading="tr"] .translation[data-lang="en"] { display: none; }
+
+.draft-flag { color: var(--rubric); }
+
 .translation-by {
   display: block;
+  /* Never inherit a content language — see the note in Passage.astro. */
   font-family: var(--font-util);
   font-size: var(--t-xs);
   letter-spacing: 0.06em;
@@ -496,6 +544,19 @@ hr {
   font-size: var(--t-xs);
   color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Situations and themes, collapsed into one line. Small, muted, and out of the
+ * reading path — they are how someone arrives at a page, not what they came to
+ * read once they are on it.
+ */
+.tags {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  line-height: 1.7;
 }
 
 /* --------------------------- quiet actions ---------------------------- */

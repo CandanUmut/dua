@@ -27,6 +27,19 @@ export const ARABIC_EDITION = "quran-uthmani";
 /** Public-domain English translations, safe to redistribute. */
 export const EN_EDITIONS = ["en.pickthall", "en.yusufali"] as const;
 
+/**
+ * Turkish. Elmalılı Hamdi Yazır died in 1942, so his translation is out of
+ * copyright and safe to redistribute. Diyanet İşleri' modern rendering reads
+ * more naturally but its licensing is unclear, and brief §2.3 says an unclear
+ * licence means the translation does not ship.
+ *
+ * Fetching Turkish per-āyah rather than authoring it also fixes an extent bug:
+ * the project's own Turkish was written per-āyah against the *old* corpus, so
+ * on entries that now span a range — 20:25–28, 14:36–41 — it covered only the
+ * first āyah while the Arabic and English covered all of them.
+ */
+export const TR_EDITIONS = ["tr.yazir"] as const;
+
 export type AyahRef = { surah: number; ayah: number };
 
 type CacheShape = Record<string, { text: string; surahName: string; surahNameEn: string }>;

@@ -115,7 +115,30 @@ export const HadithSource = z.object({
   url: z.string().url().optional(),
 });
 
-export const Source = z.discriminatedUnion("type", [QuranSource, HadithSource]);
+/**
+ * A supplication attributed to a prophet in a scripture outside the Qurʾān and
+ * the Sunnah — currently only the Psalms, for Dāwūd.
+ *
+ * Deliberately a separate variant rather than a flag on the others, so that no
+ * template can render it as though it were Qurʾānic. It carries no grading
+ * because there is no Islamic chain to grade, and it requires a `note` stating
+ * exactly what its status is, which the page shows prominently.
+ */
+export const AttributedSource = z.object({
+  type: z.literal("attributed"),
+  tradition: z.string().min(1),
+  work: z.string().min(1),
+  locus: z.string().min(1),
+  translation: z.string().min(1),
+  licence: z.string().min(1),
+  note: z.string().min(1),
+});
+
+export const Source = z.discriminatedUnion("type", [
+  QuranSource,
+  HadithSource,
+  AttributedSource,
+]);
 export type Source = z.infer<typeof Source>;
 
 /* ------------------------------------------------------------------ *
@@ -168,6 +191,12 @@ export const Translation = z.object({
   licence: z.string().min(1),
   /** Named human who checked it against the Arabic. */
   reviewedBy: z.string().min(1).optional(),
+  /**
+   * True for renderings this project produced that no one has yet checked.
+   * Rendered with a visible label so a draft is never mistaken for established,
+   * attributed work like Pickthall's or Elmalılı's.
+   */
+  draft: z.boolean().optional(),
   source: z.string().url().optional(),
 });
 export type Translation = z.infer<typeof Translation>;

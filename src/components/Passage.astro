@@ -4,26 +4,30 @@
  * apparatus set as a marginal rubric beside it (DESIGN.md §3).
  *
  * On excerpts, this renders the **whole āyah** with the supplication in full
- * ink and the surrounding narrative dimmed, rather than showing the excerpt
- * alone. That is a correctness decision, not a stylistic one: the English is
- * Pickthall's rendering of the complete āyah, so an excerpt-only Arabic would
- * put nine words of Arabic beside forty words of English and quietly imply they
- * said the same thing. Showing the full āyah makes the two correspond exactly
- * while the emphasis still makes clear which words are the duʿāʾ — which is how
- * a critical edition handles the same problem.
+ * ink and the surrounding narrative dimmed, rather than the excerpt alone. That
+ * is a correctness decision: the translations render the complete āyah, so an
+ * excerpt-only Arabic would put nine words of Arabic beside forty of English
+ * and quietly imply they said the same thing.
+ *
+ * Entries whose source is `attributed` — currently only Dāwūd's psalm — have no
+ * Arabic at all, and say so loudly rather than quietly omitting the block.
  */
 import type { Dua } from "../../content/schema";
-import { refLabel, translation } from "../lib/content";
+import { refLabel } from "../lib/content";
 
 interface Props {
   dua: Dua;
 }
 const { dua } = Astro.props;
 
-const en = translation(dua, "en");
-const tr = translation(dua, "tr");
-const isQuran = dua.source.type === "quran";
-const excerpt = dua.source.type === "quran" ? dua.source.excerpt : undefined;
+const src = dua.source;
+const excerpt = src.type === "quran" ? src.excerpt : undefined;
+
+/** All renderings, grouped — an entry may carry two Turkish translations. */
+const en = dua.translations.filter((t) => t.lang === "en");
+const tr = dua.translations.filter((t) => t.lang === "tr");
+
+const LANG_LABEL: Record<string, string> = { en: "English", tr: "Türkçe" };
 
 /**
  * Split the full āyah into [before, supplication, after] on the recorded word
@@ -45,36 +49,48 @@ if (excerpt && dua.arabic?.fullText) {
     <dt>Source</dt>
     <dd>
       {
-        dua.source.type === "quran" ? (
+        src.type === "quran" ? (
           <>
-            Sūrat {dua.source.surahName}
+            Sūrat {src.surahName}
             <br />
-            <a
-              href={`https://quran.com/${dua.source.ayat[0].surah}/${dua.source.ayat[0].ayah}`}
-              rel="noreferrer"
-            >
+            <a href={`https://quran.com/${src.ayat[0].surah}/${src.ayat[0].ayah}`} rel="noreferrer">
               {refLabel(dua)}
             </a>
           </>
-        ) : dua.source.type === "hadith" ? (
+        ) : src.type === "hadith" ? (
           <>
-            {dua.source.collection}
+            {src.collection}
             <br />
-            <a href={dua.source.url} rel="noreferrer">
-              no. {dua.source.number}
+            <a href={src.url} rel="noreferrer">
+              no. {src.number}
             </a>
           </>
-        ) : null
+        ) : (
+          <>
+            {src.work}
+            <br />
+            {src.locus}
+          </>
+        )
       }
     </dd>
 
     {
-      dua.source.type === "hadith" && (
+      src.type === "hadith" && (
         <>
           <dt>Grading</dt>
           <dd>
-            {dua.source.grading} — {dua.source.gradedBy}
+            {src.grading} — {src.gradedBy}
           </dd>
+        </>
+      )
+    }
+
+    {
+      src.type === "attributed" && (
+        <>
+          <dt>Status</dt>
+          <dd>Outside the Qurʾān and Sunnah</dd>
         </>
       )
     }
@@ -89,38 +105,33 @@ if (excerpt && dua.arabic?.fullText) {
     }
 
     {
-      isQuran && (
+      src.type === "quran" && (
         <>
           <dt>Text</dt>
           <dd>Uthmani, verified by checksum</dd>
         </>
       )
     }
-
-    {
-      en && (
-        <>
-          <dt>Translation</dt>
-          <dd>
-            {en.translator}
-            <br />
-            {en.licence}
-          </dd>
-        </>
-      )
-    }
   </dl>
 
   <div class="passage-body">
-    {/*
-      lang and dir go on this node specifically, never on <html>. translate="no"
-      keeps Chrome from re-translating vetted scripture.
-    */}
-    <p class="arabic" lang="ar" dir="rtl" translate="no">
-      {before && <span class="ar-frame">{before} </span>}
-      <span class="ar-core">{core}</span>
-      {after && <span class="ar-frame"> {after}</span>}
-    </p>
+    {
+      dua.arabic ? (
+        /*
+          lang and dir go on this node specifically, never on <html>.
+          translate="no" keeps Chrome from re-translating vetted scripture.
+        */
+        <p class="arabic" lang="ar" dir="rtl" translate="no">
+          {before && <span class="ar-frame">{before} </span>}
+          <span class="ar-core">{core}</span>
+          {after && <span class="ar-frame"> {after}</span>}
+        </p>
+      ) : (
+        <p class="notice" style="margin-top:0">
+          No Arabic original — this passage is not Qurʾānic.
+        </p>
+      )
+    }
 
     {
       dua.transliteration && (
@@ -131,21 +142,20 @@ if (excerpt && dua.arabic?.fullText) {
     }
 
     {
-      en && (
-        <div class="translation" translate="no">
-          <span class="translation-by">English · {en.translator}</span>
-          {en.text}
+      /*
+        `lang` goes on the text itself, not the wrapper. Putting it on the
+        wrapper made the label inherit it, and `text-transform: uppercase`
+        under lang="tr" applies Turkish casing — so "PROJECT TRANSLATION"
+        rendered as "PROJECT TRANSLATİON".
+      */
+      [...en, ...tr].map((t) => (
+        <div class="translation" data-lang={t.lang} translate="no">
+          <span class="translation-by" lang="en">
+            {LANG_LABEL[t.lang] ?? t.lang} · {t.draft ? "unreviewed project draft" : t.translator}
+          </span>
+          <span lang={t.lang}>{t.text}</span>
         </div>
-      )
-    }
-
-    {
-      tr && (
-        <div class="translation" lang="tr" translate="no">
-          <span class="translation-by">Türkçe · {tr.translator}</span>
-          {tr.text}
-        </div>
-      )
+      ))
     }
   </div>
 </div>

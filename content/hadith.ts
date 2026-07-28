@@ -27,6 +27,13 @@ export type HadithSeed = {
   id: string;
   legacyId: string;
   title: { en: string; tr: string };
+  /**
+   * Translations for ḥadīth cannot come from the Qurʾān API, so they are
+   * written here. They are marked as project drafts awaiting review and render
+   * with a notice saying so — unlike the Qurʾānic entries, where Pickthall and
+   * Elmalılı are established, attributed, public-domain work.
+   */
+  translations: { en: string; tr: string };
   /** Verbatim from the legacy corpus. Never edited. */
   arabic: string;
   source: {
@@ -48,6 +55,10 @@ export const HADITH_SEEDS: HadithSeed[] = [
     title: {
       en: "I have wronged myself greatly",
       tr: "Kendime çok zulmettim",
+    },
+    translations: {
+      en: "O Allah, I have wronged myself greatly, and none forgives sins but You. So forgive me with forgiveness from Yourself, and have mercy on me. You are the Forgiving, the Merciful.",
+      tr: "Allah'ım! Kendime çok zulmettim. Günahları ancak Sen bağışlarsın. Öyleyse katından bir bağışlamayla beni bağışla ve bana merhamet et. Şüphesiz Sen çok bağışlayan, çok merhamet edensin.",
     },
     arabic:
       "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
@@ -72,6 +83,10 @@ export const HADITH_SEEDS: HadithSeed[] = [
       en: "Refuge from the four",
       tr: "Dört şeyden sığınma",
     },
+    translations: {
+      en: "O Allah, I seek refuge in You from the punishment of Hell, from the punishment of the grave, from the trials of life and death, and from the evil of the trial of the False Messiah.",
+      tr: "Allah'ım! Cehennem azabından, kabir azabından, hayatın ve ölümün fitnelerinden ve Deccal fitnesinin şerrinden Sana sığınırım.",
+    },
     arabic:
       "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَمِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ",
     source: {
@@ -94,6 +109,10 @@ export const HADITH_SEEDS: HadithSeed[] = [
     title: {
       en: "Set right my religion, my world, my end",
       tr: "Dinimi, dünyamı ve âhiretimi düzelt",
+    },
+    translations: {
+      en: "O Allah, set right for me my religion, which is the safeguard of my affairs; and set right for me my worldly life, in which is my livelihood; and set right for me my Hereafter, to which is my return.",
+      tr: "Allah'ım! İşlerimin koruyucusu olan dinimi benim için düzelt. Geçimimin içinde bulunduğu dünyamı benim için düzelt. Dönüşümün kendisine olduğu âhiretimi de benim için düzelt.",
     },
     arabic:
       "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي وَأَصْلِحْ لِي آخِرَتِيَ الَّتِي فِيهَا مَعَادِي",
@@ -118,6 +137,10 @@ export const HADITH_SEEDS: HadithSeed[] = [
       en: "Guidance, piety, chastity, sufficiency",
       tr: "Hidayet, takva, iffet ve gönül zenginliği",
     },
+    translations: {
+      en: "O Allah, I ask You for guidance, piety, chastity, and sufficiency.",
+      tr: "Allah'ım! Senden hidayet, takva, iffet ve gönül zenginliği dilerim.",
+    },
     arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
     source: {
       collection: "Ṣaḥīḥ Muslim",
@@ -139,6 +162,10 @@ export const HADITH_SEEDS: HadithSeed[] = [
     title: {
       en: "Refuge from anxiety and debt",
       tr: "Keder ve borçtan sığınma",
+    },
+    translations: {
+      en: "O Allah, I seek refuge in You from anxiety and sorrow, from weakness and laziness, from miserliness and cowardice, from the burden of debt and from being overpowered by men.",
+      tr: "Allah'ım! Kaygıdan ve kederden, âcizlikten ve tembellikten, cimrilikten ve korkaklıktan, borcun ağırlığından ve insanların baskısından Sana sığınırım.",
     },
     arabic:
       "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",

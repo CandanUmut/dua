@@ -506,6 +506,21 @@ export const DUA_SEEDS: DuaSeed[] = [
     },
   },
 
+  /* ------------------------------- Dāwūd ------------------------------ */
+  {
+    id: "dawud-al-hamdu-lillah-alladhi-faddalana",
+    speaker: "dawud",
+    title: { en: "Praise to the One who favoured us", tr: "Bizi üstün kılana hamd olsun" },
+    ayat: a(27, 15),
+    excerpt: { fromWord: 6, toWord: 15, note: CUT.saidThat },
+    themes: ["gratitude", "knowledge"],
+    form: "dhikr",
+    situations: {
+      en: ["after being given an ability you did not earn", "when knowledge comes easily and you notice it"],
+      tr: ["hak etmediğiniz bir kabiliyet verildiğinde", "ilim kolay geldiğinde ve bunu fark ettiğinizde"],
+    },
+  },
+
   /* ------------------------------ Sulaymān ---------------------------- */
   {
     id: "sulayman-rabbi-awzini-an-ashkura",

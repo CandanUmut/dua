@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { LEGACY_REDIRECTS } from "../lib/content";
+import { UI_JSON } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -12,10 +13,10 @@ const { title, description, jsonLd } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const nav = [
-  { href: `${base}/themes/`, label: "By need" },
-  { href: `${base}/prophets/`, label: "Prophets" },
-  { href: `${base}/search/`, label: "Search" },
-  { href: `${base}/about/`, label: "About" },
+  { href: `${base}/themes/`, label: "By need", key: "navNeed" },
+  { href: `${base}/prophets/`, label: "Prophets", key: "navProphets" },
+  { href: `${base}/search/`, label: "Search", key: "navSearch" },
+  { href: `${base}/about/`, label: "About", key: "navAbout" },
 ];
 const here = Astro.url.pathname;
 ---
@@ -41,6 +42,9 @@ const here = Astro.url.pathname;
     <meta name="theme-color" content="#e8e6df" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#191b1a" media="(prefers-color-scheme: dark)" />
     <link rel="manifest" href={`${base}/manifest.webmanifest`} />
+    <link rel="icon" href={`${base}/icon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}/icon-180.png`} />
+    <meta property="og:image" content={`${base}/icon-512.png`} />
     <link
       rel="preload"
       href={`${base}/fonts/amiri-arabic-1.woff2`}
@@ -71,16 +75,19 @@ const here = Astro.url.pathname;
 
     <header class="masthead">
       <div class="masthead-in">
-        <a class="wordmark" href={`${base}/`}>The Duʿāʾ of the Prophets</a>
+        <a class="wordmark" href={`${base}/`}>
+          <img src={`${base}/icon.svg`} alt="" width="26" height="26" class="mark" />
+          <span data-i18n="siteName">The Duʿāʾ of the Prophets</span>
+        </a>
         <nav aria-label="Primary">
           {
             nav.map((n) => (
-              <a href={n.href} aria-current={here.startsWith(n.href) ? "page" : undefined}>
+              <a href={n.href} aria-current={here.startsWith(n.href) ? "page" : undefined} data-i18n={n.key}>
                 {n.label}
               </a>
             ))
           }
-          <button class="settings-toggle" type="button" data-open-settings aria-haspopup="dialog">
+          <button class="settings-toggle" type="button" data-open-settings aria-haspopup="dialog" data-i18n="navSettings">
             Settings
           </button>
         </nav>
@@ -107,16 +114,41 @@ const here = Astro.url.pathname;
     </footer>
 
     <dialog class="settings" data-settings aria-labelledby="settings-title">
-      <h2 id="settings-title">Settings</h2>
+      <h2 id="settings-title" data-i18n="settingsTitle">Settings</h2>
 
       <div class="setting">
-        <span id="set-theme">Appearance</span>
-        <div class="choices" role="radiogroup" aria-labelledby="set-theme">
+        <span id="set-uilang" data-i18n="setInterface">Interface language</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-uilang">
           {
-            ["auto", "light", "dark"].map((v) => (
+            [
+              ["en", "English"],
+              ["tr", "Türkçe"],
+            ].map(([v, l]) => (
               <label>
-                <input type="radio" name="theme" value={v} />
-                <span>{v[0].toUpperCase() + v.slice(1)}</span>
+                <input type="radio" name="uilang" value={v} />
+                <span>{l}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      {/*
+        Separate from the interface language on purpose: plenty of readers want
+        an English interface with the Turkish translation, or both at once.
+      */}
+      <div class="setting">
+        <span id="set-reading" data-i18n="setReading">Translations shown</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-reading">
+          {
+            [
+              ["both", "Both", "setBoth"],
+              ["en", "English", "setEnglish"],
+              ["tr", "Türkçe", "setTurkish"],
+            ].map(([v, l, k]) => (
+              <label>
+                <input type="radio" name="reading" value={v} />
+                <span data-i18n={k}>{l}</span>
               </label>
             ))
           }
@@ -124,17 +156,35 @@ const here = Astro.url.pathname;
       </div>
 
       <div class="setting">
-        <span id="set-type">Text size</span>
+        <span id="set-theme" data-i18n="setAppearance">Appearance</span>
+        <div class="choices" role="radiogroup" aria-labelledby="set-theme">
+          {
+            [
+              ["auto", "Auto", "setAuto"],
+              ["light", "Light", "setLight"],
+              ["dark", "Dark", "setDark"],
+            ].map(([v, l, k]) => (
+              <label>
+                <input type="radio" name="theme" value={v} />
+                <span data-i18n={k}>{l}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="setting">
+        <span id="set-type" data-i18n="setTextSize">Text size</span>
         <div class="choices" role="radiogroup" aria-labelledby="set-type">
           {
             [
-              ["normal", "Normal"],
-              ["large", "Large"],
-              ["xlarge", "Larger"],
-            ].map(([v, l]) => (
+              ["normal", "Normal", "setNormal"],
+              ["large", "Large", "setLarge"],
+              ["xlarge", "Larger", "setXLarge"],
+            ].map(([v, l, k]) => (
               <label>
                 <input type="radio" name="type" value={v} />
-                <span>{l}</span>
+                <span data-i18n={k}>{l}</span>
               </label>
             ))
           }
@@ -142,16 +192,16 @@ const here = Astro.url.pathname;
       </div>
 
       <div class="setting">
-        <span id="set-translit">Transliteration</span>
+        <span id="set-translit" data-i18n="setTranslit">Transliteration</span>
         <div class="choices" role="radiogroup" aria-labelledby="set-translit">
           {
             [
-              ["on", "Show"],
-              ["off", "Hide"],
-            ].map(([v, l]) => (
+              ["on", "Show", "setShow"],
+              ["off", "Hide", "setHide"],
+            ].map(([v, l, k]) => (
               <label>
                 <input type="radio" name="translit" value={v} />
-                <span>{l}</span>
+                <span data-i18n={k}>{l}</span>
               </label>
             ))
           }
@@ -159,17 +209,17 @@ const here = Astro.url.pathname;
       </div>
 
       <div class="setting">
-        <span id="set-hon">Honorifics</span>
+        <span id="set-hon" data-i18n="setHonorifics">Honorifics</span>
         <div class="choices" role="radiogroup" aria-labelledby="set-hon">
           {
             [
-              ["arabic", "Arabic"],
-              ["full", "In English"],
-              ["abbr", "Abbreviated"],
-            ].map(([v, l]) => (
+              ["arabic", "Arabic", "setArabicForm"],
+              ["full", "In English", "setEnglishForm"],
+              ["abbr", "Abbreviated", "setAbbr"],
+            ].map(([v, l, k]) => (
               <label>
                 <input type="radio" name="honorific" value={v} />
-                <span>{l}</span>
+                <span data-i18n={k}>{l}</span>
               </label>
             ))
           }
@@ -177,11 +227,11 @@ const here = Astro.url.pathname;
       </div>
 
       <form method="dialog">
-        <button class="settings-toggle" style="font-size:var(--t-base)">Done</button>
+        <button class="settings-toggle" style="font-size:var(--t-base)" data-i18n="setDone">Done</button>
       </form>
     </dialog>
 
-    <script is:inline>
+    <script is:inline define:vars={{ UI: UI_JSON }}>
       (() => {
         const KEY = "dua.settings";
         const dlg = document.querySelector("[data-settings]");
@@ -189,7 +239,10 @@ const here = Astro.url.pathname;
         const read = () => {
           try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { return {}; }
         };
-        const defaults = { theme: "auto", type: "normal", translit: true, honorific: "arabic" };
+        const defaults = {
+          theme: "auto", type: "normal", translit: true, honorific: "arabic",
+          uilang: "en", reading: "both",
+        };
         let s = { ...defaults, ...read() };
 
         const apply = () => {
@@ -201,6 +254,16 @@ const here = Astro.url.pathname;
           document.querySelectorAll("[data-translit-block]").forEach((el) => {
             el.classList.toggle("hidden", !s.translit);
           });
+          // Interface language: swap every labelled string in place.
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const v = UI[el.dataset.i18n];
+            if (v && v[s.uilang]) el.textContent = v[s.uilang];
+          });
+          document.documentElement.lang = s.uilang;
+
+          // Reading language: which translations are visible.
+          r.dataset.reading = s.reading;
+
           document.querySelectorAll("[data-hon]").forEach((el) => {
             el.textContent = el.dataset[s.honorific === "full" ? "honFull" : s.honorific === "abbr" ? "honAbbr" : "honArabic"] || "";
           });

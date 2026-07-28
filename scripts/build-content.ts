@@ -22,6 +22,7 @@ import { z } from "zod";
 
 import { DUA_SEEDS } from "../content/duas.js";
 import { HADITH_SEEDS } from "../content/hadith.js";
+import { ATTRIBUTED_SEEDS } from "../content/attributed.js";
 import { PROPHETS } from "../content/prophets.js";
 import { THEMES, THEME_IDS } from "../content/themes.js";
 import { Dua, Prophet, Theme } from "../content/schema.js";
@@ -32,6 +33,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = async (p: string) => JSON.parse(await readFile(resolve(ROOT, p), "utf8"));
 
 const arabic: any[] = await read("content/generated/arabic.json");
+const attributed: any[] = await read("content/generated/attributed.json");
+const attributedById = new Map(attributed.map((a) => [a.id, a]));
 const migration: any = await read("content/generated/legacy-migration.json");
 
 const arabicById = new Map(arabic.map((a) => [a.id, a]));
@@ -48,6 +51,23 @@ const PICKTHALL = {
 };
 
 /**
+ * Elmalılı Hamdi Yazır (d. 1942) — out of copyright, and fetched per-āyah so it
+ * always covers exactly the same extent as the Arabic and the English.
+ *
+ * This replaces the project's own Turkish as the primary rendering because that
+ * Turkish was written per-āyah against the *old* corpus: on entries that now
+ * span a range (20:25–28, 14:36–41, 2:127–129) it covered only the first āyah,
+ * so a reader saw four āyāt of Arabic and one sentence of Turkish. The project
+ * Turkish is kept as a second, contemporary rendering wherever it exists —
+ * nothing is dropped.
+ */
+const ELMALILI = {
+  translator: "Elmalılı Hamdi Yazır",
+  licence: "Public domain",
+  source: "https://api.alquran.cloud/v1",
+};
+
+/**
  * Attribution for the Turkish, per the Phase 1 checkpoint decision. These are
  * the project's own translations; the schema refuses a bare "project
  * translation" with nobody named, so the repository owner is recorded as
@@ -56,6 +76,18 @@ const PICKTHALL = {
 const TURKISH = {
   translator: "Umut Candan",
   licence: "CC BY-SA 4.0",
+};
+
+/**
+ * Ḥadīth translations. There is no established public-domain rendering to
+ * fetch, so these are the project's own and are labelled as unreviewed drafts
+ * on the page rather than presented at the same confidence as Pickthall or
+ * Elmalılı.
+ */
+const PROJECT_DRAFT = {
+  translator: "Project translation (draft)",
+  licence: "CC BY-SA 4.0",
+  draft: true,
 };
 
 const problems: string[] = [];
@@ -79,6 +111,9 @@ for (const seed of DUA_SEEDS) {
       ...PICKTHALL,
     },
   ];
+  if (ar.translations["tr.yazir"]) {
+    translations.push({ lang: "tr", text: ar.translations["tr.yazir"], ...ELMALILI });
+  }
   if (legacy?.turkish) {
     translations.push({ lang: "tr", text: legacy.turkish, ...TURKISH });
   }
@@ -133,11 +168,14 @@ for (const seed of DUA_SEEDS) {
 
 for (const seed of HADITH_SEEDS) {
   const legacy = legacyByLegacyId.get(seed.legacyId);
-  const translations: any[] = [];
-  if (legacy?.turkish) translations.push({ lang: "tr", text: legacy.turkish, ...TURKISH });
-  if (translations.length === 0) {
-    problems.push(`${seed.id}: no translation available`);
-    continue;
+  // Written in content/hadith.ts and flagged as drafts — there is no
+  // established public-domain translation to fetch for these.
+  const translations: any[] = [
+    { lang: "en", text: seed.translations.en, ...PROJECT_DRAFT },
+    { lang: "tr", text: seed.translations.tr, ...PROJECT_DRAFT },
+  ];
+  if (legacy?.turkish && legacy.turkish !== seed.translations.tr) {
+    translations.push({ lang: "tr", text: legacy.turkish, ...TURKISH });
   }
 
   duas.push({
@@ -165,6 +203,49 @@ for (const seed of HADITH_SEEDS) {
       references: [
         { work: seed.source.collection, locus: seed.source.number, url: seed.source.url },
       ],
+    },
+    themes: seed.themes,
+    situations: seed.situations,
+    related: [],
+    form: "dua",
+    reviewStatus: "needs-review",
+  });
+}
+
+/* --------------------- attributed (outside Qurʾān/Sunnah) -------------- */
+
+for (const seed of ATTRIBUTED_SEEDS) {
+  const passage = attributedById.get(seed.id);
+  if (!passage) { problems.push(`${seed.id}: not fetched — run content:fetch-attributed`); continue; }
+
+  duas.push({
+    id: seed.id,
+    speaker: seed.speaker,
+    title: seed.title,
+    source: {
+      type: "attributed",
+      tradition: "Zabūr / Psalms",
+      work: seed.work,
+      locus: seed.locus,
+      translation: passage.translation,
+      licence: "Public domain",
+      note: seed.note.en,
+    },
+    // No `arabic` field: this passage has no Arabic original we can source, and
+    // inventing one would be exactly the failure the whole pipeline prevents.
+    translations: [
+      {
+        lang: "en",
+        text: passage.text,
+        translator: passage.translation,
+        licence: "Public domain",
+        source: "https://bible-api.com",
+      },
+      { lang: "tr", text: seed.turkish, ...PROJECT_DRAFT },
+    ],
+    context: {
+      summary: seed.note.en,
+      references: [{ work: seed.work, locus: seed.locus }],
     },
     themes: seed.themes,
     situations: seed.situations,
