@@ -7,5 +7,10 @@
   "display": "standalone",
   "background_color": "#e8e6df",
   "theme_color": "#e8e6df",
-  "icons": []
+  "icons": [
+    { "src": "/dua/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/dua/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/dua/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/dua/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
 }

@@ -32,6 +32,9 @@ jobs:
       - name: Validate content against schema
         run: npm run content:build
 
+      - name: Check every entry has English and Turkish
+        run: npx tsx scripts/check-coverage.ts
+
       - name: Build
         run: npm run build
 

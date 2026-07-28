@@ -53,12 +53,57 @@ const needsReview = DUAS.filter((d) => d.reviewStatus === "needs-review").length
     <section>
       <h2 class="section-label">Translations</h2>
       <p>
-        English is Marmaduke Pickthall's, which is in the public domain. Turkish
-        translations are this project's own, licensed CC BY-SA 4.0. Every
-        translation on every page names its translator; anything unattributed
-        does not ship.
+        English for the Qurʾānic entries is Marmaduke Pickthall's and Turkish is
+        Elmalılı Hamdi Yazır's. Both are in the public domain, and both are
+        fetched per-āyah, which means they always cover exactly the same extent
+        as the Arabic beside them.
       </p>
-      <p>{withTurkish} of {DUAS.length} entries currently carry Turkish. The rest are being written.</p>
+      <p>
+        That last point fixed a real problem. This project's own Turkish was
+        written one āyah at a time against an older version of the site. On
+        entries that now span several āyāt — 20:25–28, 14:36–41 — it covered
+        only the first, so a reader saw four āyāt of Arabic and a single
+        sentence of Turkish. Those translations are still here, kept as a
+        second, contemporary rendering wherever they exist, but the complete
+        one is shown first.
+      </p>
+      <p>
+        Ḥadīth translations have no established public-domain version to fetch,
+        so they are this project's own and are labelled on the page as
+        unreviewed drafts rather than presented at the same confidence.
+      </p>
+      <p>
+        All {DUAS.length} entries carry both English and Turkish. Every
+        translation on every page names its translator; anything unattributed
+        does not ship. You can choose which languages to show in Settings.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">Material outside the Qurʾān and Sunnah</h2>
+      <p>
+        A few prophets the Qurʾān names have no supplication quoted in it.
+        Dāwūd is the clearest case: 38:24 reports that he sought forgiveness and
+        prostrated, but does not quote his words, and 2:250 is the collective
+        duʿāʾ of those who crossed the river with Ṭālūt.
+      </p>
+      <p>
+        Where a supplication is attributed to such a prophet in a scripture
+        outside the Islamic tradition, it may appear here — clearly labelled, in
+        its own visual treatment, never mixed into the Qurʾānic entries, and
+        never presented as revelation. Islamic belief holds that the Zabūr was
+        given to Dāwūd; it does not hold that the received Book of Psalms is
+        that revelation preserved. Such passages carry no chain of transmission
+        and no scriptural authority in Islam.
+      </p>
+      <p>
+        Selection is deliberately narrow: a passage is included only if it is a
+        supplication in form, is traditionally attributed to that prophet, and
+        contains nothing contradicting Islamic belief about God. The text is
+        fetched from the World English Bible, which is public domain — the same
+        rule applies as everywhere else here, that scripture is never written
+        from memory.
+      </p>
     </section>
 
     <section>

@@ -25,6 +25,7 @@ import { DUA_SEEDS, type DuaSeed } from "../content/duas.js";
 import {
   ARABIC_EDITION,
   EN_EDITIONS,
+  TR_EDITIONS,
   fetchAyat,
   formatRef,
 } from "./quran-api.js";
@@ -70,7 +71,7 @@ export async function resolveDua(seed: DuaSeed): Promise<ResolvedDua> {
   }
 
   const translations: Record<string, string> = {};
-  for (const ed of EN_EDITIONS) {
+  for (const ed of [...EN_EDITIONS, ...TR_EDITIONS]) {
     const { joined: t } = await fetchAyat(seed.ayat, ed);
     translations[ed] = t;
   }

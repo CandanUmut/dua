@@ -85,6 +85,27 @@ Copy the Arabic from a reliable digital edition. Do not retype it, do not
 "clean it up", and do not correct what looks like a typo — open an issue
 instead.
 
+## Adding a passage from outside the Qurʾān and Sunnah
+
+A few prophets the Qurʾān names have no supplication quoted in it. Where one is
+attributed to such a prophet in another scripture, it can go in
+`content/attributed.ts` — under strict conditions:
+
+- It must be a **supplication in form**, not narrative about one.
+- It must be **traditionally attributed** to that prophet.
+- It must contain **nothing contradicting Islamic belief about God**. Passages
+  touching divine sonship, intercession, or the divine name as a proper noun
+  are not selected. This is a duʿāʾ reference, not an edition of the Psalms.
+- The text is **fetched, never typed** — `scripts/fetch-attributed.ts` pulls it
+  from the World English Bible (public domain) and hash-locks it, exactly as the
+  Arabic is.
+- It carries a `note` stating its status, which the page shows prominently.
+
+These entries get their own `source.type`, their own visual treatment, and a
+notice saying they are outside the Qurʾān and Sunnah, carry no chain of
+transmission, and are not revelation. They are never mixed into Qurʾānic
+entries. If you cannot meet every condition above, do not add the entry.
+
 ## Adding context or a reflection
 
 These are different things and the distinction is load-bearing.
@@ -109,7 +130,16 @@ ship, regardless of quality — the previous corpus had 47 unattributed
 paraphrases and none of them were usable.
 
 - English is Pickthall (public domain), fetched with the Arabic.
-- Turkish is this project's own, CC BY-SA 4.0.
+- Turkish is Elmalılı Hamdi Yazır (d. 1942, public domain), also fetched.
+
+Both are fetched **per-āyah**, which matters: authoring a translation by hand
+against a multi-āyah entry is how the earlier Turkish came to cover only the
+first āyah of 20:25–28 while the Arabic covered all four. If you add a language,
+fetch it the same way.
+
+The project's own translations are kept as additional renderings and are marked
+`draft: true` where unreviewed, which renders an explicit label. Ḥadīth
+translations have no edition to fetch and are always project drafts.
 
 If you add a translation in a new language, check its licence before you commit
 it. If the licence is unclear, do not ship it.

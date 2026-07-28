@@ -35,8 +35,8 @@ export const PROPHETS: Prophet[] = [
       tr: "İlk insan ve ilk peygamber. Kendisine bütün isimler öğretildi, cennete yerleştirildi ve yasaklanan ağaçtan yedikten sonra oradan çıkarıldı.",
     },
     trial: {
-      en: "Having done the one thing he was told not to do — and having no one to blame for it.",
-      tr: "Yapmaması söylenen tek şeyi yapmış olmak ve bunun için suçlayacak kimsesinin bulunmaması.",
+      en: "Having done the one thing he was told not to do, and answering for it without excuse.",
+      tr: "Yapmaması söylenen tek şeyi yapmak ve bunun hesabını mazeret üretmeden vermek.",
     },
     references: [QURAN("2:30–37"), QURAN("7:19–25"), QURAN("20:115–122")],
   },
@@ -95,12 +95,12 @@ export const PROPHETS: Prophet[] = [
     order: 50,
     section: "prophet",
     summary: {
-      en: "Father of Yūsuf. Lost him to his brothers' deception and grieved for decades without accusing Allah, until his sight returned with his son.",
-      tr: "Yûsuf'un babası. Oğlunu kardeşlerinin hilesiyle kaybetti ve Allah'a sitem etmeden onlarca yıl yas tuttu; gözleri ancak oğluyla birlikte açıldı.",
+      en: "Father of Yūsuf. Lost him to his brothers' deception and wept until his sight went, saying he complained of his grief to Allah alone. His sight returned when word of his son came.",
+      tr: "Yûsuf'un babası. Oğlunu kardeşlerinin hilesiyle kaybetti; gözleri ağlamaktan görmez oldu ve kederini yalnız Allah'a arz ettiğini söyledi. Oğlundan haber gelince gözleri yeniden açıldı.",
     },
     trial: {
-      en: "Grief that lasted years, carried without complaint to anyone but Allah.",
-      tr: "Yıllarca süren ve Allah'tan başkasına şikâyet edilmeden taşınan bir keder.",
+      en: "Grief carried without complaint to anyone but Allah.",
+      tr: "Allah'tan başkasına şikâyet edilmeden taşınan bir keder.",
     },
     references: [QURAN("12:18"), QURAN("12:83–87"), QURAN("12:96")],
   },
@@ -127,14 +127,14 @@ export const PROPHETS: Prophet[] = [
     order: 70,
     section: "prophet",
     summary: {
-      en: "Tried in his body, his wealth, and his family over a long affliction, and remembered for the patience with which he bore it.",
-      tr: "Uzun bir hastalık boyunca bedeninde, malında ve ailesinde imtihan edildi; bunu taşıdığı sabırla anılır.",
+      en: "Afflicted in his body and separated from his family, and remembered for the patience with which he bore it. The Qurʾān says he was found steadfast.",
+      tr: "Bedeninde bir dertle imtihan edildi ve ailesinden ayrı düştü; bunu taşıdığı sabırla anılır. Kur'ân onu sabreden biri olarak nitelendirir.",
     },
     trial: {
       en: "Prolonged illness — the kind that outlasts other people's sympathy.",
       tr: "Uzayan hastalık — başkalarının merhametinden daha uzun süren cinsten.",
     },
-    references: [QURAN("21:83–84"), QURAN("38:41–44")],
+    references: [QURAN("21:83–84"), QURAN("38:41–44"), QURAN("38:44")],
   },
   {
     id: "shuayb",
@@ -163,10 +163,10 @@ export const PROPHETS: Prophet[] = [
       tr: "Firavun'un sarayında büyüdü, kastetmediği bir ölümün ardından Mısır'dan kaçtı ve kendisini büyüten adama geri gönderildi. Allah kendisiyle doğrudan konuştu.",
     },
     trial: {
-      en: "Being sent to confront the most powerful man alive, with a speech impediment and a killing behind him.",
-      tr: "Dilinde bir tutukluk ve arkasında bir ölümle, yaşayan en güçlü adamın karşısına gönderilmek.",
+      en: "Being sent back to the household he had fled, to confront the most powerful ruler of his time.",
+      tr: "Kaçtığı saraya geri gönderilip zamanının en güçlü hükümdarının karşısına çıkarılmak.",
     },
-    references: [QURAN("20:9–98"), QURAN("28:3–46"), QURAN("7:103–156")],
+    references: [QURAN("20:9–98"), QURAN("28:3–46"), QURAN("7:103–156"), QURAN("4:164")],
   },
   {
     id: "dawud",
@@ -262,7 +262,16 @@ export const PROPHETS: Prophet[] = [
       en: "Losing, in a single year, both the wife who believed him first and the uncle who protected him.",
       tr: "Tek bir yıl içinde hem kendisine ilk inanan hanımını hem de onu koruyan amcasını kaybetmek.",
     },
-    references: [QURAN("33:21"), QURAN("93:1–11"), QURAN("94:1–8")],
+    references: [
+      QURAN("33:21"),
+      QURAN("93:1–11"),
+      QURAN("94:1–8"),
+      {
+        work: "al-Sīra al-Nabawiyya",
+        author: "Ibn Hishām",
+        locus: "on the year of Khadīja's and Abū Ṭālib's deaths",
+      },
+    ],
   },
 
   /* ---------------- companion section — not prophets ---------------- */

@@ -67,13 +67,25 @@ diacritics wrong and then reflow.
 
 ### Scale
 
-A 1.25 (major third) modular scale on a 16px base, which gives a small enough
-step to keep headings from shouting:
+An ~1.22 modular scale on an **18px** base:
 
 ```
-  0.64  0.8   1.0   1.25  1.563  1.953  2.441   × 16px
-  10.2  12.8  16    20    25     31.2   39
+  0.75  0.875  1.0   1.222  1.5   1.9    2.4    × 18px
+  13.5  15.75  18    22     27    34.2   43.2
 ```
+
+**Revised after building it.** The first version used a 1.25 scale on a 16px
+base, which put `--t-xs` at 10.2px — and that was the size of the source
+apparatus and every metadata label on the site. The result read as small
+everywhere even though body text was nominally fine. The base went up to 18px
+(this is a reading site, not an application) and the small end of the scale was
+floored at 13.5px.
+
+The **text-size setting now scales `:root`, not `body`.** Scaling `body` moved
+paragraph text and nothing else — headings, labels, the apparatus and the
+Arabic all stayed put, so the control appeared to do almost nothing. Scaling the
+root moves everything together, because every length in the stylesheet is a rem.
+Normal / Large / Larger are 112.5% / 128% / 145%.
 
 Spacing is a separate 4px-based scale: `4 8 12 16 24 32 48 64 96`. Nothing
 ad hoc; every value in the stylesheet comes from one of these two.
@@ -82,11 +94,11 @@ ad hoc; every value in the stylesheet comes from one of these two.
 
 This is where the old site failed hardest, so it is specified in detail.
 
-- **Size relationship: 1.5×.** Arabic body is `1.5rem` against a `1rem` Latin
-  body. The brief's range is 1.4–1.6; 1.5 sits where Amiri's x-height matches
-  Source Serif's optically. The old site ran 1.33× — and set the Arabic
-  *smaller than a section heading*, inverting the hierarchy.
-- **Line-height 2.1.** Verified by screenshot that no fatḥa is clipped at the
+- **Size relationship: 1.55×.** Arabic body is `1.55rem` against a `1rem` Latin
+  body — about 28px at the default. The brief's range is 1.4–1.6. The old site
+  ran 1.33×, and set the Arabic *smaller than a section heading*, inverting the
+  hierarchy.
+- **Line-height 2.15.** Verified by screenshot that no fatḥa is clipped at the
   top of its line box and no kasra at the bottom.
 - **`font-weight: 400`, never more.** The old site set Arabic at 600 with no
   Arabic font specified, which triggers *synthetic bolding* — the renderer

@@ -2,7 +2,7 @@
   "source": "https://api.alquran.cloud/v1",
   "script": "uthmani",
   "edition": "quran-uthmani",
-  "generatedAt": "2026-07-27T22:43:09.642Z",
+  "generatedAt": "2026-07-28T02:34:40.772Z",
   "note": "SHA-256 of the resolved Arabic per duʿāʾ. Regenerate with `npm run content:fetch`. Never edit Arabic by hand — `npm run content:verify` will fail.",
   "entries": {
     "adam-rabbana-zalamna-anfusana": {
@@ -248,6 +248,13 @@
       "edition": "quran-uthmani",
       "sha256": "83a8a83cb3a99b077413d626b1655db9286f20c495c9335590d84cc8af6539e4",
       "words": 27,
+      "excerpt": true
+    },
+    "dawud-al-hamdu-lillah-alladhi-faddalana": {
+      "ref": "27:15",
+      "edition": "quran-uthmani",
+      "sha256": "4e5d335e41784de78547c8e7cb2d9d3ea7ae614c47d41d8cda421153fca40da4",
+      "words": 9,
       "excerpt": true
     },
     "sulayman-rabbi-awzini-an-ashkura": {

@@ -15,6 +15,7 @@ const en = translation(dua, "en");
 const related = dua.related.map(findDua).filter(Boolean);
 const needsReview = dua.reviewStatus === "needs-review";
 const isHadith = dua.source.type === "hadith";
+const isAttributed = dua.source.type === "attributed";
 
 const formNote =
   dua.form === "statement"
@@ -96,40 +97,43 @@ const jsonLd = {
     {
       needsReview && (
         <p class="notice">
-          {isHadith
-            ? "This entry's reference number and grading are awaiting verification against a printed edition, and its Arabic is hand-entered rather than fetched from an authenticated source."
-            : "The occasion described above is awaiting a tafsīr citation. The Arabic and its reference are verified."}
+          {isAttributed
+            ? "This passage is not from the Qurʾān or the authenticated Sunnah. It is attributed to him in a scripture outside the Islamic tradition, carries no chain of transmission, and is included — clearly separated — because the Qurʾān records that he sought forgiveness without quoting his words."
+            : isHadith
+              ? "This entry's reference number and grading are awaiting verification against a printed edition, and its Arabic is hand-entered rather than fetched from an authenticated source."
+              : "The occasion described above is awaiting a tafsīr citation. The Arabic and its reference are verified."}
         </p>
       )
     }
 
-    {
-      dua.situations.en.length > 0 && (
-        <section>
-          <h2 class="section-label">Said when</h2>
-          <ul class="prose" style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft); padding-left: var(--s-4)">
-            {dua.situations.en.map((s) => <li>{s}</li>)}
-          </ul>
-        </section>
-      )
-    }
-
-    <section>
-      <h2 class="section-label">Themes</h2>
-      <p style="font-family: var(--font-util); font-size: var(--t-sm)">
-        {
-          dua.themes.map((t, i) => {
-            const th = theme(t);
-            return th ? (
-              <>
-                {i > 0 && " · "}
-                <a href={`${base}/themes/${t}/`}>{th.label.en}</a>
-              </>
-            ) : null;
-          })
-        }
-      </p>
-    </section>
+    {/*
+      Situations and themes were two separate headed sections. Both are
+      navigation aids rather than things anyone reads top to bottom, so they
+      collapse into one quiet line — the reading path is the words, the meaning,
+      the occasion, and then out.
+    */}
+    <p class="tags">
+      {
+        dua.situations.en.map((sit, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true"> · </span>}
+            <span>{sit}</span>
+          </>
+        ))
+      }
+      {dua.situations.en.length > 0 && <span aria-hidden="true"> — </span>}
+      {
+        dua.themes.map((th, i) => {
+          const t = theme(th);
+          return t ? (
+            <>
+              {i > 0 && <span aria-hidden="true"> · </span>}
+              <a href={`${base}/themes/${th}/`}>{t.label.en}</a>
+            </>
+          ) : null;
+        })
+      }
+    </p>
   </div>
 
   <div class="actions">

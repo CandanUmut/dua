@@ -41,11 +41,17 @@ export const HONORIFICS: Record<Honorific, { arabic: string; full: string; abbr:
 };
 
 export const translation = (d: Dua, lang: "en" | "tr") =>
+  // Prefer an established, attributed rendering over a project draft when an
+  // entry carries more than one in the same language.
+  d.translations.find((t) => t.lang === lang && !t.draft) ??
   d.translations.find((t) => t.lang === lang);
 
 export const refLabel = (d: Dua): string => {
   if (d.source.type === "hadith") {
     return `${d.source.collection} ${d.source.number}`;
+  }
+  if (d.source.type === "attributed") {
+    return d.source.locus;
   }
   const { ayat } = d.source;
   const first = ayat[0];
@@ -132,6 +138,12 @@ export function buildSearchIndex(): SearchDoc[] {
           d.situations.en.join(" "),
           d.situations.tr.join(" "),
           refLabel(d),
+          // Translator names and the occasion text, so searching "Elmalılı" or
+          // "mezmur" finds the entries they belong to.
+          d.translations.map((t) => t.translator).join(" "),
+          d.context.summary,
+          d.source.type === "hadith" ? d.source.collection : "",
+          d.source.type === "attributed" ? `${d.source.work} ${d.source.tradition}` : "",
         ]
           .filter(Boolean)
           .join(" "),
