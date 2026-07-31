@@ -1,7 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Honorific from "../../components/Honorific.astro";
-import { PROPHETS, bySpeaker, refLabel, translation } from "../../lib/content";
+import InlineDua from "../../components/InlineDua.astro";
+import { PROPHETS, bySpeaker, refLabel } from "../../lib/content";
 
 export function getStaticPaths() {
   return PROPHETS.map((p) => ({ params: { slug: p.id }, props: { prophet: p } }));
@@ -10,11 +11,13 @@ export function getStaticPaths() {
 const { prophet } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const duas = bySpeaker(prophet.id);
+// Only worth a jump list when scrolling past four passages to find one.
+const showJumpList = duas.length > 3;
 ---
 
 <Base
   title={`${prophet.name.en} — The Duʿāʾ of the Prophets`}
-  description={prophet.summary.en}
+  description={`${prophet.summary.en} ${duas.length} supplications, with Arabic, transliteration and translation.`}
 >
   <p class="kicker" style="margin-top: var(--s-12)">
     <a href={`${base}/prophets/`}>The Prophets</a>
@@ -23,8 +26,10 @@ const duas = bySpeaker(prophet.id);
   <h1 style="font-size: var(--t-xl); margin-top: var(--s-2)">
     {prophet.name.en} <Honorific honorific={prophet.honorific} />
   </h1>
-  <p class="kicker" lang="ar" dir="rtl" translate="no" style="font-family: var(--font-arabic); font-size: var(--t-md); margin-top: var(--s-2)">
-    {prophet.name.ar}
+  {/* Its own inline element, so `dir="rtl"` positions the name beside the
+      heading rather than flinging it to the far edge of the page. */}
+  <p class="prophet-name-ar">
+    <span lang="ar" dir="rtl" translate="no">{prophet.name.ar}</span>
   </p>
 
   <div class="stack" style="margin-top: var(--s-8)">
@@ -33,7 +38,7 @@ const duas = bySpeaker(prophet.id);
     {
       prophet.trial && (
         <div>
-          <h2 class="section-label">His trial</h2>
+          <h2 class="section-label">What he faced</h2>
           <p class="prose">{prophet.trial.en}</p>
         </div>
       )
@@ -41,42 +46,60 @@ const duas = bySpeaker(prophet.id);
 
     <div>
       <h2 class="section-label">In the Qurʾān</h2>
-      <p class="prose" style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)">
-        {prophet.references.map((r) => `${r.work} ${r.locus}`).join(" · ")}
+      <p
+        class="prose"
+        style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)"
+      >
+        {prophet.references.map((r) => `${r.work} ${r.locus ?? ""}`.trim()).join(" · ")}
       </p>
     </div>
-
-    {
-      duas.length > 0 ? (
-        <div>
-          <h2 style="font-size: var(--t-lg); margin-bottom: var(--s-4)">
-            {duas.length === 1 ? "His duʿāʾ" : `His duʿāʾ (${duas.length})`}
-          </h2>
-          <ul class="index-list">
-            {duas.map((d) => (
-              <li>
-                <a class="entry" href={`${base}/duas/${d.id}/`}>
-                  <span class="seq" />
-                  <span class="name" style="font-size: var(--t-base)">{d.title.en}</span>
-                  <span class="meta">{refLabel(d)}</span>
-                  <span class="blurb">{translation(d, "en")?.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <div class="notice">
-          <p style="margin:0">
-            The Qurʾān records no supplication in his own words. 38:24 narrates
-            that he sought forgiveness and prostrated, but does not quote what he
-            said, and 2:250 is the collective duʿāʾ of those who crossed the
-            river with Ṭālūt — it is filed under
-            {" "}<a href={`${base}/prophets/ashab-talut/`}>the companions of Ṭālūt</a>,
-            where he was present but is not the speaker.
-          </p>
-        </div>
-      )
-    }
   </div>
+
+  {
+    duas.length > 0 ? (
+      <section style="margin-top: var(--s-16)">
+        <h2 style="font-size: var(--t-lg)">
+          {duas.length === 1 ? "His duʿāʾ" : `His duʿāʾ — ${duas.length}`}
+        </h2>
+
+        {/*
+          A jump list, not a table of contents: on a long page the reader can
+          still get to a specific supplication in one move, but the default
+          gesture is to scroll and read.
+        */}
+        {showJumpList && (
+          <nav class="jump" aria-label="Jump to a duʿāʾ">
+            <ol>
+              {duas.map((d, i) => (
+                <li>
+                  <a href={`#${d.id}`}>
+                    <span class="seq-num">{i + 1}</span>
+                    {d.title.en}
+                    <span class="jump-ref">{refLabel(d)}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        <div class="dua-flow">
+          {duas.map((d, i) => (
+            <InlineDua dua={d} index={duas.length > 1 ? i + 1 : undefined} />
+          ))}
+        </div>
+      </section>
+    ) : (
+      <div class="notice" style="margin-top: var(--s-12)">
+        <p style="margin:0">
+          The Qurʾān records no supplication in his own words. 38:24 narrates
+          that he sought forgiveness and prostrated, but does not quote what he
+          said, and 2:250 is the collective duʿāʾ of those who crossed the river
+          with Ṭālūt — it is filed under{" "}
+          <a href={`${base}/prophets/ashab-talut/`}>the companions of Ṭālūt</a>,
+          where he was present but is not the speaker.
+        </p>
+      </div>
+    )
+  }
 </Base>

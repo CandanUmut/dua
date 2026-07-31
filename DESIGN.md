@@ -195,6 +195,37 @@ replaced with Source Sans 3, since Inter is named in the brief as a tell.
 
 ---
 
+## 6a. The prophet and theme pages are reading surfaces
+
+Revised after using the site. These pages were built as indexes — a title and a
+line of translation per entry, then a click to read anything. That is the wrong
+shape. Someone on Mūsā's page wants to read his ten supplications; asking them
+to visit ten pages to do it is worse than what the old site did, which at least
+let you scroll.
+
+They now carry every duʿāʾ **in full, inline**: Arabic, transliteration, both
+translations, the citation, and the occasion in a sentence. Separation is by
+rule and space rather than by card, so the page reads like a section of a book
+rather than a feed.
+
+What stays on `/duas/[slug]/` is the depth — the classical commentary, the
+editorial reflection, related duʿāʾ — which is what a page of its own is for.
+The link to it says what is there rather than "read more".
+
+Two adjustments the inline treatment needed:
+
+- **A jump list** above the flow when a page carries more than three entries.
+  It is a way to reach one specific supplication, not a table of contents; the
+  default gesture is still to scroll.
+- **A compact apparatus.** Repeating "Uthmani, verified by checksum" ten times
+  down a page is noise, not provenance — it is the same statement about the same
+  pipeline each time. Inline, the margin carries only the citation; the full
+  apparatus stays on the duʿāʾ page, where it describes one specific text. Below
+  900px the margin folds away entirely there, since the reference is already in
+  the line above the passage.
+
+---
+
 ## 6. Reading path
 
 The duʿāʾ page reads top to bottom exactly as the brief specifies: **the words
