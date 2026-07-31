@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
-import Honorific from "../../components/Honorific.astro";
-import { THEMES, byTheme, prophet, refLabel, translation } from "../../lib/content";
+import InlineDua from "../../components/InlineDua.astro";
+import { THEMES, byTheme, prophet, refLabel } from "../../lib/content";
 
 export function getStaticPaths() {
   return THEMES.map((t) => ({ params: { slug: t.id }, props: { theme: t } }));
@@ -10,12 +10,10 @@ export function getStaticPaths() {
 const { theme } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const duas = byTheme(theme.id);
+const showJumpList = duas.length > 3;
 ---
 
-<Base
-  title={`${theme.label.en} — The Duʿāʾ of the Prophets`}
-  description={theme.description.en}
->
+<Base title={`${theme.label.en} — The Duʿāʾ of the Prophets`} description={theme.description.en}>
   <p class="kicker" style="margin-top: var(--s-12)">
     <a href={`${base}/themes/`}>I need words for…</a>
   </p>
@@ -24,23 +22,33 @@ const duas = byTheme(theme.id);
   </h1>
   <p class="lede" style="margin-top: var(--s-4)">{theme.description.en}</p>
 
-  <ul class="index-list" style="margin-top: var(--s-8)">
+  {
+    showJumpList && (
+      <nav class="jump" aria-label="Jump to a duʿāʾ">
+        <ol>
+          {duas.map((d, i) => (
+            <li>
+              <a href={`#${d.id}`}>
+                <span class="seq-num">{i + 1}</span>
+                {d.title.en}
+                <span class="jump-ref">{prophet(d.speaker)?.name.en}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+
+  <div class="dua-flow">
     {
-      duas.map((d) => {
-        const p = prophet(d.speaker);
-        return (
-          <li>
-            <a class="entry" href={`${base}/duas/${d.id}/`}>
-              <span class="seq" />
-              <span class="name" style="font-size: var(--t-base)">{d.title.en}</span>
-              <span class="meta">
-                {p?.name.en} <Honorific honorific={p!.honorific} /> · {refLabel(d)}
-              </span>
-              <span class="blurb">{translation(d, "en")?.text}</span>
-            </a>
-          </li>
-        );
-      })
+      duas.map((d, i) => (
+        <InlineDua
+          dua={d}
+          index={duas.length > 1 ? i + 1 : undefined}
+          showSpeaker={prophet(d.speaker)?.name.en}
+        />
+      ))
     }
-  </ul>
+  </div>
 </Base>

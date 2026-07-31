@@ -672,6 +672,110 @@ dialog.settings h2 { font-size: var(--t-md); margin-bottom: var(--s-4); }
 }
 mark { background: var(--highlight); color: inherit; }
 
+.prophet-name-ar {
+  font-family: var(--font-arabic);
+  font-size: var(--t-lg);
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin: var(--s-2) 0 0;
+}
+
+/* --------------------- continuous duʿāʾ reading flow ------------------- */
+/*
+ * The prophet and theme pages are reading surfaces, not indexes. Each
+ * supplication is separated by a rule and generous space rather than boxed —
+ * the page should feel like turning through a section of a book, not like
+ * scrolling a feed of cards.
+ */
+.dua-flow { margin-top: var(--s-8); }
+
+.inline-dua {
+  padding-top: var(--s-12);
+  border-top: 1px solid var(--rule);
+  margin-top: var(--s-12);
+}
+.inline-dua:first-child { margin-top: var(--s-8); }
+
+.inline-dua-head h2 {
+  font-size: var(--t-md);
+  font-weight: 600;
+  margin: 0;
+}
+.inline-dua-head h2 a { color: var(--ink); text-decoration: none; }
+.inline-dua-head h2 a:hover { color: var(--lapis); text-decoration: underline; }
+
+/* The sequence marker is content here — these are numbered positions in a
+   named person's collection, not decorative 01/02/03 chrome. */
+.seq-num {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  font-weight: 400;
+  color: var(--rubric);
+  font-variant-numeric: tabular-nums;
+  margin-right: var(--s-3);
+}
+
+.inline-dua-meta {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+  margin: var(--s-1) 0 0;
+}
+
+.inline-context {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  margin-top: var(--s-6);
+}
+.inline-more {
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  margin-top: var(--s-4);
+}
+
+/* On the flow pages the apparatus is a narrower margin than on a duʿāʾ page —
+   the passage is the thing being read, and there are many of them. */
+.dua-flow .passage { grid-template-columns: 11rem 1fr; margin-top: var(--s-6); }
+@media (max-width: 900px) {
+  .dua-flow .passage { grid-template-columns: 1fr; }
+  /* Once the margin folds under, the apparatus is repeating a reference the
+     meta line above the passage already gave. Drop it rather than print the
+     citation twice per entry down a ten-entry page. */
+  .dua-flow .apparatus { display: none; }
+}
+
+/* ------------------------------- jump list ---------------------------- */
+
+.jump {
+  margin-top: var(--s-8);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: var(--s-4) 0;
+}
+.jump ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: var(--s-12);
+}
+@media (max-width: 700px) { .jump ol { columns: 1; } }
+.jump li { break-inside: avoid; }
+.jump a {
+  display: block;
+  padding: var(--s-1) 0;
+  font-family: var(--font-util);
+  font-size: var(--t-sm);
+  color: var(--ink);
+  text-decoration: none;
+}
+.jump a:hover { color: var(--lapis); text-decoration: underline; }
+.jump-ref { color: var(--ink-soft); }
+.jump-ref::before { content: " · "; }
+
+/* Anchored passages should not land under the masthead. */
+.inline-dua { scroll-margin-top: var(--s-6); }
+
 /* ------------------------------ timeline ------------------------------ */
 /*
  * The one element kept from the braver direction, because it is genuinely the

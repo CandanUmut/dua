@@ -1,0 +1,73 @@
+---
+/**
+ * A duʿāʾ rendered in full, in a list of others.
+ *
+ * The prophet and theme pages used to be indexes of links: a title and a line
+ * of translation, then a click to read anything. That is the wrong shape for
+ * this content. Someone on Mūsā's page wants to read his ten supplications, not
+ * to visit ten pages — and the old site, for all its faults, let them scroll.
+ *
+ * So these pages now carry the full passage inline: Arabic, transliteration,
+ * both translations, the source apparatus, and the occasion in a sentence. What
+ * stays behind on `/duas/[slug]/` is the depth — the classical commentary, the
+ * editorial reflection, related duʿāʾ — which is what a page of its own is
+ * actually for. Nothing is hidden; the long-form layer is one link away and the
+ * link says what is there.
+ */
+import Passage from "./Passage.astro";
+import type { Dua } from "../../content/schema";
+import { refLabel } from "../lib/content";
+
+interface Props {
+  dua: Dua;
+  /** Sequence number within the list, when the list is long enough to need it. */
+  index?: number;
+  /** Show the speaker — useful on theme pages, redundant on a prophet's own. */
+  showSpeaker?: string;
+}
+const { dua, index, showSpeaker } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const hasMore = dua.tafsir.length > 0 || Boolean(dua.reflection);
+---
+
+<article class="inline-dua" id={dua.id}>
+  <header class="inline-dua-head">
+    <h2>
+      {index !== undefined && <span class="seq-num">{index}</span>}
+      <a href={`${base}/duas/${dua.id}/`}>{dua.title.en}</a>
+    </h2>
+    <p class="inline-dua-meta">
+      {showSpeaker && <span>{showSpeaker} · </span>}
+      <span>{refLabel(dua)}</span>
+      {dua.situations.en[0] && <span> · {dua.situations.en[0]}</span>}
+      {/* The excerpt is still disclosed here — just once, and in a line the
+          reader is already reading, rather than as its own apparatus row. */}
+      {dua.source.type === "quran" && dua.source.excerpt && (
+        <span> · excerpt, framing dimmed</span>
+      )}
+    </p>
+  </header>
+
+  <Passage dua={dua} compact />
+
+  {
+    dua.context.summary && (
+      <p class="inline-context">{dua.context.summary}</p>
+    )
+  }
+
+  {
+    hasMore && (
+      <p class="inline-more">
+        <a href={`${base}/duas/${dua.id}/`}>
+          {dua.tafsir.length > 0 && dua.reflection
+            ? "Commentary, reflection and related duʿāʾ"
+            : dua.tafsir.length > 0
+              ? "Commentary and related duʿāʾ"
+              : "Reflection and related duʿāʾ"}
+          <span aria-hidden="true"> →</span>
+        </a>
+      </p>
+    )
+  }
+</article>
