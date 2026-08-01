@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Passage from "../../components/Passage.astro";
 import Honorific from "../../components/Honorific.astro";
+import T from "../../components/T.astro";
 import { DUAS, prophet, dua as findDua, refLabel, translation, theme } from "../../lib/content";
 
 export function getStaticPaths() {
@@ -44,11 +45,11 @@ const jsonLd = {
     <a href={`${base}/prophets/${speaker.id}/`}>
       {speaker.name.en} <Honorific honorific={speaker.honorific} />
     </a>
-    {dua.situations.en[0] && <span> · {dua.situations.en[0]}</span>}
+    {dua.situations.en[0] && (<span> · <T en={dua.situations.en[0]} tr={dua.situations.tr[0]} /></span>)}
   </p>
 
   <h1 style="font-size: var(--t-xl); margin-top: var(--s-2); max-width: 24ch">
-    {dua.title.en}
+    <T en={dua.title.en} tr={dua.title.tr} />
   </h1>
 
   <Passage dua={dua} />
@@ -65,7 +66,7 @@ const jsonLd = {
     {
       dua.context.summary && (
         <section>
-          <h2 class="section-label">When and why it was said</h2>
+          <h2 class="section-label" data-i18n="secWhenWhy">When and why it was said</h2>
           <p class="prose">{dua.context.summary}</p>
           <p style="font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-soft)">
             {dua.context.references.map((r) => `${r.work} ${r.locus ?? ""}`.trim()).join(" · ")}
@@ -78,7 +79,10 @@ const jsonLd = {
       dua.tafsir.map((t) => (
         <section>
           <h2 class="section-label">
-            {t.kind === "occasion" ? "Occasion of revelation" : "Commentary"} — {t.work}
+            <span data-i18n={t.kind === "occasion" ? "secOccasion" : "secCommentary"}>
+              {t.kind === "occasion" ? "Occasion of revelation" : "Commentary"}
+            </span>{" "}
+            — {t.work}
           </h2>
           <blockquote class="tafsir">
             <p>{t.text}</p>
@@ -101,7 +105,7 @@ const jsonLd = {
     {
       dua.reflection && (
         <section>
-          <h2 class="section-label">Reflection</h2>
+          <h2 class="section-label" data-i18n="secReflection">Reflection</h2>
           {/*
             Deliberately a different visual register from the context above.
             This is the project's own voice, not transmitted knowledge, and the
@@ -138,48 +142,61 @@ const jsonLd = {
       collapse into one quiet line — the reading path is the words, the meaning,
       the occasion, and then out.
     */}
-    <p class="tags">
+    <dl class="tags">
       {
-        dua.situations.en.map((sit, i) => (
+        dua.situations.en.length > 0 && (
           <>
-            {i > 0 && <span aria-hidden="true"> · </span>}
-            <span>{sit}</span>
+            <dt data-i18n="secSaidWhen">Said when</dt>
+            <dd>
+              {dua.situations.en.map((sit, i) => (
+                <>
+                  {i > 0 && <span aria-hidden="true"> · </span>}
+                  <T en={sit} tr={dua.situations.tr[i]} />
+                </>
+              ))}
+            </dd>
           </>
-        ))
+        )
       }
-      {dua.situations.en.length > 0 && <span aria-hidden="true"> — </span>}
-      {
-        dua.themes.map((th, i) => {
-          const t = theme(th);
-          return t ? (
-            <>
-              {i > 0 && <span aria-hidden="true"> · </span>}
-              <a href={`${base}/themes/${th}/`}>{t.label.en}</a>
-            </>
-          ) : null;
-        })
-      }
-    </p>
+      <dt data-i18n="secThemes">Themes</dt>
+      <dd>
+        {
+          dua.themes.map((th, i) => {
+            const t = theme(th);
+            return t ? (
+              <>
+                {i > 0 && <span aria-hidden="true"> · </span>}
+                <a href={`${base}/themes/${th}/`}>
+                  <T en={t.label.en} tr={t.label.tr} />
+                </a>
+              </>
+            ) : null;
+          })
+        }
+      </dd>
+    </dl>
   </div>
 
   <div class="actions">
-    <button type="button" data-copy="arabic">Copy Arabic</button>
-    <button type="button" data-copy="translation">Copy translation</button>
-    <button type="button" data-copy="full">Copy with citation</button>
-    <button type="button" data-bookmark>Bookmark</button>
+    <button type="button" data-copy="arabic" data-i18n="copyArabic">Copy Arabic</button>
+    <button type="button" data-copy="translation" data-i18n="copyTranslation">Copy translation</button>
+    <button type="button" data-copy="full" data-i18n="copyFull">Copy with citation</button>
+    <button type="button" data-bookmark data-i18n="bookmark">Bookmark</button>
     <span data-copy-status role="status" aria-live="polite" style="color: var(--ink-soft)"></span>
   </div>
 
   {
     related.length > 0 && (
       <section class="related" style="margin-top: var(--s-12)">
-        <h2 class="section-label">Near this</h2>
+        <h2 class="section-label" data-i18n="secNear">Near this</h2>
         <ul class="index-list">
           {related.map((r) => (
             <li>
               <a class="entry" href={`${base}/duas/${r!.id}/`}>
                 <span class="seq" />
-                <span class="name" style="font-size: var(--t-base)">{r!.title.en}</span>
+                <span class="name" style="font-size: var(--t-base)">
+                  <T en={r!.title.en} tr={r!.title.tr} />
+                </span>
                 <span class="meta">{prophet(r!.speaker)?.name.en}</span>
               </a>
             </li>

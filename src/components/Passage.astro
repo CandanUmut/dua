@@ -57,7 +57,7 @@ if (excerpt && dua.arabic?.fullText) {
 
 <div class="passage">
   <dl class="apparatus" aria-label="Source">
-    <dt>Source</dt>
+    <dt data-i18n="secSource">Source</dt>
     <dd>
       {
         src.type === "quran" ? (
@@ -89,7 +89,7 @@ if (excerpt && dua.arabic?.fullText) {
     {
       src.type === "hadith" && (
         <>
-          <dt>Grading</dt>
+          <dt data-i18n="secGrading">Grading</dt>
           <dd>
             {src.grading} — {src.gradedBy}
           </dd>
@@ -100,8 +100,8 @@ if (excerpt && dua.arabic?.fullText) {
     {
       src.type === "attributed" && (
         <>
-          <dt>Status</dt>
-          <dd>Outside the Qurʾān and Sunnah</dd>
+          <dt data-i18n="secStatus">Status</dt>
+          <dd data-i18n="statusOutside">Outside the Qurʾān and Sunnah</dd>
         </>
       )
     }
@@ -109,7 +109,7 @@ if (excerpt && dua.arabic?.fullText) {
     {
       excerpt && !compact && (
         <>
-          <dt>Extent</dt>
+          <dt data-i18n="secExtent">Extent</dt>
           <dd>Excerpt within the āyah, shown in full ink against dimmed framing.</dd>
         </>
       )
@@ -118,8 +118,12 @@ if (excerpt && dua.arabic?.fullText) {
     {
       !compact && (
         <>
-          <dt>Text</dt>
-          <dd>
+          <dt data-i18n="secText">Text</dt>
+          <dd
+            data-i18n={
+              src.type === "quran" ? "textUthmani" : src.type === "hadith" ? "textHadith" : "textWeb"
+            }
+          >
             {src.type === "quran"
               ? "Uthmani, verified by checksum"
               : src.type === "hadith"

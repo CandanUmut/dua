@@ -15,6 +15,7 @@
  * link says what is there.
  */
 import Passage from "./Passage.astro";
+import T from "./T.astro";
 import type { Dua } from "../../content/schema";
 import { refLabel } from "../lib/content";
 
@@ -34,16 +35,16 @@ const hasMore = dua.tafsir.length > 0 || Boolean(dua.reflection);
   <header class="inline-dua-head">
     <h2>
       {index !== undefined && <span class="seq-num">{index}</span>}
-      <a href={`${base}/duas/${dua.id}/`}>{dua.title.en}</a>
+      <a href={`${base}/duas/${dua.id}/`}><T en={dua.title.en} tr={dua.title.tr} /></a>
     </h2>
     <p class="inline-dua-meta">
       {showSpeaker && <span>{showSpeaker} · </span>}
       <span>{refLabel(dua)}</span>
-      {dua.situations.en[0] && <span> · {dua.situations.en[0]}</span>}
+      {dua.situations.en[0] && (<span> · <T en={dua.situations.en[0]} tr={dua.situations.tr[0]} /></span>)}
       {/* The excerpt is still disclosed here — just once, and in a line the
           reader is already reading, rather than as its own apparatus row. */}
       {dua.source.type === "quran" && dua.source.excerpt && (
-        <span> · excerpt, framing dimmed</span>
+        <span> · <span data-i18n="excerptNote">excerpt, framing dimmed</span></span>
       )}
     </p>
   </header>
@@ -60,11 +61,21 @@ const hasMore = dua.tafsir.length > 0 || Boolean(dua.reflection);
     hasMore && (
       <p class="inline-more">
         <a href={`${base}/duas/${dua.id}/`}>
-          {dua.tafsir.length > 0 && dua.reflection
-            ? "Commentary, reflection and related duʿāʾ"
-            : dua.tafsir.length > 0
-              ? "Commentary and related duʿāʾ"
-              : "Reflection and related duʿāʾ"}
+          <span
+            data-i18n={
+              dua.tafsir.length > 0 && dua.reflection
+                ? "moreDepth"
+                : dua.tafsir.length > 0
+                  ? "moreTafsir"
+                  : "moreReflection"
+            }
+          >
+            {dua.tafsir.length > 0 && dua.reflection
+              ? "Commentary, reflection and related duʿāʾ"
+              : dua.tafsir.length > 0
+                ? "Commentary and related duʿāʾ"
+                : "Reflection and related duʿāʾ"}
+          </span>
           <span aria-hidden="true"> →</span>
         </a>
       </p>

@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Honorific from "../../components/Honorific.astro";
+import T from "../../components/T.astro";
 import { inOrder, bySpeaker } from "../../lib/content";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -47,7 +48,7 @@ const sections = [
                     )}
                   </span>
                   <span class="meta">{bySpeaker(p.id).length} duʿāʾ</span>
-                  {p.trial && <span class="blurb">{p.trial.en}</span>}
+                  {p.trial && <span class="blurb"><T en={p.trial.en} tr={p.trial.tr} /></span>}
                 </a>
               </li>
             ))}

@@ -292,6 +292,47 @@ in the corpus; it just does not lead.
 
 ---
 
+## 6c. Polish pass
+
+Found by going through every page rather than by reading the code.
+
+**Bookmarks had a button and no destination.** You could save a duʿāʾ and never
+see it again. `/bookmarks/` renders from `localStorage` in the browser, since
+bookmarks are per-device and never leave it, and the index ships with the page
+so the list resolves instantly and offline.
+
+**The Turkish setting switched five words.** The navigation and the settings
+dialog translated; nothing else did — even though every theme, prophet and duʿāʾ
+already carried a `.tr` string that never reached the page. A setting that does
+almost nothing is worse than no setting. `<T>` now ships both languages in the
+HTML and the settings script swaps them, and every page reports fully Turkish
+under an automated check.
+
+**An empty search box showed an empty page.** It now offers eight real queries —
+including one in Arabic and one in Turkish — which double as a demonstration
+that undiacriticised Arabic works. "0 results" became a sentence that suggests
+what to try.
+
+**No 404 page.** There is one now, offering the two doors rather than an apology.
+
+**`.section-label` was inline**, so on the search page the label overlapped the
+input it labelled. It is `display: block`, and the search field's visible label
+is gone — the `h1` already says Search — leaving a `visually-hidden` one for
+screen readers.
+
+**The situations and themes line ran together** — lowercase situations flowing
+into capitalised theme links with an em-dash between, reading as one confused
+sentence. Now a two-row definition list with its own small labels.
+
+**CLS was 0.207 on the home page.** Only Amiri was preloaded, so the Latin faces
+arrived under `font-display: swap` and re-flowed the page — a fifth of a
+viewport of movement under the reader's eye. All three faces are preloaded now
+and the Latin ones use `optional`, which guarantees no reflow if they are ever
+late. CLS is 0 on every page measured; LCP is under 130ms; no page ships a byte
+of framework JavaScript.
+
+---
+
 ## 7. Two doors
 
 Home presents exactly two choices, phrased as the brief frames them:

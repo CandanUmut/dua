@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import T from "../../components/T.astro";
 import { THEMES, byTheme } from "../../lib/content";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -8,7 +9,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   title="I need words for… — The Duʿāʾ of the Prophets"
   description="Sixteen situations — grief, fear, debt, illness, a decision, gratitude — and the supplications the Prophets used in each."
 >
-  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">I need words for…</h1>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)" data-i18n="homeNeed">I need words for…</h1>
   <p class="lede" style="margin-top: var(--s-4)">
     Sixteen situations rather than sixteen categories. Pick the one you are in.
   </p>
@@ -18,8 +19,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       THEMES.map((t) => (
         <li>
           <a class="theme-link" href={`${base}/themes/${t.id}/`}>
-            <span class="theme-name">{t.label.en}</span>
-            <span class="theme-desc">{t.description.en}</span>
+            <span class="theme-name"><T en={t.label.en} tr={t.label.tr} /></span>
+            <span class="theme-desc"><T en={t.description.en} tr={t.description.tr} /></span>
             <span class="theme-count">{byTheme(t.id).length} duʿāʾ</span>
           </a>
         </li>

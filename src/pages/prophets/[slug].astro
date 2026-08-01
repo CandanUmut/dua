@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Honorific from "../../components/Honorific.astro";
 import InlineDua from "../../components/InlineDua.astro";
+import T from "../../components/T.astro";
 import { PROPHETS, bySpeaker, refLabel } from "../../lib/content";
 
 export function getStaticPaths() {
@@ -20,7 +21,7 @@ const showJumpList = duas.length > 3;
   description={`${prophet.summary.en} ${duas.length} supplications, with Arabic, transliteration and translation.`}
 >
   <p class="kicker" style="margin-top: var(--s-12)">
-    <a href={`${base}/prophets/`}>The Prophets</a>
+    <a href={`${base}/prophets/`} data-i18n="crumbProphets">The Prophets</a>
   </p>
 
   <h1 style="font-size: var(--t-xl); margin-top: var(--s-2)">
@@ -33,19 +34,19 @@ const showJumpList = duas.length > 3;
   </p>
 
   <div class="stack" style="margin-top: var(--s-8)">
-    <p class="prose">{prophet.summary.en}</p>
+    <p class="prose"><T en={prophet.summary.en} tr={prophet.summary.tr} /></p>
 
     {
       prophet.trial && (
         <div>
-          <h2 class="section-label">What he faced</h2>
-          <p class="prose">{prophet.trial.en}</p>
+          <h2 class="section-label" data-i18n="secTrial">What he faced</h2>
+          <p class="prose"><T en={prophet.trial.en} tr={prophet.trial.tr} /></p>
         </div>
       )
     }
 
     <div>
-      <h2 class="section-label">In the Qurʾān</h2>
+      <h2 class="section-label" data-i18n="secInQuran">In the Qurʾān</h2>
       <p
         class="prose"
         style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)"
@@ -59,7 +60,7 @@ const showJumpList = duas.length > 3;
     duas.length > 0 ? (
       <section style="margin-top: var(--s-16)">
         <h2 style="font-size: var(--t-lg)">
-          {duas.length === 1 ? "His duʿāʾ" : `His duʿāʾ — ${duas.length}`}
+          <span data-i18n="hisDua">His duʿāʾ</span>{duas.length > 1 && ` — ${duas.length}`}
         </h2>
 
         {/*

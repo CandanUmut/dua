@@ -1,0 +1,35 @@
+---
+/**
+ * A translatable string.
+ *
+ * The site is statically generated and its content already carries both
+ * languages — every theme has `label.tr`, every prophet a `name.tr` and
+ * `summary.tr`, every duʿāʾ a `title.tr`. None of it was reaching the page: the
+ * interface-language setting switched the navigation and the settings dialog
+ * and nothing else, so choosing Türkçe changed five words out of a hundred.
+ * A setting that does almost nothing is worse than no setting.
+ *
+ * This renders the English and carries the Turkish alongside it in a data
+ * attribute; the settings script swaps `textContent` when the language changes.
+ * Both languages ship in the HTML, which costs a little weight and buys an
+ * instant switch with no round trip and no client framework.
+ *
+ * `lang` is set correctly for whichever is showing, so screen readers and
+ * hyphenation follow the actual language rather than the page default.
+ */
+interface Props {
+  en: string;
+  tr?: string;
+}
+const { en, tr } = Astro.props;
+---
+
+{
+  tr && tr !== en ? (
+    <span data-t data-t-en={en} data-t-tr={tr} lang="en">
+      {en}
+    </span>
+  ) : (
+    <>{en}</>
+  )
+}
