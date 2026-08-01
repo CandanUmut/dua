@@ -134,8 +134,8 @@ the same type and colour so the relationship survives the fold.
    and the fallback is just a stack.
 2. *The prophetic timeline as the primary navigation* — a drawn vertical
    sequence. Rejected as the signature (kept as an ornament on `/prophets`):
-   it is a beautiful object that most visitors, arriving mid-crisis via search,
-   will never see.
+   it is a beautiful object that most visitors, arriving via search with a
+   situation in mind, will never see.
 3. *The marginal rubric* — chosen. It is visible on every duʿāʾ page, which is
    where visitors actually land; it directly serves the brief's central concern
    that every claim carries a citation, by making the citation architectural
@@ -254,12 +254,37 @@ site's purpose. It is a setting either way.
 
 ---
 
+## 6b. What the home page says
+
+Revised after review. The headline read *"The words the Prophets used when they
+had nothing else"*, which is wrong twice over.
+
+It frames duʿāʾ as a last resort — something reached for once everything else
+has failed. It is not. It is asked in ease as much as in difficulty, for the
+smallest need as much as the largest, and it is asked because the One asked is
+the only one who gives or withholds. And it was wrong about the Prophets, who
+had belief, certainty, communities and companions; they were not people with
+nothing left.
+
+It now reads *"What the Prophets said, and what they were facing when they said
+it"* — situational rather than desperate, which is also what the site's
+structure actually is. The lede lists ordinary needs before hard ones, a short
+paragraph states plainly that duʿāʾ is not a last resort, and the epigraph is
+40:60: *"Call upon Me, and I will answer you."*
+
+The theme list was reordered for the same reason. It used to open with "When
+there seems no way out", which quietly repeated the framing even after the
+headline was fixed. Ordinary and universal situations come first now,
+hardship in the middle, the end last.
+
+---
+
 ## 7. Two doors
 
 Home presents exactly two choices, phrased as the brief frames them:
 
-- **By need** — the themes. Listed first, because someone arriving in
-  difficulty does not know which prophet they want.
+- **By need** — the themes. Listed first, because someone arriving with a
+  situation in mind rarely knows which prophet matched it.
 - **By prophet** — the index, in prophetic order.
 
 Search is present in the header but visually secondary. **Everything else**

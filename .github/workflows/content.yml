@@ -35,6 +35,10 @@ jobs:
       - name: Validate content against schema
         run: npm run content:build
 
+      # Scripture is fetched and hash-locked everywhere, including page chrome.
+      - name: Check no Arabic is typed into templates
+        run: npm run check:arabic
+
       - name: Check every entry has English and Turkish
         run: npx tsx scripts/check-coverage.ts
 

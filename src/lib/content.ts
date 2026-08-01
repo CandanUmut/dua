@@ -8,7 +8,14 @@ import type { Dua, Prophet, Theme, Honorific } from "../../content/schema.js";
 
 export const DUAS = site.duas as unknown as Dua[];
 export const PROPHETS = site.prophets as unknown as Prophet[];
-export const THEMES = site.themes as unknown as Theme[];
+/**
+ * Sorted by `order`, not by position in the source array — the file groups
+ * themes by when they were written, the `order` field is the deliberate reading
+ * sequence (ordinary needs first, hardship in the middle, the end last).
+ */
+export const THEMES = (site.themes as unknown as Theme[])
+  .slice()
+  .sort((a, b) => a.order - b.order);
 /** Legacy `#view=dua&id=…` identifiers → current duʿāʾ slugs. */
 export const LEGACY_REDIRECTS = site.legacyRedirects as Record<string, string>;
 
