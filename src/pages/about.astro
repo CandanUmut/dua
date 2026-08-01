@@ -1,176 +1,143 @@
 ---
+/**
+ * Written for a reader, not for a reviewer of the build.
+ *
+ * The previous version of this page was a development history: what went wrong
+ * during the rebuild, which sources turned out to be mislabelled, why a
+ * per-āyah fetch mattered. All of that is true and worth recording, but it is
+ * not what someone opening "About" wants. They want to know what the site is,
+ * whether they can trust the text, and how to tell us it is wrong.
+ *
+ * The engineering reasoning lives where it belongs — CONTRIBUTING.md, DESIGN.md
+ * and INVENTORY.md in the repository, linked at the foot of this page.
+ */
 import Base from "../layouts/Base.astro";
-import { DUAS } from "../lib/content";
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const withTurkish = DUAS.filter((d) => d.translations.some((t) => t.lang === "tr")).length;
-const excerpts = DUAS.filter((d) => d.source.type === "quran" && d.source.excerpt).length;
-const withTafsir = DUAS.filter((d) => d.tafsir.length > 0).length;
+import { DUAS, PROPHETS } from "../lib/content";
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
+const hadithCount = DUAS.filter((d) => d.source.type === "hadith").length;
 ---
 
 <Base
-  title="Sources and method — The Duʿāʾ of the Prophets"
-  description="Where the Arabic comes from, how it is verified, who translated what, and how to report an error."
+  title="About — The Duʿāʾ of the Prophets"
+  description="What this site is, where its text comes from, and how to report an error."
 >
-  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">Sources and method</h1>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">About</h1>
 
   <div class="stack prose" style="margin-top: var(--s-8)">
     <section>
-      <h2 class="section-label">The Arabic</h2>
-      <p>
-        No Arabic on this site was typed by a person. Each entry records which
-        āyāt it draws on and, where the supplication sits inside a longer verse,
-        which words within them. The text is fetched from the
-        <code>quran-uthmani</code> edition at build time and checked against a
-        SHA-256 recorded in <code>content.lock.json</code>. If a single character
-        changes, the build fails.
-      </p>
-      <p>
-        This is deliberately stricter than fetching once and saving the result.
-        An audit of the previous version of this site found two entries whose
-        Arabic had drifted from the verse they cited — one carrying a different
-        verse entirely, one with words inserted at an excerpt boundary. Both read
-        fluently and both had citations that looked right. Only a checksum
-        catches that.
-      </p>
-      <p>
-        {excerpts} of {DUAS.length} entries are excerpts, where narrative framing
-        has been trimmed so the supplication stands alone. Every one says so, in
-        the margin, next to the text.
+      <p class="lede">
+        A reference for the supplications the Prophets made — {DUAS.length} of
+        them, from {prophetCount} prophets, with the Arabic, how to say it, what
+        it means, and the occasion it was said on.
       </p>
     </section>
 
     <section>
-      <h2 class="section-label">Ḥadīth</h2>
+      <h2 class="section-label">Finding something</h2>
       <p>
-        There is no ḥadīth equivalent of the Qurʾān API — nothing serving graded,
-        versioned, machine-checkable text. So the five Sunnah entries are the one
-        place Arabic is hand-entered, and they carry a visible notice saying so.
-        Each records its collection, number, grading, and who gave that grading.
-        Their reference numbers await verification against a printed edition.
+        There are two ways in. <a href={`${base}/themes/`}>By need</a> — sixteen
+        situations, if you are looking for words for something in particular. Or
+        <a href={`${base}/prophets/`}>by prophet</a>, in the order they came.
+        Each prophet's page carries all of his supplications in full, so you can
+        read straight through without opening anything.
+      </p>
+      <p>
+        <a href={`${base}/search/`}>Search</a> works in Arabic without
+        diacritics, in transliteration without the dots and macrons, and in
+        English or Turkish.
+      </p>
+      <p>
+        <strong>Settings</strong> — in the top corner — controls the interface
+        language, which translations appear, text size, light or dark, and
+        whether transliteration shows. Your choices are remembered on your own
+        device and nowhere else. There are no accounts and nothing is tracked.
+      </p>
+      <p>After your first visit the whole site works without a connection.</p>
+    </section>
+
+    <section>
+      <h2 class="section-label">Where the text comes from</h2>
+      <p>
+        <strong>The Arabic</strong> is fetched from a published edition of the
+        muṣḥaf and checked against a checksum every time the site is built. It is
+        never typed by hand — not in an entry, not in a heading, not anywhere. If
+        a single character changed, the site would fail to build.
+      </p>
+      <p>
+        <strong>Translations</strong> are Marmaduke Pickthall's in English and
+        Elmalılı Hamdi Yazır's in Turkish. Both are out of copyright, and both
+        are taken āyah by āyah, so the translation always covers exactly the same
+        words as the Arabic beside it. Every translation on the site names its
+        translator.
+      </p>
+      <p>
+        <strong>Commentary</strong> is Tafsīr al-Jalālayn, by al-Maḥallī
+        (d. 1459) and al-Suyūṭī (d. 1505), in Feras Hamza's translation for the
+        Royal Aal al-Bayt Institute, published at altafsir.com.
+      </p>
+      <p>
+        Where a supplication is <strong>an excerpt</strong> from a longer āyah,
+        the whole āyah is shown with the supplication in full ink and the
+        surrounding narrative dimmed, and the page says so. You can always tell a
+        complete verse from part of one.
       </p>
     </section>
 
     <section>
-      <h2 class="section-label">Translations</h2>
+      <h2 class="section-label">Two things to know</h2>
       <p>
-        English for the Qurʾānic entries is Marmaduke Pickthall's and Turkish is
-        Elmalılı Hamdi Yazır's. Both are in the public domain, and both are
-        fetched per-āyah, which means they always cover exactly the same extent
-        as the Arabic beside them.
+        The {hadithCount} supplications from the Sunnah are the one place the
+        Arabic is entered by hand, because no published ḥadīth edition can be
+        checked automatically the way the Qurʾān can. Each names its collection,
+        number and grading. <strong
+          >Their reference numbers have not yet been checked against a printed
+          edition</strong
+        >, and each page says so.
       </p>
       <p>
-        That per-āyah point fixed a real problem. This project's own Turkish had
-        been written one āyah at a time against an older version of the site. On
-        entries that span several āyāt — 20:25–28, 14:36–41 — it covered only
-        the first, so a reader saw four āyāt of Arabic and a single sentence of
-        Turkish.
-      </p>
-      <p>
-        <strong>There is exactly one translation per language on each page.</strong>{" "}
-        Showing two renderings of the same scripture side by side asks the
-        reader to adjudicate between them, which is not a question a reader
-        should be handed. The page says plainly where the one it shows came
-        from.
-      </p>
-      <p>
-        For the ḥadīth entries there is no public-domain translation to fetch,
-        so the Turkish is this project's own, attributed to its translator, and
-        the English is a project draft labelled as unreviewed.
-      </p>
-      <p>
-        All {DUAS.length} entries carry both English and Turkish. Every
-        translation names its translator; anything unattributed does not ship.
-        You can choose which languages to show in Settings.
+        One entry — a psalm attributed to Dāwūd — comes from outside the Qurʾān
+        and the Sunnah. It is kept separate, labelled on its own page, and is not
+        presented as revelation. It is there because the Qurʾān records that he
+        sought forgiveness without quoting his words.
       </p>
     </section>
 
     <section>
-      <h2 class="section-label">Material outside the Qurʾān and Sunnah</h2>
+      <h2 class="section-label">What you will not find here</h2>
       <p>
-        A few prophets the Qurʾān names have no supplication quoted in it.
-        Dāwūd is the clearest case: 38:24 reports that he sought forgiveness and
-        prostrated, but does not quote his words, and 2:250 is the collective
-        duʿāʾ of those who crossed the river with Ṭālūt.
+        No claims that reciting a particular duʿāʾ a particular number of times
+        brings a particular result. Where such a promise has a sound, graded
+        narration behind it, it belongs on a site like this — but none has been
+        written here, and writing one without a source would be inventing
+        something about scripture.
       </p>
       <p>
-        Where a supplication is attributed to such a prophet in a scripture
-        outside the Islamic tradition, it may appear here — clearly labelled, in
-        its own visual treatment, never mixed into the Qurʾānic entries, and
-        never presented as revelation. Islamic belief holds that the Zabūr was
-        given to Dāwūd; it does not hold that the received Book of Psalms is
-        that revelation preserved. Such passages carry no chain of transmission
-        and no scriptural authority in Islam.
-      </p>
-      <p>
-        Selection is deliberately narrow: a passage is included only if it is a
-        supplication in form, is traditionally attributed to that prophet, and
-        contains nothing contradicting Islamic belief about God. The text is
-        fetched from the World English Bible, which is public domain — the same
-        rule applies as everywhere else here, that scripture is never written
-        from memory.
+        Where this site offers its own thought on using a duʿāʾ, it is set apart
+        and labelled an editorial note, so it is never mistaken for something
+        transmitted.
       </p>
     </section>
 
     <section>
-      <h2 class="section-label">What is not here</h2>
+      <h2 class="section-label">If something is wrong</h2>
       <p>
-        There are no claims about the reward or virtue of reciting a particular
-        duʿāʾ a particular number of times. Where such claims have a sound,
-        graded narration behind them they belong on a site like this; where they
-        do not, they are invention, and inventing them about scripture is worse
-        than omitting them. None have been written.
+        A site that quotes scripture needs a way to be told it has made a
+        mistake. If you find one — in the Arabic, a reference, a translation, a
+        grading, or an explanation — please
+        <a href="https://github.com/CandanUmut/dua/issues/new">tell us</a>.
+        Errors in the text itself are fixed before anything else.
       </p>
-      <p>
-        Where this project offers its own thought on applying a duʿāʾ, it is set
-        apart visually and labelled as an editorial note rather than transmitted
-        knowledge.
-      </p>
+      <p>You do not need to know how to fix it. Saying what looks wrong is enough.</p>
     </section>
 
     <section>
-      <h2 class="section-label">Commentary</h2>
-      <p>
-        {withTafsir} entries carry classical commentary, quoted and attributed:
-        <strong>Tafsīr al-Jalālayn</strong> (al-Maḥallī d. 1459, al-Suyūṭī
-        d. 1505) as a general gloss, translated by Feras Hamza.
-      </p>
-      <p>
-        Al-Wāḥidī's <em>Asbāb al-Nuzūl</em> — the transmitted occasions of
-        revelation — would be the more valuable source, and it was nearly added.
-        It was dropped because the text served under that name turned out to be
-        byte-identical to two other commentaries served under different names,
-        and reads in a register nothing like al-Wāḥidī. At least two of those
-        labels are wrong and there is no way to tell which. Attributing one
-        scholar's words to another is the same failure as mis-citing an āyah, so
-        nothing was shipped rather than guessed at.
-      </p>
-      <p>
-        The Arabic original is centuries out of copyright. The English
-        translation was produced for the Royal Aal al-Bayt Institute for Islamic
-        Thought and published freely at altafsir.com. That is a permission to
-        distribute rather than a public-domain dedication, so it is attributed
-        in full wherever it appears.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="section-label">Corrections</h2>
-      <p>
-        A site making claims about scripture needs a way to be told it is wrong.
-        If you find an error — in the Arabic, a reference, a translation, or a
-        context — please
-        <a href="https://github.com/CandanUmut/dua/issues/new">open an issue</a>.
-        Corrections to the text itself are the highest priority and will be acted
-        on before anything else.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="section-label">Offline</h2>
-      <p>
-        The whole site is static and small. After your first visit it works
-        without a connection.
+      <h2 class="section-label">Colophon</h2>
+      <p style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft)">
+        Set in Amiri, Source Serif 4 and Source Sans 3. Open source —
+        the content pipeline, the sourcing rules and the design notes are all in
+        <a href="https://github.com/CandanUmut/dua">the repository</a>.
       </p>
     </section>
   </div>

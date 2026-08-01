@@ -76,6 +76,7 @@ export const UI: Record<string, Record<UiLang, string>> = {
   homeNeed: { en: "I need words for…", tr: "Şunun için kelime arıyorum…" },
   homeProphets: { en: "By prophet", tr: "Peygambere göre" },
   duaCount: { en: "duʿāʾ", tr: "dua" },
+  footReport: { en: "Report a correction", tr: "Bir hata bildir" },
 };
 
 export const t = (key: string, lang: UiLang): string => UI[key]?.[lang] ?? UI[key]?.en ?? key;
