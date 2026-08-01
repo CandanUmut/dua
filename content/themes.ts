@@ -11,11 +11,13 @@
  *    between a reference someone uses and one they bounce off.
  *
  * The order is deliberate too. An earlier version led with "When there seems
- * no way out", which quietly framed duʿāʾ as something reached for once
- * everything else has failed. It is not: it is asked in ease as much as in
- * difficulty, for the smallest need as much as the largest. So the list opens
- * with the ordinary and universal — forgiveness, a decision, provision, family
- * — carries the harder situations in the middle, and closes with the end.
+ * no way out", which made the first thing a visitor saw the most extreme
+ * situation in the list — and a reader scanning a list takes its opening as
+ * representative of the whole. That is a poor summary of what is in the
+ * corpus: most of these entries are ordinary asks. So the list opens with the
+ * everyday and universal — forgiveness, a decision, provision, family — carries
+ * the harder situations in the middle, and closes with the end. Crisis is still
+ * here, because crisis is genuinely in the corpus; it just does not lead.
  *
  * 2. **Sixteen, and no deeper.** The brief caps it at 12–16 top level and adds
  *    no second level, which is right: a taxonomy that needs drilling is a
