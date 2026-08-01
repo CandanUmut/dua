@@ -1,6 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
 import { THEMES, PROPHETS, DUAS, byTheme } from "../lib/content";
+import quotes from "../../content/generated/quotes.json";
+
+// Fetched and hash-locked like every other line of scripture on the site —
+// never typed into this template. See scripts/fetch-quotes.ts.
+const epigraph = quotes.find((q) => q.id === "call-upon-me")!;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
@@ -12,19 +17,37 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
 >
   <div class="stack" style="margin-top: var(--s-16); margin-bottom: var(--s-24)">
     <div>
-      <h1 style="font-size: var(--t-2xl); max-width: 20ch">
-        The words the Prophets used when they had nothing else.
+      <h1 style="font-size: var(--t-2xl); max-width: 22ch">
+        What the Prophets said, and what they were facing when they said it.
       </h1>
       <p class="lede" style="margin-top: var(--s-6)">
-        {DUAS.length} supplications from the Qurʾān and the authenticated Sunnah, each
-        with its Arabic, how to say it, what it means, and the occasion on which
-        it was said.
+        {DUAS.length} supplications from the Qurʾān and the authenticated
+        Sunnah — asking for guidance, for children, for provision, for
+        forgiveness, in gratitude and in fear. Each with its Arabic, how to say
+        it, what it means, and the occasion it was said on.
+      </p>
+      <p class="lede" style="margin-top: var(--s-4)">
+        Duʿāʾ is not a last resort. The Prophets asked in ease as well as in
+        difficulty, for the smallest need and the largest, because the One they
+        asked is the only one who gives or withholds.
+      </p>
+      <p
+        style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft); margin-top: var(--s-3)"
+      >
+        <span
+          lang="ar"
+          dir="rtl"
+          translate="no"
+          style="font-family: var(--font-arabic); font-size: var(--t-md)">{epigraph.text}</span
+        >
+        <span> — “Call upon Me, and I will answer you.” Qurʾān {epigraph.ref}</span>
       </p>
     </div>
 
     <!--
       Two doors, and nothing else. "By need" comes first because someone
-      arriving in difficulty does not yet know which prophet they want.
+      arriving with a situation in mind does not yet know which prophet
+      matched it.
     -->
     <nav aria-label="Ways in" class="stack">
       <div>
@@ -32,7 +55,8 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
           <a href={`${base}/themes/`}>I need words for…</a>
         </h2>
         <p class="lede" style="font-size: var(--t-base); margin-top: var(--s-2)">
-          Grief, fear, debt, illness, a decision, gratitude. Sixteen situations.
+          Forgiveness, a decision, provision, family, gratitude, illness, grief.
+          Sixteen situations.
         </p>
         <ul class="themes" style="margin-top: var(--s-6)">
           {

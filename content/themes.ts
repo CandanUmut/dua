@@ -10,6 +10,13 @@
  *    abstract noun is demoted to the description. This is the difference
  *    between a reference someone uses and one they bounce off.
  *
+ * The order is deliberate too. An earlier version led with "When there seems
+ * no way out", which quietly framed duʿāʾ as something reached for once
+ * everything else has failed. It is not: it is asked in ease as much as in
+ * difficulty, for the smallest need as much as the largest. So the list opens
+ * with the ordinary and universal — forgiveness, a decision, provision, family
+ * — carries the harder situations in the middle, and closes with the end.
+ *
  * 2. **Sixteen, and no deeper.** The brief caps it at 12–16 top level and adds
  *    no second level, which is right: a taxonomy that needs drilling is a
  *    taxonomy that has stopped being a door. Where an entry belongs in several
@@ -33,7 +40,7 @@ export const THEMES: Theme[] = [
       en: "Trapped, cornered, out of options — the duʿāʾ said from inside the difficulty rather than after it.",
       tr: "Sıkışmış, köşeye kısılmış, seçenekleri tükenmiş hâldeyken — zorluğun ardından değil, tam içindeyken edilen dualar.",
     },
-    order: 1,
+    order: 11,
   },
   {
     id: "forgiveness",
@@ -42,7 +49,7 @@ export const THEMES: Theme[] = [
       en: "Turning back after a mistake, without excuses and without despair.",
       tr: "Bir hatanın ardından, mazeret üretmeden ve ümit kesmeden dönüş.",
     },
-    order: 2,
+    order: 1,
   },
   {
     id: "grief",
@@ -51,7 +58,7 @@ export const THEMES: Theme[] = [
       en: "Loss, separation, and sorrow that does not lift on schedule.",
       tr: "Kayıp, ayrılık ve zamanla dinmeyen keder.",
     },
-    order: 3,
+    order: 12,
   },
   {
     id: "fear",
@@ -60,7 +67,7 @@ export const THEMES: Theme[] = [
       en: "Facing something or someone you have reason to fear — before it happens, not after.",
       tr: "Korkmakta haklı olduğunuz bir şeyle yüzleşirken — olaydan sonra değil, öncesinde.",
     },
-    order: 4,
+    order: 10,
   },
   {
     id: "illness",
@@ -69,7 +76,7 @@ export const THEMES: Theme[] = [
       en: "Sickness, pain, and long affliction borne without complaint against the One who sent it.",
       tr: "Hastalık, ağrı ve onu gönderene şikâyet etmeden taşınan uzun ıstırap.",
     },
-    order: 5,
+    order: 13,
   },
   {
     id: "provision",
@@ -78,7 +85,7 @@ export const THEMES: Theme[] = [
       en: "Hunger, debt, work, shelter — asking for what sustains you without naming a figure.",
       tr: "Açlık, borç, iş, barınak — bir miktar belirtmeden geçiminizi istemek.",
     },
-    order: 6,
+    order: 3,
   },
   {
     id: "children",
@@ -87,7 +94,7 @@ export const THEMES: Theme[] = [
       en: "Childlessness, and prayers for offspring — including those made long past the age of expecting.",
       tr: "Evlatsızlık ve zürriyet duaları — ümidin çoktan tükendiği yaşlarda edilenler dâhil.",
     },
-    order: 7,
+    order: 5,
   },
   {
     id: "family",
@@ -96,7 +103,7 @@ export const THEMES: Theme[] = [
       en: "Praying for the people you are bound to — parents, spouse, descendants, household.",
       tr: "Bağlı olduğunuz insanlar için dua: anne baba, eş, zürriyet, hane halkı.",
     },
-    order: 8,
+    order: 4,
   },
   {
     id: "guidance",
@@ -105,7 +112,7 @@ export const THEMES: Theme[] = [
       en: "A choice you cannot see the end of, and the request to be shown rather than told.",
       tr: "Sonunu göremediğiniz bir tercih ve söylenmek yerine gösterilmeyi isteme.",
     },
-    order: 9,
+    order: 2,
   },
   {
     id: "knowledge",
@@ -114,7 +121,7 @@ export const THEMES: Theme[] = [
       en: "Study, memorisation, teaching, and the honest admission of not knowing.",
       tr: "İlim, ezber, öğretmek ve bilmediğini dürüstçe kabul etmek.",
     },
-    order: 10,
+    order: 7,
   },
   {
     id: "strength",
@@ -123,7 +130,7 @@ export const THEMES: Theme[] = [
       en: "Being sent to do something you do not feel equal to, and asking for capacity rather than escape.",
       tr: "Kendinizi yeterli hissetmediğiniz bir işle görevlendirildiğinizde, kaçış değil güç istemek.",
     },
-    order: 11,
+    order: 9,
   },
   {
     id: "injustice",
@@ -132,7 +139,7 @@ export const THEMES: Theme[] = [
       en: "Oppression, slander, and power used against you — taking it to Allah instead of into your own hands.",
       tr: "Zulüm, iftira ve aleyhinize kullanılan güç — meseleyi kendi elinize almak yerine Allah'a götürmek.",
     },
-    order: 12,
+    order: 14,
   },
   {
     id: "protection",
@@ -141,7 +148,7 @@ export const THEMES: Theme[] = [
       en: "Seeking refuge — from harm, from people, from what you cannot see, and from yourself.",
       tr: "Sığınma: zarardan, insanlardan, göremediğinizden ve kendinizden.",
     },
-    order: 13,
+    order: 8,
   },
   {
     id: "steadfastness",
@@ -150,7 +157,7 @@ export const THEMES: Theme[] = [
       en: "Standing on something at cost — asking to be poured patience rather than to be spared the test.",
       tr: "Bir şeyin arkasında bedel ödeyerek durmak — imtihandan muaf tutulmayı değil, sabır dökülmesini istemek.",
     },
-    order: 14,
+    order: 15,
   },
   {
     id: "gratitude",
@@ -159,7 +166,7 @@ export const THEMES: Theme[] = [
       en: "After the thing you asked for arrived — the prayer that is easiest to forget.",
       tr: "İstediğiniz şey geldikten sonra — unutulması en kolay dua.",
     },
-    order: 15,
+    order: 6,
   },
   {
     id: "hereafter",

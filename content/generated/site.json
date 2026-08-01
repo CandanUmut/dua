@@ -6570,7 +6570,7 @@
         "en": "Trapped, cornered, out of options — the duʿāʾ said from inside the difficulty rather than after it.",
         "tr": "Sıkışmış, köşeye kısılmış, seçenekleri tükenmiş hâldeyken — zorluğun ardından değil, tam içindeyken edilen dualar."
       },
-      "order": 1
+      "order": 11
     },
     {
       "id": "forgiveness",
@@ -6582,7 +6582,7 @@
         "en": "Turning back after a mistake, without excuses and without despair.",
         "tr": "Bir hatanın ardından, mazeret üretmeden ve ümit kesmeden dönüş."
       },
-      "order": 2
+      "order": 1
     },
     {
       "id": "grief",
@@ -6594,7 +6594,7 @@
         "en": "Loss, separation, and sorrow that does not lift on schedule.",
         "tr": "Kayıp, ayrılık ve zamanla dinmeyen keder."
       },
-      "order": 3
+      "order": 12
     },
     {
       "id": "fear",
@@ -6606,7 +6606,7 @@
         "en": "Facing something or someone you have reason to fear — before it happens, not after.",
         "tr": "Korkmakta haklı olduğunuz bir şeyle yüzleşirken — olaydan sonra değil, öncesinde."
       },
-      "order": 4
+      "order": 10
     },
     {
       "id": "illness",
@@ -6618,7 +6618,7 @@
         "en": "Sickness, pain, and long affliction borne without complaint against the One who sent it.",
         "tr": "Hastalık, ağrı ve onu gönderene şikâyet etmeden taşınan uzun ıstırap."
       },
-      "order": 5
+      "order": 13
     },
     {
       "id": "provision",
@@ -6630,7 +6630,7 @@
         "en": "Hunger, debt, work, shelter — asking for what sustains you without naming a figure.",
         "tr": "Açlık, borç, iş, barınak — bir miktar belirtmeden geçiminizi istemek."
       },
-      "order": 6
+      "order": 3
     },
     {
       "id": "children",
@@ -6642,7 +6642,7 @@
         "en": "Childlessness, and prayers for offspring — including those made long past the age of expecting.",
         "tr": "Evlatsızlık ve zürriyet duaları — ümidin çoktan tükendiği yaşlarda edilenler dâhil."
       },
-      "order": 7
+      "order": 5
     },
     {
       "id": "family",
@@ -6654,7 +6654,7 @@
         "en": "Praying for the people you are bound to — parents, spouse, descendants, household.",
         "tr": "Bağlı olduğunuz insanlar için dua: anne baba, eş, zürriyet, hane halkı."
       },
-      "order": 8
+      "order": 4
     },
     {
       "id": "guidance",
@@ -6666,7 +6666,7 @@
         "en": "A choice you cannot see the end of, and the request to be shown rather than told.",
         "tr": "Sonunu göremediğiniz bir tercih ve söylenmek yerine gösterilmeyi isteme."
       },
-      "order": 9
+      "order": 2
     },
     {
       "id": "knowledge",
@@ -6678,7 +6678,7 @@
         "en": "Study, memorisation, teaching, and the honest admission of not knowing.",
         "tr": "İlim, ezber, öğretmek ve bilmediğini dürüstçe kabul etmek."
       },
-      "order": 10
+      "order": 7
     },
     {
       "id": "strength",
@@ -6690,7 +6690,7 @@
         "en": "Being sent to do something you do not feel equal to, and asking for capacity rather than escape.",
         "tr": "Kendinizi yeterli hissetmediğiniz bir işle görevlendirildiğinizde, kaçış değil güç istemek."
       },
-      "order": 11
+      "order": 9
     },
     {
       "id": "injustice",
@@ -6702,7 +6702,7 @@
         "en": "Oppression, slander, and power used against you — taking it to Allah instead of into your own hands.",
         "tr": "Zulüm, iftira ve aleyhinize kullanılan güç — meseleyi kendi elinize almak yerine Allah'a götürmek."
       },
-      "order": 12
+      "order": 14
     },
     {
       "id": "protection",
@@ -6714,7 +6714,7 @@
         "en": "Seeking refuge — from harm, from people, from what you cannot see, and from yourself.",
         "tr": "Sığınma: zarardan, insanlardan, göremediğinizden ve kendinizden."
       },
-      "order": 13
+      "order": 8
     },
     {
       "id": "steadfastness",
@@ -6726,7 +6726,7 @@
         "en": "Standing on something at cost — asking to be poured patience rather than to be spared the test.",
         "tr": "Bir şeyin arkasında bedel ödeyerek durmak — imtihandan muaf tutulmayı değil, sabır dökülmesini istemek."
       },
-      "order": 14
+      "order": 15
     },
     {
       "id": "gratitude",
@@ -6738,7 +6738,7 @@
         "en": "After the thing you asked for arrived — the prayer that is easiest to forget.",
         "tr": "İstediğiniz şey geldikten sonra — unutulması en kolay dua."
       },
-      "order": 15
+      "order": 6
     },
     {
       "id": "hereafter",
@@ -6790,5 +6790,5 @@
     "muhammad-muslim-2721": "muhammad-as-aluka-al-huda-wal-tuqa",
     "muhammad-bukhari-6369": "muhammad-audhu-bika-min-al-hamm-wal-hazan"
   },
-  "generatedAt": "2026-07-31T22:08:02.603Z"
+  "generatedAt": "2026-08-01T00:05:22.342Z"
 }
