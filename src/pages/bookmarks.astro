@@ -1,0 +1,78 @@
+---
+/**
+ * Bookmarks had a button and no destination — you could save a duʿāʾ and never
+ * find it again. This is the missing half.
+ *
+ * Rendered from `localStorage` in the browser rather than at build time, since
+ * bookmarks are per-device and never leave it: there is no account, no sync and
+ * no server that knows what anyone saved. The full index ships with the page,
+ * so the list resolves instantly and works offline like everything else.
+ */
+import Base from "../layouts/Base.astro";
+import { DUAS, prophet, refLabel, translation } from "../lib/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const index = DUAS.map((d) => ({
+  id: d.id,
+  title: d.title.en,
+  titleTr: d.title.tr,
+  speaker: prophet(d.speaker)?.name.en ?? d.speaker,
+  ref: refLabel(d),
+  en: translation(d, "en")?.text.slice(0, 150) ?? "",
+}));
+---
+
+<Base
+  title="Bookmarks — The Duʿāʾ of the Prophets"
+  description="The duʿāʾ you have saved on this device."
+>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)" data-i18n="bookmarksTitle">
+    Saved
+  </h1>
+
+  <p class="lede" style="margin-top: var(--s-4)" id="bm-lede" data-i18n="bookmarksEmpty">
+    You have not bookmarked anything yet. The bookmark link at the foot of any
+    duʿāʾ saves it here, on this device.
+  </p>
+
+  <p id="bm-start" style="font-family: var(--font-util); margin-top: var(--s-4)">
+    <a href={`${base}/themes/`} data-i18n="navNeed">By need</a> ·
+    <a href={`${base}/prophets/`} data-i18n="navProphets">Prophets</a>
+  </p>
+
+  <ul class="index-list" id="bm-list" style="margin-top: var(--s-8)"></ul>
+
+  <script is:inline define:vars={{ index, base }}>
+    (() => {
+      const KEY = "dua.bookmarks";
+      const list = document.getElementById("bm-list");
+      const lede = document.getElementById("bm-lede");
+      const byId = new Map(index.map((d) => [d.id, d]));
+
+      const render = () => {
+        let ids = [];
+        try { ids = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch {}
+        const rows = ids.map((id) => byId.get(id)).filter(Boolean);
+        lede.hidden = rows.length > 0;
+        document.getElementById("bm-start").hidden = rows.length > 0;
+        const tr = document.documentElement.lang === "tr";
+        list.innerHTML = rows
+          .map(
+            (d) => `<li><a class="entry" href="${base}/duas/${d.id}/">
+              <span class="seq"></span>
+              <span class="name" style="font-size:var(--t-base)">${tr && d.titleTr ? d.titleTr : d.title}</span>
+              <span class="meta">${d.speaker} · ${d.ref}</span>
+              <span class="blurb">${d.en}</span>
+            </a></li>`,
+          )
+          .join("");
+      };
+
+      render();
+      // Re-render when another tab changes the list, and after the settings
+      // script has applied the interface language on this one.
+      addEventListener("storage", (e) => { if (e.key === KEY) render(); });
+      addEventListener("load", render);
+    })();
+  </script>
+</Base>

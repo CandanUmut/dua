@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import InlineDua from "../../components/InlineDua.astro";
+import T from "../../components/T.astro";
 import { THEMES, byTheme, prophet, refLabel } from "../../lib/content";
 
 export function getStaticPaths() {
@@ -15,12 +16,14 @@ const showJumpList = duas.length > 3;
 
 <Base title={`${theme.label.en} — The Duʿāʾ of the Prophets`} description={theme.description.en}>
   <p class="kicker" style="margin-top: var(--s-12)">
-    <a href={`${base}/themes/`}>I need words for…</a>
+    <a href={`${base}/themes/`} data-i18n="crumbThemes">I need words for…</a>
   </p>
   <h1 style="font-size: var(--t-xl); margin-top: var(--s-2); max-width: 22ch">
-    {theme.label.en}
+    <T en={theme.label.en} tr={theme.label.tr} />
   </h1>
-  <p class="lede" style="margin-top: var(--s-4)">{theme.description.en}</p>
+  <p class="lede" style="margin-top: var(--s-4)">
+    <T en={theme.description.en} tr={theme.description.tr} />
+  </p>
 
   {
     showJumpList && (

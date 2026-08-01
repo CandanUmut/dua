@@ -10,7 +10,7 @@ const index = buildSearchIndex();
   title="Search — The Duʿāʾ of the Prophets"
   description="Search every duʿāʾ by Arabic, transliteration, translation, prophet, or situation."
 >
-  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)">Search</h1>
+  <h1 style="font-size: var(--t-xl); margin-top: var(--s-12)" data-i18n="navSearch">Search</h1>
   <p class="lede" style="margin-top: var(--s-4)">
     Arabic works without diacritics — type <span lang="ar" dir="rtl" translate="no">الظالمين</span>
     and it will find <span lang="ar" dir="rtl" translate="no">ٱلظَّٰلِمِينَ</span>.
@@ -18,7 +18,7 @@ const index = buildSearchIndex();
   </p>
 
   <div style="margin-top: var(--s-8)">
-    <label for="q" class="section-label">Search</label>
+    <label for="q" class="visually-hidden">Search</label>
     <input
       id="q"
       class="search-field"
@@ -30,6 +30,29 @@ const index = buildSearchIndex();
   </div>
 
   <p id="count" role="status" aria-live="polite" class="kicker" style="margin-top: var(--s-4)"></p>
+
+  {/*
+    An empty search box used to show an empty page. These are real queries that
+    return results, so the first thing a visitor sees is a way in rather than a
+    blank.
+  */}
+  <div id="suggestions" style="margin-top: var(--s-6)">
+    <h2 class="section-label" data-i18n="searchStart">Start typing, or try one of these.</h2>
+    <p style="font-family: var(--font-util); font-size: var(--t-sm); line-height: 2.2">
+      {
+        ["forgiveness", "debt", "children", "patience", "Yūnus", "guidance", "الظالمين", "sabır"].map(
+          (q) => (
+            <>
+              <button type="button" class="chip" data-suggest={q}>
+                {q}
+              </button>{" "}
+            </>
+          ),
+        )
+      }
+    </p>
+  </div>
+
   <ul class="index-list" id="results" style="margin-top: var(--s-4)"></ul>
 
   <script is:inline define:vars={{ index, base }}>
@@ -59,7 +82,10 @@ const index = buildSearchIndex();
           .toLowerCase()
           .trim();
 
+      const suggestions = document.getElementById("suggestions");
+
       const render = (rows, term) => {
+        suggestions.hidden = Boolean(term);
         out.innerHTML = rows
           .map(
             (r) => `<li><a class="entry" href="${base}/duas/${r.id}/">
@@ -70,7 +96,9 @@ const index = buildSearchIndex();
           )
           .join("");
         count.textContent = term
-          ? `${rows.length} ${rows.length === 1 ? "result" : "results"} for “${term}”`
+          ? rows.length === 0
+            ? `Nothing matched “${term}”. Try fewer words, or a different spelling.`
+            : `${rows.length} ${rows.length === 1 ? "result" : "results"} for “${term}”`
           : "";
       };
 
@@ -94,6 +122,14 @@ const index = buildSearchIndex();
 
       let t;
       q.addEventListener("input", () => { clearTimeout(t); t = setTimeout(run, 120); });
+
+      document.querySelectorAll("[data-suggest]").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          q.value = btn.dataset.suggest;
+          run();
+          q.focus();
+        }),
+      );
 
       const initial = new URLSearchParams(location.search).get("q");
       if (initial) { q.value = initial; run(); }

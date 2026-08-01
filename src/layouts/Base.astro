@@ -16,6 +16,7 @@ const nav = [
   { href: `${base}/themes/`, label: "By need", key: "navNeed" },
   { href: `${base}/prophets/`, label: "Prophets", key: "navProphets" },
   { href: `${base}/search/`, label: "Search", key: "navSearch" },
+  { href: `${base}/bookmarks/`, label: "Saved", key: "navSaved" },
   { href: `${base}/about/`, label: "About", key: "navAbout" },
 ];
 const here = Astro.url.pathname;
@@ -45,13 +46,17 @@ const here = Astro.url.pathname;
     <link rel="icon" href={`${base}/icon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={`${base}/icon-180.png`} />
     <meta property="og:image" content={`${base}/icon-512.png`} />
-    <link
-      rel="preload"
-      href={`${base}/fonts/amiri-arabic-1.woff2`}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    {/*
+      All three faces are preloaded, not just Amiri. Preloading only the Arabic
+      left the Latin faces to `font-display: swap`, which re-flowed the page
+      when they arrived and put CLS at 0.207 on the home page — a fifth of a
+      viewport of movement under the reader's eye, and well past the 0.1 that
+      counts as good. Latin-ext is deliberately not preloaded: it is only needed
+      for Turkish and would be dead weight for everyone else.
+    */}
+    <link rel="preload" href={`${base}/fonts/amiri-arabic-1.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/serif-latin.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/sans-latin.woff2`} as="font" type="font/woff2" crossorigin />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     {/*
       Applied before first paint so the chosen theme and type size never flash.
@@ -108,8 +113,10 @@ const here = Astro.url.pathname;
           names its translator.
         </p>
         <p>
-          <a href={`${base}/about/`}>Sources and method</a> ·
-          <a href="https://github.com/CandanUmut/dua/issues/new">Report a correction</a>
+          <a href={`${base}/about/`} data-i18n="navAbout">About</a> ·
+          <a href="https://github.com/CandanUmut/dua/issues/new" data-i18n="footReport"
+            >Report a correction</a
+          >
         </p>
       </div>
     </footer>
@@ -255,10 +262,16 @@ const here = Astro.url.pathname;
           document.querySelectorAll("[data-translit-block]").forEach((el) => {
             el.classList.toggle("hidden", !s.translit);
           });
-          // Interface language: swap every labelled string in place.
+          // Interface language, two mechanisms:
+          //   [data-i18n]  chrome strings from the UI dictionary
+          //   [data-t]     content strings that ship with both languages
           document.querySelectorAll("[data-i18n]").forEach((el) => {
             const v = UI[el.dataset.i18n];
             if (v && v[s.uilang]) el.textContent = v[s.uilang];
+          });
+          document.querySelectorAll("[data-t]").forEach((el) => {
+            const v = el.dataset["t" + s.uilang[0].toUpperCase() + s.uilang.slice(1)];
+            if (v) { el.textContent = v; el.lang = s.uilang; }
           });
           document.documentElement.lang = s.uilang;
 

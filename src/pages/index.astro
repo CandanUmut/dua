@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import T from "../components/T.astro";
 import { THEMES, PROPHETS, DUAS, byTheme } from "../lib/content";
 import quotes from "../../content/generated/quotes.json";
 
@@ -22,14 +23,24 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
       </h1>
       <p class="lede" style="margin-top: var(--s-6)">
         {DUAS.length} supplications from the Qurʾān and the authenticated
-        Sunnah — asking for guidance, for children, for provision, for
-        forgiveness, in gratitude and in fear. Each with its Arabic, how to say
-        it, what it means, and the occasion it was said on.
+        Sunnah. Each one has its Arabic, how to say it, what it means, and the
+        occasion it was said on.
       </p>
+      {/*
+        Descriptive, not doctrinal. An earlier draft asserted that "duʿāʾ is not
+        a last resort" and that God "is the only one who gives or withholds".
+        The first is an over-correction — Yūnus called from inside the fish, and
+        that was a last resort. The second is a claim of belief stated in the
+        site's own voice with no citation, which is the thing this project
+        refuses to do anywhere else. So this paragraph now lists what the
+        collection actually contains, every clause of it traceable to an entry
+        on the site, and the āyah below says the rest.
+      */}
       <p class="lede" style="margin-top: var(--s-4)">
-        Duʿāʾ is not a last resort. The Prophets asked in ease as well as in
-        difficulty, for the smallest need and the largest, because the One they
-        asked is the only one who gives or withholds.
+        They were said in every kind of moment: before facing a ruler, over a
+        marriage with no children, while fleeing, after a mistake that could not
+        be undone, from inside the darkness — and in thanks once the thing asked
+        for had come.
       </p>
       <p
         style="font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft); margin-top: var(--s-3)"
@@ -52,7 +63,7 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
     <nav aria-label="Ways in" class="stack">
       <div>
         <h2 style="font-size: var(--t-lg)">
-          <a href={`${base}/themes/`}>I need words for…</a>
+          <a href={`${base}/themes/`} data-i18n="homeNeed">I need words for…</a>
         </h2>
         <p class="lede" style="font-size: var(--t-base); margin-top: var(--s-2)">
           Forgiveness, a decision, provision, family, gratitude, illness, grief.
@@ -63,7 +74,7 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
             THEMES.map((t) => (
               <li>
                 <a class="theme-link" href={`${base}/themes/${t.id}/`}>
-                  <span class="theme-name">{t.label.en}</span>
+                  <span class="theme-name"><T en={t.label.en} tr={t.label.tr} /></span>
                   <span class="theme-count">{byTheme(t.id).length} duʿāʾ</span>
                 </a>
               </li>
@@ -74,7 +85,7 @@ const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
 
       <div>
         <h2 style="font-size: var(--t-lg)">
-          <a href={`${base}/prophets/`}>By prophet</a>
+          <a href={`${base}/prophets/`} data-i18n="homeProphets">By prophet</a>
         </h2>
         <p class="lede" style="font-size: var(--t-base); margin-top: var(--s-2)">
           {prophetCount} prophets in the order they came, from Ādam to Muḥammad ﷺ —

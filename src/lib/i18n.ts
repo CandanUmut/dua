@@ -28,6 +28,7 @@ export const UI: Record<string, Record<UiLang, string>> = {
   navNeed: { en: "By need", tr: "İhtiyaca göre" },
   navProphets: { en: "Prophets", tr: "Peygamberler" },
   navSearch: { en: "Search", tr: "Ara" },
+  navSaved: { en: "Saved", tr: "Kayıtlı" },
   navAbout: { en: "About", tr: "Hakkında" },
   navSettings: { en: "Settings", tr: "Ayarlar" },
 
@@ -72,10 +73,45 @@ export const UI: Record<string, Record<UiLang, string>> = {
   secTrial: { en: "What he faced", tr: "Karşılaştığı imtihan" },
   secInQuran: { en: "In the Qurʾān", tr: "Kur'ân'da" },
   secSource: { en: "Source", tr: "Kaynak" },
+  secGrading: { en: "Grading", tr: "Derece" },
+  secStatus: { en: "Status", tr: "Durum" },
+  secExtent: { en: "Extent", tr: "Kapsam" },
+  secText: { en: "Text", tr: "Metin" },
+  crumbProphets: { en: "The Prophets", tr: "Peygamberler" },
+  crumbThemes: { en: "I need words for…", tr: "Şunun için kelime arıyorum…" },
+  excerptNote: { en: "excerpt, framing dimmed", tr: "alıntı, çerçeve soluk" },
+  textUthmani: { en: "Uthmani, verified by checksum", tr: "Osmanî hat, sağlama ile doğrulandı" },
+  textHadith: {
+    en: "Hand-entered — no ḥadīth edition exists to fetch",
+    tr: "Elle girildi — çekilebilecek bir hadis neşri yok",
+  },
+  textWeb: { en: "World English Bible, verified by checksum", tr: "World English Bible, sağlama ile doğrulandı" },
+  statusOutside: { en: "Outside the Qurʾān and Sunnah", tr: "Kur'ân ve Sünnet dışı" },
 
   homeNeed: { en: "I need words for…", tr: "Şunun için kelime arıyorum…" },
   homeProphets: { en: "By prophet", tr: "Peygambere göre" },
   duaCount: { en: "duʿāʾ", tr: "dua" },
+  footReport: { en: "Report a correction", tr: "Bir hata bildir" },
+  moreDepth: {
+    en: "Commentary, reflection and related duʿāʾ",
+    tr: "Tefsir, değerlendirme ve ilgili dualar",
+  },
+  moreTafsir: { en: "Commentary and related duʿāʾ", tr: "Tefsir ve ilgili dualar" },
+  moreReflection: { en: "Reflection and related duʿāʾ", tr: "Değerlendirme ve ilgili dualar" },
+  secCommentary: { en: "Commentary", tr: "Tefsir" },
+  secOccasion: { en: "Occasion of revelation", tr: "Nüzul sebebi" },
+  hisDua: { en: "His duʿāʾ", tr: "Duaları" },
+  jumpTo: { en: "Jump to a duʿāʾ", tr: "Bir duaya git" },
+  bookmarksTitle: { en: "Saved", tr: "Kayıtlı" },
+  bookmarksEmpty: {
+    en: "Nothing saved yet. The bookmark link at the foot of any duʿāʾ keeps it here, on this device only.",
+    tr: "Henüz bir şey kaydedilmedi. Herhangi bir duanın altındaki kaydet bağlantısı onu yalnızca bu cihazda burada tutar.",
+  },
+  searchStart: {
+    en: "Start typing, or try one of these.",
+    tr: "Yazmaya başlayın ya da şunlardan birini deneyin.",
+  },
+  noResults: { en: "Nothing matched", tr: "Eşleşme bulunamadı" },
 };
 
 export const t = (key: string, lang: UiLang): string => UI[key]?.[lang] ?? UI[key]?.en ?? key;
