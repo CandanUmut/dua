@@ -8,10 +8,14 @@ interface Props {
   description: string;
   /** Structured data for this page, if any is honest to assert. */
   jsonLd?: Record<string, unknown>;
+  /** Open Graph type: the home page is the site, every other page an entry. */
+  ogType?: "website" | "article";
 }
-const { title, description, jsonLd } = Astro.props;
+const { title, description, jsonLd, ogType = "article" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Link previews need an absolute URL; a path is ignored by most of them.
+const ogImage = new URL(`${base}/og-image.png`, Astro.site).href;
 const nav = [
   { href: `${base}/themes/`, label: "By need", key: "navNeed" },
   { href: `${base}/prophets/`, label: "Prophets", key: "navProphets" },
@@ -38,25 +42,37 @@ const here = Astro.url.pathname;
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="The Duʿāʾ of the Prophets" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Duʿāʾ of the Prophets: supplications from the Qurʾān and Sunnah, with a phone showing the site." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#e8e6df" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#191b1a" media="(prefers-color-scheme: dark)" />
     <link rel="manifest" href={`${base}/manifest.webmanifest`} />
     <link rel="icon" href={`${base}/icon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={`${base}/icon-180.png`} />
-    <meta property="og:image" content={`${base}/icon-512.png`} />
     {/*
-      All three faces are preloaded, not just Amiri. Preloading only the Arabic
+      Every face is preloaded, not just Amiri. Preloading only the Arabic
       left the Latin faces to `font-display: swap`, which re-flowed the page
       when they arrived and put CLS at 0.207 on the home page — a fifth of a
       viewport of movement under the reader's eye, and well past the 0.1 that
-      counts as good. Latin-ext is deliberately not preloaded: it is only needed
-      for Turkish and would be dead weight for everyone else.
+      counts as good. The Latin faces now use `font-display: block` (see
+      global.css), so they must arrive early. Latin-ext is preloaded too: it
+      carries ā ʿ ʾ, which the wordmark and every page use, so every page
+      downloads it anyway.
     */}
     <link rel="preload" href={`${base}/fonts/amiri-arabic-1.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}/fonts/serif-latin.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}/fonts/sans-latin.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/serif-latinext.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/sans-latinext.woff2`} as="font" type="font/woff2" crossorigin />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     {/*
       Applied before first paint so the chosen theme and type size never flash.

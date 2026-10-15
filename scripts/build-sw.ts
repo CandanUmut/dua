@@ -30,8 +30,9 @@ async function walk(dir: string): Promise<string[]> {
 const files = await walk(DIST);
 const urls = files
   .map((f) => "/" + relative(DIST, f).split("\\").join("/"))
-  // The service worker must not try to cache itself.
-  .filter((u) => u !== "/sw.js")
+  // The service worker must not try to cache itself, and files meant for
+  // crawlers and link previews are no use offline.
+  .filter((u) => !["/sw.js", "/og-image.png", "/robots.txt", "/sitemap.xml"].includes(u))
   .map((u) => (u.endsWith("/index.html") ? u.slice(0, -"index.html".length) : u))
   .map((u) => BASE + u)
   .sort();

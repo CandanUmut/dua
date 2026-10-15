@@ -26,11 +26,13 @@
   font-family: "Source Serif";
   src: url("/dua/fonts/serif-latin.woff2") format("woff2");
   font-weight: 400 700;
-  /* optional, with a preload: the face is ready before first paint in practice,
-     and on a slow connection the page renders in the fallback rather than
-     re-flowing mid-read. Latin-ext keeps `swap` — Turkish readers are better
-     served by the right glyphs arriving late than by never arriving. */
-  font-display: optional;
+  /* block, with a preload. This was `optional`, and on a cold first visit over
+     a phone connection the face missed optional's ~100ms window, so the whole
+     home page — headline included — stayed in Times until the next page. Block
+     waits for the preloaded face instead (up to 3s, then falls back), so there
+     is no fallback flash and still no reflow. All four Latin faces use it:
+     latin-ext is not Turkish-only, since every page has Duʿāʾ and Qurʾān. */
+  font-display: block;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
     U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
     U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -39,9 +41,9 @@
   font-family: "Source Serif";
   src: url("/dua/fonts/serif-latinext.woff2") format("woff2");
   font-weight: 400 700;
-  font-display: swap;
-  /* Turkish lives here — ğ ş İ ı ç ö ü. Separate file so it downloads only
-     for readers who need it. */
+  font-display: block;
+  /* Turkish lives here — ğ ş İ ı ç ö ü — and so do ā ī ū ḥ ṣ ʿ ʾ, which
+     every page uses in English too. */
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
     U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
     U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
@@ -52,7 +54,7 @@
   font-family: "Source Sans";
   src: url("/dua/fonts/sans-latin.woff2") format("woff2");
   font-weight: 400 700;
-  font-display: optional;
+  font-display: block;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
     U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
     U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -61,7 +63,7 @@
   font-family: "Source Sans";
   src: url("/dua/fonts/sans-latinext.woff2") format("woff2");
   font-weight: 400 700;
-  font-display: swap;
+  font-display: block;
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
     U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
     U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,

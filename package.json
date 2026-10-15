@@ -10,7 +10,7 @@
     "content:inventory": "tsx scripts/build-inventory.ts",
     "typecheck": "tsc --noEmit",
     "dev": "astro dev",
-    "build": "astro build && tsx scripts/build-sw.ts",
+    "build": "astro build && tsx scripts/build-sitemap.ts && tsx scripts/build-sw.ts",
     "preview": "astro preview",
     "content:build": "tsx scripts/build-content.ts",
     "content:all": "tsx scripts/fetch-content.ts && tsx scripts/fetch-attributed.ts && tsx scripts/fetch-quotes.ts && tsx scripts/fetch-tafsir.ts && tsx scripts/migrate-legacy.ts && tsx scripts/build-content.ts",

@@ -331,6 +331,15 @@ and the Latin ones use `optional`, which guarantees no reflow if they are ever
 late. CLS is 0 on every page measured; LCP is under 130ms; no page ships a byte
 of framework JavaScript.
 
+**But `optional` left first visits in Times.** On a cold load over a phone
+connection the Latin faces missed `optional`'s ~100ms window, so the whole home
+page rendered in the fallback serif until the reader moved to another page.
+The Latin faces now use `font-display: block` and all five files are preloaded
+(every page downloads all five anyway). No fallback flash and still no reflow;
+the cost is that on a slow first visit the text can stay blank for a moment
+(at most 3s) while the fonts arrive. Repeat visits are served by the service
+worker.
+
 ---
 
 ## 7. Two doors
