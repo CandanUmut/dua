@@ -93,6 +93,8 @@ export type Card = {
   tr: string;
   au: number[];
   q: boolean;
+  /** Honorific forms for the speaker: Arabic glyph, words per language, abbreviation. */
+  h: { a: string; f: { en: string; tr: string }; b: string };
 };
 export const cards = (): Card[] =>
   DUAS.map((d) => {
@@ -108,6 +110,7 @@ export const cards = (): Card[] =>
       tr: translation(d, "tr")?.text ?? "",
       au: d.audioAyahs,
       q: d.source.type === "quran",
+      h: (() => { const x = HONORIFICS[p?.honorific ?? "none"]; return { a: x.arabic, f: x.full, b: x.abbr }; })(),
     };
   });
 

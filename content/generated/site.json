@@ -32,7 +32,7 @@
         "fullText": "قَالَا رَبَّنَا ظَلَمْنَآ أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ ٱلْخَٰسِرِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā ẓalamnā ʾanfusanā wa-ʾin lam taghfir lanā wa-tarḥamnā lanakūnanna mina al-khāsirīna",
+        "text": "Rabbanā ẓalamnā anfusanā wa-in lam taghfir lanā wa-tarḥamnā lanakūnanna mina al-khāsirīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -70,6 +70,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "They said ‘Our Lord we have wronged ourselves by our act of disobedience and if You do not forgive us and have mercy on us we shall surely be among the lost’.",
           "url": "https://www.altafsir.com",
+          "covers": "7:23",
           "kind": "commentary"
         }
       ],
@@ -132,7 +133,7 @@
         "fullText": "رَّبِّ ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِمَن دَخَلَ بَيْتِىَ مُؤْمِنًۭا وَلِلْمُؤْمِنِينَ وَٱلْمُؤْمِنَٰتِ وَلَا تَزِدِ ٱلظَّٰلِمِينَ إِلَّا تَبَارًۢا"
       },
       "transliteration": {
-        "text": "Rabbi ighfir lī wa-liwālidayya wa-liman dakhala baytiya muʾminan wa-lilmuʾminīna walmuʾmināti wa-lā tazidi aẓ-ẓālimīna ʾillā tabāran",
+        "text": "Rabbi ighfir lī wa-liwālidayya wa-liman dakhala baytiya muʾminan wa-lilmuʾminīna wa-al-muʾmināti wa-lā tazidi aẓ-ẓālimīna illā tabārā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -153,8 +154,8 @@
       ],
       "context": {
         "summary": {
-          "en": "The close of Nūḥ's long address to his Lord, after calling his people for nine hundred and fifty years. He asks forgiveness for himself; for his parents, both of them believers, as al-Jalālayn notes; for whoever enters his house believing; and for all believing men and women.",
-          "tr": "Nûh'un, kavmini dokuz yüz elli yıl davet ettikten sonra Rabbine yaptığı uzun yakarışın sonu. Kendisi için; Celâleyn'in belirttiğine göre ikisi de mümin olan anne babası için; evine mümin olarak giren herkes için ve bütün mümin erkekler ve kadınlar için bağışlanma diler."
+          "en": "The close of Nūḥ's long address to his Lord, after remaining among his people for nine hundred and fifty years. He asks forgiveness for himself; for his parents, both of them believers, as al-Jalālayn notes; for whoever enters his house believing; and for all believing men and women.",
+          "tr": "Nûh'un, kavmi arasında dokuz yüz elli yıl kaldıktan sonra Rabbine yaptığı uzun yakarışın sonu. Kendisi için; Celâleyn'in belirttiğine göre ikisi de mümin olan anne babası için; evine mümin olarak giren herkes için ve bütün mümin erkekler ve kadınlar için bağışlanma diler."
         },
         "references": [
           {
@@ -176,6 +177,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "My Lord forgive me and my parents — both of whom were believers — and whoever enters my house my dwelling or my place of worship as a believer and believing men and believing women to the Day of Resurrection and do not increase the evildoers except in ruin’ in destruction — and thus they were destroyed.",
           "url": "https://www.altafsir.com",
+          "covers": "71:28",
           "kind": "commentary"
         }
       ],
@@ -244,7 +246,7 @@
         "fullText": "وَقُل رَّبِّ أَنزِلْنِى مُنزَلًۭا مُّبَارَكًۭا وَأَنتَ خَيْرُ ٱلْمُنزِلِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾanzilnī munzalan mubārakan wa-ʾanta khayru al-munzilīna",
+        "text": "Rabbi anzilnī munzalan mubārakan wa-anta khayru al-munzilīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -265,8 +267,8 @@
       ],
       "context": {
         "summary": {
-          "en": "When Nūḥ and those with him were settled on the Ark, Allah told him to praise the One who had saved them from the wrongdoing people, and to say this. Al-Jalālayn places it at the moment of disembarking.",
-          "tr": "Nûh ve beraberindekiler gemiye yerleşince Allah ona, kendilerini zalim kavimden kurtaran Allah'a hamdetmesini ve bunu söylemesini emretti. Celâleyn bunu gemiden inerken söylenen söz olarak açıklar."
+          "en": "Allah told Nūḥ that when he and those with him were settled on the Ark, he should praise the One who had saved them from the wrongdoing people, and say this. Al-Jalālayn places it at the moment of disembarking.",
+          "tr": "Allah Nûh'a, beraberindekilerle gemiye yerleştiğinde kendilerini zalim kavimden kurtaran Allah'a hamdetmesini ve bunu söylemesini emretti. Celâleyn bunu gemiden inerken söylenen söz olarak açıklar."
         },
         "references": [
           {
@@ -285,6 +287,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And say upon disembarking from the ship “My Lord cause me to land with a landing read munzalan as the verbal noun as well as the noun of place for ‘landing’; or manzilan as meaning the site of the landing blessed being that landing or place for You are the best of all who bring to land” ’ that which has been mentioned.",
           "url": "https://www.altafsir.com",
+          "covers": "23:29",
           "kind": "commentary"
         }
       ],
@@ -355,7 +358,7 @@
         "fullText": "فَدَعَا رَبَّهُۥٓ أَنِّى مَغْلُوبٌۭ فَٱنتَصِرْ"
       },
       "transliteration": {
-        "text": "ʾannī maghlūbun fa-intaṣir",
+        "text": "Annī maghlūbun fa-ntaṣir",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -376,8 +379,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Nūḥ's people denied him, called him mad, and he was driven back. This short cry is the whole of what he said. The next āyāt give the answer: the gates of heaven opened with pouring water.",
-          "tr": "Kavmi Nûh'u yalanladı, ona “deli” dedi; o da azarlanıp engellendi. Bu kısa yakarış, söylediğinin tamamıdır. Sonraki âyetler cevabı verir: Gökyüzünün kapıları boşalan sularla açıldı."
+          "en": "Nūḥ's people denied him, called him mad, and he was driven back. This short cry is all that this āyah records of what he said. The next āyāt give the answer: the gates of heaven opened with pouring water.",
+          "tr": "Kavmi Nûh'u yalanladı, ona “deli” dedi; o da azarlanıp engellendi. Bu kısa yakarış, âyetin onun sözünden aktardığının tamamıdır. Sonraki âyetler cevabı verir: Gökyüzünün kapıları boşalan sularla açıldı."
         },
         "references": [
           {
@@ -393,6 +396,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And so he invoked his Lord saying ‘I have been annī to be understood as bi-annī overcome so help me!’",
           "url": "https://www.altafsir.com",
+          "covers": "54:10",
           "kind": "commentary"
         }
       ],
@@ -456,7 +460,7 @@
         "fullText": "قَالَ رَبِّ ٱنصُرْنِى بِمَا كَذَّبُونِ"
       },
       "transliteration": {
-        "text": "Rabbi inṣurnī bimā kadhdhabūni",
+        "text": "Rabbi inṣurnī bimā kadhdhabūn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -494,6 +498,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He Noah said ‘My Lord help me against them because they deny me’ because of their denial of me by destroying them. God exalted be He says responding to his supplication",
           "url": "https://www.altafsir.com",
+          "covers": "23:26",
           "kind": "commentary"
         }
       ],
@@ -555,7 +560,7 @@
         "fullText": "قَالَ رَبِّ إِنِّىٓ أَعُوذُ بِكَ أَنْ أَسْـَٔلَكَ مَا لَيْسَ لِى بِهِۦ عِلْمٌۭ وَإِلَّا تَغْفِرْ لِى وَتَرْحَمْنِىٓ أَكُن مِّنَ ٱلْخَٰسِرِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī ʾaʿūdhu bika ʾan ʾasalaka mā laysa lī bihi ʿilmun wa-ʾillā taghfir lī wa-tarḥamnī ʾakun mina al-khāsirīna",
+        "text": "Rabbi innī aʿūdhu bika an asʾalaka mā laysa lī bihi ʿilmun wa-illā taghfir lī wa-tarḥamnī akun mina al-khāsirīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -576,8 +581,8 @@
       ],
       "context": {
         "summary": {
-          "en": "When the Flood rose, Nūḥ called to Allah for his son, who had refused to board, saying his son was of his family. Allah told him the son was not of his family, for his conduct was not righteous, and not to ask for what he had no knowledge of. This is Nūḥ's reply.",
-          "tr": "Tufan yükselince Nûh, gemiye binmeyi reddeden oğlu için “Oğlum benim ailemdendir” diyerek Allah'a seslendi. Allah ona, oğlunun —işi salih olmadığından— ailesinden olmadığını ve hakkında bilgisi olmadığı şeyi istememesini bildirdi. Nûh'un cevabı budur."
+          "en": "His son had refused to board and was drowned by the waves. Nūḥ then called to his Lord, saying his son was of his family. Allah told him the son was not of his family, for his conduct was not righteous, and not to ask for what he had no knowledge of. This is Nūḥ's reply.",
+          "tr": "Oğlu gemiye binmeyi reddetmiş ve dalgalar arasında boğulmuştu. Nûh bunun üzerine “Oğlum benim ailemdendir” diyerek Rabbine seslendi. Allah ona, oğlunun —işi salih olmadığından— ailesinden olmadığını ve hakkında bilgisi olmadığı şeyi istememesini bildirdi. Nûh'un cevabı budur."
         },
         "references": [
           {
@@ -593,6 +598,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord I seek refuge in You from the sin that I should ask of You that whereof I have no knowledge. Unless You forgive me my excess and have mercy on me I shall be among the losers’.",
           "url": "https://www.altafsir.com",
+          "covers": "11:47",
           "kind": "commentary"
         }
       ],
@@ -662,7 +668,7 @@
         "fullText": "وَقَالَ نُوحٌۭ رَّبِّ لَا تَذَرْ عَلَى ٱلْأَرْضِ مِنَ ٱلْكَٰفِرِينَ دَيَّارًا"
       },
       "transliteration": {
-        "text": "Rabbi lā tadhar ʿalā al-ʾarḍi mina al-kāfirīna dayyāran",
+        "text": "Rabbi lā tadhar ʿalā al-arḍi mina al-kāfirīna dayyārā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -683,8 +689,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Said at the end of Nūḥ's mission, after he had called his people for nine hundred and fifty years and Allah had told him that none of them would believe beyond those who already had. He asks that not one disbeliever be left on the earth, and gives the reason in the next āyah: they would only lead Allah's servants astray and beget none but the wicked.",
-          "tr": "Nûh'un görevinin sonunda, kavmini dokuz yüz elli yıl davet ettikten ve Allah ona daha önce inananlardan başka hiçbirinin iman etmeyeceğini bildirdikten sonra söylenmiştir. Yeryüzünde tek bir kâfir bırakılmamasını ister ve sebebini sonraki âyette söyler: Onlar Allah'ın kullarını saptırır ve ancak günahkâr nesiller doğururlar."
+          "en": "Said at the end of Nūḥ's mission, after he had remained among his people for nine hundred and fifty years and Allah had told him that none of them would believe beyond those who already had. He asks that not one disbeliever be left on the earth, and gives the reason in the next āyah: they would only lead Allah's servants astray and beget none but the wicked.",
+          "tr": "Nûh'un görevinin sonunda, kavmi arasında dokuz yüz elli yıl kaldıktan ve Allah ona daha önce inananlardan başka hiçbirinin iman etmeyeceğini bildirdikten sonra söylenmiştir. Yeryüzünde tek bir kâfir bırakılmamasını ister ve sebebini sonraki âyette söyler: Onlar Allah'ın kullarını saptırır ve ancak günahkâr nesiller doğururlar."
         },
         "references": [
           {
@@ -706,6 +712,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And Noah said ‘My Lord do not leave from among the disbelievers a single dweller upon the earth dayyār means ‘one who inhabits a dwelling dār’ in other words not one.",
           "url": "https://www.altafsir.com",
+          "covers": "71:26",
           "kind": "commentary"
         }
       ],
@@ -771,7 +778,7 @@
         "fullText": "قَالَ رَبِّ إِنَّ قَوْمِى كَذَّبُونِ فَٱفْتَحْ بَيْنِى وَبَيْنَهُمْ فَتْحًۭا وَنَجِّنِى وَمَن مَّعِىَ مِنَ ٱلْمُؤْمِنِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinna qawmī kadhdhabūni faftaḥ baynī wa-baynahum fatḥan wa-najjinī wa-man maʿiya mina al-muʾminīna",
+        "text": "Rabbi inna qawmī kadhdhabūni fa-ftaḥ baynī wa-baynahum fatḥan wa-najjinī wa-man maʿiya mina al-muʾminīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -809,6 +816,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He Noah said ‘My Lord my people have denied me",
           "url": "https://www.altafsir.com",
+          "covers": "26:117",
           "kind": "commentary"
         }
       ],
@@ -872,7 +880,7 @@
         "fullText": "وَإِذْ قَالَ إِبْرَٰهِۦمُ رَبِّ ٱجْعَلْ هَٰذَا بَلَدًا ءَامِنًۭا وَٱرْزُقْ أَهْلَهُۥ مِنَ ٱلثَّمَرَٰتِ مَنْ ءَامَنَ مِنْهُم بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ قَالَ وَمَن كَفَرَ فَأُمَتِّعُهُۥ قَلِيلًۭا ثُمَّ أَضْطَرُّهُۥٓ إِلَىٰ عَذَابِ ٱلنَّارِ وَبِئْسَ ٱلْمَصِيرُ"
       },
       "transliteration": {
-        "text": "Rabbi ijʿal hādhā baladan ʾāminan warzuq ʾahlahu mina ath-thamarāti man ʾāmana minhum billāhi walyawmi al-ʾākhiri",
+        "text": "Rabbi ijʿal hādhā baladan āminan wa-rzuq ahlahu mina ath-thamarāti man āmana minhum billāhi wa-al-yawmi al-ākhir",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -913,6 +921,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And when Abraham said ‘My Lord make this place a land secure in which there is safety God granted him his request making it a sanctuary in which no human blood is shed no injustice is committed towards anyone no prey is hunted and which is never deserted in any of its parts; and provide its people with fruits something which actually happened when there came itinerants from as far as Syria whereas before it had been devoid of any vegetation or water; such of them as believe in God and the Last Day’ this phrase stands in place of its people and they are here singled out for mention in the request in accordance with God’s saying My covenant shall not reach the evildoers; He exalted said ‘And whoever disbelieves I will also provide with fruits to him I shall give enjoyment read either umti‘uhu or umatti‘uhu by granting him sustenance in this life a little the length of his life but then I shall compel him I shall drive him in the Hereafter to the chastisement of the Fire so that he cannot find an escape — how evil a journey’s end!’ a place to which to return.",
           "url": "https://www.altafsir.com",
+          "covers": "2:126",
           "kind": "commentary"
         }
       ],
@@ -984,7 +993,7 @@
         "fullText": "وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ رَبَّنَا وَٱبْعَثْ فِيهِمْ رَسُولًۭا مِّنْهُمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَٰتِكَ وَيُعَلِّمُهُمُ ٱلْكِتَٰبَ وَٱلْحِكْمَةَ وَيُزَكِّيهِمْ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ"
       },
       "transliteration": {
-        "text": "Rabbanā taqabbal minnā ʾinnaka ʾanta as-samīʿu al-ʿalīmu rabbanā wajʿalnā muslimayni laka wa-min dhurriyyatinā ʾummatan muslimatan laka wa-ʾarinā manāsikanā wa-tub ʿalaynā ʾinnaka ʾanta at-tawwābu ar-raḥīmu rabbanā wabʿath fīhim rasūlan minhum yatlū ʿalayhim ʾāyātika wa-yuʿallimuhumu al-kitāba walḥikmata wa-yuzakkīhim ʾinnaka ʾanta al-ʿazīzu al-ḥakīmu",
+        "text": "Rabbanā taqabbal minnā innaka anta as-samīʿu al-ʿalīmu rabbanā wa-jʿalnā muslimayni laka wa-min dhurriyyatinā ummatan muslimatan laka wa-arinā manāsikanā wa-tub ʿalaynā innaka anta at-tawwābu ar-raḥīmu rabbanā wa-bʿath fīhim rasūlan minhum yatlū ʿalayhim āyātika wa-yuʿallimuhumu al-kitāba wa-al-ḥikmata wa-yuzakkīhim innaka anta al-ʿazīzu al-ḥakīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1022,13 +1031,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention when Abraham raised up the foundations the supports or the walls of the House building it min al-bayt ‘of the House’ is semantically connected to yarfa‘u ‘raises up’ and Ishmael with him wa-Ismā‘īlu is a supplement to Ibrāhīmu both of them saying ‘Our Lord! Receive this building from us. Truly You are the Hearing of words the Knowing of deeds.",
           "url": "https://www.altafsir.com",
+          "covers": "2:127",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
-          "en": "Two prophets, finishing the House of Allah, do not ask whether the work is done but whether it is accepted.",
-          "tr": "Allah'ın evini bitiren iki peygamber, işin bitip bitmediğini değil, kabul edilip edilmediğini sorar."
+          "en": "Two prophets, raising the House of Allah, ask not whether the work is done but whether it is accepted.",
+          "tr": "Allah'ın evini yükselten iki peygamber, işin bitip bitmediğini değil, kabul edilip edilmediğini sorar."
         }
       },
       "themes": [
@@ -1093,7 +1103,7 @@
         "fullText": "وَإِذْ قَالَ إِبْرَٰهِيمُ رَبِّ ٱجْعَلْ هَٰذَا ٱلْبَلَدَ ءَامِنًۭا وَٱجْنُبْنِى وَبَنِىَّ أَن نَّعْبُدَ ٱلْأَصْنَامَ"
       },
       "transliteration": {
-        "text": "Rabbi ijʿal hādhā al-balada ʾāminan wajnubnī wa-baniyya ʾan naʿbuda al-ʾaṣnāma",
+        "text": "Rabbi ijʿal hādhā al-balada āminan wa-jnubnī wa-baniyya an naʿbuda al-aṣnām",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1120,9 +1130,6 @@
         "references": [
           {
             "work": "Qurʾān 14:35"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -1134,6 +1141,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention when Abraham said ‘My Lord make this land Mecca secure — God granted him this petition and thus made it Mecca a sanctuary in which no human blood is shed no person is wronged prey is not hunted and one which is never deserted in any of its parts — and turn me and my sons away from serving idols.",
           "url": "https://www.altafsir.com",
+          "covers": "14:35",
           "kind": "commentary"
         }
       ],
@@ -1218,7 +1226,7 @@
         "fullText": "رَبِّ إِنَّهُنَّ أَضْلَلْنَ كَثِيرًۭا مِّنَ ٱلنَّاسِ فَمَن تَبِعَنِى فَإِنَّهُۥ مِنِّى وَمَنْ عَصَانِى فَإِنَّكَ غَفُورٌۭ رَّحِيمٌۭ رَّبَّنَآ إِنِّىٓ أَسْكَنتُ مِن ذُرِّيَّتِى بِوَادٍ غَيْرِ ذِى زَرْعٍ عِندَ بَيْتِكَ ٱلْمُحَرَّمِ رَبَّنَا لِيُقِيمُوا۟ ٱلصَّلَوٰةَ فَٱجْعَلْ أَفْـِٔدَةًۭ مِّنَ ٱلنَّاسِ تَهْوِىٓ إِلَيْهِمْ وَٱرْزُقْهُم مِّنَ ٱلثَّمَرَٰتِ لَعَلَّهُمْ يَشْكُرُونَ رَبَّنَآ إِنَّكَ تَعْلَمُ مَا نُخْفِى وَمَا نُعْلِنُ وَمَا يَخْفَىٰ عَلَى ٱللَّهِ مِن شَىْءٍۢ فِى ٱلْأَرْضِ وَلَا فِى ٱلسَّمَآءِ ٱلْحَمْدُ لِلَّهِ ٱلَّذِى وَهَبَ لِى عَلَى ٱلْكِبَرِ إِسْمَٰعِيلَ وَإِسْحَٰقَ إِنَّ رَبِّى لَسَمِيعُ ٱلدُّعَآءِ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى رَبَّنَا وَتَقَبَّلْ دُعَآءِ رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnahunna ʾaḍlalna kathīran mina an-nāsi fa-man tabiʿanī fa-ʾinnahu minnī wa-man ʿaṣānī fa-ʾinnaka ghafūrun raḥīmun rabbanā ʾinnī ʾaskantu min dhurriyyatī biwādin ghayri dhī zarʿin ʿinda baytika al-muḥarrami rabbanā liyuqīmū aṣ-ṣalawāta fajʿal ʾafidatan mina an-nāsi tahwī ʾilayhim warzuqhum mina ath-thamarāti laʿallahum yashkurūna rabbanā ʾinnaka taʿlamu mā nukhfī wa-mā nuʿlinu wa-mā yakhfā ʿalā Allāhi min shayʾin fī al-ʾarḍi wa-lā fī as-samāʾi al-ḥamdu lillāhi alladhī wa-haba lī ʿalā al-kibari ʾismāʿīla wa-ʾisḥāqa ʾinna rabbī lasamīʿu ad-duʿāʾi rabbi ijʿalnī muqīma aṣ-ṣalawāti wa-min dhurriyyatī rabbanā wa-taqabbal duʿāʾi rabbanā ighfir lī wa-liwālidayya wa-lilmuʾminīna yawma yaqūmu al-ḥisābu",
+        "text": "Rabbi innahunna aḍlalna kathīran mina an-nāsi fa-man tabiʿanī fa-innahu minnī wa-man ʿaṣānī fa-innaka ghafūrun raḥīmun rabbanā innī askantu min dhurriyyatī biwādin ghayri dhī zarʿin ʿinda baytika al-muḥarrami rabbanā liyuqīmū aṣ-ṣalāta fa-jʿal afʾidatan mina an-nāsi tahwī ilayhim wa-rzuqhum mina ath-thamarāti laʿallahum yashkurūna rabbanā innaka taʿlamu mā nukhfī wa-mā nuʿlinu wa-mā yakhfā ʿalā Allāhi min shayʾin fī al-arḍi wa-lā fī as-samāʾi al-ḥamdu lillāhi alladhī wahaba lī ʿalā al-kibari ismāʿīla wa-isḥāqa inna rabbī lasamīʿu ad-duʿāʾi rabbi ijʿalnī muqīma aṣ-ṣalāti wa-min dhurriyyatī rabbanā wa-taqabbal duʿāʾi rabbanā ighfir lī wa-liwālidayya wa-lilmuʾminīna yawma yaqūmu al-ḥisāb",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1239,15 +1247,12 @@
       ],
       "context": {
         "summary": {
-          "en": "The rest of the same prayer, made after he had settled some of his descendants — Ismāʿīl and his mother, as al-Jalālayn explains — in a valley without crops beside the Sacred House. He asks that people's hearts incline toward them and that they be provided with fruits; that he and his descendants keep up the prayer; and that he, his parents and the believers be forgiven on the Day of Reckoning. In the middle he thanks Allah for giving him Ismāʿīl and Isḥāq in old age.",
-          "tr": "Aynı duanın devamıdır. İbrâhim, soyundan bazılarını —Celâleyn'in açıkladığına göre İsmâil'i ve annesini— Beyt-i Harâm'ın yanında ekin bitmeyen bir vadiye yerleştirdikten sonra söylemiştir. İnsanların gönüllerinin onlara meyletmesini ve onlara meyvelerden rızık verilmesini; kendisinin ve soyunun namazı dosdoğru kılmasını; hesap gününde kendisinin, anne babasının ve müminlerin bağışlanmasını ister. Arada, ihtiyarlığında kendisine İsmâil'i ve İshâk'ı verdiği için Allah'a hamdeder."
+          "en": "The rest of the same prayer. It opens by saying that the idols have led many people astray: whoever follows him is of him, and whoever disobeys him — Allah is Forgiving, Merciful. Then, having settled some of his descendants in a valley without crops beside the Sacred House, he asks that people's hearts incline toward them and that they be provided with fruits; he affirms that Allah knows what they hide and what they proclaim; and he asks that he and his descendants keep up the prayer, and that he, his parents and the believers be forgiven on the Day of Reckoning. Near the end he thanks Allah for giving him Ismāʿīl and Isḥāq in old age.",
+          "tr": "Aynı duanın devamıdır. Putların insanların çoğunu saptırdığını söyleyerek başlar: Kendisine uyan ondandır, isyan edene ise Allah bağışlayan, merhamet edendir. Sonra, soyundan bazılarını Beyt-i Harâm'ın yanında ekin bitmeyen bir vadiye yerleştirmişken, insanların gönüllerinin onlara meyletmesini ve onlara meyvelerden rızık verilmesini ister; Allah'ın gizlediklerini de açığa vurduklarını da bildiğini söyler; kendisinin ve soyunun namazı dosdoğru kılmasını, hesap gününde kendisinin, anne babasının ve müminlerin bağışlanmasını ister. Sona doğru ihtiyarlığında kendisine İsmâil'i ve İshâk'ı verdiği için Allah'a hamdeder."
         },
         "references": [
           {
             "work": "Qurʾān 14:36–41"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -1259,6 +1264,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "My Lord truly they idols have led many of mankind astray because of their mankind’s worship of them. So whoever follows me believing in the Oneness of God verily belongs with me belongs with those who follow my religion; and whoever disobeys me truly You are Forgiving Merciful this was before he was aware of the fact that God does not forgive idolatry.",
           "url": "https://www.altafsir.com",
+          "covers": "14:36",
           "kind": "commentary"
         }
       ],
@@ -1347,7 +1353,7 @@
         "fullText": "رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْءَاخِرِينَ وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ وَٱغْفِرْ لِأَبِىٓ إِنَّهُۥ كَانَ مِنَ ٱلضَّآلِّينَ وَلَا تُخْزِنِى يَوْمَ يُبْعَثُونَ يَوْمَ لَا يَنفَعُ مَالٌۭ وَلَا بَنُونَ إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍۢ سَلِيمٍۢ"
       },
       "transliteration": {
-        "text": "Rabbi hab lī ḥukman wa-ʾalḥiqnī bilṣṣāliḥīna wajʿal lī lisāna ṣidqin fī al-ʾākhirīna wajʿalnī min wa-rathati jannati an-naʿīmi waghfir liʾabī ʾinnahu kāna mina aḍ-ḍāllīna wa-lā tukhzinī yawma yubʿathūna yawma lā yanfaʿu mālun wa-lā banūna ʾillā man ʾatā Allāha biqalbin salīmin",
+        "text": "Rabbi hab lī ḥukman wa-alḥiqnī biṣ-ṣāliḥīna wa-jʿal lī lisāna ṣidqin fī al-ākhirīna wa-jʿalnī min warathati jannati an-naʿīmi wa-ghfir liʾabī innahu kāna mina aḍ-ḍāllīna wa-lā tukhzinī yawma yubʿathūna yawma lā yanfaʿu mālun wa-lā banūna illā man atā Allāha biqalbin salīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1369,7 +1375,7 @@
       "context": {
         "summary": {
           "en": "Ibrāhīm makes this supplication after describing his Lord to his father and his people: the One who created him and guides him, feeds him, heals him when he is ill, and will cause him to die and bring him to life. He asks for wisdom; to be joined with the righteous; a good name among later generations; a place among the heirs of the Garden; forgiveness for his father; and not to be disgraced on the Day when neither wealth nor sons avail, but only a sound heart.",
-          "tr": "İbrâhim bu duayı, babasına ve kavmine Rabbini anlattıktan sonra eder: kendisini yaratıp yol gösteren, yediren, hastalandığında şifa veren, öldürüp dirilten Rab. Hikmet; salihlere katılmayı; sonrakiler arasında güzel bir anılışı; Naîm cennetinin vârislerinden olmayı; babasının bağışlanmasını; malın da evladın da fayda vermediği, yalnızca selim bir kalbin fayda verdiği günde rezil edilmemeyi ister."
+          "tr": "İbrâhim bu duayı, babasına ve kavmine Rabbini anlattıktan sonra eder: kendisini yaratıp yol gösteren, yediren, hastalandığında şifa veren, öldürüp dirilten Rab. Hikmet verilmesini, salihlere katılmayı, sonrakiler arasında güzel bir anılışı, Naîm cennetinin vârislerinden olmayı, babasının bağışlanmasını ve malın da evladın da fayda vermediği, yalnızca selim bir kalbin fayda verdiği günde rezil edilmemeyi ister."
         },
         "references": [
           {
@@ -1385,6 +1391,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "My Lord! Grant me unerring judgement knowledge and unite me with the righteous the prophets.",
           "url": "https://www.altafsir.com",
+          "covers": "26:83",
           "kind": "commentary"
         }
       ],
@@ -1456,7 +1463,7 @@
         "fullText": "رَبِّ هَبْ لِى مِنَ ٱلصَّٰلِحِينَ"
       },
       "transliteration": {
-        "text": "Rabbi hab lī mina aṣ-ṣāliḥīna",
+        "text": "Rabbi hab lī mina aṣ-ṣāliḥīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1494,6 +1501,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "My Lord! Grant me a child of the righteous’.",
           "url": "https://www.altafsir.com",
+          "covers": "37:100",
           "kind": "commentary"
         }
       ],
@@ -1556,7 +1564,7 @@
         "fullText": "قَدْ كَانَتْ لَكُمْ أُسْوَةٌ حَسَنَةٌۭ فِىٓ إِبْرَٰهِيمَ وَٱلَّذِينَ مَعَهُۥٓ إِذْ قَالُوا۟ لِقَوْمِهِمْ إِنَّا بُرَءَٰٓؤُا۟ مِنكُمْ وَمِمَّا تَعْبُدُونَ مِن دُونِ ٱللَّهِ كَفَرْنَا بِكُمْ وَبَدَا بَيْنَنَا وَبَيْنَكُمُ ٱلْعَدَٰوَةُ وَٱلْبَغْضَآءُ أَبَدًا حَتَّىٰ تُؤْمِنُوا۟ بِٱللَّهِ وَحْدَهُۥٓ إِلَّا قَوْلَ إِبْرَٰهِيمَ لِأَبِيهِ لَأَسْتَغْفِرَنَّ لَكَ وَمَآ أَمْلِكُ لَكَ مِنَ ٱللَّهِ مِن شَىْءٍۢ رَّبَّنَا عَلَيْكَ تَوَكَّلْنَا وَإِلَيْكَ أَنَبْنَا وَإِلَيْكَ ٱلْمَصِيرُ"
       },
       "transliteration": {
-        "text": "Rabbanā ʿalayka tawakkalnā wa-ʾilayka ʾanabnā wa-ʾilayka al-maṣīru",
+        "text": "Rabbanā ʿalayka tawakkalnā wa-ilayka anabnā wa-ilayka al-maṣīr",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1578,7 +1586,7 @@
       "context": {
         "summary": {
           "en": "The Qurʾān holds up Ibrāhīm and those with him as an example: they told their people they were free of them and of all they worshipped besides Allah. The āyah ends with their supplication of trust. Al-Jalālayn notes the one exception to the example — Ibrāhīm's promise to ask forgiveness for his father, which believers are not to follow for those who disbelieve.",
-          "tr": "Kur'ân, İbrâhim'i ve beraberindekileri örnek gösterir: Kavimlerine, onlardan ve Allah'ı bırakıp taptıkları her şeyden uzak olduklarını söylediler. Âyet, onların tevekkül duasıyla biter. Celâleyn bu örnekteki tek istisnaya dikkat çeker: İbrâhim'in babası için bağışlanma dileyeceğine dair sözü; müminler inkâr edenler için bunda ona uymazlar."
+          "tr": "Kur'ân, İbrâhim'i ve beraberindekileri örnek gösterir: Kavimlerine, onlardan ve Allah'ı bırakıp taptıkları her şeyden uzak olduklarını söylediler. Âyet, onların tevekkül duasıyla biter. Celâleyn bu örnekteki tek istisnaya dikkat çeker: İbrâhim'in babası için bağışlanma dileyeceğine dair sözü; müminler inkâr edenler için bunda ona uymamalıdır."
         },
         "references": [
           {
@@ -1597,6 +1605,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Verily there is for you a good example read iswa or uswa in both instances meaning qudwa in the person of Abraham in terms of his sayings and deeds and those who were with him of believers when they said to their people ‘We are indeed innocent of you bura’ā’ is the plural of barī’ similar in form to zarīf ‘charming’ and of what you worship besides God. We repudiate you we disavow you and between us and you there has arisen enmity and hate forever wa’l-baghdā’u abadan pronounce both hamzas fully or replace the second one with a wāw until you come to believe in God alone’ except for Abraham’s saying to his father ‘I shall ask forgiveness for you — this statement is excepted from ‘a good example’ so it is not right for you to follow his example in this respect by asking forgiveness for disbelievers. As for his saying but I cannot avail you anything against God’ — that is either against His chastisement or to secure for you of His reward — he Abraham is using it to intimate to his father that he can do nothing for him other than to ask forgiveness for him which saying is itself based on that former statement albeit excepted from it in terms of what is meant by it even if on the face of it it would seem to be semantically part of the good example to be followed Say ‘Who can avail you anything against God’ Q. 4811; his Abraham’s plea of forgiveness for him was before it became evident to him that he his father was an enemy of God as mentioned in sūrat Barā’a Q. 9114. ‘Our Lord in You we put our trust and to You we turn penitently and to You is the journeying these are the words of the Friend of God Abraham and those who were with him in other words they were saying",
           "url": "https://www.altafsir.com",
+          "covers": "60:4",
           "kind": "commentary"
         }
       ],
@@ -1654,7 +1663,7 @@
         "fullText": "رَبَّنَا لَا تَجْعَلْنَا فِتْنَةًۭ لِّلَّذِينَ كَفَرُوا۟ وَٱغْفِرْ لَنَا رَبَّنَآ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ"
       },
       "transliteration": {
-        "text": "Rabbanā lā tajʿalnā fitnatan lilladhīna kafarū waghfir lanā rabbanā ʾinnaka ʾanta al-ʿazīzu al-ḥakīmu",
+        "text": "Rabbanā lā tajʿalnā fitnatan lilladhīna kafarū wa-ghfir lanā rabbanā innaka anta al-ʿazīzu al-ḥakīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1695,6 +1704,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Our Lord do not make us a cause of beguilement for those who disbelieve that is to say do not make them prevail over us lest they think that they are following the truth and are beguiled as a result in other words lest they lose their reason because of us; and forgive us. Our Lord You are indeed the Mighty the Wise’ in Your kingdom and Your actions.",
           "url": "https://www.altafsir.com",
+          "covers": "60:5",
           "kind": "commentary"
         }
       ],
@@ -1756,7 +1766,7 @@
         "fullText": "رَبِّ نَجِّنِى وَأَهْلِى مِمَّا يَعْمَلُونَ"
       },
       "transliteration": {
-        "text": "Rabbi najjinī wa-ʾahlī mimmā yaʿmalūna",
+        "text": "Rabbi najjinī wa-ahlī mimmā yaʿmalūn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1797,6 +1807,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "My Lord deliver me and my family from what they do’ that is from the punishment for it.",
           "url": "https://www.altafsir.com",
+          "covers": "26:169",
           "kind": "commentary"
         }
       ],
@@ -1857,7 +1868,7 @@
         "fullText": "قَالَ رَبِّ ٱنصُرْنِى عَلَى ٱلْقَوْمِ ٱلْمُفْسِدِينَ"
       },
       "transliteration": {
-        "text": "Rabbi inṣurnī ʿalā al-qawmi al-mufsidīna",
+        "text": "Rabbi inṣurnī ʿalā al-qawmi al-mufsidīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1898,6 +1909,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord help me by making that of which I spoke come true regarding the sending down of chastisement against the people who work corruption’ those who are disobedient by coming unto men. So God answered his call.",
           "url": "https://www.altafsir.com",
+          "covers": "29:30",
           "kind": "commentary"
         }
       ],
@@ -1958,7 +1970,7 @@
         "fullText": "قَالَ إِنَّمَآ أَشْكُوا۟ بَثِّى وَحُزْنِىٓ إِلَى ٱللَّهِ وَأَعْلَمُ مِنَ ٱللَّهِ مَا لَا تَعْلَمُونَ"
       },
       "transliteration": {
-        "text": "ʾinnamā ʾashkū baththī wa-ḥuznī ʾilā Allāhi wa-ʾaʿlamu mina Allāhi mā lā taʿlamūna",
+        "text": "Innamā ashkū baththī wa-ḥuznī ilā Allāhi wa-aʿlamu mina Allāhi mā lā taʿlamūn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -1979,8 +1991,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Years after losing Yūsuf, and having now lost his youngest son too, Yaʿqūb turned away from his sons, and his eyes went white with grief. When they told him he would grieve himself to death, he answered with this. Al-Jalālayn explains bathth as grief so heavy it cannot be borne without telling someone — and he told it only to Allah.",
-          "tr": "Yûsuf'u kaybetmesinin üzerinden yıllar geçmiş, şimdi en küçük oğlunu da kaybetmişti. Ya'kûb oğullarından yüz çevirdi ve gözleri kederden ağardı. Oğulları onun kederden öleceğini söyleyince bu cevabı verdi. Celâleyn “bess”i, insanın birine açmadan taşıyamayacağı ağır keder olarak açıklar; o ise onu yalnızca Allah'a açtı."
+          "en": "Having lost Yūsuf, and now Yūsuf's brother too, held back in Egypt, Yaʿqūb turned away from his sons, and his eyes went white with grief. When they told him he would grieve himself to death, he answered with this. Al-Jalālayn explains bathth as grief so heavy it cannot be borne without telling someone — and he told it only to Allah.",
+          "tr": "Yûsuf'tan sonra şimdi onun kardeşini de Mısır'da kaybetmişti. Ya'kûb oğullarından yüz çevirdi ve gözleri kederden ağardı. Oğulları onun kederden öleceğini söyleyince bu cevabı verdi. Celâleyn “bess”i, insanın birine açmadan taşıyamayacağı ağır keder olarak açıklar; o ise onu yalnızca Allah'a açtı."
         },
         "references": [
           {
@@ -1999,6 +2011,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said to them ‘I complain of my anguish — bathth is severe grief which cannot be endured unless it is proclaimed yubaththu to others — and grief only to God not to any other than Him for it is worth complaining to Him; and I know from God what you do not know and that is that Joseph’s dream is true and that he is alive. Then he said",
           "url": "https://www.altafsir.com",
+          "covers": "12:86",
           "kind": "commentary"
         }
       ],
@@ -2066,7 +2079,7 @@
         "fullText": "وَجَآءُو عَلَىٰ قَمِيصِهِۦ بِدَمٍۢ كَذِبٍۢ قَالَ بَلْ سَوَّلَتْ لَكُمْ أَنفُسُكُمْ أَمْرًۭا فَصَبْرٌۭ جَمِيلٌۭ وَٱللَّهُ ٱلْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ"
       },
       "transliteration": {
-        "text": "Fa-ṣabrun jamīlun wa-Allāhu al-mustaʿānu ʿalā mā taṣifūna",
+        "text": "Fa-ṣabrun jamīlun wa-Allāhu al-mustaʿānu ʿalā mā taṣifūn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2107,6 +2120,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And they came with false blood on his shirt ‘alā qamīsihi has the status of an accusative of the verb because it is an adverbial qualifier meaning fawqa qamīsihi they slaughtered a lamb and dabbed it his shirt with its blood — but they forgot to tear it the shirt — and they said that it was his blood. He Jacob said when he saw that it the shirt was undamaged and realised that they were lying ‘Nay but your souls have beguiled you into something and so you did it to him. Yet comely patience! without any anxiety! fa-sabrun jamīlun is the predicate of a missing subject such as amrī ‘my course’. And God is the One Whose succour is sought in that predicament which you describe’ that which you mention of Joseph’s affair.",
           "url": "https://www.altafsir.com",
+          "covers": "12:18",
           "kind": "commentary"
         }
       ],
@@ -2173,7 +2187,7 @@
         "fullText": "قَالَ رَبِّ ٱلسِّجْنُ أَحَبُّ إِلَىَّ مِمَّا يَدْعُونَنِىٓ إِلَيْهِ وَإِلَّا تَصْرِفْ عَنِّى كَيْدَهُنَّ أَصْبُ إِلَيْهِنَّ وَأَكُن مِّنَ ٱلْجَٰهِلِينَ"
       },
       "transliteration": {
-        "text": "Rabbi as-sijnu ʾaḥabbu ʾilayya mimmā yadʿūnanī ʾilayhi wa-ʾillā taṣrif ʿannī kaydahunna ʾaṣbu ʾilayhinna wa-ʾakun mina al-jāhilīna",
+        "text": "Rabbi as-sijnu aḥabbu ilayya mimmā yadʿūnanī ilayhi wa-illā taṣrif ʿannī kaydahunna aṣbu ilayhinna wa-akun mina al-jāhilīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2211,6 +2225,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord prison is dearer to me than that to which they are urging me. And if You do not fend off their wiles from me then I shall tend I shall incline towards them and become of the ignorant the sinful this is intended as a supplication which is why God exalted be He then says",
           "url": "https://www.altafsir.com",
+          "covers": "12:33",
           "kind": "commentary"
         }
       ],
@@ -2274,7 +2289,7 @@
         "fullText": "رَبِّ قَدْ ءَاتَيْتَنِى مِنَ ٱلْمُلْكِ وَعَلَّمْتَنِى مِن تَأْوِيلِ ٱلْأَحَادِيثِ فَاطِرَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ أَنتَ وَلِىِّۦ فِى ٱلدُّنْيَا وَٱلْءَاخِرَةِ تَوَفَّنِى مُسْلِمًۭا وَأَلْحِقْنِى بِٱلصَّٰلِحِينَ"
       },
       "transliteration": {
-        "text": "Rabbi qad ʾātaytanī mina al-mulki wa-ʿallamtanī min taʾwīli al-ʾaḥādīthi fa-ṭira as-samāwāti walʾarḍi ʾanta wa-liyyi fī ad-dunyā walʾākhirati tawaffanī musliman wa-ʾalḥiqnī bilṣṣāliḥīna",
+        "text": "Rabbi qad ātaytanī mina al-mulki wa-ʿallamtanī min taʾwīli al-aḥādīthi fāṭira as-samāwāti wa-al-arḍi anta waliyyi fī ad-dunyā wa-al-ākhirati tawaffanī musliman wa-alḥiqnī biṣ-ṣāliḥīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2315,6 +2330,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "When he was nearing his end realising that he would not remain alive forever he longed for the everlasting kingdom and said My Lord indeed You have given me something of sovereignty and You have taught me the interpretation of events the ability to explain dreams. Originator Creator of the heavens and the earth! You are my Protector Guardian of my best interests in this world and the Hereafter. Take me in death to You in submission to You and join me to the righteous’ from among my fathers. He lived after that for another week or more. He died at the age of 120 years. The Egyptians were very covetous with regard to his grave; eventually they placed him in a marble coffin and buried him at the top of the Nile so that both banks would be blessed by his body — Glory be to the One Whose Kingdom never ends.",
           "url": "https://www.altafsir.com",
+          "covers": "12:101",
           "kind": "commentary"
         }
       ],
@@ -2383,7 +2399,7 @@
         "fullText": "وَأَيُّوبَ إِذْ نَادَىٰ رَبَّهُۥٓ أَنِّى مَسَّنِىَ ٱلضُّرُّ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ"
       },
       "transliteration": {
-        "text": "ʾannī massaniya aḍ-ḍurru wa-ʾanta ʾarḥamu ar-rāḥimīna",
+        "text": "Annī massaniya aḍ-ḍurru wa-anta arḥamu ar-rāḥimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2424,6 +2440,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention Job Ayyūba is substituted by the following idh nādā rabbahu … when he called out to his Lord — after he had been afflicted with the loss of all of his possessions and children the laceration of his body his being shunned by all except his wife for a period of thirteen seventeen or eighteen years as well as the affliction of enduring a straitened means of livelihood — ‘Indeed read annī because of the implicit yā’ of the first person pronoun harm adversity has befallen me and You are the Most Merciful of the merciful’.",
           "url": "https://www.altafsir.com",
+          "covers": "21:83",
           "kind": "commentary"
         }
       ],
@@ -2493,7 +2510,7 @@
         "fullText": "وَٱذْكُرْ عَبْدَنَآ أَيُّوبَ إِذْ نَادَىٰ رَبَّهُۥٓ أَنِّى مَسَّنِىَ ٱلشَّيْطَٰنُ بِنُصْبٍۢ وَعَذَابٍ"
       },
       "transliteration": {
-        "text": "ʾannī massaniya ash-shayṭānu binuṣbin wa-ʿadhābin",
+        "text": "Annī massaniya ash-shayṭānu binuṣbin wa-ʿadhāb",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2534,6 +2551,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention also Our servant Job when he called out to his Lord saying ‘Lo! Satan has afflicted me with hardship harm and suffering’ pain he attributes all this to Satan even though all things are from God to show reverence in his call to Him exalted be He.",
           "url": "https://www.altafsir.com",
+          "covers": "38:41",
           "kind": "commentary"
         }
       ],
@@ -2595,7 +2613,7 @@
         "fullText": "قَدِ ٱفْتَرَيْنَا عَلَى ٱللَّهِ كَذِبًا إِنْ عُدْنَا فِى مِلَّتِكُم بَعْدَ إِذْ نَجَّىٰنَا ٱللَّهُ مِنْهَا وَمَا يَكُونُ لَنَآ أَن نَّعُودَ فِيهَآ إِلَّآ أَن يَشَآءَ ٱللَّهُ رَبُّنَا وَسِعَ رَبُّنَا كُلَّ شَىْءٍ عِلْمًا عَلَى ٱللَّهِ تَوَكَّلْنَا رَبَّنَا ٱفْتَحْ بَيْنَنَا وَبَيْنَ قَوْمِنَا بِٱلْحَقِّ وَأَنتَ خَيْرُ ٱلْفَٰتِحِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā iftaḥ baynanā wa-bayna qawminā bilḥaqqi wa-ʾanta khayru al-fātiḥīna",
+        "text": "Rabbanā iftaḥ baynanā wa-bayna qawminā bilḥaqqi wa-anta khayru al-fātiḥīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2633,6 +2651,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "We would be forging a lie against God if we were to return to your creed after God has delivered us from it. It is not right for us to return to it unless God our Lord wills that it be so and forsakes us. Our Lord embraces all things through His knowledge that is to say His knowledge embraces all things including my situation and yours. In God we have put our trust. Our Lord decide adjudicate between us and our people for You are the best of deciders’ adjudicators.",
           "url": "https://www.altafsir.com",
+          "covers": "7:89",
           "kind": "commentary"
         }
       ],
@@ -2708,7 +2727,7 @@
         "fullText": "قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى وَيَسِّرْ لِىٓ أَمْرِى وَٱحْلُلْ عُقْدَةًۭ مِّن لِّسَانِى يَفْقَهُوا۟ قَوْلِى"
       },
       "transliteration": {
-        "text": "Rabbi ishraḥ lī ṣadrī wa-yassir lī ʾamrī waḥlul ʿuqdatan min lisānī yafqahū qawlī",
+        "text": "Rabbi ishraḥ lī ṣadrī wa-yassir lī amrī wa-ḥlul ʿuqdatan min lisānī yafqahū qawlī",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2746,6 +2765,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord expand my breast for me expand it so that it may accommodate the weight of the Divine Message.",
           "url": "https://www.altafsir.com",
+          "covers": "20:25",
           "kind": "commentary"
         }
       ],
@@ -2820,7 +2840,7 @@
         "fullText": "قَالَ رَبِّ إِنِّى ظَلَمْتُ نَفْسِى فَٱغْفِرْ لِى فَغَفَرَ لَهُۥٓ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيمُ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī ẓalamtu nafsī faghfir lī",
+        "text": "Rabbi innī ẓalamtu nafsī fa-ghfir lī",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2847,9 +2867,6 @@
         "references": [
           {
             "work": "Qurʾān 28:15–16"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -2861,6 +2878,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said remorsefully ‘My Lord I have indeed wronged myself by killing him so forgive me!’ So He forgave him. Truly He is the Forgiving the Merciful that is to say the One Who has always possessed and will always possess these two attributes.",
           "url": "https://www.altafsir.com",
+          "covers": "28:16",
           "kind": "commentary"
         }
       ],
@@ -2922,7 +2940,7 @@
         "fullText": "فَخَرَجَ مِنْهَا خَآئِفًۭا يَتَرَقَّبُ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ"
       },
       "transliteration": {
-        "text": "Rabbi najjinī mina al-qawmi aẓ-ẓālimīna",
+        "text": "Rabbi najjinī mina al-qawmi aẓ-ẓālimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -2960,6 +2978,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "So he departed from it fearful vigilant lest any of the pursuers catch up with him or in the hope that God might rescue him. He said ‘My Lord deliver me from the evildoing people’ Pharaoh’s people.",
           "url": "https://www.altafsir.com",
+          "covers": "28:21",
           "kind": "commentary"
         }
       ],
@@ -3023,7 +3042,7 @@
         "fullText": "فَسَقَىٰ لَهُمَا ثُمَّ تَوَلَّىٰٓ إِلَى ٱلظِّلِّ فَقَالَ رَبِّ إِنِّى لِمَآ أَنزَلْتَ إِلَىَّ مِنْ خَيْرٍۢ فَقِيرٌۭ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī limā ʾanzalta ʾilayya min khayrin fa-qīrun",
+        "text": "Rabbi innī limā anzalta ilayya min khayrin faqīr",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3064,13 +3083,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "So he watered their flock for them from another well nearby by lifting a rock from on top of it which only ten men could have lifted; then he retreated to the shade of an acacia tree samura because of the extreme heat of the sun and he was hungry and said ‘My Lord indeed I am in utter need of whatever good whatever food You send down to me’. The two women returned to their father quicker than usual and so he asked them why it was so. They told him about the man who had watered their flock for them. So he said to one of them ‘Summon him to come to me’.",
           "url": "https://www.altafsir.com",
+          "covers": "28:24",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
-          "en": "He does not name what he needs — food, shelter, work, a home. He names his need, and leaves the good to Allah. All of it came.",
-          "tr": "Neye ihtiyacı olduğunu —yiyecek, barınak, iş, bir yuva— söylemez. Muhtaç olduğunu söyler, hayrı Allah'a bırakır. Hepsi geldi."
+          "en": "He does not name what he needs — food, shelter, work, a home. He names his need, and leaves the good to Allah. What came next — an invitation, work, a marriage — came without his naming it.",
+          "tr": "Neye ihtiyacı olduğunu —yiyecek, barınak, iş, bir yuva— söylemez. Muhtaç olduğunu söyler, hayrı Allah'a bırakır. Ardından gelenler —bir davet, bir iş, bir evlilik— o adını koymadan geldi."
         }
       },
       "themes": [
@@ -3132,7 +3152,7 @@
         "fullText": "وَلَمَّا جَآءَ مُوسَىٰ لِمِيقَٰتِنَا وَكَلَّمَهُۥ رَبُّهُۥ قَالَ رَبِّ أَرِنِىٓ أَنظُرْ إِلَيْكَ قَالَ لَن تَرَىٰنِى وَلَٰكِنِ ٱنظُرْ إِلَى ٱلْجَبَلِ فَإِنِ ٱسْتَقَرَّ مَكَانَهُۥ فَسَوْفَ تَرَىٰنِى فَلَمَّا تَجَلَّىٰ رَبُّهُۥ لِلْجَبَلِ جَعَلَهُۥ دَكًّۭا وَخَرَّ مُوسَىٰ صَعِقًۭا فَلَمَّآ أَفَاقَ قَالَ سُبْحَٰنَكَ تُبْتُ إِلَيْكَ وَأَنَا۠ أَوَّلُ ٱلْمُؤْمِنِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾarinī ʾanẓur ʾilayka",
+        "text": "Rabbi arinī anẓur ilayk",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3159,9 +3179,6 @@
         "references": [
           {
             "work": "Qurʾān 7:142–143"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -3173,6 +3190,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And when Moses came at Our appointed time that is the time at which We had promised to speak to him and his Lord spoke with him without any intermediary with speech which he heard from all directions he said ‘My Lord! Show me Yourself that I may behold You!’ Said He ‘You shall not see Me that is to say you do not have the power to see me the use of this expression lan tarānī ‘you shall not see Me’ instead of lan urā ‘I shall not be seen’ implies that it is possible to see God exalted be He; but behold the mountain which is stronger than you are and if it remains stays fixed in its place then you shall see Me’ that is then you shall remain fixed able to see Me otherwise you will not have the capacity for it. And when his Lord revealed Himself that is when He manifested of His Light the equivalent of half a nail of a little finger as stated in one hadīth verified by al-Hākim to the mountain He levelled it to the ground read dakkan or dakkā’a meaning madkūkan and Moses fell down senseless having lost consciousness at the awesomeness of what he had seen. And when he recovered his senses he said ‘Glory be to You! in Your transcendence. I repent to You for having asked You what I was not commanded to ask and I am the first of the believers’ of my time.",
           "url": "https://www.altafsir.com",
+          "covers": "7:143",
           "kind": "commentary"
         }
       ],
@@ -3233,7 +3251,7 @@
         "fullText": "وَلَمَّا جَآءَ مُوسَىٰ لِمِيقَٰتِنَا وَكَلَّمَهُۥ رَبُّهُۥ قَالَ رَبِّ أَرِنِىٓ أَنظُرْ إِلَيْكَ قَالَ لَن تَرَىٰنِى وَلَٰكِنِ ٱنظُرْ إِلَى ٱلْجَبَلِ فَإِنِ ٱسْتَقَرَّ مَكَانَهُۥ فَسَوْفَ تَرَىٰنِى فَلَمَّا تَجَلَّىٰ رَبُّهُۥ لِلْجَبَلِ جَعَلَهُۥ دَكًّۭا وَخَرَّ مُوسَىٰ صَعِقًۭا فَلَمَّآ أَفَاقَ قَالَ سُبْحَٰنَكَ تُبْتُ إِلَيْكَ وَأَنَا۠ أَوَّلُ ٱلْمُؤْمِنِينَ"
       },
       "transliteration": {
-        "text": "Subḥānaka tubtu ʾilayka wa-ʾanā ʾawwalu al-muʾminīna",
+        "text": "Subḥānaka tubtu ilayka wa-anā awwalu al-muʾminīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3271,6 +3289,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And when Moses came at Our appointed time that is the time at which We had promised to speak to him and his Lord spoke with him without any intermediary with speech which he heard from all directions he said ‘My Lord! Show me Yourself that I may behold You!’ Said He ‘You shall not see Me that is to say you do not have the power to see me the use of this expression lan tarānī ‘you shall not see Me’ instead of lan urā ‘I shall not be seen’ implies that it is possible to see God exalted be He; but behold the mountain which is stronger than you are and if it remains stays fixed in its place then you shall see Me’ that is then you shall remain fixed able to see Me otherwise you will not have the capacity for it. And when his Lord revealed Himself that is when He manifested of His Light the equivalent of half a nail of a little finger as stated in one hadīth verified by al-Hākim to the mountain He levelled it to the ground read dakkan or dakkā’a meaning madkūkan and Moses fell down senseless having lost consciousness at the awesomeness of what he had seen. And when he recovered his senses he said ‘Glory be to You! in Your transcendence. I repent to You for having asked You what I was not commanded to ask and I am the first of the believers’ of my time.",
           "url": "https://www.altafsir.com",
+          "covers": "7:143",
           "kind": "commentary"
         }
       ],
@@ -3331,7 +3350,7 @@
         "fullText": "قَالَ رَبِّ ٱغْفِرْ لِى وَلِأَخِى وَأَدْخِلْنَا فِى رَحْمَتِكَ وَأَنتَ أَرْحَمُ ٱلرَّٰحِمِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ighfir lī wa-liʾakhī wa-ʾadkhilnā fī raḥmatika wa-ʾanta ʾarḥamu ar-rāḥimīna",
+        "text": "Rabbi ighfir lī wa-liʾakhī wa-adkhilnā fī raḥmatika wa-anta arḥamu ar-rāḥimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3352,8 +3371,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Mūsā came back from the appointed meeting to find his people worshipping the calf. He threw down the Tablets and seized his brother by the head, pulling him toward him. Hārūn told him the people had overpowered him and nearly killed him, and asked him not to let enemies gloat. Mūsā then asked forgiveness for himself and his brother — al-Jalālayn says for what he had done to his brother, including Hārūn to set his heart at rest.",
-          "tr": "Mûsâ buluşmadan döndüğünde kavmini buzağıya tapar buldu. Levhaları yere bıraktı ve kardeşini başından tutup kendine doğru çekti. Hârûn, kavmin kendisini güçsüz bıraktığını ve neredeyse öldüreceklerini söyledi, düşmanları sevindirmemesini istedi. Mûsâ bunun üzerine kendisi ve kardeşi için bağışlanma diledi; Celâleyn'e göre kardeşine yaptığı için, Hârûn'u da gönlünü almak için duaya katarak."
+          "en": "Mūsā came back from the appointed meeting to find his people worshipping the calf. He threw down the Tablets and seized his brother by the head, pulling him toward him. Hārūn told him the people had deemed him weak and nearly killed him, and asked him not to let enemies gloat. Mūsā then asked forgiveness for himself and his brother — al-Jalālayn says for what he had done to his brother, including Hārūn to set his heart at rest.",
+          "tr": "Mûsâ buluşmadan döndüğünde kavmini buzağıya tapar buldu. Levhaları yere attı ve kardeşini başından tutup kendine doğru çekti. Hârûn, kavmin onu hor gördüğünü ve neredeyse öldüreceklerini söyledi, düşmanları sevindirmemesini istedi. Mûsâ bunun üzerine kendisi ve kardeşi için bağışlanma diledi; Celâleyn'e göre kardeşine yaptığı için, Hârûn'u da gönlünü almak için duaya katarak."
         },
         "references": [
           {
@@ -3372,13 +3391,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord forgive me what I have done to my brother and my brother he includes him in the supplication in order to reconcile him and to fend off any gloating over his misfortune and admit us into Your mercy for You are the Most Merciful of the merciful’.",
           "url": "https://www.altafsir.com",
+          "covers": "7:151",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
           "en": "Anger turned into a prayer for the person it fell on.",
-          "tr": "Öfke, onun üzerine düştüğü kişi için bir duaya dönüşür."
+          "tr": "Öfke, yöneldiği kişi için bir duaya dönüşür."
         }
       },
       "themes": [
@@ -3444,7 +3464,7 @@
         "fullText": "وَٱخْتَارَ مُوسَىٰ قَوْمَهُۥ سَبْعِينَ رَجُلًۭا لِّمِيقَٰتِنَا فَلَمَّآ أَخَذَتْهُمُ ٱلرَّجْفَةُ قَالَ رَبِّ لَوْ شِئْتَ أَهْلَكْتَهُم مِّن قَبْلُ وَإِيَّٰىَ أَتُهْلِكُنَا بِمَا فَعَلَ ٱلسُّفَهَآءُ مِنَّآ إِنْ هِىَ إِلَّا فِتْنَتُكَ تُضِلُّ بِهَا مَن تَشَآءُ وَتَهْدِى مَن تَشَآءُ أَنتَ وَلِيُّنَا فَٱغْفِرْ لَنَا وَٱرْحَمْنَا وَأَنتَ خَيْرُ ٱلْغَٰفِرِينَ وَٱكْتُبْ لَنَا فِى هَٰذِهِ ٱلدُّنْيَا حَسَنَةًۭ وَفِى ٱلْءَاخِرَةِ إِنَّا هُدْنَآ إِلَيْكَ قَالَ عَذَابِىٓ أُصِيبُ بِهِۦ مَنْ أَشَآءُ وَرَحْمَتِى وَسِعَتْ كُلَّ شَىْءٍۢ فَسَأَكْتُبُهَا لِلَّذِينَ يَتَّقُونَ وَيُؤْتُونَ ٱلزَّكَوٰةَ وَٱلَّذِينَ هُم بِـَٔايَٰتِنَا يُؤْمِنُونَ"
       },
       "transliteration": {
-        "text": "Rabbi law shiʾta ʾahlaktahum min qablu wa-ʾiyyāya ʾatuhlikunā bimā fa-ʿala as-sufahāʾu minnā ʾin hiya ʾillā fitnatuka tuḍillu bihā man tashāʾu wa-tahdī man tashāʾu ʾanta wa-liyyunā faghfir lanā warḥamnā wa-ʾanta khayru al-ghāfirīna waktub lanā fī hādhihi ad-dunyā ḥasanatan wa-fī al-ʾākhirati ʾinnā hudnā ʾilayka",
+        "text": "Rabbi law shiʾta ahlaktahum min qablu wa-iyyāya atuhlikunā bimā faʿala as-sufahāʾu minnā in hiya illā fitnatuka tuḍillu bihā man tashāʾu wa-tahdī man tashāʾu anta waliyyunā fa-ghfir lanā wa-rḥamnā wa-anta khayru al-ghāfirīna wa-ktub lanā fī hādhihi ad-dunyā ḥasanatan wa-fī al-ākhirati innā hudnā ilayk",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3485,6 +3505,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And Moses chose of his people seventy men from among those who had not worshipped the calf by God’s command for Our appointed time that is for the time at which We promised him that they should come and apologise for their comrades’ worship of the calf. He Moses then departed with them; but when the Trembling a violent earthquake seized them Ibn ‘Abbās said ‘That earthquake was because they did not separate themselves from their people when the latter took to worshipping the calf’; he Ibn ‘Abbās added ‘These people were not the same ones who asked to see God and were struck by the thunderbolt cf. Q. 255’ he Moses said ‘My Lord had You willed You would have destroyed them long before that is before my departure with them so that the Children of Israel might see this and not make false accusations against me and me with them. Will You destroy us for what the foolish ones among us have done? this interrogative is meant as a plea for compassion in other words ‘Do not punish us for the sins of others’. It that is the trial which the ignorant ones underwent is but Your trial Your test whereby You send astray whom You will to lead stray and guide whom You will to guide. You are our Protector looking after our affairs so forgive us and have mercy on us for You are the Best of all who show forgiveness.",
           "url": "https://www.altafsir.com",
+          "covers": "7:155",
           "kind": "commentary"
         }
       ],
@@ -3549,7 +3570,7 @@
         "fullText": "قَالَ رَبِّ إِنِّى لَآ أَمْلِكُ إِلَّا نَفْسِى وَأَخِى فَٱفْرُقْ بَيْنَنَا وَبَيْنَ ٱلْقَوْمِ ٱلْفَٰسِقِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī lā ʾamliku ʾillā nafsī wa-ʾakhī fafruq baynanā wa-bayna al-qawmi al-fāsiqīna",
+        "text": "Rabbi innī lā amliku illā nafsī wa-akhī fa-fruq baynanā wa-bayna al-qawmi al-fāsiqīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3587,6 +3608,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He Moses thereupon said ‘My Lord I control none but myself and my brother and I control no one else to be able to force them to obedience. So separate distinguish us from the wicked folk’.",
           "url": "https://www.altafsir.com",
+          "covers": "5:25",
           "kind": "commentary"
         }
       ],
@@ -3650,7 +3672,7 @@
         "fullText": "وَقَالَ مُوسَىٰ رَبَّنَآ إِنَّكَ ءَاتَيْتَ فِرْعَوْنَ وَمَلَأَهُۥ زِينَةًۭ وَأَمْوَٰلًۭا فِى ٱلْحَيَوٰةِ ٱلدُّنْيَا رَبَّنَا لِيُضِلُّوا۟ عَن سَبِيلِكَ رَبَّنَا ٱطْمِسْ عَلَىٰٓ أَمْوَٰلِهِمْ وَٱشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا۟ حَتَّىٰ يَرَوُا۟ ٱلْعَذَابَ ٱلْأَلِيمَ"
       },
       "transliteration": {
-        "text": "Rabbanā ʾinnaka ʾātayta firʿawna wa-malaʾahu zīnatan wa-ʾamwālan fī al-ḥayawāti ad-dunyā rabbanā liyuḍillū ʿan sabīlika rabbanā iṭmis ʿalā ʾamwālihim washdud ʿalā qulūbihim fa-lā yuʾminū ḥattā yarawu al-ʿadhāba al-ʾalīma",
+        "text": "Rabbanā innaka ātayta firʿawna wa-malaʾahu zīnatan wa-amwālan fī al-ḥayāti ad-dunyā rabbanā liyuḍillū ʿan sabīlika rabbanā iṭmis ʿalā amwālihim wa-shdud ʿalā qulūbihim fa-lā yuʾminū ḥattā yarawu al-ʿadhāba al-alīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3691,13 +3713,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And Moses said ‘Our Lord You have indeed given Pharaoh and his council splendour and riches in the life of this world. Our Lord You have given them this that they may lead people astray as a consequence thereof from Your way from Your religion. Our Lord obliterate transform their riches and harden their hearts stamp upon them and shackle them so that they do not believe until they see the painful chastisement’ he Moses invoked God against them and Aaron said ‘Amen’ at the end of his invocation.",
           "url": "https://www.altafsir.com",
+          "covers": "10:88",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
-          "en": "Asked by a prophet against a tyrant, on knowledge given to him. It is here so that the record is complete — not as words for a reader to turn against others.",
-          "tr": "Bir peygamber tarafından, kendisine verilen bilgiye dayanarak bir zorbaya karşı edilmiştir. Kaydın eksiksiz olması için buradadır; okuyucunun başkalarına karşı kullanması için değil."
+          "en": "Asked by a prophet against a tyrant who had seen clear signs and refused them, and answered by Allah. It is here so that the record is complete — not as words for a reader to turn against others.",
+          "tr": "Apaçık mucizeleri görüp reddeden bir zorbaya karşı bir peygamber tarafından edilmiş ve Allah tarafından kabul edilmiştir. Kaydın eksiksiz olması için buradadır; okuyucunun başkalarına karşı kullanması için değil."
         }
       },
       "themes": [
@@ -3752,7 +3775,7 @@
         "fullText": "وَلَقَدْ ءَاتَيْنَا دَاوُۥدَ وَسُلَيْمَٰنَ عِلْمًۭا وَقَالَا ٱلْحَمْدُ لِلَّهِ ٱلَّذِى فَضَّلَنَا عَلَىٰ كَثِيرٍۢ مِّنْ عِبَادِهِ ٱلْمُؤْمِنِينَ"
       },
       "transliteration": {
-        "text": "Al-ḥamdu lillāhi alladhī faḍḍalanā ʿalā kathīrin min ʿibādihi al-muʾminīna",
+        "text": "Al-ḥamdu lillāhi alladhī faḍḍalanā ʿalā kathīrin min ʿibādihi al-muʾminīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3793,6 +3816,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And verily We gave David and Solomon his son knowledge of rendering decisive judgement between people and knowledge of the speech of birds and of other things and they said giving thanks to God ‘Praise be to God Who has favoured us with prophethood and the disposal of jinn humans and devils to our service over many of His believing servants’.",
           "url": "https://www.altafsir.com",
+          "covers": "27:15",
           "kind": "commentary"
         }
       ],
@@ -3855,7 +3879,7 @@
         "fullText": "فَتَبَسَّمَ ضَاحِكًۭا مِّن قَوْلِهَا وَقَالَ رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَٰلِحًۭا تَرْضَىٰهُ وَأَدْخِلْنِى بِرَحْمَتِكَ فِى عِبَادِكَ ٱلصَّٰلِحِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ʾawziʿnī ʾan ʾashkura niʿmataka allatī ʾanʿamta ʿalayya wa-ʿalā wālidayya wa-ʾan ʾaʿmala ṣāliḥan tarḍāhu wa-ʾadkhilnī biraḥmatika fī ʿibādika aṣ-ṣāliḥīna",
+        "text": "Rabbi awziʿnī an ashkura niʿmataka allatī anʿamta ʿalayya wa-ʿalā wālidayya wa-an aʿmala ṣāliḥan tarḍāhu wa-adkhilnī biraḥmatika fī ʿibādika aṣ-ṣāliḥīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3896,6 +3920,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Whereat he Solomon smiled fa-tabassama the beginning of the sentence amused dāhikan the end of the sentence at its words which he had heard from three miles away and which was carried to him by the winds. When he was on the verge of entering their valley he Solomon made his hosts halt until they the ants had entered their dwellings — on this journey his hosts consisted of cavalry and infantry. And he said ‘My Lord inspire me to be thankful for Your grace with which You have favoured me and my parents and to do good that will please You and include me by Your mercy among Your righteous servants’ the prophets and saints.",
           "url": "https://www.altafsir.com",
+          "covers": "27:19",
           "kind": "commentary"
         }
       ],
@@ -3965,7 +3990,7 @@
         "fullText": "قَالَ رَبِّ ٱغْفِرْ لِى وَهَبْ لِى مُلْكًۭا لَّا يَنۢبَغِى لِأَحَدٍۢ مِّنۢ بَعْدِىٓ إِنَّكَ أَنتَ ٱلْوَهَّابُ"
       },
       "transliteration": {
-        "text": "Rabbi ighfir lī wa-hab lī mulkan lā yanbaghī liʾaḥadin min baʿdī ʾinnaka ʾanta al-wahhābu",
+        "text": "Rabbi ighfir lī wa-hab lī mulkan lā yanbaghī liʾaḥadin min baʿdī innaka anta al-wahhāb",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -3986,8 +4011,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Said after Sulaymān was tried — the Qurʾān says a body was placed on his throne, and that he then turned back in repentance. He asked for forgiveness first, and then for a kingdom unlike any after him. Allah gave him the wind and the jinn in his service.",
-          "tr": "Süleyman imtihan edildikten sonra söylenmiştir; Kur'ân, tahtına bir ceset bırakıldığını, onun da sonra tövbeyle Allah'a döndüğünü söyler. Önce bağışlanma, sonra kendisinden sonra kimseye nasip olmayacak bir mülk istedi. Allah rüzgârı ve cinleri onun hizmetine verdi."
+          "en": "Said after Sulaymān was tried — the Qurʾān says a body was placed on his throne, and that he then turned back in repentance. He asked for forgiveness first, and then for a kingdom unlike any after him. Allah gave him the wind, and the devils — builders and divers — in his service.",
+          "tr": "Süleyman imtihan edildikten sonra söylenmiştir; Kur'ân, tahtına bir ceset bırakıldığını, onun da sonra tövbeyle Allah'a döndüğünü söyler. Önce bağışlanma, sonra kendisinden sonra kimseye nasip olmayacak bir mülk istedi. Allah rüzgârı ve şeytanları —bina ustalarını ve dalgıçları— onun hizmetine verdi."
         },
         "references": [
           {
@@ -4003,6 +4028,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord! Forgive me and grant me a kingdom that shall not belong to anyone after me in other words other than me this use of min ba‘dī to mean ‘other than me’ is similar to Q. 4523 fa-man yahdīh min ba‘di’Llāh ‘who will guide him other than God?’. Truly You are the Bestower’.",
           "url": "https://www.altafsir.com",
+          "covers": "38:35",
           "kind": "commentary"
         }
       ],
@@ -4069,7 +4095,7 @@
         "fullText": "هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُۥ قَالَ رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً إِنَّكَ سَمِيعُ ٱلدُّعَآءِ"
       },
       "transliteration": {
-        "text": "Rabbi hab lī min ladunka dhurriyyatan ṭayyibatan ʾinnaka samīʿu ad-duʿāʾi",
+        "text": "Rabbi hab lī min ladunka dhurriyyatan ṭayyibatan innaka samīʿu ad-duʿāʾ",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4110,6 +4136,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Then when Zachariah had seen this and realised that the One with power to bring something about in other than its natural time is able to bring about a child in old age and with those of his family line all deceased Zachariah prayed to his Lord when he entered the sanctuary to pray in the middle of the night saying ‘Lord bestow upon me from You a goodly offspring a righteous son verily You are the Hearer of You are the One Who answers supplication’.",
           "url": "https://www.altafsir.com",
+          "covers": "3:38",
           "kind": "commentary"
         }
       ],
@@ -4182,7 +4209,7 @@
         "fullText": "قَالَ رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا يَرِثُنِى وَيَرِثُ مِنْ ءَالِ يَعْقُوبَ وَٱجْعَلْهُ رَبِّ رَضِيًّۭا"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī wa-hana al-ʿaẓmu minnī washtaʿala ar-raʾsu shayban wa-lam ʾakun biduʿāʾika rabbi shaqiyyan wa-ʾinnī khiftu al-mawāliya min wa-rāʾī wa-kānati imraʾatī ʿāqiran fa-hab lī min ladunka wa-liyyan yarithunī wa-yarithu min ʾāli yaʿqūba wajʿalhu rabbi raḍiyyan",
+        "text": "Rabbi innī wahana al-ʿaẓmu minnī wa-shtaʿala ar-raʾsu shayban wa-lam akun biduʿāʾika rabbi shaqiyyan wa-innī khiftu al-mawāliya min warāʾī wa-kānati imraʾatī ʿāqiran fa-hab lī min ladunka waliyyan yarithunī wa-yarithu min āli yaʿqūba wa-jʿalhu rabbi raḍiyyā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4204,7 +4231,7 @@
       "context": {
         "summary": {
           "en": "Zakariyyā called to his Lord in secret. He was old, his wife was barren, and he feared for his kin after him. He asks for an heir who would inherit from him and from the family of Yaʿqūb. The answer was the news of a son named Yaḥyā, a name given to no one before.",
-          "tr": "Zekeriyyâ Rabbine gizlice seslendi. Yaşlanmıştı, eşi kısırdı ve kendisinden sonra yakınlarından endişe ediyordu. Kendisine ve Ya'kûb ailesine vâris olacak bir veli ister. Cevap, daha önce kimseye verilmemiş Yahyâ adında bir oğul müjdesi oldu."
+          "tr": "Zekeriyyâ Rabbine gizlice seslendi. Yaşlanmıştı, eşi kısırdı ve kendisinden sonra yakınlarından endişe ediyordu. Kendisine ve Ya'kûb ailesine vâris olacak bir oğul ister. Cevap, daha önce kimseye verilmemiş Yahyâ adında bir oğul müjdesi oldu."
         },
         "references": [
           {
@@ -4220,6 +4247,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "He said ‘My Lord truly the bones all the bones within me have become feeble weak and my head is alight with grey hair shayban a specification derived from the subject of the verb in other words hoariness has spread throughout his hairs just as a spark of fire spreads through firewood and I wish to supplicate to you and I have never been in my supplications to You my Lord unsuccessful that is I have never been disappointed in the past so do not disappoint me in what follows.",
           "url": "https://www.altafsir.com",
+          "covers": "19:4",
           "kind": "commentary"
         }
       ],
@@ -4291,7 +4319,7 @@
         "fullText": "وَزَكَرِيَّآ إِذْ نَادَىٰ رَبَّهُۥ رَبِّ لَا تَذَرْنِى فَرْدًۭا وَأَنتَ خَيْرُ ٱلْوَٰرِثِينَ"
       },
       "transliteration": {
-        "text": "Rabbi lā tadharnī fardan wa-ʾanta khayru al-wārithīna",
+        "text": "Rabbi lā tadharnī fardan wa-anta khayru al-wārithīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4329,6 +4357,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention Zachariah Zakariyyā is substituted by the following idh nādā rabbahu … when he cried out to his Lord saying ‘My Lord do not leave me without an heir without a son to inherit from me and You are the best of inheritors’ the One that endures after all of your creation has perished.",
           "url": "https://www.altafsir.com",
+          "covers": "21:89",
           "kind": "commentary"
         }
       ],
@@ -4392,7 +4421,7 @@
         "fullText": "وَذَا ٱلنُّونِ إِذ ذَّهَبَ مُغَٰضِبًۭا فَظَنَّ أَن لَّن نَّقْدِرَ عَلَيْهِ فَنَادَىٰ فِى ٱلظُّلُمَٰتِ أَن لَّآ إِلَٰهَ إِلَّآ أَنتَ سُبْحَٰنَكَ إِنِّى كُنتُ مِنَ ٱلظَّٰلِمِينَ"
       },
       "transliteration": {
-        "text": "Lā ʾilāha ʾillā ʾanta subḥānaka ʾinnī kuntu mina aẓ-ẓālimīna",
+        "text": "Lā ilāha illā anta subḥānaka innī kuntu mina aẓ-ẓālimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4433,6 +4462,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And mention Dhū’l-Nūn the one of the whale namely Jonah son of Amittai Yūnus bin Mattā when he went off enraged Dhā’l-Nūn is substituted by the clause idh dhahaba mughādiban by his people that is furious with them because of what he had suffered at their hands — even though he had not been granted permission by God to go off as he did — thinking that We had no power over him that is that We could not compel him to submit to Our decree in the way that We did by imprisoning him inside the stomach of the whale; or that We could not make circumstances difficult for him. Then he cried out in the darknesses through the darkness of the night the darkness of the sea and the darkness of the whale’s stomach that ‘There is no god except You! Glory be to You! I have indeed been one of the wrongdoers’ for leaving my people without Your permission.",
           "url": "https://www.altafsir.com",
+          "covers": "21:87",
           "kind": "commentary"
         }
       ],
@@ -4505,7 +4535,7 @@
         "fullText": "قَالَ عِيسَى ٱبْنُ مَرْيَمَ ٱللَّهُمَّ رَبَّنَآ أَنزِلْ عَلَيْنَا مَآئِدَةًۭ مِّنَ ٱلسَّمَآءِ تَكُونُ لَنَا عِيدًۭا لِّأَوَّلِنَا وَءَاخِرِنَا وَءَايَةًۭ مِّنكَ وَٱرْزُقْنَا وَأَنتَ خَيْرُ ٱلرَّٰزِقِينَ"
       },
       "transliteration": {
-        "text": "Allāhumma rabbanā ʾanzil ʿalaynā māʾidatan mina as-samāʾi takūnu lanā ʿīdan liʾawwalinā wa-ʾākhirinā wa-ʾāyatan minka warzuqnā wa-ʾanta khayru ar-rāziqīna",
+        "text": "Allāhumma rabbanā anzil ʿalaynā māʾidatan mina as-samāʾi takūnu lanā ʿīdan liʾawwalinā wa-ākhirinā wa-āyatan minka wa-rzuqnā wa-anta khayru ar-rāziqīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4527,14 +4557,11 @@
       "context": {
         "summary": {
           "en": "The disciples asked ʿĪsā whether his Lord could send down a table spread with food from heaven; they wanted to eat from it, to have their hearts reassured, and to be witnesses to it. He made this supplication. Allah answered that He would send it down — and that whoever disbelieved after it would be punished as no one else.",
-          "tr": "Havâriler Îsâ'ya, Rabbinin gökten bir sofra indirip indiremeyeceğini sordular; ondan yemek, kalplerinin mutmain olması ve buna şahit olmak istiyorlardı. Îsâ bu duayı etti. Allah onu indireceğini —ve bundan sonra inkâr edene kimseye etmediği bir azapla azap edeceğini— bildirdi."
+          "tr": "Havâriler Îsâ'ya, Rabbinin gökten bir sofra indirip indiremeyeceğini sordular; ondan yemek, kalplerinin mutmain olması ve buna şahit olmak istiyorlardı. Îsâ bu duayı etti. Allah onu indireceğini —ve bundan sonra inkâr edene kimseye etmeyeceği bir azapla azap edeceğini— bildirdi."
         },
         "references": [
           {
             "work": "Qurʾān 5:112–115"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -4546,6 +4573,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Jesus son of Mary said ‘O God our Lord send down upon us a Table from the heaven that it shall be that is the day of its sending down shall be a celebration for us which we shall consecrate and honour for the first li-awwalinā is an inclusive substitution for lanā ‘for us’ with the repetition of the oblique preposition li- and the last of us those who will come after us and a sign from You of Your power and my prophethood. And provide it for us; You are the Best of Providers’.",
           "url": "https://www.altafsir.com",
+          "covers": "5:114",
           "kind": "commentary"
         }
       ],
@@ -4601,7 +4629,7 @@
         "fullText": "إِن تُعَذِّبْهُمْ فَإِنَّهُمْ عِبَادُكَ وَإِن تَغْفِرْ لَهُمْ فَإِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ"
       },
       "transliteration": {
-        "text": "ʾin tuʿadhdhibhum fa-ʾinnahum ʿibāduka wa-ʾin taghfir lahum fa-ʾinnaka ʾanta al-ʿazīzu al-ḥakīmu",
+        "text": "In tuʿadhdhibhum fa-innahum ʿibāduka wa-in taghfir lahum fa-innaka anta al-ʿazīzu al-ḥakīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4628,9 +4656,6 @@
         "references": [
           {
             "work": "Qurʾān 5:116–118"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -4642,13 +4667,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "If you chastise them that is those among them who are fixed upon disbelief verily they are Your servants and You are their Master disposing of them as You will there can be no objection to what You do; and if You forgive them that is those of them who are believers You only You are the Mighty in His affair the Wise’ in His actions.",
           "url": "https://www.altafsir.com",
+          "covers": "5:118",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
           "en": "He neither condemns them nor excuses them. He hands them back to their Lord.",
-          "tr": "Onları ne mahkûm eder ne de mazur gösterir. Onları Rablerine geri bırakır."
+          "tr": "Onları ne mahkûm eder ne de mazur gösterir. Onları Rablerine havale eder."
         }
       },
       "themes": [
@@ -4708,7 +4734,7 @@
         "fullText": "فَتَعَٰلَى ٱللَّهُ ٱلْمَلِكُ ٱلْحَقُّ وَلَا تَعْجَلْ بِٱلْقُرْءَانِ مِن قَبْلِ أَن يُقْضَىٰٓ إِلَيْكَ وَحْيُهُۥ وَقُل رَّبِّ زِدْنِى عِلْمًۭا"
       },
       "transliteration": {
-        "text": "Rabbi zidnī ʿilman",
+        "text": "Rabbi zidnī ʿilmā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4749,6 +4775,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "So exalted be God the King the Truth above what the idolaters say. And do not hasten with the Qur’ān that is to recite it before its revelation is completed for you before Gabriel is through delivering it and say ‘My Lord increase me in knowledge’ that is knowledge of the Qur’ān thus every time something of it was revealed to him his knowledge increased because of it.",
           "url": "https://www.altafsir.com",
+          "covers": "20:114",
           "kind": "commentary"
         }
       ],
@@ -4810,7 +4837,7 @@
         "fullText": "وَقُل رَّبِّ أَدْخِلْنِى مُدْخَلَ صِدْقٍۢ وَأَخْرِجْنِى مُخْرَجَ صِدْقٍۢ وَٱجْعَل لِّى مِن لَّدُنكَ سُلْطَٰنًۭا نَّصِيرًۭا"
       },
       "transliteration": {
-        "text": "Rabbi ʾadkhilnī mudkhala ṣidqin wa-ʾakhrijnī mukhraja ṣidqin wajʿal lī min ladunka sulṭānan naṣīran",
+        "text": "Rabbi adkhilnī mudkhala ṣidqin wa-akhrijnī mukhraja ṣidqin wa-jʿal lī min ladunka sulṭānan naṣīrā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4831,8 +4858,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Taught to the Prophet ﷺ in Sūrat al-Isrāʾ, a Meccan sūrah. Al-Jalālayn explains the entrance as into Medina and the departure as from Mecca — a prayer for the Hijrah, given before it.",
-          "tr": "Mekke'de inen İsrâ Sûresi'nde Peygamber'e ﷺ öğretilmiştir. Celâleyn girişi Medine'ye, çıkışı Mekke'den olarak açıklar — hicretten önce verilmiş, hicret için bir dua."
+          "en": "Taught to the Prophet ﷺ. Al-Jalālayn explains the entrance as into Medina and the departure as from Mecca.",
+          "tr": "Peygamber'e ﷺ öğretilmiştir. Celâleyn girişi Medine'ye, çıkışı Mekke'den olarak açıklar."
         },
         "references": [
           {
@@ -4851,6 +4878,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And say ‘My Lord make me enter Medina with a veritable entrance an entrance that is satisfying one in which I do not see what I dislike and bring me out of Mecca with a veritable departure a departure such that my heart will not care to turn back to look at it yearningly. And grant me from Yourself a favourable authority’ grant me strength with which You render me victorious over Your enemies.",
           "url": "https://www.altafsir.com",
+          "covers": "17:80",
           "kind": "commentary"
         }
       ],
@@ -4916,7 +4944,7 @@
         "fullText": "وَقُل رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ighfir warḥam wa-ʾanta khayru ar-rāḥimīna",
+        "text": "Rabbi ighfir wa-rḥam wa-anta khayru ar-rāḥimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -4957,6 +4985,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And say ‘My Lord forgive and have mercy on believers — this ‘mercy’ adds to the ‘forgiveness’ in terms of God’s grace — and You are the best of the merciful’ the most excellent of those who have mercy.",
           "url": "https://www.altafsir.com",
+          "covers": "23:118",
           "kind": "commentary"
         }
       ],
@@ -5016,7 +5045,7 @@
         "fullText": "إِذْ أَوَى ٱلْفِتْيَةُ إِلَى ٱلْكَهْفِ فَقَالُوا۟ رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةًۭ وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًۭا"
       },
       "transliteration": {
-        "text": "Rabbanā ʾātinā min ladunka raḥmatan wa-hayyiʾ lanā min ʾamrinā rashadan",
+        "text": "Rabbanā ātinā min ladunka raḥmatan wa-hayyiʾ lanā min amrinā rashadā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5037,8 +5066,8 @@
       ],
       "context": {
         "summary": {
-          "en": "A group of young men, fearing for their faith among a people who worshipped others besides Allah, took refuge in a cave and said this. Allah put them to sleep in the cave for a number of years.",
-          "tr": "Allah'tan başkasına tapan bir kavmin arasında inançları için endişe duyan bir grup genç bir mağaraya sığındı ve bunu söyledi. Allah onları mağarada yıllarca uyuttu."
+          "en": "A group of young men took refuge in a cave and said this — fearing for their faith among their disbelieving people, as al-Jalālayn explains. Allah put them to sleep in the cave for a number of years.",
+          "tr": "Bir grup genç bir mağaraya sığındı ve bunu söyledi; Celâleyn'in açıkladığına göre inkârcı kavimleri arasında inançları için endişe duyuyorlardı. Allah onları mağarada yıllarca uyuttu."
         },
         "references": [
           {
@@ -5057,6 +5086,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Mention when the youths took refuge in the Cave fitya ‘youths’ is the plural of fatā and denotes a mature young man fearing for their faith from their disbelieving people they said ‘Our Lord! Give us mercy from Yourself and remedy for us our affair through rectitude’ through Your guidance.",
           "url": "https://www.altafsir.com",
+          "covers": "18:10",
           "kind": "commentary"
         }
       ],
@@ -5120,7 +5150,7 @@
         "fullText": "وَضَرَبَ ٱللَّهُ مَثَلًۭا لِّلَّذِينَ ءَامَنُوا۟ ٱمْرَأَتَ فِرْعَوْنَ إِذْ قَالَتْ رَبِّ ٱبْنِ لِى عِندَكَ بَيْتًۭا فِى ٱلْجَنَّةِ وَنَجِّنِى مِن فِرْعَوْنَ وَعَمَلِهِۦ وَنَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّٰلِمِينَ"
       },
       "transliteration": {
-        "text": "Rabbi ibni lī ʿindaka baytan fī al-jannati wa-najjinī min firʿawna wa-ʿamalihi wa-najjinī mina al-qawmi aẓ-ẓālimīna",
+        "text": "Rabbi ibni lī ʿindaka baytan fī al-jannati wa-najjinī min firʿawna wa-ʿamalihi wa-najjinī mina al-qawmi aẓ-ẓālimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5161,13 +5191,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "And God has struck a similitude for those who believe the wife of Pharaoh — she believed in Moses her name was Āsiya; Pharaoh chastised her by tying her hands and feet to pegs and placing a huge millstone on her chest and having her laid out in the sun; but when those in charge of her would leave her the angels would come to shade her — when she said during her torture ‘My Lord build for me a home near You in Paradise — so He disclosed for her a veil of the Unseen and she saw it which in turn alleviated for her the torture — and deliver me from Pharaoh and his work his torture and deliver me from the evildoing folk’ the followers of his Pharaoh’s religion whereat God took unto Himself her spirit in death. Ibn Kaysān said ‘She was raised to Paradise alive where she eats and drinks’.",
           "url": "https://www.altafsir.com",
+          "covers": "66:11",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
-          "en": "She lived in a palace and asked for a house — “with You” coming before “in the Garden”.",
-          "tr": "Bir sarayda yaşıyordu ve bir ev istedi — “Senin katında” sözü “cennette” sözünden önce gelir."
+          "en": "She was the wife of Pharaoh, and asked for a house — “with You” coming before “in the Garden”.",
+          "tr": "Firavun'un karısıydı ve bir ev istedi — “Senin katında” sözü “cennette” sözünden önce gelir."
         }
       },
       "themes": [
@@ -5230,7 +5261,7 @@
         "fullText": "إِذْ قَالَتِ ٱمْرَأَتُ عِمْرَٰنَ رَبِّ إِنِّى نَذَرْتُ لَكَ مَا فِى بَطْنِى مُحَرَّرًۭا فَتَقَبَّلْ مِنِّىٓ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ"
       },
       "transliteration": {
-        "text": "Rabbi ʾinnī nadhartu laka mā fī baṭnī muḥarraran fa-taqabbal minnī ʾinnaka ʾanta as-samīʿu al-ʿalīmu",
+        "text": "Rabbi innī nadhartu laka mā fī baṭnī muḥarraran fa-taqabbal minnī innaka anta as-samīʿu al-ʿalīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5271,6 +5302,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Mention when the wife of ‘Imrān Hanna said after she had reached old age and longed for a child and supplicated to God and sensed that she was carrying child ‘O Lord I have vowed to offer You what is within my womb as a consecration one liberated and delivered from the distractions of this world for the service of Your Holy House in Jerusalem. Accept this from me. Lo! It is You Who are the Hearer of petition the Knower of intentions. ‘Imrān died while she was still pregnant.",
           "url": "https://www.altafsir.com",
+          "covers": "3:35",
           "kind": "commentary"
         }
       ],
@@ -5334,7 +5366,7 @@
         "fullText": "قَالَتْ إِنِّىٓ أَعُوذُ بِٱلرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّۭا"
       },
       "transliteration": {
-        "text": "ʾinnī ʾaʿūdhu bilrraḥmāni minka ʾin kunta taqiyyan",
+        "text": "Innī aʿūdhu bir-raḥmāni minka in kunta taqiyyā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5372,6 +5404,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "She said ‘Lo! I seek refuge in the Compassionate One from you! If you fear God’ and leave me alone on account of my invocation of refuge in God.",
           "url": "https://www.altafsir.com",
+          "covers": "19:18",
           "kind": "commentary"
         }
       ],
@@ -5434,7 +5467,7 @@
         "fullText": "وَمَا تَنقِمُ مِنَّآ إِلَّآ أَنْ ءَامَنَّا بِـَٔايَٰتِ رَبِّنَا لَمَّا جَآءَتْنَا رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَتَوَفَّنَا مُسْلِمِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā ʾafrigh ʿalaynā ṣabran wa-tawaffanā muslimīna",
+        "text": "Rabbanā afrigh ʿalaynā ṣabran wa-tawaffanā muslimīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5461,9 +5494,6 @@
         "references": [
           {
             "work": "Qurʾān 7:113–126"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -5475,13 +5505,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "You are vindictive spiteful towards us only because we have believed in the signs of our Lord when they came to us. Our Lord pour out onto us patience and constancy when that with which he has threatened us comes to pass lest we revert to unbelief; and take us to You as men who have submitted’.",
           "url": "https://www.altafsir.com",
+          "covers": "7:126",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
           "en": "Believers of an hour, facing death, ask for patience and a good end — not for rescue.",
-          "tr": "Bir saatlik müminler, ölümle yüz yüzeyken kurtuluş değil, sabır ve güzel bir son isterler."
+          "tr": "Daha yeni iman etmiş olanlar, ölümle yüz yüzeyken kurtuluş değil, sabır ve güzel bir son isterler."
         }
       },
       "themes": [
@@ -5544,7 +5575,7 @@
         "fullText": "وَلَمَّا بَرَزُوا۟ لِجَالُوتَ وَجُنُودِهِۦ قَالُوا۟ رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā ʾafrigh ʿalaynā ṣabran wa-thabbit ʾaqdāmanā wa-inṣurnā ʿalā al-qawmi al-kāfirīna",
+        "text": "Rabbanā afrigh ʿalaynā ṣabran wa-thabbit aqdāmanā wa-nṣurnā ʿalā al-qawmi al-kāfirīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5571,9 +5602,6 @@
         "references": [
           {
             "work": "Qurʾān 2:249–251"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -5585,6 +5613,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "So when they went forth against Goliath and his troops facing them in military columns they said ‘Our Lord pour out upon us patience and make firm our feet by strengthening our hearts for this struggle and grant us victory over the disbelieving folk!’",
           "url": "https://www.altafsir.com",
+          "covers": "2:250",
           "kind": "commentary"
         }
       ],
@@ -5648,7 +5677,7 @@
         "fullText": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا ٱكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًۭا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā lā tuʾākhidhnā ʾin nasīnā ʾaw ʾakhṭaʾnā rabbanā wa-lā taḥmil ʿalaynā ʾiṣran kamā ḥamaltahu ʿalā alladhīna min qablinā rabbanā wa-lā tuḥammilnā mā lā ṭāqata lanā bihi waʿfu ʿannā waghfir lanā warḥamnā ʾanta mawlānā fa-inṣurnā ʿalā al-qawmi al-kāfirīna",
+        "text": "Rabbanā lā tuʾākhidhnā in nasīnā aw akhṭaʾnā rabbanā wa-lā taḥmil ʿalaynā iṣran kamā ḥamaltahu ʿalā alladhīna min qablinā rabbanā wa-lā tuḥammilnā mā lā ṭāqata lanā bihi wa-ʿfu ʿannā wa-ghfir lanā wa-rḥamnā anta mawlānā fa-nṣurnā ʿalā al-qawmi al-kāfirīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5692,6 +5721,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "God charges no soul save to its capacity that is what it is capable of bearing; for it is what it has merited of good and its reward and against it is what it has earned of evil and its burden no person shall be requited for another’s sin or for what he has not earned even if he was tempted to do it. Say Our Lord take us not to task by way of chastisement if we forget or err by straying from the right path unknowingly — as You used to take to task those before us God has lifted this burden from this community as reported in hadīth. The petition here then is a way of acknowledging God’s favour; our Lord burden us not with a load an affair which we cannot bear such as You did lay upon those before us namely upon the Children of Israel as for example the killing of oneself in repentance the paying of a quarter of one’s property for alms and the severing of the impure part. Our Lord do not burden us beyond what we have the power the strength to bear of obligations and trials; and pardon us effacing our sins and forgive us and have mercy on us with mercy added to Your forgiveness; You are our Patron our Master and the Guardian of our affairs; so grant us assistance against the disbelieving folk by establishing definitive proof for us and victory over them in battle for it is expected of a patron that he assist his clients against their enemies. In a hadīth it is stated that when this verse was revealed and the Prophet s was reciting it after each word it was said to him “Granted”.",
           "url": "https://www.altafsir.com",
+          "covers": "2:286",
           "kind": "commentary"
         }
       ],
@@ -5759,7 +5789,7 @@
         "fullText": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ ٱلْوَهَّابُ"
       },
       "transliteration": {
-        "text": "Rabbanā lā tuzigh qulūbanā baʿda ʾidh hadaytanā wa-hab lanā min ladunka raḥmatan ʾinnaka ʾanta al-wahhābu",
+        "text": "Rabbanā lā tuzigh qulūbanā baʿda idh hadaytanā wa-hab lanā min ladunka raḥmatan innaka anta al-wahhāb",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5786,9 +5816,6 @@
         "references": [
           {
             "work": "Qurʾān 3:7–8"
-          },
-          {
-            "work": "Tafsīr al-Jalālayn"
           }
         ]
       },
@@ -5800,6 +5827,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "Our Lord do not cause our hearts to deviate do not cause them to incline away from the truth in their desire to interpret it such as is inappropriate for us — as You caused the hearts of those others to deviate — after You have guided us after You have shown us the way to it; and give us mercy from You as a strengthening; You are the Bestower.",
           "url": "https://www.altafsir.com",
+          "covers": "3:8",
           "kind": "commentary"
         }
       ],
@@ -5863,7 +5891,7 @@
         "fullText": "وَمَا كَانَ قَوْلَهُمْ إِلَّآ أَن قَالُوا۟ رَبَّنَا ٱغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِىٓ أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ"
       },
       "transliteration": {
-        "text": "Rabbanā ighfir lanā dhunūbanā wa-ʾisrāfanā fī ʾamrinā wa-thabbit ʾaqdāmanā wa-inṣurnā ʿalā al-qawmi al-kāfirīna",
+        "text": "Rabbanā ighfir lanā dhunūbanā wa-isrāfanā fī amrinā wa-thabbit aqdāmanā wa-nṣurnā ʿalā al-qawmi al-kāfirīn",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -5884,8 +5912,8 @@
       ],
       "context": {
         "summary": {
-          "en": "From the passage on the battle of Uḥud, about the many godly men who fought alongside earlier prophets and did not weaken or give in at what befell them — al-Jalālayn says, even when their prophet had been killed. This was all they said.",
-          "tr": "Uhud savaşını anlatan bölümden: önceki peygamberlerle birlikte savaşan ve başlarına gelenler yüzünden gevşemeyen, boyun eğmeyen pek çok Rabbânî kişi anılır; Celâleyn'e göre peygamberleri öldürüldüğünde bile. Söyledikleri yalnızca buydu."
+          "en": "From the passage in Āl ʿImrān after a battle, about the many godly men who fought alongside earlier prophets and did not weaken or give in at what befell them — al-Jalālayn says, even when their prophet had been killed. This was all they said.",
+          "tr": "Âl-i İmrân'da bir savaşın ardından gelen bölümden: önceki peygamberlerle birlikte savaşan ve başlarına gelenler yüzünden gevşemeyen, boyun eğmeyen pek çok Rabbânî kişi anılır; Celâleyn'e göre peygamberleri öldürüldüğünde bile. Söyledikleri yalnızca buydu."
         },
         "references": [
           {
@@ -5904,13 +5932,14 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "All that they said when their prophet had been killed while they stood their ground and were steadfast was ‘Our Lord forgive us our sins and our excesses our overstepping the bounds in our affairs a declaration of the fact that what had befallen them was the result of their evil actions and a humbling of their selves and make firm our feet with strength for the struggle and help us against the unbelieving folk’.",
           "url": "https://www.altafsir.com",
+          "covers": "3:147",
           "kind": "commentary"
         }
       ],
       "reflection": {
         "text": {
-          "en": "In defeat they blame no one but themselves, and ask for firm feet.",
-          "tr": "Yenilgide kendilerinden başka kimseyi suçlamaz, ayaklarının sabit kılınmasını isterler."
+          "en": "In hardship they blame no one but themselves, and ask for firm feet.",
+          "tr": "Sıkıntı anında kendilerinden başka kimseyi suçlamaz, ayaklarının sabit kılınmasını isterler."
         }
       },
       "themes": [
@@ -5973,7 +6002,7 @@
         "fullText": "وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا"
       },
       "transliteration": {
-        "text": "Rabbanā hab lanā min ʾazwājinā wa-dhurriyyātinā qurrata ʾaʿyunin wajʿalnā lilmuttaqīna ʾimāman",
+        "text": "Rabbanā hab lanā min azwājinā wa-dhurriyyātinā qurrata aʿyunin wa-jʿalnā lilmuttaqīna imāmā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6014,6 +6043,7 @@
           "licence": "Royal Aal al-Bayt Institute — freely distributed, attribution required",
           "text": "and those who say ‘Our Lord! Grant us in our spouses and our offspring read plural dhurriyyātinā or singular dhurriyyatinā a joyful sight for us so that we see them obedient to You and make us paragons of virtue for the God-fearing’.",
           "url": "https://www.altafsir.com",
+          "covers": "25:74",
           "kind": "commentary"
         }
       ],
@@ -6074,7 +6104,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ẓalamtu nafsī ẓulman kathīran wa-lā yaghfiru adh-dhunūba ʾillā ʾanta fa-ghfir lī maghfiratan min ʿindika wa-rḥamnī ʾinnaka ʾanta al-ghafūru ar-raḥīmu",
+        "text": "Allāhumma innī ẓalamtu nafsī ẓulman kathīran wa-lā yaghfiru adh-dhunūba illā anta fa-ghfir lī maghfiratan min ʿindika wa-rḥamnī innaka anta al-ghafūru ar-raḥīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6129,7 +6159,7 @@
         "ibrahim-rabbana-inni-askantu"
       ],
       "moments": [
-        "after-prayer"
+        "in-prayer"
       ],
       "audioAyahs": [],
       "form": "dua",
@@ -6158,7 +6188,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾaʿūdhu bika min ʿadhābi jahannama wa-min ʿadhābi al-qabri wa-min fitnati al-maḥyā wa-al-mamāti wa-min sharri fitnati al-masīḥi ad-dajjāli",
+        "text": "Allāhumma innī aʿūdhu bika min ʿadhābi jahannama wa-min ʿadhābi al-qabri wa-min fitnati al-maḥyā wa-al-mamāti wa-min sharri fitnati al-masīḥi ad-dajjāl",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6199,11 +6229,11 @@
       ],
       "situations": {
         "en": [
-          "at the end of every prayer",
+          "after the tashahhud, before the salām",
           "when you think of death and what follows it"
         ],
         "tr": [
-          "her namazın sonunda",
+          "teşehhüdden sonra, selâmdan önce",
           "ölümü ve sonrasını düşündüğünüzde"
         ]
       },
@@ -6214,7 +6244,7 @@
         "muhammad-allahumma-inni-audhu-bika-min-zawal-nimatik"
       ],
       "moments": [
-        "after-prayer"
+        "in-prayer"
       ],
       "audioAyahs": [],
       "form": "istiadha",
@@ -6243,7 +6273,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾaṣliḥ lī dīniya alladhī huwa ʿiṣmatu ʾamrī wa-ʾaṣliḥ lī dunyāya allatī fīhā maʿāshī wa-ʾaṣliḥ lī ʾākhiratī allatī fīhā maʿādī wa-jʿali al-ḥayāta ziyādatan lī fī kulli khayrin wa-jʿali al-mawta rāḥatan lī min kulli sharrin",
+        "text": "Allāhumma aṣliḥ lī dīniya alladhī huwa ʿiṣmatu amrī wa-aṣliḥ lī dunyāya allatī fīhā maʿāshī wa-aṣliḥ lī ākhiratī allatī fīhā maʿādī wa-jʿali al-ḥayāta ziyādatan lī fī kulli khayrin wa-jʿali al-mawta rāḥatan lī min kulli sharr",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6326,7 +6356,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾasʾaluka al-hudā wa-at-tuqā wa-al-ʿafāfa wa-al-ghinā",
+        "text": "Allāhumma innī asʾaluka al-hudā wa-at-tuqā wa-al-ʿafāfa wa-al-ghinā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6409,7 +6439,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾaʿūdhu bika mina al-hammi wa-al-ḥazani wa-al-ʿajzi wa-al-kasali wa-al-jubni wa-al-bukhli wa-ḍalaʿi ad-dayni wa-ghalabati ar-rijāli",
+        "text": "Allāhumma innī aʿūdhu bika mina al-hammi wa-al-ḥazani wa-al-ʿajzi wa-al-kasali wa-al-jubni wa-al-bukhli wa-ḍalaʿi ad-dayni wa-ghalabati ar-rijāl",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6495,7 +6525,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Al-ḥamdu lillāhi alladhī ʾaḥyānā baʿda mā ʾamātanā wa-ʾilayhi an-nushūru",
+        "text": "Al-ḥamdu lillāhi alladhī aḥyānā baʿda mā amātanā wa-ilayhi an-nushūr",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6577,7 +6607,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾanta rabbī lā ʾilāha ʾillā ʾanta khalaqtanī wa-ʾanā ʿabduka wa-ʾanā ʿalā ʿahdika wa-waʿdika mā staṭaʿtu ʾaʿūdhu bika min sharri mā ṣanaʿtu ʾabūʾu laka biniʿmatika ʿalayya wa-ʾabūʾu laka bidhanbī fa-ghfir lī fa-ʾinnahu lā yaghfiru adh-dhunūba ʾillā ʾanta",
+        "text": "Allāhumma anta rabbī lā ilāha illā anta khalaqtanī wa-anā ʿabduka wa-anā ʿalā ʿahdika wa-waʿdika mā staṭaʿtu aʿūdhu bika min sharri mā ṣanaʿtu abūʾu laka biniʿmatika ʿalayya wa-abūʾu laka bidhanbī fa-ghfir lī fa-innahu lā yaghfiru adh-dhunūba illā ant",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6661,7 +6691,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Bismi Allāhi alladhī lā yaḍurru maʿa smihi shayʾun fī al-ʾarḍi wa-lā fī as-samāʾi wa-huwa as-samīʿu al-ʿalīmu",
+        "text": "Bismi Allāhi alladhī lā yaḍurru maʿa smihi shayʾun fī al-arḍi wa-lā fī as-samāʾi wa-huwa as-samīʿu al-ʿalīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6743,7 +6773,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Bismi Allāhi tawakkaltu ʿalā Allāhi lā ḥawla wa-lā quwwata ʾillā billāhi",
+        "text": "Bismi Allāhi tawakkaltu ʿalā Allāhi lā ḥawla wa-lā quwwata illā billāh",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6767,7 +6797,7 @@
       "context": {
         "summary": {
           "en": "Anas ibn Mālik reports that the Prophet ﷺ said: when a man leaves his house and says this, it is said to him, “You are guided, you are sufficed, and you are protected,” and the devils turn away from him.",
-          "tr": "Enes b. Mâlik'in rivayetine göre Peygamber ﷺ şöyle buyurdu: Kişi evinden çıkarken bunu söylerse ona “Hidayete erdirildin, sana yetildi ve korundun” denir ve şeytanlar ondan uzaklaşır."
+          "tr": "Enes b. Mâlik'in rivayetine göre Peygamber ﷺ şöyle buyurdu: Kişi evinden çıkarken bunu söylerse ona “Doğru yola iletildin, ihtiyacın karşılandı ve korundun” denir ve şeytanlar ondan uzaklaşır."
         },
         "references": [
           {
@@ -6825,7 +6855,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ftaḥ lī ʾabwāba raḥmatika",
+        "text": "Allāhumma ftaḥ lī abwāba raḥmatik",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6907,7 +6937,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾasʾaluka min faḍlika",
+        "text": "Allāhumma innī asʾaluka min faḍlik",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -6989,7 +7019,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾanta as-salāmu wa-minka as-salāmu tabārakta dhā al-jalāli wa-al-ʾikrāmi",
+        "text": "Allāhumma anta as-salāmu wa-minka as-salāmu tabārakta dhā al-jalāli wa-al-ikrām",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7071,7 +7101,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾaʿinnī ʿalā dhikrika wa-shukrika wa-ḥusni ʿibādatika",
+        "text": "Allāhumma aʿinnī ʿalā dhikrika wa-shukrika wa-ḥusni ʿibādatik",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7156,7 +7186,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Al-ḥamdu lillāhi alladhī ʾaṭʿamanī hadhā wa-razaqanīhi min ghayri ḥawlin minnī wa-lā quwwatin",
+        "text": "Al-ḥamdu lillāhi alladhī aṭʿamanī hādhā wa-razaqanīhi min ghayri ḥawlin minnī wa-lā quwwah",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7239,7 +7269,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Subḥāna alladhī sakhkhara lanā hadhā wa-mā kunnā lahu muqrinīna wa-ʾinnā ʾilā rabbinā lamunqalibūna Allāhumma ʾinnā nasʾaluka fī safarinā hadhā al-birra wa-at-taqwā wa-mina al-ʿamali mā tarḍā Allāhumma hawwin ʿalaynā safaranā hadhā wa-ṭwi ʿannā buʿdahu Allāhumma ʾanta aṣ-ṣāḥibu fī as-safari wa-al-khalīfatu fī al-ʾahli Allāhumma ʾinnī ʾaʿūdhu bika min waʿthāʾi as-safari wa-kaʾābati al-manẓari wa-sūʾi al-munqalabi fī al-māli wa-al-ʾahli",
+        "text": "Subḥāna alladhī sakhkhara lanā hādhā wa-mā kunnā lahu muqrinīna wa-innā ilā rabbinā lamunqalibūna Allāhumma innā nasʾaluka fī safarinā hādhā al-birra wa-at-taqwā wa-mina al-ʿamali mā tarḍā Allāhumma hawwin ʿalaynā safaranā hādhā wa-ṭwi ʿannā buʿdahu Allāhumma anta aṣ-ṣāḥibu fī as-safari wa-al-khalīfatu fī al-ahli Allāhumma innī aʿūdhu bika min waʿthāʾi as-safari wa-kaʾābati al-manẓari wa-sūʾi al-munqalabi fī al-māli wa-al-ahl",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7253,7 +7283,7 @@
         },
         {
           "lang": "tr",
-          "text": "Bunu bizim hizmetimize veren Allah'ın şanı yücedir; yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz. Allah'ım! Bu yolculuğumuzda Senden iyilik ve takva, razı olacağın ameller isteriz. Allah'ım! Bu yolculuğu bize kolaylaştır, uzaklığını bize yakın kıl. Allah'ım! Yolculukta yoldaş, geride kalan ailede gözeten Sensin. Allah'ım! Yolculuğun sıkıntısından, üzücü bir manzaradan, malda ve ailede kötü bir dönüşten Sana sığınırım.",
+          "text": "Bunu bizim hizmetimize veren Allah'ın şanı yücedir; yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz. Allah'ım! Bu yolculuğumuzda Senden iyilik ve takva, razı olacağın ameller isteriz. Allah'ım! Bu yolculuğu bize kolaylaştır, uzaklığını bize yakın kıl. Allah'ım! Yolculukta yoldaş, geride kalan ailede gözeten Sensin. Allah'ım! Yolculuğun sıkıntısından, üzücü bir manzaradan, dönüşte malda ve ailede kötü bir hâlle karşılaşmaktan Sana sığınırım.",
           "translator": "Project translation",
           "licence": "CC BY-SA 4.0",
           "draft": true,
@@ -7324,7 +7354,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Ṣayyiban nāfiʿan",
+        "text": "Ṣayyiban nāfiʿā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7347,8 +7377,8 @@
       ],
       "context": {
         "summary": {
-          "en": "ʿĀʾishah reports that when the Messenger of Allah ﷺ saw rain he would say this. The words in brackets are implied by the Arabic, which is two words long.",
-          "tr": "Âişe, Resûlullah'ın ﷺ yağmur gördüğünde bunu söylediğini rivayet eder. Parantez içindeki kelimeler, iki kelimeden ibaret olan Arapça ifadede örtük olarak bulunur."
+          "en": "ʿĀʾishah reports that when the Messenger of Allah ﷺ saw rain he would say this. Some printed editions begin it with “O Allah”; the words in brackets complete the sense.",
+          "tr": "Âişe, Resûlullah'ın ﷺ yağmur gördüğünde bunu söylediğini rivayet eder. Bazı basılı nüshalar sözü “Allah'ım” diye başlatır; parantez içindeki kelimeler anlamı tamamlar."
         },
         "references": [
           {
@@ -7407,7 +7437,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "ʾadhhibi al-bāsa rabba an-nāsi shfi wa-ʾanta ash-shāfī lā shifāʾa ʾillā shifāʾuka shifāʾan lā yughādiru saqaman",
+        "text": "Adhhibi al-bāsa rabba an-nāsi shfi wa-anta ash-shāfī lā shifāʾa illā shifāʾuka shifāʾan lā yughādiru saqamā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7491,7 +7521,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "ʾaʿūdhu billāhi wa-qudratihi min sharri mā ʾajidu wa-ʾuḥādhiru",
+        "text": "Aʿūdhu billāhi wa-qudratihi min sharri mā ajidu wa-uḥādhir",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7573,7 +7603,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Lā ʾilāha ʾillā Allāhu al-ʿaẓīmu al-ḥalīmu lā ʾilāha ʾillā Allāhu rabbu al-ʿarshi al-ʿaẓīmi lā ʾilāha ʾillā Allāhu rabbu as-samawāti wa-rabbu al-ʾarḍi wa-rabbu al-ʿarshi al-karīmi",
+        "text": "Lā ilāha illā Allāhu al-ʿaẓīmu al-ḥalīmu lā ilāha illā Allāhu rabbu al-ʿarshi al-ʿaẓīmi lā ilāha illā Allāhu rabbu as-samāwāti wa-rabbu al-arḍi wa-rabbu al-ʿarshi al-karīm",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7657,7 +7687,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhu Allāhu rabbī lā ʾushriku bihi shayʾan",
+        "text": "Allāhu Allāhu rabbī lā ushriku bihi shayʾā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7739,13 +7769,13 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾaʿūdhu bika min zawāli niʿmatika wa-taḥawwuli ʿāfiyatika wa-fujāʾati niqmatika wa-jamīʿi sakhaṭika",
+        "text": "Allāhumma innī aʿūdhu bika min zawāli niʿmatika wa-taḥawwuli ʿāfiyatika wa-fujāʾati niqmatika wa-jamīʿi sakhaṭik",
         "scheme": "ala-lc"
       },
       "translations": [
         {
           "lang": "en",
-          "text": "O Allah, I seek refuge in You from the passing of Your blessing, from the changing of the wellbeing You have given, from the suddenness of Your punishment, and from all that displeases You.",
+          "text": "O Allah, I seek refuge in You from the passing of Your blessing, from the changing of the wellbeing You have given, from the suddenness of Your punishment, and from all Your displeasure.",
           "translator": "Project translation",
           "licence": "CC BY-SA 4.0",
           "draft": true,
@@ -7822,7 +7852,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Yā muqalliba al-qulūbi thabbit qalbī ʿalā dīnika",
+        "text": "Yā muqalliba al-qulūbi thabbit qalbī ʿalā dīnik",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7864,11 +7894,11 @@
       "situations": {
         "en": [
           "when your faith feels thin",
-          "the duʿāʾ he said most often"
+          "when you fear your heart changing"
         ],
         "tr": [
-          "imanınız zayıfladığını hissettiğinizde",
-          "en sık ettiği dua olarak"
+          "imanınızın zayıfladığını hissettiğinizde",
+          "kalbinizin değişmesinden korktuğunuzda"
         ]
       },
       "related": [
@@ -7905,7 +7935,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma ʾinnī ʾastakhīruka biʿilmika wa-ʾastaqdiruka biqudratika wa-ʾasʾaluka min faḍlika al-ʿaẓīmi fa-ʾinnaka taqdiru wa-lā ʾaqdiru wa-taʿlamu wa-lā ʾaʿlamu wa-ʾanta ʿallāmu al-ghuyūbi Allāhumma ʾin kunta taʿlamu ʾanna hadhā al-ʾamra khayrun lī fī dīnī wa-maʿāshī wa-ʿāqibati ʾamrī ʾaw qāla ʿājili ʾamrī wa-ʾājilihi fa-qdurhu lī wa-ʾin kunta taʿlamu ʾanna hadhā al-ʾamra sharrun lī fī dīnī wa-maʿāshī wa-ʿāqibati ʾamrī ʾaw qāla fī ʿājili ʾamrī wa-ʾājilihi fa-ṣrifhu ʿannī wa-ṣrifnī ʿanhu wa-qdur liya al-khayra ḥaythu kāna thumma raḍḍinī bihi",
+        "text": "Allāhumma innī astakhīruka biʿilmika wa-astaqdiruka biqudratika wa-asʾaluka min faḍlika al-ʿaẓīmi fa-innaka taqdiru wa-lā aqdiru wa-taʿlamu wa-lā aʿlamu wa-anta ʿallāmu al-ghuyūbi Allāhumma in kunta taʿlamu anna hādhā al-amra khayrun lī fī dīnī wa-maʿāshī wa-ʿāqibati amrī aw qāla ʿājili amrī wa-ājilihi fa-qdurhu lī wa-in kunta taʿlamu anna hādhā al-amra sharrun lī fī dīnī wa-maʿāshī wa-ʿāqibati amrī aw qāla fī ʿājili amrī wa-ājilihi fa-ṣrifhu ʿannī wa-ṣrifnī ʿanhu wa-qdur liya al-khayra ḥaythu kāna thumma raḍḍinī bih",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -7928,8 +7958,8 @@
       ],
       "context": {
         "summary": {
-          "en": "Jābir reports that the Prophet ﷺ taught them istikhārah in all their affairs as he taught them a sūrah of the Qurʾān: when one of you intends something, let him pray two rakʿahs and then say this — naming his matter where it says “this matter”. The “or he said” is the narrator recording both wordings he heard.",
-          "tr": "Câbir'in rivayetine göre Peygamber ﷺ onlara bütün işlerinde istihâreyi, Kur'ân'dan bir sûre öğretir gibi öğretirdi: Biriniz bir işe niyet ettiğinde iki rekât namaz kılsın, sonra bunu söylesin ve “bu iş” dediği yerde kendi işini ansın. “Ya da şöyle dedi” ifadesi, râvinin duyduğu iki lafzı birlikte kaydetmesidir."
+          "en": "Jābir reports that the Prophet ﷺ taught them istikhārah in all their affairs as he taught them a sūrah of the Qurʾān: when one of you intends something, let him pray two rakʿahs and then say this — naming his matter where it says “this matter”. “Or he said” marks the narrator's uncertainty over which of the two wordings was used.",
+          "tr": "Câbir'in rivayetine göre Peygamber ﷺ onlara bütün işlerinde istihâreyi, Kur'ân'dan bir sûre öğretir gibi öğretirdi: Biriniz bir işe niyet ettiğinde iki rekât namaz kılsın, sonra bunu söylesin ve “bu iş” dediği yerde kendi işini ansın. “Ya da şöyle dedi” ifadesi, râvinin iki lafızdan hangisinin söylendiğinden emin olmadığını gösterir."
         },
         "references": [
           {
@@ -7985,7 +8015,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Bismika ʾamūtu wa-ʾaḥyā",
+        "text": "Bismika amūtu wa-aḥyā",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -8067,7 +8097,7 @@
         "edition": "fawazahmed0/hadith-api"
       },
       "transliteration": {
-        "text": "Allāhumma qinī ʿadhābaka yawma tabʿathu ʿibādaka",
+        "text": "Allāhumma qinī ʿadhābaka yawma tabʿathu ʿibādak",
         "scheme": "ala-lc"
       },
       "translations": [
@@ -9010,6 +9040,7 @@
     "morning-evening",
     "leaving-home",
     "mosque",
+    "in-prayer",
     "after-prayer",
     "eating",
     "travel",

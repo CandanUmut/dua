@@ -50,8 +50,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "nuh-rabbi-ighfir-li-wa-liwalidayya": {
     occasion: {
-      en: "The close of Nūḥ's long address to his Lord, after calling his people for nine hundred and fifty years. He asks forgiveness for himself; for his parents, both of them believers, as al-Jalālayn notes; for whoever enters his house believing; and for all believing men and women.",
-      tr: "Nûh'un, kavmini dokuz yüz elli yıl davet ettikten sonra Rabbine yaptığı uzun yakarışın sonu. Kendisi için; Celâleyn'in belirttiğine göre ikisi de mümin olan anne babası için; evine mümin olarak giren herkes için ve bütün mümin erkekler ve kadınlar için bağışlanma diler.",
+      en: "The close of Nūḥ's long address to his Lord, after remaining among his people for nine hundred and fifty years. He asks forgiveness for himself; for his parents, both of them believers, as al-Jalālayn notes; for whoever enters his house believing; and for all believing men and women.",
+      tr: "Nûh'un, kavmi arasında dokuz yüz elli yıl kaldıktan sonra Rabbine yaptığı uzun yakarışın sonu. Kendisi için; Celâleyn'in belirttiğine göre ikisi de mümin olan anne babası için; evine mümin olarak giren herkes için ve bütün mümin erkekler ve kadınlar için bağışlanma diler.",
     },
     refs: [Q("71:5–28"), Q("29:14")],
     jalalayn: true,
@@ -63,8 +63,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "nuh-rabbi-anzilni-munzalan-mubarakan": {
     occasion: {
-      en: "When Nūḥ and those with him were settled on the Ark, Allah told him to praise the One who had saved them from the wrongdoing people, and to say this. Al-Jalālayn places it at the moment of disembarking.",
-      tr: "Nûh ve beraberindekiler gemiye yerleşince Allah ona, kendilerini zalim kavimden kurtaran Allah'a hamdetmesini ve bunu söylemesini emretti. Celâleyn bunu gemiden inerken söylenen söz olarak açıklar.",
+      en: "Allah told Nūḥ that when he and those with him were settled on the Ark, he should praise the One who had saved them from the wrongdoing people, and say this. Al-Jalālayn places it at the moment of disembarking.",
+      tr: "Allah Nûh'a, beraberindekilerle gemiye yerleştiğinde kendilerini zalim kavimden kurtaran Allah'a hamdetmesini ve bunu söylemesini emretti. Celâleyn bunu gemiden inerken söylenen söz olarak açıklar.",
     },
     refs: [Q("23:27–29")],
     jalalayn: true,
@@ -76,8 +76,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "nuh-anni-maghlubun-fantasir": {
     occasion: {
-      en: "Nūḥ's people denied him, called him mad, and he was driven back. This short cry is the whole of what he said. The next āyāt give the answer: the gates of heaven opened with pouring water.",
-      tr: "Kavmi Nûh'u yalanladı, ona “deli” dedi; o da azarlanıp engellendi. Bu kısa yakarış, söylediğinin tamamıdır. Sonraki âyetler cevabı verir: Gökyüzünün kapıları boşalan sularla açıldı.",
+      en: "Nūḥ's people denied him, called him mad, and he was driven back. This short cry is all that this āyah records of what he said. The next āyāt give the answer: the gates of heaven opened with pouring water.",
+      tr: "Kavmi Nûh'u yalanladı, ona “deli” dedi; o da azarlanıp engellendi. Bu kısa yakarış, âyetin onun sözünden aktardığının tamamıdır. Sonraki âyetler cevabı verir: Gökyüzünün kapıları boşalan sularla açıldı.",
     },
     refs: [Q("54:9–12")],
   },
@@ -92,8 +92,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "nuh-rabbi-inni-audhu-bika": {
     occasion: {
-      en: "When the Flood rose, Nūḥ called to Allah for his son, who had refused to board, saying his son was of his family. Allah told him the son was not of his family, for his conduct was not righteous, and not to ask for what he had no knowledge of. This is Nūḥ's reply.",
-      tr: "Tufan yükselince Nûh, gemiye binmeyi reddeden oğlu için “Oğlum benim ailemdendir” diyerek Allah'a seslendi. Allah ona, oğlunun —işi salih olmadığından— ailesinden olmadığını ve hakkında bilgisi olmadığı şeyi istememesini bildirdi. Nûh'un cevabı budur.",
+      en: "His son had refused to board and was drowned by the waves. Nūḥ then called to his Lord, saying his son was of his family. Allah told him the son was not of his family, for his conduct was not righteous, and not to ask for what he had no knowledge of. This is Nūḥ's reply.",
+      tr: "Oğlu gemiye binmeyi reddetmiş ve dalgalar arasında boğulmuştu. Nûh bunun üzerine “Oğlum benim ailemdendir” diyerek Rabbine seslendi. Allah ona, oğlunun —işi salih olmadığından— ailesinden olmadığını ve hakkında bilgisi olmadığı şeyi istememesini bildirdi. Nûh'un cevabı budur.",
     },
     refs: [Q("11:42–47")],
     reflection: {
@@ -104,8 +104,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "nuh-rabbi-la-tadhar-ala-al-ard": {
     occasion: {
-      en: "Said at the end of Nūḥ's mission, after he had called his people for nine hundred and fifty years and Allah had told him that none of them would believe beyond those who already had. He asks that not one disbeliever be left on the earth, and gives the reason in the next āyah: they would only lead Allah's servants astray and beget none but the wicked.",
-      tr: "Nûh'un görevinin sonunda, kavmini dokuz yüz elli yıl davet ettikten ve Allah ona daha önce inananlardan başka hiçbirinin iman etmeyeceğini bildirdikten sonra söylenmiştir. Yeryüzünde tek bir kâfir bırakılmamasını ister ve sebebini sonraki âyette söyler: Onlar Allah'ın kullarını saptırır ve ancak günahkâr nesiller doğururlar.",
+      en: "Said at the end of Nūḥ's mission, after he had remained among his people for nine hundred and fifty years and Allah had told him that none of them would believe beyond those who already had. He asks that not one disbeliever be left on the earth, and gives the reason in the next āyah: they would only lead Allah's servants astray and beget none but the wicked.",
+      tr: "Nûh'un görevinin sonunda, kavmi arasında dokuz yüz elli yıl kaldıktan ve Allah ona daha önce inananlardan başka hiçbirinin iman etmeyeceğini bildirdikten sonra söylenmiştir. Yeryüzünde tek bir kâfir bırakılmamasını ister ve sebebini sonraki âyette söyler: Onlar Allah'ın kullarını saptırır ve ancak günahkâr nesiller doğururlar.",
     },
     refs: [Q("71:26–27"), Q("11:36"), Q("29:14")],
     reflection: {
@@ -138,8 +138,8 @@ export const EDITORIAL: Record<string, Editorial> = {
     },
     refs: [Q("2:127–129")],
     reflection: {
-      en: "Two prophets, finishing the House of Allah, do not ask whether the work is done but whether it is accepted.",
-      tr: "Allah'ın evini bitiren iki peygamber, işin bitip bitmediğini değil, kabul edilip edilmediğini sorar.",
+      en: "Two prophets, raising the House of Allah, ask not whether the work is done but whether it is accepted.",
+      tr: "Allah'ın evini yükselten iki peygamber, işin bitip bitmediğini değil, kabul edilip edilmediğini sorar.",
     },
   },
 
@@ -149,7 +149,6 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Kendi adını taşıyan sûrede İbrâhim'in dualarının ilkidir; Mekke için edilmiştir: Bu beldenin güvenli kılınmasını ve kendisinin ve oğullarının putlara tapmaktan uzak tutulmasını ister.",
     },
     refs: [Q("14:35")],
-    jalalayn: true,
     reflection: {
       en: "Ibrāhīm, who broke his people's idols with his own hands, still asks to be kept from them.",
       tr: "Kavminin putlarını kendi elleriyle kıran İbrâhim, yine de onlardan uzak tutulmayı ister.",
@@ -158,17 +157,16 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "ibrahim-rabbana-inni-askantu": {
     occasion: {
-      en: "The rest of the same prayer, made after he had settled some of his descendants — Ismāʿīl and his mother, as al-Jalālayn explains — in a valley without crops beside the Sacred House. He asks that people's hearts incline toward them and that they be provided with fruits; that he and his descendants keep up the prayer; and that he, his parents and the believers be forgiven on the Day of Reckoning. In the middle he thanks Allah for giving him Ismāʿīl and Isḥāq in old age.",
-      tr: "Aynı duanın devamıdır. İbrâhim, soyundan bazılarını —Celâleyn'in açıkladığına göre İsmâil'i ve annesini— Beyt-i Harâm'ın yanında ekin bitmeyen bir vadiye yerleştirdikten sonra söylemiştir. İnsanların gönüllerinin onlara meyletmesini ve onlara meyvelerden rızık verilmesini; kendisinin ve soyunun namazı dosdoğru kılmasını; hesap gününde kendisinin, anne babasının ve müminlerin bağışlanmasını ister. Arada, ihtiyarlığında kendisine İsmâil'i ve İshâk'ı verdiği için Allah'a hamdeder.",
+      en: "The rest of the same prayer. It opens by saying that the idols have led many people astray: whoever follows him is of him, and whoever disobeys him — Allah is Forgiving, Merciful. Then, having settled some of his descendants in a valley without crops beside the Sacred House, he asks that people's hearts incline toward them and that they be provided with fruits; he affirms that Allah knows what they hide and what they proclaim; and he asks that he and his descendants keep up the prayer, and that he, his parents and the believers be forgiven on the Day of Reckoning. Near the end he thanks Allah for giving him Ismāʿīl and Isḥāq in old age.",
+      tr: "Aynı duanın devamıdır. Putların insanların çoğunu saptırdığını söyleyerek başlar: Kendisine uyan ondandır, isyan edene ise Allah bağışlayan, merhamet edendir. Sonra, soyundan bazılarını Beyt-i Harâm'ın yanında ekin bitmeyen bir vadiye yerleştirmişken, insanların gönüllerinin onlara meyletmesini ve onlara meyvelerden rızık verilmesini ister; Allah'ın gizlediklerini de açığa vurduklarını da bildiğini söyler; kendisinin ve soyunun namazı dosdoğru kılmasını, hesap gününde kendisinin, anne babasının ve müminlerin bağışlanmasını ister. Sona doğru ihtiyarlığında kendisine İsmâil'i ve İshâk'ı verdiği için Allah'a hamdeder.",
     },
     refs: [Q("14:36–41")],
-    jalalayn: true,
   },
 
   "ibrahim-rabbi-hab-li-hukman": {
     occasion: {
       en: "Ibrāhīm makes this supplication after describing his Lord to his father and his people: the One who created him and guides him, feeds him, heals him when he is ill, and will cause him to die and bring him to life. He asks for wisdom; to be joined with the righteous; a good name among later generations; a place among the heirs of the Garden; forgiveness for his father; and not to be disgraced on the Day when neither wealth nor sons avail, but only a sound heart.",
-      tr: "İbrâhim bu duayı, babasına ve kavmine Rabbini anlattıktan sonra eder: kendisini yaratıp yol gösteren, yediren, hastalandığında şifa veren, öldürüp dirilten Rab. Hikmet; salihlere katılmayı; sonrakiler arasında güzel bir anılışı; Naîm cennetinin vârislerinden olmayı; babasının bağışlanmasını; malın da evladın da fayda vermediği, yalnızca selim bir kalbin fayda verdiği günde rezil edilmemeyi ister.",
+      tr: "İbrâhim bu duayı, babasına ve kavmine Rabbini anlattıktan sonra eder: kendisini yaratıp yol gösteren, yediren, hastalandığında şifa veren, öldürüp dirilten Rab. Hikmet verilmesini, salihlere katılmayı, sonrakiler arasında güzel bir anılışı, Naîm cennetinin vârislerinden olmayı, babasının bağışlanmasını ve malın da evladın da fayda vermediği, yalnızca selim bir kalbin fayda verdiği günde rezil edilmemeyi ister.",
     },
     refs: [Q("26:69–89")],
     reflection: {
@@ -188,7 +186,7 @@ export const EDITORIAL: Record<string, Editorial> = {
   "ibrahim-rabbana-alayka-tawakkalna": {
     occasion: {
       en: "The Qurʾān holds up Ibrāhīm and those with him as an example: they told their people they were free of them and of all they worshipped besides Allah. The āyah ends with their supplication of trust. Al-Jalālayn notes the one exception to the example — Ibrāhīm's promise to ask forgiveness for his father, which believers are not to follow for those who disbelieve.",
-      tr: "Kur'ân, İbrâhim'i ve beraberindekileri örnek gösterir: Kavimlerine, onlardan ve Allah'ı bırakıp taptıkları her şeyden uzak olduklarını söylediler. Âyet, onların tevekkül duasıyla biter. Celâleyn bu örnekteki tek istisnaya dikkat çeker: İbrâhim'in babası için bağışlanma dileyeceğine dair sözü; müminler inkâr edenler için bunda ona uymazlar.",
+      tr: "Kur'ân, İbrâhim'i ve beraberindekileri örnek gösterir: Kavimlerine, onlardan ve Allah'ı bırakıp taptıkları her şeyden uzak olduklarını söylediler. Âyet, onların tevekkül duasıyla biter. Celâleyn bu örnekteki tek istisnaya dikkat çeker: İbrâhim'in babası için bağışlanma dileyeceğine dair sözü; müminler inkâr edenler için bunda ona uymamalıdır.",
     },
     refs: [Q("60:4")],
     jalalayn: true,
@@ -227,8 +225,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "yaqub-innama-ashku-baththi": {
     occasion: {
-      en: "Years after losing Yūsuf, and having now lost his youngest son too, Yaʿqūb turned away from his sons, and his eyes went white with grief. When they told him he would grieve himself to death, he answered with this. Al-Jalālayn explains bathth as grief so heavy it cannot be borne without telling someone — and he told it only to Allah.",
-      tr: "Yûsuf'u kaybetmesinin üzerinden yıllar geçmiş, şimdi en küçük oğlunu da kaybetmişti. Ya'kûb oğullarından yüz çevirdi ve gözleri kederden ağardı. Oğulları onun kederden öleceğini söyleyince bu cevabı verdi. Celâleyn “bess”i, insanın birine açmadan taşıyamayacağı ağır keder olarak açıklar; o ise onu yalnızca Allah'a açtı.",
+      en: "Having lost Yūsuf, and now Yūsuf's brother too, held back in Egypt, Yaʿqūb turned away from his sons, and his eyes went white with grief. When they told him he would grieve himself to death, he answered with this. Al-Jalālayn explains bathth as grief so heavy it cannot be borne without telling someone — and he told it only to Allah.",
+      tr: "Yûsuf'tan sonra şimdi onun kardeşini de Mısır'da kaybetmişti. Ya'kûb oğullarından yüz çevirdi ve gözleri kederden ağardı. Oğulları onun kederden öleceğini söyleyince bu cevabı verdi. Celâleyn “bess”i, insanın birine açmadan taşıyamayacağı ağır keder olarak açıklar; o ise onu yalnızca Allah'a açtı.",
     },
     refs: [Q("12:83–86")],
     jalalayn: true,
@@ -324,7 +322,6 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Mûsâ gençliğinde Mısır'da, kendi kavminden biriyle bir Mısırlının kavga ettiğini gördü; Mısırlıya vurdu ve adam öldü. Hemen “Bu Şeytan'ın işidir” dedi ve bu sözlerle bağışlanma diledi. Allah onu bağışladı.",
     },
     refs: [Q("28:15–16")],
-    jalalayn: true,
   },
 
   "musa-rabbi-najjini-mina-al-qawm-al-zalimin": {
@@ -343,8 +340,8 @@ export const EDITORIAL: Record<string, Editorial> = {
     refs: [Q("28:22–25")],
     jalalayn: true,
     reflection: {
-      en: "He does not name what he needs — food, shelter, work, a home. He names his need, and leaves the good to Allah. All of it came.",
-      tr: "Neye ihtiyacı olduğunu —yiyecek, barınak, iş, bir yuva— söylemez. Muhtaç olduğunu söyler, hayrı Allah'a bırakır. Hepsi geldi.",
+      en: "He does not name what he needs — food, shelter, work, a home. He names his need, and leaves the good to Allah. What came next — an invitation, work, a marriage — came without his naming it.",
+      tr: "Neye ihtiyacı olduğunu —yiyecek, barınak, iş, bir yuva— söylemez. Muhtaç olduğunu söyler, hayrı Allah'a bırakır. Ardından gelenler —bir davet, bir iş, bir evlilik— o adını koymadan geldi.",
     },
   },
 
@@ -354,7 +351,6 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Belirlenen buluşmada Rabbi onunla konuştuktan sonra Mûsâ O'nu görmeyi istedi. Kendisine, O'nu göremeyeceği, fakat dağa bakması, dağ yerinde durursa göreceği söylendi. Rabbi dağa tecelli edince dağ paramparça oldu ve Mûsâ baygın düştü.",
     },
     refs: [Q("7:142–143")],
-    jalalayn: true,
   },
 
   "musa-subhanaka-tubtu-ilayk": {
@@ -367,14 +363,14 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "musa-rabbi-ighfir-li-wa-li-akhi": {
     occasion: {
-      en: "Mūsā came back from the appointed meeting to find his people worshipping the calf. He threw down the Tablets and seized his brother by the head, pulling him toward him. Hārūn told him the people had overpowered him and nearly killed him, and asked him not to let enemies gloat. Mūsā then asked forgiveness for himself and his brother — al-Jalālayn says for what he had done to his brother, including Hārūn to set his heart at rest.",
-      tr: "Mûsâ buluşmadan döndüğünde kavmini buzağıya tapar buldu. Levhaları yere bıraktı ve kardeşini başından tutup kendine doğru çekti. Hârûn, kavmin kendisini güçsüz bıraktığını ve neredeyse öldüreceklerini söyledi, düşmanları sevindirmemesini istedi. Mûsâ bunun üzerine kendisi ve kardeşi için bağışlanma diledi; Celâleyn'e göre kardeşine yaptığı için, Hârûn'u da gönlünü almak için duaya katarak.",
+      en: "Mūsā came back from the appointed meeting to find his people worshipping the calf. He threw down the Tablets and seized his brother by the head, pulling him toward him. Hārūn told him the people had deemed him weak and nearly killed him, and asked him not to let enemies gloat. Mūsā then asked forgiveness for himself and his brother — al-Jalālayn says for what he had done to his brother, including Hārūn to set his heart at rest.",
+      tr: "Mûsâ buluşmadan döndüğünde kavmini buzağıya tapar buldu. Levhaları yere attı ve kardeşini başından tutup kendine doğru çekti. Hârûn, kavmin onu hor gördüğünü ve neredeyse öldüreceklerini söyledi, düşmanları sevindirmemesini istedi. Mûsâ bunun üzerine kendisi ve kardeşi için bağışlanma diledi; Celâleyn'e göre kardeşine yaptığı için, Hârûn'u da gönlünü almak için duaya katarak.",
     },
     refs: [Q("7:148–151")],
     jalalayn: true,
     reflection: {
       en: "Anger turned into a prayer for the person it fell on.",
-      tr: "Öfke, onun üzerine düştüğü kişi için bir duaya dönüşür.",
+      tr: "Öfke, yöneldiği kişi için bir duaya dönüşür.",
     },
   },
 
@@ -403,8 +399,8 @@ export const EDITORIAL: Record<string, Editorial> = {
     refs: [Q("10:75–89")],
     jalalayn: true,
     reflection: {
-      en: "Asked by a prophet against a tyrant, on knowledge given to him. It is here so that the record is complete — not as words for a reader to turn against others.",
-      tr: "Bir peygamber tarafından, kendisine verilen bilgiye dayanarak bir zorbaya karşı edilmiştir. Kaydın eksiksiz olması için buradadır; okuyucunun başkalarına karşı kullanması için değil.",
+      en: "Asked by a prophet against a tyrant who had seen clear signs and refused them, and answered by Allah. It is here so that the record is complete — not as words for a reader to turn against others.",
+      tr: "Apaçık mucizeleri görüp reddeden bir zorbaya karşı bir peygamber tarafından edilmiş ve Allah tarafından kabul edilmiştir. Kaydın eksiksiz olması için buradadır; okuyucunun başkalarına karşı kullanması için değil.",
     },
   },
 
@@ -432,8 +428,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "sulayman-rabbi-ighfir-li-wa-hab-li-mulkan": {
     occasion: {
-      en: "Said after Sulaymān was tried — the Qurʾān says a body was placed on his throne, and that he then turned back in repentance. He asked for forgiveness first, and then for a kingdom unlike any after him. Allah gave him the wind and the jinn in his service.",
-      tr: "Süleyman imtihan edildikten sonra söylenmiştir; Kur'ân, tahtına bir ceset bırakıldığını, onun da sonra tövbeyle Allah'a döndüğünü söyler. Önce bağışlanma, sonra kendisinden sonra kimseye nasip olmayacak bir mülk istedi. Allah rüzgârı ve cinleri onun hizmetine verdi.",
+      en: "Said after Sulaymān was tried — the Qurʾān says a body was placed on his throne, and that he then turned back in repentance. He asked for forgiveness first, and then for a kingdom unlike any after him. Allah gave him the wind, and the devils — builders and divers — in his service.",
+      tr: "Süleyman imtihan edildikten sonra söylenmiştir; Kur'ân, tahtına bir ceset bırakıldığını, onun da sonra tövbeyle Allah'a döndüğünü söyler. Önce bağışlanma, sonra kendisinden sonra kimseye nasip olmayacak bir mülk istedi. Allah rüzgârı ve şeytanları —bina ustalarını ve dalgıçları— onun hizmetine verdi.",
     },
     refs: [Q("38:34–38")],
     reflection: {
@@ -454,7 +450,7 @@ export const EDITORIAL: Record<string, Editorial> = {
   "zakariyya-rabbi-inni-wahana-al-azmu-minni": {
     occasion: {
       en: "Zakariyyā called to his Lord in secret. He was old, his wife was barren, and he feared for his kin after him. He asks for an heir who would inherit from him and from the family of Yaʿqūb. The answer was the news of a son named Yaḥyā, a name given to no one before.",
-      tr: "Zekeriyyâ Rabbine gizlice seslendi. Yaşlanmıştı, eşi kısırdı ve kendisinden sonra yakınlarından endişe ediyordu. Kendisine ve Ya'kûb ailesine vâris olacak bir veli ister. Cevap, daha önce kimseye verilmemiş Yahyâ adında bir oğul müjdesi oldu.",
+      tr: "Zekeriyyâ Rabbine gizlice seslendi. Yaşlanmıştı, eşi kısırdı ve kendisinden sonra yakınlarından endişe ediyordu. Kendisine ve Ya'kûb ailesine vâris olacak bir oğul ister. Cevap, daha önce kimseye verilmemiş Yahyâ adında bir oğul müjdesi oldu.",
     },
     refs: [Q("19:2–7")],
     reflection: {
@@ -487,10 +483,9 @@ export const EDITORIAL: Record<string, Editorial> = {
   "isa-allahumma-rabbana-anzil-alayna-maidah": {
     occasion: {
       en: "The disciples asked ʿĪsā whether his Lord could send down a table spread with food from heaven; they wanted to eat from it, to have their hearts reassured, and to be witnesses to it. He made this supplication. Allah answered that He would send it down — and that whoever disbelieved after it would be punished as no one else.",
-      tr: "Havâriler Îsâ'ya, Rabbinin gökten bir sofra indirip indiremeyeceğini sordular; ondan yemek, kalplerinin mutmain olması ve buna şahit olmak istiyorlardı. Îsâ bu duayı etti. Allah onu indireceğini —ve bundan sonra inkâr edene kimseye etmediği bir azapla azap edeceğini— bildirdi.",
+      tr: "Havâriler Îsâ'ya, Rabbinin gökten bir sofra indirip indiremeyeceğini sordular; ondan yemek, kalplerinin mutmain olması ve buna şahit olmak istiyorlardı. Îsâ bu duayı etti. Allah onu indireceğini —ve bundan sonra inkâr edene kimseye etmeyeceği bir azapla azap edeceğini— bildirdi.",
     },
     refs: [Q("5:112–115")],
-    jalalayn: true,
   },
 
   "isa-in-tuadhdhibhum-fa-innahum-ibaduk": {
@@ -499,10 +494,9 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Kıyamet günü Allah Îsâ'ya, insanlara kendisini ve annesini Allah'tan başka iki ilâh edinmelerini söyleyip söylemediğini soracak. Îsâ bunu reddeder, onlara yalnızca Allah'a ibadet etmelerini söylediğini anlatır ve sözünü bununla bitirir — onları tamamen Allah'ın hükmüne bırakır.",
     },
     refs: [Q("5:116–118")],
-    jalalayn: true,
     reflection: {
       en: "He neither condemns them nor excuses them. He hands them back to their Lord.",
-      tr: "Onları ne mahkûm eder ne de mazur gösterir. Onları Rablerine geri bırakır.",
+      tr: "Onları ne mahkûm eder ne de mazur gösterir. Onları Rablerine havale eder.",
     },
   },
 
@@ -517,8 +511,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "muhammad-rabbi-adkhilni-mudkhala-sidq": {
     occasion: {
-      en: "Taught to the Prophet ﷺ in Sūrat al-Isrāʾ, a Meccan sūrah. Al-Jalālayn explains the entrance as into Medina and the departure as from Mecca — a prayer for the Hijrah, given before it.",
-      tr: "Mekke'de inen İsrâ Sûresi'nde Peygamber'e ﷺ öğretilmiştir. Celâleyn girişi Medine'ye, çıkışı Mekke'den olarak açıklar — hicretten önce verilmiş, hicret için bir dua.",
+      en: "Taught to the Prophet ﷺ. Al-Jalālayn explains the entrance as into Medina and the departure as from Mecca.",
+      tr: "Peygamber'e ﷺ öğretilmiştir. Celâleyn girişi Medine'ye, çıkışı Mekke'den olarak açıklar.",
     },
     refs: [Q("17:80")],
     jalalayn: true,
@@ -535,8 +529,8 @@ export const EDITORIAL: Record<string, Editorial> = {
 
   "ashab-al-kahf-rabbana-atina-min-ladunka-rahmah": {
     occasion: {
-      en: "A group of young men, fearing for their faith among a people who worshipped others besides Allah, took refuge in a cave and said this. Allah put them to sleep in the cave for a number of years.",
-      tr: "Allah'tan başkasına tapan bir kavmin arasında inançları için endişe duyan bir grup genç bir mağaraya sığındı ve bunu söyledi. Allah onları mağarada yıllarca uyuttu.",
+      en: "A group of young men took refuge in a cave and said this — fearing for their faith among their disbelieving people, as al-Jalālayn explains. Allah put them to sleep in the cave for a number of years.",
+      tr: "Bir grup genç bir mağaraya sığındı ve bunu söyledi; Celâleyn'in açıkladığına göre inkârcı kavimleri arasında inançları için endişe duyuyorlardı. Allah onları mağarada yıllarca uyuttu.",
     },
     refs: [Q("18:9–16")],
     jalalayn: true,
@@ -550,8 +544,8 @@ export const EDITORIAL: Record<string, Editorial> = {
     refs: [Q("66:11")],
     jalalayn: true,
     reflection: {
-      en: "She lived in a palace and asked for a house — “with You” coming before “in the Garden”.",
-      tr: "Bir sarayda yaşıyordu ve bir ev istedi — “Senin katında” sözü “cennette” sözünden önce gelir.",
+      en: "She was the wife of Pharaoh, and asked for a house — “with You” coming before “in the Garden”.",
+      tr: "Firavun'un karısıydı ve bir ev istedi — “Senin katında” sözü “cennette” sözünden önce gelir.",
     },
   },
 
@@ -578,10 +572,9 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Firavun'un sihirbazları, Mûsâ'nın asasının uydurduklarını yuttuğunu görünce secdeye kapanıp iman ettiler. Firavun ellerini ve ayaklarını çaprazlama kesip hepsini asmakla tehdit etti. Bu, onların ona verdiği cevaptır ve bir duayla biter.",
     },
     refs: [Q("7:113–126")],
-    jalalayn: true,
     reflection: {
       en: "Believers of an hour, facing death, ask for patience and a good end — not for rescue.",
-      tr: "Bir saatlik müminler, ölümle yüz yüzeyken kurtuluş değil, sabır ve güzel bir son isterler.",
+      tr: "Daha yeni iman etmiş olanlar, ölümle yüz yüzeyken kurtuluş değil, sabır ve güzel bir son isterler.",
     },
   },
 
@@ -591,7 +584,6 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "Tâlût'un ordusu ırmağı geçmiş, çoğu ondan içme imtihanında dökülmüştü. Geriye kalanlar Câlût ve ordusunun karşısına çıkınca bunu söylediler. Allah'ın izniyle onları bozguna uğrattılar ve Dâvûd Câlût'u öldürdü.",
     },
     refs: [Q("2:249–251")],
-    jalalayn: true,
   },
 
   "quran-rabbana-la-tuakhidhna": {
@@ -613,19 +605,18 @@ export const EDITORIAL: Record<string, Editorial> = {
       tr: "“İlimde derinleşmiş olanların” duası. Önceki âyet, bazı âyetlerin muhkem, bazılarının müteşâbih olduğunu; kalplerinde eğrilik bulunanların fitne arayarak müteşâbihlerin peşine düştüğünü; ilimde derinleşmiş olanların ise “Ona inandık, hepsi Rabbimizdendir” dediğini bildirir. Ardından bu dua gelir.",
     },
     refs: [Q("3:7–8")],
-    jalalayn: true,
   },
 
   "quran-rabbana-ighfir-lana-dhunubana": {
     occasion: {
-      en: "From the passage on the battle of Uḥud, about the many godly men who fought alongside earlier prophets and did not weaken or give in at what befell them — al-Jalālayn says, even when their prophet had been killed. This was all they said.",
-      tr: "Uhud savaşını anlatan bölümden: önceki peygamberlerle birlikte savaşan ve başlarına gelenler yüzünden gevşemeyen, boyun eğmeyen pek çok Rabbânî kişi anılır; Celâleyn'e göre peygamberleri öldürüldüğünde bile. Söyledikleri yalnızca buydu.",
+      en: "From the passage in Āl ʿImrān after a battle, about the many godly men who fought alongside earlier prophets and did not weaken or give in at what befell them — al-Jalālayn says, even when their prophet had been killed. This was all they said.",
+      tr: "Âl-i İmrân'da bir savaşın ardından gelen bölümden: önceki peygamberlerle birlikte savaşan ve başlarına gelenler yüzünden gevşemeyen, boyun eğmeyen pek çok Rabbânî kişi anılır; Celâleyn'e göre peygamberleri öldürüldüğünde bile. Söyledikleri yalnızca buydu.",
     },
     refs: [Q("3:146–148")],
     jalalayn: true,
     reflection: {
-      en: "In defeat they blame no one but themselves, and ask for firm feet.",
-      tr: "Yenilgide kendilerinden başka kimseyi suçlamaz, ayaklarının sabit kılınmasını isterler.",
+      en: "In hardship they blame no one but themselves, and ask for firm feet.",
+      tr: "Sıkıntı anında kendilerinden başka kimseyi suçlamaz, ayaklarının sabit kılınmasını isterler.",
     },
   },
 

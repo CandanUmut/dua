@@ -112,7 +112,7 @@ const { lang } = Astro.props;
               };
               if (i > 0) li.append(iconBtn(s.mineUp, UP, () => move(-1)));
               if (i < g.items.length - 1) li.append(iconBtn(s.mineDown, DOWN, () => move(1)));
-              li.append(iconBtn(s.mineRemove, X, () => {
+              li.append(iconBtn(fmt("removeItem", { t: pickL(c.t) }), X, () => {
                 if (g.fixed) A.toggleSaved(id); else A.toggleInList(g.id, id);
                 render();
               }));

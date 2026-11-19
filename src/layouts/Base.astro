@@ -15,8 +15,10 @@ interface Props {
   tab?: "today" | "need" | "prophets" | "search" | "mine" | "about";
   /** Set on a duʿāʾ page, so it is recorded in "recently read". */
   duaId?: string;
+  /** Reading mode: no tab bar, so the page is the text and its controls. */
+  reading?: boolean;
 }
-const { lang, title, description, jsonLd, ogType = "article", tab, duaId } = Astro.props;
+const { lang, title, description, jsonLd, ogType = "article", tab, duaId, reading = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
@@ -27,7 +29,7 @@ const ogImage = new URL(`${base}/og-image.png`, Astro.site).href;
 
 const tabs = [
   { id: "today", href: url(lang, "/"), label: t("navToday", lang), icon: "today" },
-  { id: "need", href: url(lang, "/themes/"), label: t("navNeed", lang), icon: "need" },
+  { id: "need", href: url(lang, "/themes/"), label: t("tabNeed", lang), icon: "need" },
   { id: "prophets", href: url(lang, "/prophets/"), label: t("navProphets", lang), icon: "prophets" },
   { id: "search", href: url(lang, "/search/"), label: t("navSearch", lang), icon: "search" },
   { id: "mine", href: url(lang, "/mine/"), label: t("navMine", lang), icon: "mine" },
@@ -88,7 +90,7 @@ const boot = { lang, base };
     <script is:inline defer src={`${base}/strings/${lang}.js`}></script>
     <script is:inline defer src={`${base}/app.js`}></script>
   </head>
-  <body data-dua-id={duaId}>
+  <body data-dua-id={duaId} class:list={[{ reading }]}>
     <a class="skip" href="#main">{t("skip", lang)}</a>
 
     <header class="bar">
@@ -99,7 +101,7 @@ const boot = { lang, base };
         </a>
         <nav class="bar-nav" aria-label="Primary">
           {tabs.slice(1).map((n) => (
-            <a href={n.href} aria-current={tab === n.id ? "page" : undefined}>{n.label}</a>
+            <a href={n.href} aria-current={tab === n.id ? "page" : undefined}>{n.id === "need" ? t("navNeed", lang) : n.label}</a>
           ))}
           <a href={url(lang, "/about/")} aria-current={tab === "about" ? "page" : undefined}>{t("navAbout", lang)}</a>
         </nav>

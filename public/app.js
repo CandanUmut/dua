@@ -209,6 +209,8 @@
       btn.setAttribute("aria-pressed", on ? "true" : "false");
       const lab = $("[data-label]", btn);
       if (lab) lab.textContent = on ? s.actPause : s.actListen;
+      const svg = $("svg", btn);
+      if (svg) svg.innerHTML = on ? '<path d="M8 5v14M16 5v14"/>' : '<path d="M8 5.5v13l10.5-6.5z"/>';
     };
     const next = () => {
       if (i >= ayahs.length) { stop(); return; }
@@ -221,6 +223,15 @@
     player = { stop, btn };
     setBtn(true);
     next();
+  }
+
+  const stopAudio = () => { if (player) player.stop(); };
+
+  /** A figure's honorific in the reader's chosen form, for names built in script. */
+  function hon(h) {
+    if (!h || !h.a) return "";
+    const f = st.honorific === "full" ? h.f[lang] || h.f.en : st.honorific === "abbr" ? h.b : h.a;
+    return f;
   }
 
   /* ---------------------------- share as image ------------------------- */
@@ -294,7 +305,8 @@
     ctx.fillStyle = ink; ctx.font = '600 34px "Source Serif", serif';
     ctx.fillText(pickL(c.t), W / 2, H - M - 92);
     ctx.fillStyle = gilt; ctx.font = '28px "Source Sans", sans-serif';
-    ctx.fillText(`${pickL(c.s)} · ${pickL(c.r)}`.toUpperCase(), W / 2, H - M - 46);
+    // Locale-aware: "SÛRESİ", not "SÛRESI".
+    ctx.fillText(`${pickL(c.s)} · ${pickL(c.r)}`.toLocaleUpperCase(lang === "tr" ? "tr-TR" : "en-GB"), W / 2, H - M - 46);
     ctx.fillStyle = soft; ctx.font = '24px "Source Sans", sans-serif';
     ctx.fillText(`${s.siteName} · candanumut.github.io/dua`, W / 2, H - M);
     return new Promise((res) => cv.toBlob(res, "image/png"));
@@ -376,7 +388,7 @@
   window.DuaApp = {
     lang, base, s, fmt, store, K, toast, cards, pickL, cardUrl, dayIndex,
     saved, isSaved, toggleSaved, lists, setLists, createList, toggleInList, openListSheet,
-    playAyahs, shareCard, makeImage, askPersist,
+    playAyahs, stopAudio, hon, shareCard, makeImage, askPersist,
     settings: () => st,
   };
 

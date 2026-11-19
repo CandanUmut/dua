@@ -246,6 +246,8 @@ export const Tafsir = z.object({
   licence: z.string().min(1),
   text: z.string().min(1),
   url: z.string().url().optional(),
+  /** The āyāt this passage of commentary covers, e.g. "26:117". */
+  covers: z.string().optional(),
   /** "commentary" for a general gloss, "occasion" for asbāb al-nuzūl. */
   kind: z.enum(["commentary", "occasion"]),
 });

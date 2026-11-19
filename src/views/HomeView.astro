@@ -18,7 +18,8 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const pool = dailyPool();
 const all = cards();
-const days = Math.floor((Date.now() - Date.UTC(2024, 0, 1)) / 864e5);
+const now = new Date();
+const days = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(2024, 0, 1)) / 864e5);
 const initial = all.find((c) => c.id === pool[((days * 37) % pool.length + pool.length) % pool.length])!;
 const q = DUAS.filter((d) => d.source.type === "quran").length;
 const h = DUAS.filter((d) => d.source.type === "hadith").length;
@@ -27,6 +28,21 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
 ---
 
 <Base lang={lang} title={t("siteName", lang)} description={t("tagline", lang)} ogType="website" tab="today">
+  {/*
+    The page ships the build day's entry. On any other day, hide the card's
+    text until the right one is in place, so a reader never sees one duʿāʾ
+    and then another. Runs before the card is parsed.
+  */}
+  <script is:inline define:vars={{ pool, initialId: initial.id }}>
+    try {
+      const d = new Date();
+      const days = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2024, 0, 1)) / 864e5);
+      if (pool[((days * 37) % pool.length + pool.length) % pool.length] !== initialId) {
+        document.documentElement.classList.add("today-pending");
+        setTimeout(() => document.documentElement.classList.remove("today-pending"), 4000);
+      }
+    } catch {}
+  </script>
   <p class="today-date" data-today-date>&nbsp;</p>
   <h1 class="hero-title">{t("todayLabel", lang)}</h1>
 
@@ -42,6 +58,15 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
       <button class="btn" type="button" data-today-act="listen" aria-pressed="false" hidden={!initial.q}><Icon name="play" /><span data-label>{t("actListen", lang)}</span></button>
       <button class="btn" type="button" data-today-act="share"><Icon name="share" />{t("actShare", lang)}</button>
     </div>
+  </section>
+
+  <section class="section" data-home-lists-box hidden>
+    <div class="section-head">
+      <h2>{t("homeLists", lang)}</h2>
+      <a href={url(lang, "/mine/")}>{t("navMine", lang)} →</a>
+    </div>
+    <ul class="cards grid-2" data-home-lists></ul>
+    <p class="muted small util" data-home-lists-empty>{t("homeListsEmpty", lang)}</p>
   </section>
 
   <section class="section" data-continue hidden>
@@ -63,15 +88,6 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
         </a>
       ))}
     </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <h2>{t("homeLists", lang)}</h2>
-      <a href={url(lang, "/mine/")}>{t("navMine", lang)} →</a>
-    </div>
-    <ul class="cards grid-2" data-home-lists></ul>
-    <p class="muted small util" data-home-lists-empty>{t("homeListsEmpty", lang)}</p>
   </section>
 
   <section class="section">
@@ -128,7 +144,7 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
       const box = document.querySelector("[data-today]");
       if (c && box) {
         const set = (f, v) => { const x = box.querySelector(`[data-f="${f}"]`); if (x) x.textContent = v; };
-        set("ar", c.ar); set("who", pickL(c.s)); set("title", pickL(c.t)); set("tr", c[lang] || c.en);
+        set("ar", c.ar); set("who", `${pickL(c.s)} ${A.hon(c.h)}`.trim()); set("title", pickL(c.t)); set("tr", c[lang] || c.en);
         box.querySelector(".folio-foot").textContent = pickL(c.r);
         box.querySelector('[data-f="link"]').href = cardUrl(c.id);
         box.querySelector('[data-f="read"]').href = base + (lang === "tr" ? "/tr" : "") + "/read/?ids=" + c.id;
@@ -137,6 +153,7 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
         lb.onclick = () => A.playAyahs(c.au, lb);
         box.querySelector('[data-today-act="share"]').onclick = () => A.shareCard(c);
       }
+      document.documentElement.classList.remove("today-pending");
 
       // Continue: the last three entries opened.
       const recent = A.store.get(A.K.recent, []).slice(0, 3).map((r) => byId.get(r.id)).filter(Boolean);
@@ -172,6 +189,9 @@ const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
         ul.append(li);
       });
       document.querySelector("[data-home-lists-empty]").hidden = items.length > 0;
+      // Shown only once a reader has something saved; a first-time visitor
+      // meets the collection, not an empty box.
+      document.querySelector("[data-home-lists-box]").hidden = items.length === 0;
     });
   </script>
 </Base>

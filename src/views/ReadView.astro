@@ -23,7 +23,7 @@ const groups = {
 void DUAS;
 ---
 
-<Base lang={lang} title={`${t("actRead", lang)} — ${t("siteName", lang)}`} description={t("tagline", lang)}>
+<Base lang={lang} title={`${t("actRead", lang)} — ${t("siteName", lang)}`} description={t("tagline", lang)} reading>
   <div class="reader" data-reader>
     <div class="reader-top">
       <span class="reader-pos" data-pos></span>
@@ -41,9 +41,9 @@ void DUAS;
         <p class="translit" translate="no" data-f="tl"></p>
       </Folio>
       <div class="row memo-tools" data-memo-tools hidden style="justify-content:center">
-        <button class="chip" type="button" data-memo-mode="hide">{t("readerHideAll", lang)}</button>
-        <button class="chip" type="button" data-memo-mode="first">{t("readerFirstLetters", lang)}</button>
-        <button class="chip" type="button" data-memo-mode="show">{t("readerShowAll", lang)}</button>
+        <button class="chip" type="button" data-memo-mode="hide" aria-pressed="true">{t("readerHideAll", lang)}</button>
+        <button class="chip" type="button" data-memo-mode="first" aria-pressed="false">{t("readerFirstLetters", lang)}</button>
+        <button class="chip" type="button" data-memo-mode="show" aria-pressed="false">{t("readerShowAll", lang)}</button>
       </div>
       <p class="memo-hint" data-memo-tools hidden>{t("readerTapHint", lang)}</p>
       <div class="translation" data-tr-box style="margin-inline:auto; text-align:center"><p data-f="tr" lang={lang}></p></div>
@@ -91,19 +91,30 @@ void DUAS;
           // First letter: the first Arabic letter, ignoring diacritics.
           const m = w.match(/[ء-يٱ]/);
           sp.dataset.first = m ? m[0] : "";
-          sp.addEventListener("click", () => { sp.classList.remove("hidden", "hint"); });
+          const reveal = () => {
+            sp.classList.remove("hidden", "hint");
+            sp.removeAttribute("role"); sp.removeAttribute("tabindex"); sp.removeAttribute("aria-label");
+          };
+          sp.addEventListener("click", reveal);
+          sp.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reveal(); } });
           p.append(sp, document.createTextNode(k < c.ar.split(" ").length - 1 ? " " : ""));
         });
       }
       function memoMode(mode) {
         R.querySelectorAll(".w").forEach((w) => {
+          const off = mode === "hide" || mode === "first";
           w.classList.toggle("hidden", mode === "hide");
           w.classList.toggle("hint", mode === "first");
+          // A hidden word is a control: reachable by keyboard, and not read
+          // out by a screen reader until it is revealed.
+          if (off) { w.setAttribute("role", "button"); w.tabIndex = 0; w.setAttribute("aria-label", s.hiddenWord); }
+          else { w.removeAttribute("role"); w.removeAttribute("tabindex"); w.removeAttribute("aria-label"); }
         });
+        R.querySelectorAll("[data-memo-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.memoMode === mode)));
       }
       function render() {
         const c = byId.get(ids[i]);
-        set("who", pickL(c.s));
+        set("who", `${pickL(c.s)} ${A.hon(c.h)}`.trim());
         set("title", pickL(c.t));
         renderArabic(c);
         set("tl", c.tl);
@@ -118,7 +129,7 @@ void DUAS;
         const u = new URL(location.href); u.searchParams.set("i", i); history.replaceState(null, "", u);
         const r = A.store.get(A.K.recent, []).filter((x) => x.id !== c.id); r.unshift({ id: c.id, at: Date.now() }); A.store.set(A.K.recent, r.slice(0, 30));
       }
-      const go = (d) => { const n = i + d; if (n < 0 || n >= ids.length) return; i = n; render(); window.scrollTo({ top: 0 }); };
+      const go = (d) => { const n = i + d; if (n < 0 || n >= ids.length) return; A.stopAudio(); i = n; render(); window.scrollTo({ top: 0 }); };
       $("[data-prev]").onclick = () => go(-1);
       $("[data-next]").onclick = () => go(1);
       addEventListener("keydown", (e) => {
@@ -141,6 +152,10 @@ void DUAS;
         R.classList.toggle("memo", memo);
         R.querySelectorAll("[data-memo-tools]").forEach((x) => (x.hidden = !memo));
         memoMode(memo ? "hide" : "show");
+        // The translation is a crutch while memorising; off by default, back on after.
+        showTr = !memo;
+        $("[data-trans]").setAttribute("aria-pressed", String(showTr));
+        $("[data-tr-box]").hidden = !showTr;
       };
       R.querySelectorAll("[data-memo-mode]").forEach((b) => (b.onclick = () => memoMode(b.dataset.memoMode)));
       $("[data-trans]").onclick = (e) => {

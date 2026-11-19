@@ -10,9 +10,9 @@ Works on your phone; add it to your home screen. After the first visit the
 whole site works offline.
 
 <p>
-  <img src="docs/screenshots/home.png" alt="Home page: what the Prophets said, and what they were facing when they said it" width="250" />
-  <img src="docs/screenshots/by-need.png" alt="I need words for… — sixteen situations to choose from" width="250" />
-  <img src="docs/screenshots/dua.png" alt="The duʿāʾ of Yūnus, with Arabic, transliteration and Pickthall's translation" width="250" />
+  <img src="docs/screenshots/home.png" alt="Today: the duʿāʾ of the day in its gilt frame, with the Hijri date" width="250" />
+  <img src="docs/screenshots/by-need.png" alt="The same page in Turkish" width="250" />
+  <img src="docs/screenshots/dua.png" alt="The duʿāʾ of Yūnus, with the narrative framing of the āyah dimmed" width="250" />
 </p>
 
 ## What you get

@@ -93,11 +93,14 @@ const jsonLd = {
     {dua.tafsir.map((tf) => (
       <section class="prose">
         <details class="fold" open={lang === "en"}>
-          <summary>{t("secCommentary", lang)} — {tf.work}</summary>
+          <summary>{t("secCommentary", lang)} — {tf.work}{tf.covers && <> · {t("tafsirCovers", lang, { r: tf.covers })}</>}</summary>
+          {tf.covers && dua.source.type === "quran" && dua.source.ayat.length > 1 && !tf.covers.includes("–") && (
+            <p class="refs">{t("tafsirFirstOnly", lang)}</p>
+          )}
           {lang === "tr" && <p class="refs">{t("commentaryEnglishOnly", lang)}</p>}
           <blockquote class="tafsir" lang="en"><p>{tf.text}</p></blockquote>
           <p class="refs">
-            {tf.work}, {tf.author}. {t("tafsirCite", lang, { t: tf.translator })}
+            {tf.work}, {lang === "tr" ? tf.author.replace(/ and /g, " ve ") : tf.author}. {t("tafsirCite", lang, { t: tf.translator })}
             {tf.url && <> <a href={tf.url} rel="noreferrer">altafsir.com</a></>}
           </p>
         </details>

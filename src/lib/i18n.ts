@@ -29,7 +29,8 @@ export const UI = {
   navDay: { en: "Through the day", tr: "Gün boyu" },
   navProphets: { en: "Prophets", tr: "Peygamberler" },
   navSearch: { en: "Search", tr: "Ara" },
-  navMine: { en: "Mine", tr: "Benim" },
+  navMine: { en: "Mine", tr: "Listelerim" },
+  tabNeed: { en: "By need", tr: "İhtiyaç" },
   navAbout: { en: "About", tr: "Hakkında" },
   navSettings: { en: "Settings", tr: "Ayarlar" },
   skip: { en: "Skip to content", tr: "İçeriğe geç" },
@@ -65,6 +66,7 @@ export const UI = {
   "moment-morning-evening": { en: "Morning and evening", tr: "Sabah ve akşam" },
   "moment-leaving-home": { en: "Leaving the house", tr: "Evden çıkarken" },
   "moment-mosque": { en: "At the mosque", tr: "Mescitte" },
+  "moment-in-prayer": { en: "In the prayer", tr: "Namazda" },
   "moment-after-prayer": { en: "After the prayer", tr: "Namazdan sonra" },
   "moment-eating": { en: "After eating", tr: "Yemekten sonra" },
   "moment-travel": { en: "Travelling", tr: "Yolculukta" },
@@ -94,6 +96,11 @@ export const UI = {
     tr: "Bu tefsirin yalnızca İngilizce çevirisi bulunduğu için İngilizce verilmiştir.",
   },
   tafsirCite: { en: "Translated by {t}.", tr: "Çeviri: {t}." },
+  tafsirCovers: { en: "on {r}", tr: "{r} hakkında" },
+  tafsirFirstOnly: {
+    en: "Commentary on the first āyah of this passage only.",
+    tr: "Yalnızca bu pasajın ilk âyeti hakkındaki tefsirdir.",
+  },
   secSource: { en: "Source", tr: "Kaynak" },
   secGrading: { en: "Grading", tr: "Derece" },
   secExtent: { en: "Extent", tr: "Kapsam" },
@@ -158,7 +165,9 @@ export const UI = {
   readerOpen: { en: "Open full page", tr: "Sayfasını aç" },
 
   /* mine */
-  mineTitle: { en: "Mine", tr: "Benim" },
+  mineTitle: { en: "Mine", tr: "Listelerim" },
+  removeItem: { en: "Remove “{t}”", tr: "“{t}” öğesini çıkar" },
+  hiddenWord: { en: "Hidden word — reveal", tr: "Gizli kelime — göster" },
   mineLede: {
     en: "Everything here stays on this device. Nothing is sent anywhere.",
     tr: "Buradaki her şey bu cihazda kalır. Hiçbir yere gönderilmez.",

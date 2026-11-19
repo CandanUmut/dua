@@ -269,5 +269,9 @@ console.error(`✓ content/generated/site.json`);
 function buildTafsir(id: string) {
   const e = tafsirFile.entries[id];
   if (!e?.jalalayn || e.jalalayn.length <= 40) return [];
-  return [{ ...tafsirFile.sources.jalalayn, text: e.jalalayn, kind: "commentary" }];
+  // Older fetches stored only the first āyah of a range; say so rather than
+  // let a reader take it for commentary on the whole passage.
+  const seed = DUA_SEEDS.find((s) => s.id === id)!;
+  const first = `${seed.ayat[0].surah}:${seed.ayat[0].ayah}`;
+  return [{ ...tafsirFile.sources.jalalayn, text: e.jalalayn, kind: "commentary", covers: e.covers ?? first }];
 }

@@ -54,7 +54,7 @@ const DIACRITICS = new Set([
 const SUN_LETTERS = new Set(["ت","ث","د","ذ","ر","ز","س","ش","ص","ض","ط","ظ","ل","ن"]);
 
 /** Transliterate a single word. */
-function word(w: string): string {
+function word(w: string, uthmani = true): string {
   const chars = [...w];
   let out = "";
 
@@ -84,13 +84,20 @@ function word(w: string): string {
     chars[2] !== DAGGER_ALIF
   ) {
     let k = 2;
+    // Before an alif waṣla the wāw/fāʾ is always the conjunction: وَٱغْفِرْ
+    // is wa-ghfir, the same as the ḥadīth's وَاغْفِرْ.
+    const beforeWasla = chars[2] === "ٱ" || (!uthmani && chars[2] === "ا" && chars[3] !== FATHA);
+    // In Uthmani spelling a bare alif straight after the fatḥa is a long ā of
+    // the root — فَاطِرَ is fāṭira, not fa-ṭira; the conjunction before a
+    // hamzated word is written أ / إ instead.
+    const rootLongA = uthmani && chars[2] === "ا";
     while (k < chars.length && chars[k] === "ٱ") k++;
     const followingMarks: string[] = [];
     let m = k + 1;
     while (m < chars.length && DIACRITICS.has(chars[m])) { followingMarks.push(chars[m]); m++; }
     const clusterStart =
       followingMarks.includes(SUKUN) || followingMarks.includes(SHADDA);
-    if (!clusterStart) {
+    if (beforeWasla || (!clusterStart && !rootLongA)) {
       out += (chars[0] === "و" ? "wa" : "fa") + "-";
       start = 2;
     }
@@ -98,7 +105,8 @@ function word(w: string): string {
 
   // Word-initial alif waṣla takes a helping vowel when the letter after it is
   // vowelless: ٱشْرَحْ is ishraḥ, not shraḥ.
-  if (chars[start] === "ٱ") {
+  // After a prefix the waṣla is elided, not voiced: wa-jʿal, not wa-ijʿal.
+  if (chars[start] === "ٱ" && start === 0) {
     let k = start + 1;
     while (k < chars.length && DIACRITICS.has(chars[k])) k++;
     let m = k + 1;
@@ -185,6 +193,14 @@ function word(w: string): string {
       if (short || tanwin || marks.includes(SUKUN)) resolved = "y";
     }
 
+    // Uthmani writes some long ā vowels as a wāw carrying a dagger alif —
+    // صَلَوٰة is ṣalāh, حَيَوٰة is ḥayāh. After a short a the wāw is silent and
+    // the vowel is long. (After a long ā, as in سَمَٰوَٰت, it is a real wāw.)
+    if (c === "و" && dagger && !short && !tanwin && out.endsWith("a") && i > start) {
+      out = out.slice(0, -1) + "ā";
+      continue;
+    }
+
     let emitted = resolved;
     if (shadda && resolved) emitted = resolved + resolved;
 
@@ -245,8 +261,26 @@ function word(w: string): string {
   return out;
 }
 
-export function transliterate(arabic: string): string {
-  const words = arabic.split(" ").map(word).filter((w) => w.length > 0);
+/**
+ * Words in this corpus whose opening wāw or fāʾ is a root letter, not the
+ * conjunction, where the spelling alone cannot tell them apart. Reviewed by
+ * hand against every "wa-"/"fa-" split the rule produces; a new entry must be
+ * checked the same way (the critic flags these).
+ */
+const ROOT_WF = /^(?:faqīr\S*|faʿala|wahana|wahaba|waliyy\S*|warathat\S*|warāʾī)$/u;
+
+export function transliterate(arabic: string, uthmani = true): string {
+  // A hamza carried on a tatweel (أَسْـَٔلَكَ) is a full hamza with its vowel;
+  // read as a mark it vanishes and gives "ʾasalaka".
+  const pre = arabic.replace(/\u0640([\u064B-\u0650]?)\u0654([\u064B-\u0650]?)/g, "\u0621$1$2");
+  const words = pre
+    .split(" ")
+    .map((w) => {
+      const out = word(w, uthmani);
+      const joined = out.replace(/^(wa|fa)-/, "$1");
+      return ROOT_WF.test(joined) ? joined : out;
+    })
+    .filter((w) => w.length > 0);
   let s = words.join(" ");
   // Collapse triple letters to a geminate. These arise where a prefix ends in
   // the same consonant the article assimilates to — بِٱللَّهِ producing
@@ -260,7 +294,17 @@ export function transliterate(arabic: string): string {
   s = s
     .replace(/(^|[\s-])al-lah(umma|u|i|a)(?=\s|$)/gi, (_, pre, end) => `${pre}${pre === "-" ? "" : ""}Allāh${end}`)
     .replace(/\b(li|bi)llahi\b/g, "$1llāhi")
-    .replace(/ʾilaha\b/g, "ʾilāha");
+    .replace(/ʾilaha\b/g, "ʾilāha")
+    // bi-/li- + article before a sun letter: biṣ-ṣāliḥīna, bir-raḥmāni.
+    .replace(/(^|\s)(bi|li)l(th|dh|sh|ṣ|ḍ|ṭ|ẓ|t|d|r|z|s|n)\3/g, "$1$2$3-$3")
+    // The article after the conjunction is written out, as in ALA-LC: wa-al-.
+    .replace(/(^|\s)(wa|fa)l(?=[^aiuāīū\s-])/g, "$1$2-al-")
+    // Imlāʾī spellings without the long vowel written.
+    .replace(/(^|[\s-])hadh(ā|ihi)(?=\s|$)/g, "$1hādh$2")
+    .replace(/samawāt/g, "samāwāt")
+    // ALA-LC does not mark a word-initial hamza.
+    .replace(/(^|[\s-])ʾ(?=[aiuāīū])/g, "$1");
+  s = pausal(s);
   // Capitalise the opening letter of the line.
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
@@ -275,5 +319,21 @@ export function transliterate(arabic: string): string {
  */
 export function transliterateImlaei(arabic: string): string {
   const fixed = arabic.replace(/لا([ّ]?)([َ])([ّ]?)/g, "ل$1$3$2ا");
-  return transliterate(fixed);
+  return transliterate(fixed, false);
+}
+
+/**
+ * The pausal form of the last word: a reader stops at the end of the line, so
+ * the final case vowel is not said — al-khāsirīna is read al-khāsirīn, a final
+ * tanwīn fatḥ becomes a long ā, and a final tāʾ marbūṭa becomes h.
+ */
+function pausal(line: string): string {
+  const m = /(\S+)$/.exec(line);
+  if (!m) return line;
+  let w = m[1];
+  if (/at(?:an|un|in|a|u|i)$/.test(w)) w = w.replace(/at(?:an|un|in|a|u|i)$/, "ah");
+  else if (/[^aāiīuū]an$/.test(w)) w = w.replace(/an$/, "ā");
+  else if (/[^aāiīuū](?:un|in)$/.test(w)) w = w.slice(0, -2);
+  else if (/[^aiuāīū\s-][aiu]$/.test(w)) w = w.slice(0, -1);
+  return line.slice(0, m.index) + w;
 }

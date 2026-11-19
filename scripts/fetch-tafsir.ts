@@ -120,9 +120,15 @@ async function assertDistinct(surah: number, ayah: number): Promise<void> {
 const out: Record<string, { jalalayn: string; ref: string }> = {};
 
 for (const seed of DUA_SEEDS) {
-  const { surah, ayah } = seed.ayat[0];
-  const jalalayn = await fetchOne(TAFSIRS.jalalayn.slug, surah, ayah);
-  out[seed.id] = { jalalayn, ref: formatRef(seed.ayat) };
+  // Every āyah of the entry, not only the first: an occasion that cites
+  // al-Jalālayn for 14:37 must be able to show al-Jalālayn on 14:37.
+  const parts: string[] = [];
+  for (const { surah, ayah } of seed.ayat) {
+    const t = await fetchOne(TAFSIRS.jalalayn.slug, surah, ayah);
+    if (t) parts.push(t);
+  }
+  const jalalayn = parts.join(" … ");
+  out[seed.id] = { jalalayn, ref: formatRef(seed.ayat), covers: formatRef(seed.ayat) } as any;
   process.stderr.write(`  ${seed.id.padEnd(44)} ${String(jalalayn.length).padStart(5)} chars\n`);
 }
 

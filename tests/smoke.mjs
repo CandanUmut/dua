@@ -172,6 +172,30 @@ await step("calendar reminder", async () => {
   if (!/RRULE:FREQ=DAILY/.test(ics) || !/SUMMARY:Günün duası/.test(ics)) throw new Error("ics missing daily rule or Turkish title");
 });
 
+await step("larger text on a small phone", async () => {
+  const small = await browser.newContext({ viewport: { width: 360, height: 740 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true, serviceWorkers: "block" });
+  const p2 = await small.newPage();
+  await p2.addInitScript(() => localStorage.setItem("dua.settings", JSON.stringify({ type: "xlarge", uilang: "en" })));
+  for (const u of ["/dua/?lang=en", "/dua/tr/", "/dua/duas/muhammad-istikhara/", "/dua/tr/read/?prophet=musa"]) {
+    await p2.goto(ORIGIN + u);
+    const r = await p2.evaluate(() => {
+      const b = document.querySelector("[data-open-settings]").getBoundingClientRect();
+      return { sw: document.documentElement.scrollWidth, W: document.documentElement.clientWidth, right: b.right };
+    });
+    if (r.sw > r.W + 1) throw new Error(`${u}: sideways scroll at Larger (${r.sw} > ${r.W})`);
+    if (r.right > r.W + 1) throw new Error(`${u}: Settings button off screen at Larger`);
+  }
+  await small.close();
+});
+
+await step("memorise hides the transliteration", async () => {
+  await page.goto(ORIGIN + "/dua/read/?ids=yunus-la-ilaha-illa-anta");
+  await page.waitForSelector('[data-f="ar"] .w');
+  await page.click("[data-memo]");
+  const vis = await page.$eval(".translit", (e) => getComputedStyle(e).visibility);
+  if (vis !== "hidden") throw new Error("transliteration still visible in memorise mode");
+});
+
 await browser.close();
 server.close();
 
@@ -180,4 +204,4 @@ if (failures.length) {
   for (const f of failures.slice(0, 60)) console.error(`  ${f}`);
   process.exit(1);
 }
-console.error(`✓ ${pages.length} pages and 7 features pass on a phone viewport`);
+console.error(`✓ ${pages.length} pages and 9 features pass on a phone viewport`);

@@ -20,9 +20,11 @@
  * grading. For the Sunan, the grade is read from the dataset (al-Albānī's), not
  * typed here, and the build fails if it is weaker than ḥasan.
  *
- * Translations: the Turkish of the five original entries is Umut Candan's.
- * Every other translation here is a project translation and renders as
- * "not yet reviewed" until `reviewed` is set for that language.
+ * Translations: all are the project's own. The Turkish of the five original
+ * entries began as Umut Candan's and was revised where meaning had been
+ * dropped (the critic's review: «مغفرة من عندك», hamm as anxiety), so it too
+ * awaits his review. Each renders as "not yet reviewed" until `reviewed` is
+ * set for that language.
  *
  * `moments` differ from `situations`: a moment is stated by the narration
  * itself ("when he went to his bed"), so it is sourced; a situation is the
@@ -36,6 +38,7 @@ export const MOMENTS = [
   "morning-evening",
   "leaving-home",
   "mosque",
+  "in-prayer",
   "after-prayer",
   "eating",
   "travel",
@@ -88,7 +91,7 @@ export const HADITH_SEEDS: HadithSeed[] = [
       tr: "Ebû Bekir es-Sıddîk, Peygamber'den ﷺ namazında okuyacağı bir dua öğretmesini istedi; o da ona bu kelimeleri öğretti. Buhârî bunu 834 numarada da kaydeder.",
     },
     themes: ["forgiveness"],
-    moments: ["after-prayer"],
+    moments: ["in-prayer"],
     situations: {
       en: ["in prayer, before the closing salām", "after a wrong you cannot undo"],
       tr: ["namazda, selâmdan önce", "geri alamayacağınız bir yanlıştan sonra"],
@@ -109,11 +112,11 @@ export const HADITH_SEEDS: HadithSeed[] = [
       tr: "Ebû Hüreyre'nin rivayetine göre Resûlullah ﷺ şöyle buyurdu: Biriniz teşehhüdü okuduğunda dört şeyden Allah'a sığınsın — ve bu kelimeleri öğretti.",
     },
     themes: ["protection", "hereafter"],
-    moments: ["after-prayer"],
+    moments: ["in-prayer"],
     form: "istiadha",
     situations: {
-      en: ["at the end of every prayer", "when you think of death and what follows it"],
-      tr: ["her namazın sonunda", "ölümü ve sonrasını düşündüğünüzde"],
+      en: ["after the tashahhud, before the salām", "when you think of death and what follows it"],
+      tr: ["teşehhüdden sonra, selâmdan önce", "ölümü ve sonrasını düşündüğünüzde"],
     },
   },
   {
@@ -252,7 +255,7 @@ export const HADITH_SEEDS: HadithSeed[] = [
     },
     context: {
       en: "Anas ibn Mālik reports that the Prophet ﷺ said: when a man leaves his house and says this, it is said to him, “You are guided, you are sufficed, and you are protected,” and the devils turn away from him.",
-      tr: "Enes b. Mâlik'in rivayetine göre Peygamber ﷺ şöyle buyurdu: Kişi evinden çıkarken bunu söylerse ona “Hidayete erdirildin, sana yetildi ve korundun” denir ve şeytanlar ondan uzaklaşır.",
+      tr: "Enes b. Mâlik'in rivayetine göre Peygamber ﷺ şöyle buyurdu: Kişi evinden çıkarken bunu söylerse ona “Doğru yola iletildin, ihtiyacın karşılandı ve korundun” denir ve şeytanlar ondan uzaklaşır.",
     },
     themes: ["protection"],
     moments: ["leaving-home"],
@@ -362,7 +365,7 @@ export const HADITH_SEEDS: HadithSeed[] = [
     excerpt: { fromWord: 43, toWord: 98 },
     translations: {
       en: "Glory be to the One who has made this subservient to us, for we could never have done it ourselves, and to our Lord we shall surely return. O Allah, on this journey of ours we ask You for righteousness and piety, and for deeds that please You. O Allah, make this journey easy for us and fold up its distance for us. O Allah, You are the Companion on the journey and the One who watches over the family. O Allah, I seek refuge in You from the hardship of travel, from a distressing sight, and from an ill return to wealth and family.",
-      tr: "Bunu bizim hizmetimize veren Allah'ın şanı yücedir; yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz. Allah'ım! Bu yolculuğumuzda Senden iyilik ve takva, razı olacağın ameller isteriz. Allah'ım! Bu yolculuğu bize kolaylaştır, uzaklığını bize yakın kıl. Allah'ım! Yolculukta yoldaş, geride kalan ailede gözeten Sensin. Allah'ım! Yolculuğun sıkıntısından, üzücü bir manzaradan, malda ve ailede kötü bir dönüşten Sana sığınırım.",
+      tr: "Bunu bizim hizmetimize veren Allah'ın şanı yücedir; yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz. Allah'ım! Bu yolculuğumuzda Senden iyilik ve takva, razı olacağın ameller isteriz. Allah'ım! Bu yolculuğu bize kolaylaştır, uzaklığını bize yakın kıl. Allah'ım! Yolculukta yoldaş, geride kalan ailede gözeten Sensin. Allah'ım! Yolculuğun sıkıntısından, üzücü bir manzaradan, dönüşte malda ve ailede kötü bir hâlle karşılaşmaktan Sana sığınırım.",
     },
     context: {
       en: "Ibn ʿUmar taught that when the Messenger of Allah ﷺ mounted his camel to set out on a journey, he would say “Allāhu akbar” three times and then say this. Its opening words are the Qurʾān's own (43:13–14). On his return he said the same, adding: “Returning, repenting, worshipping, and praising our Lord.”",
@@ -385,8 +388,8 @@ export const HADITH_SEEDS: HadithSeed[] = [
       tr: "(Allah'ım, bunu) faydalı bir yağmur (kıl).",
     },
     context: {
-      en: "ʿĀʾishah reports that when the Messenger of Allah ﷺ saw rain he would say this. The words in brackets are implied by the Arabic, which is two words long.",
-      tr: "Âişe, Resûlullah'ın ﷺ yağmur gördüğünde bunu söylediğini rivayet eder. Parantez içindeki kelimeler, iki kelimeden ibaret olan Arapça ifadede örtük olarak bulunur.",
+      en: "ʿĀʾishah reports that when the Messenger of Allah ﷺ saw rain he would say this. Some printed editions begin it with “O Allah”; the words in brackets complete the sense.",
+      tr: "Âişe, Resûlullah'ın ﷺ yağmur gördüğünde bunu söylediğini rivayet eder. Bazı basılı nüshalar sözü “Allah'ım” diye başlatır; parantez içindeki kelimeler anlamı tamamlar.",
     },
     themes: ["gratitude", "provision"],
     moments: ["rain"],
@@ -481,7 +484,7 @@ export const HADITH_SEEDS: HadithSeed[] = [
     ref: { book: "muslim", datasetNumber: 6944, number: 2739 },
     excerpt: { fromWord: 40, toWord: 53 },
     translations: {
-      en: "O Allah, I seek refuge in You from the passing of Your blessing, from the changing of the wellbeing You have given, from the suddenness of Your punishment, and from all that displeases You.",
+      en: "O Allah, I seek refuge in You from the passing of Your blessing, from the changing of the wellbeing You have given, from the suddenness of Your punishment, and from all Your displeasure.",
       tr: "Allah'ım! Nimetinin yok olmasından, verdiğin afiyetin değişmesinden, azabının ansızın gelmesinden ve her türlü gazabından Sana sığınırım.",
     },
     context: {
@@ -510,8 +513,8 @@ export const HADITH_SEEDS: HadithSeed[] = [
     },
     themes: ["steadfastness", "guidance"],
     situations: {
-      en: ["when your faith feels thin", "the duʿāʾ he said most often"],
-      tr: ["imanınız zayıfladığını hissettiğinizde", "en sık ettiği dua olarak"],
+      en: ["when your faith feels thin", "when you fear your heart changing"],
+      tr: ["imanınızın zayıfladığını hissettiğinizde", "kalbinizin değişmesinden korktuğunuzda"],
     },
   },
   {
@@ -524,8 +527,8 @@ export const HADITH_SEEDS: HadithSeed[] = [
       tr: "Allah'ım! İlminle Senden hayır diliyorum, kudretinle Senden güç istiyorum ve büyük lütfundan Senden istiyorum. Çünkü Sen güç yetirirsin, ben yetiremem; Sen bilirsin, ben bilemem; gaybları bilen Sensin. Allah'ım! Eğer bu işin dinim, geçimim ve işimin sonu bakımından —ya da şöyle dedi: işimin şimdisi ve sonrası bakımından— benim için hayırlı olduğunu biliyorsan onu bana takdir et. Eğer bu işin dinim, geçimim ve işimin sonu bakımından —ya da şöyle dedi: işimin şimdisi ve sonrası bakımından— benim için kötü olduğunu biliyorsan onu benden, beni de ondan uzaklaştır; hayır nerede ise onu bana takdir et, sonra beni ona razı kıl.",
     },
     context: {
-      en: "Jābir reports that the Prophet ﷺ taught them istikhārah in all their affairs as he taught them a sūrah of the Qurʾān: when one of you intends something, let him pray two rakʿahs and then say this — naming his matter where it says “this matter”. The “or he said” is the narrator recording both wordings he heard.",
-      tr: "Câbir'in rivayetine göre Peygamber ﷺ onlara bütün işlerinde istihâreyi, Kur'ân'dan bir sûre öğretir gibi öğretirdi: Biriniz bir işe niyet ettiğinde iki rekât namaz kılsın, sonra bunu söylesin ve “bu iş” dediği yerde kendi işini ansın. “Ya da şöyle dedi” ifadesi, râvinin duyduğu iki lafzı birlikte kaydetmesidir.",
+      en: "Jābir reports that the Prophet ﷺ taught them istikhārah in all their affairs as he taught them a sūrah of the Qurʾān: when one of you intends something, let him pray two rakʿahs and then say this — naming his matter where it says “this matter”. “Or he said” marks the narrator's uncertainty over which of the two wordings was used.",
+      tr: "Câbir'in rivayetine göre Peygamber ﷺ onlara bütün işlerinde istihâreyi, Kur'ân'dan bir sûre öğretir gibi öğretirdi: Biriniz bir işe niyet ettiğinde iki rekât namaz kılsın, sonra bunu söylesin ve “bu iş” dediği yerde kendi işini ansın. “Ya da şöyle dedi” ifadesi, râvinin iki lafızdan hangisinin söylendiğinden emin olmadığını gösterir.",
     },
     themes: ["guidance"],
     situations: {
