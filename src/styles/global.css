@@ -532,6 +532,7 @@ details.fold[open] summary::after { content: "–"; }
   display: inline-flex; align-items: center; text-decoration: none; color: var(--ink);
 }
 .chip:hover { background: var(--paper-sunk); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 /* -------------------------------- sheets ------------------------------ */
 
@@ -578,7 +579,8 @@ input[type="time"] { min-height: var(--tap); padding: 0 var(--s-3); border: 1px 
 
 .reader { display: flex; flex-direction: column; }
 .reader-top { display: flex; align-items: center; gap: var(--s-2); justify-content: space-between; }
-.reader-pos { font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); }
+.reader-top { flex-wrap: wrap; }
+.reader-pos { white-space: nowrap; font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); }
 .reader-body { flex: 1; touch-action: pan-y; }
 .reader .arabic { font-size: calc(var(--ar-size) * 1.15); }
 .reader h1 { font-size: var(--t-lg); text-align: center; margin-top: var(--s-4); }
@@ -595,7 +597,7 @@ input[type="time"] { min-height: var(--tap); padding: 0 var(--s-3); border: 1px 
 .memo .w.hidden { color: transparent; background: var(--paper-sunk); cursor: pointer; }
 .memo .w.hint { color: transparent; background: var(--paper-sunk); cursor: pointer; position: relative; }
 .memo .w.hint::before { content: attr(data-first); position: absolute; right: .1em; color: var(--ink-faint); }
-.memo .translit { visibility: hidden; }
+.memo .translit { display: none; }
 .memo .w.hidden:focus-visible, .memo .w.hint:focus-visible { outline: 2px solid var(--lapis); }
 .memo-hint { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); text-align: center; }
 

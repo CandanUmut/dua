@@ -99,7 +99,7 @@ const boot = { lang, base };
           <Mark size={28} />
           <span>{t("siteName", lang)}</span>
         </a>
-        <nav class="bar-nav" aria-label="Primary">
+        <nav class="bar-nav" aria-label={t("navPrimary", lang)}>
           {tabs.slice(1).map((n) => (
             <a href={n.href} aria-current={tab === n.id ? "page" : undefined}>{n.id === "need" ? t("navNeed", lang) : n.label}</a>
           ))}
@@ -137,7 +137,7 @@ const boot = { lang, base };
       </div>
     </footer>
 
-    <nav class="tabs" aria-label="Primary">
+    <nav class="tabs" aria-label={t("navPrimary", lang)}>
       <ul>
         {tabs.map((n) => (
           <li>

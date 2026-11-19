@@ -192,8 +192,11 @@ await step("memorise hides the transliteration", async () => {
   await page.goto(ORIGIN + "/dua/read/?ids=yunus-la-ilaha-illa-anta");
   await page.waitForSelector('[data-f="ar"] .w');
   await page.click("[data-memo]");
-  const vis = await page.$eval(".translit", (e) => getComputedStyle(e).visibility);
-  if (vis !== "hidden") throw new Error("transliteration still visible in memorise mode");
+  const shown = await page.$eval(".translit", (e) => {
+    const c = getComputedStyle(e);
+    return c.display !== "none" && c.visibility !== "hidden";
+  });
+  if (shown) throw new Error("transliteration still visible in memorise mode");
 });
 
 await browser.close();

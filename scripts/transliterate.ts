@@ -225,6 +225,10 @@ function word(w: string, uthmani = true): string {
 
     if (short) {
       const v = SHORT[short];
+      // Uthmani's small yāʾ / small wāw after the vowel lengthen it: وَلِىِّۦ is
+      // waliyyī ("my guardian"), not waliyyi ("a guardian").
+      if (v === "i" && marks.includes("\u06E6")) { out += "ī"; continue; }
+      if (v === "u" && marks.includes("\u06E5")) { out += "ū"; continue; }
       // check for a following long-vowel carrier
       // A fatḥa followed by a bare alif OR a bare alif maqṣūra is the long ā.
       // Both carriers must be handled here: doing ى later instead yields
@@ -305,6 +309,8 @@ export function transliterate(arabic: string, uthmani = true): string {
     // ALA-LC does not mark a word-initial hamza.
     .replace(/(^|[\s-])ʾ(?=[aiuāīū])/g, "$1");
   s = pausal(s);
+  // Non-breaking hyphens, so a line never breaks between wa- and its word.
+  s = s.replace(/-/g, "\u2011");
   // Capitalise the opening letter of the line.
   return s.charAt(0).toUpperCase() + s.slice(1);
 }

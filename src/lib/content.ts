@@ -136,6 +136,7 @@ export function normalise(s: string): string {
     .replace(/[̀-ͯ]/g, "")
     .replace(/[ʿʾ'’‘`]/g, "")
     .replace(/ı/g, "i")
+    .replace(/\u2011/g, "-")
     .toLowerCase()
     .trim();
 }

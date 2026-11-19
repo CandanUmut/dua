@@ -34,6 +34,12 @@ export const UI = {
   navAbout: { en: "About", tr: "Hakkında" },
   navSettings: { en: "Settings", tr: "Ayarlar" },
   skip: { en: "Skip to content", tr: "İçeriğe geç" },
+  navPrimary: { en: "Primary", tr: "Ana gezinme" },
+  jalalaynName: { en: "Tafsīr al-Jalālayn", tr: "Celâleyn Tefsiri" },
+  tafsirInterleaved: {
+    en: "In this translation the words of the āyah and the commentators' additions run together.",
+    tr: "Bu çeviride âyetin kelimeleri ile müfessirlerin eklemeleri iç içe yazılmıştır.",
+  },
   otherLang: { en: "Türkçe", tr: "English" },
   otherLangLabel: { en: "Bu sayfayı Türkçe aç", tr: "Open this page in English" },
 

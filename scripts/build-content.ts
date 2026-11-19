@@ -70,6 +70,14 @@ const PROJECT = (reviewed: boolean | undefined) => ({
   ...(reviewed ? { reviewedBy: "Umut Candan" } : { draft: true }),
 });
 
+/**
+ * Typos in the upstream Elmalılı text, corrected here rather than in the
+ * fetched file so the fix is visible and the source stays as fetched. Each is
+ * an obvious keying error, not an editorial change to the translation.
+ */
+const TR_TYPOS: [string, string][] = [["içimizdekio beyinsizlerin", "içimizdeki beyinsizlerin"]];
+const fixTr = (s: string) => TR_TYPOS.reduce((t, [a, b]) => t.replaceAll(a, b), s ?? "");
+
 const problems: string[] = [];
 const duas: unknown[] = [];
 
@@ -119,7 +127,7 @@ for (const seed of DUA_SEEDS) {
       // Verbatim. Pickthall's parenthetical glosses stay in: editing a
       // translation while crediting the translator misattributes it.
       { lang: "en", text: ar.translations["en.pickthall"], ...PICKTHALL },
-      { lang: "tr", text: ar.translations["tr.yazir"], ...ELMALILI },
+      { lang: "tr", text: fixTr(ar.translations["tr.yazir"]), ...ELMALILI },
     ],
     context: {
       summary: ed?.occasion ?? { en: "", tr: "" },
