@@ -197,6 +197,13 @@ export const Translation = z.object({
    * attributed work like Pickthall's or Elmalılı's.
    */
   draft: z.boolean().optional(),
+  /**
+   * True for translations this project made rather than a published edition.
+   * The page credits these as "project translation" with no personal name —
+   * a name over every block read as a byline on the duʿāʾ itself. The
+   * translator is still recorded here and credited on the About page.
+   */
+  project: z.boolean().optional(),
   source: z.string().url().optional(),
 });
 export type Translation = z.infer<typeof Translation>;
@@ -210,7 +217,11 @@ export type Translation = z.infer<typeof Translation>;
  * and the one users actually come for. Requires citations.
  */
 export const Context = z.object({
-  summary: z.string().min(1),
+  /**
+   * Empty when no occasion has been written yet. The page then omits the
+   * section rather than printing a "not yet written" placeholder to readers.
+   */
+  summary: z.string(),
   references: z.array(Citation).min(1),
 });
 

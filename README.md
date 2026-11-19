@@ -64,8 +64,9 @@ npm run check:arabic      # no Arabic typed into templates
 To add or correct an entry, read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 More background: [DESIGN.md](DESIGN.md) (type, colour and layout decisions),
-[INVENTORY.md](INVENTORY.md) (the content schema and the verified list) and
-[AUDIT.md](AUDIT.md) (the audit of the earlier version of the site).
+[INVENTORY.md](INVENTORY.md) (the content schema and the verified list),
+[AUDIT.md](AUDIT.md) (the audit of the earlier version of the site) and
+[ROADMAP.md](ROADMAP.md) (what comes next).
 
 ## License
 

@@ -40,7 +40,6 @@ const hasMore = dua.tafsir.length > 0 || Boolean(dua.reflection);
     <p class="inline-dua-meta">
       {showSpeaker && <span>{showSpeaker} · </span>}
       <span>{refLabel(dua)}</span>
-      {dua.situations.en[0] && (<span> · <T en={dua.situations.en[0]} tr={dua.situations.tr[0]} /></span>)}
       {/* The excerpt is still disclosed here — just once, and in a line the
           reader is already reading, rather than as its own apparatus row. */}
       {dua.source.type === "quran" && dua.source.excerpt && (

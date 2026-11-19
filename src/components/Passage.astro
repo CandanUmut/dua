@@ -107,28 +107,49 @@ if (excerpt && dua.arabic?.fullText) {
     }
 
     {
-      excerpt && !compact && (
+      src.type === "hadith" && !compact && (
         <>
-          <dt data-i18n="secExtent">Extent</dt>
-          <dd>Excerpt within the āyah, shown in full ink against dimmed framing.</dd>
+          <dt data-i18n="secNote">Note</dt>
+          <dd data-i18n="hadithUnchecked">Reference number not yet checked against a printed edition.</dd>
         </>
       )
     }
 
     {
+      excerpt && !compact && (
+        <>
+          <dt data-i18n="secExtent">Extent</dt>
+          <dd data-i18n="extentNote">Part of a longer āyah. The supplication is in full ink; the rest is dimmed.</dd>
+        </>
+      )
+    }
+
+    {
+      /*
+        Translators are credited here, in the apparatus, rather than in a
+        label over every translation. A name above each block read as a byline
+        on the duʿāʾ itself. Translations this project made carry no personal
+        name on the page; the About page credits them.
+      */
       !compact && (
         <>
-          <dt data-i18n="secText">Text</dt>
-          <dd
-            data-i18n={
-              src.type === "quran" ? "textUthmani" : src.type === "hadith" ? "textHadith" : "textWeb"
-            }
-          >
-            {src.type === "quran"
-              ? "Uthmani, verified by checksum"
-              : src.type === "hadith"
-                ? "Hand-entered — no ḥadīth edition exists to fetch"
-                : "World English Bible, verified by checksum"}
+          <dt data-i18n="secTranslation">Translation</dt>
+          <dd>
+            {[...en, ...tr].map((t, i) => (
+              <>
+                {i > 0 && <br />}
+                <span data-translation-credit={t.lang}>
+                  <span data-i18n={t.lang === "en" ? "setEnglish" : "setTurkish"}>{LANG_LABEL[t.lang] ?? t.lang}</span>:{" "}
+                  {t.project ? (
+                    <span data-i18n={t.draft ? "creditDraft" : "creditProject"}>
+                      {t.draft ? "project translation, not yet reviewed" : "project translation"}
+                    </span>
+                  ) : (
+                    t.translator
+                  )}
+                </span>
+              </>
+            ))}
           </dd>
         </>
       )
@@ -171,9 +192,7 @@ if (excerpt && dua.arabic?.fullText) {
       */
       [...en, ...tr].map((t) => (
         <div class="translation" data-lang={t.lang} translate="no">
-          <span class="translation-by" lang="en">
-            {LANG_LABEL[t.lang] ?? t.lang} · {t.draft ? "unreviewed project draft" : t.translator}
-          </span>
+          <span class="translation-by" lang="en">{LANG_LABEL[t.lang] ?? t.lang}</span>
           <span lang={t.lang}>{t.text}</span>
         </div>
       ))

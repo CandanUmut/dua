@@ -67,7 +67,9 @@ export const UI: Record<string, Record<UiLang, string>> = {
 
   secWhenWhy: { en: "When and why it was said", tr: "Ne zaman ve niçin söylendi" },
   secReflection: { en: "Reflection", tr: "Değerlendirme" },
-  secSaidWhen: { en: "Said when", tr: "Şu durumlarda" },
+  // These are moments a reader might use the duʿāʾ, not the occasion it was
+  // said on — "Said when: in debt" implied the Prophet said it in debt.
+  secSaidWhen: { en: "You might turn to it", tr: "Okunabileceği hâller" },
   secThemes: { en: "Themes", tr: "Konular" },
   secNear: { en: "Near this", tr: "Buna yakın olanlar" },
   secTrial: { en: "What he faced", tr: "Karşılaştığı imtihan" },
@@ -77,6 +79,22 @@ export const UI: Record<string, Record<UiLang, string>> = {
   secStatus: { en: "Status", tr: "Durum" },
   secExtent: { en: "Extent", tr: "Kapsam" },
   secText: { en: "Text", tr: "Metin" },
+  secNote: { en: "Note", tr: "Not" },
+  secTranslation: { en: "Translation", tr: "Çeviri" },
+  creditProject: { en: "project translation", tr: "proje çevirisi" },
+  creditDraft: { en: "project translation, not yet reviewed", tr: "proje çevirisi, henüz gözden geçirilmedi" },
+  hadithUnchecked: {
+    en: "Reference number not yet checked against a printed edition.",
+    tr: "Hadis numarası henüz basılı bir neşirle karşılaştırılmadı.",
+  },
+  extentNote: {
+    en: "Part of a longer āyah. The supplication is in full ink; the rest is dimmed.",
+    tr: "Daha uzun bir âyetin parçası. Dua koyu, âyetin geri kalanı soluk gösterilir.",
+  },
+  footText: {
+    en: "Qurʾānic Arabic from a published edition of the muṣḥaf. Translations by Marmaduke Pickthall (English) and Elmalılı Hamdi Yazır (Turkish). Full sources and credits are on the About page.",
+    tr: "Kur'ân metni basılı bir mushaf neşrinden alınmıştır. Çeviriler: Marmaduke Pickthall (İngilizce) ve Elmalılı Hamdi Yazır (Türkçe). Kaynakların ve emeği geçenlerin tamamı Hakkında sayfasındadır.",
+  },
   crumbProphets: { en: "The Prophets", tr: "Peygamberler" },
   crumbThemes: { en: "I need words for…", tr: "Şunun için kelime arıyorum…" },
   excerptNote: { en: "excerpt, framing dimmed", tr: "alıntı, çerçeve soluk" },

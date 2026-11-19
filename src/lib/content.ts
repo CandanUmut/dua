@@ -147,7 +147,7 @@ export function buildSearchIndex(): SearchDoc[] {
           refLabel(d),
           // Translator names and the occasion text, so searching "Elmalılı" or
           // "mezmur" finds the entries they belong to.
-          d.translations.map((t) => t.translator).join(" "),
+          d.translations.filter((t) => !t.project).map((t) => t.translator).join(" "),
           d.context.summary,
           d.source.type === "hadith" ? d.source.collection : "",
           d.source.type === "attributed" ? `${d.source.work} ${d.source.tradition}` : "",

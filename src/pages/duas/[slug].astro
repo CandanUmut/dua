@@ -45,7 +45,6 @@ const jsonLd = {
     <a href={`${base}/prophets/${speaker.id}/`}>
       {speaker.name.en} <Honorific honorific={speaker.honorific} />
     </a>
-    {dua.situations.en[0] && (<span> · <T en={dua.situations.en[0]} tr={dua.situations.tr[0]} /></span>)}
   </p>
 
   <h1 style="font-size: var(--t-xl); margin-top: var(--s-2); max-width: 24ch">
@@ -113,7 +112,7 @@ const jsonLd = {
           */}
           <div class="reflection">
             <p>{dua.reflection.text}</p>
-            <span class="byline">Editorial note — not a transmitted narration</span>
+            <span class="byline" lang="en">Editorial note — not a transmitted narration</span>
           </div>
         </section>
       )
@@ -146,7 +145,7 @@ const jsonLd = {
       {
         dua.situations.en.length > 0 && (
           <>
-            <dt data-i18n="secSaidWhen">Said when</dt>
+            <dt data-i18n="secSaidWhen">You might turn to it</dt>
             <dd>
               {dua.situations.en.map((sit, i) => (
                 <>
@@ -216,6 +215,14 @@ const jsonLd = {
     }}
   >
     (() => {
+      // Status text follows the interface language; the Base layout only
+      // swaps static [data-i18n] nodes, not strings set from script.
+      let lang = "en";
+      try { lang = JSON.parse(localStorage.getItem("dua.settings") || "{}").uilang === "tr" ? "tr" : "en"; } catch {}
+      const MSG = {
+        en: { copied: "Copied.", failed: "Copy failed — select the text instead.", bm: "Bookmark", bmd: "Bookmarked ✓", added: "Bookmarked.", removed: "Bookmark removed." },
+        tr: { copied: "Kopyalandı.", failed: "Kopyalanamadı — metni seçin.", bm: "Kaydet", bmd: "Kaydedildi ✓", added: "Kaydedildi.", removed: "Kayıt kaldırıldı." },
+      }[lang];
       const status = document.querySelector("[data-copy-status]");
       const say = (m) => {
         if (status) { status.textContent = m; setTimeout(() => (status.textContent = ""), 2400); }
@@ -231,9 +238,9 @@ const jsonLd = {
         b.addEventListener("click", async () => {
           try {
             await navigator.clipboard.writeText(payload[b.dataset.copy]);
-            say("Copied.");
+            say(MSG.copied);
           } catch {
-            say("Copy failed — select the text instead.");
+            say(MSG.failed);
           }
         }),
       );
@@ -241,14 +248,14 @@ const jsonLd = {
       const KEY = "dua.bookmarks";
       const list = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { return []; } };
       const btn = document.querySelector("[data-bookmark]");
-      const sync = () => { btn.textContent = list().includes(id) ? "Bookmarked ✓" : "Bookmark"; };
+      const sync = () => { btn.textContent = list().includes(id) ? MSG.bmd : MSG.bm; };
       btn?.addEventListener("click", () => {
         const l = list();
         const i = l.indexOf(id);
         if (i === -1) l.push(id); else l.splice(i, 1);
         localStorage.setItem(KEY, JSON.stringify(l));
         sync();
-        say(i === -1 ? "Bookmarked." : "Bookmark removed.");
+        say(i === -1 ? MSG.added : MSG.removed);
       });
       sync();
     })();

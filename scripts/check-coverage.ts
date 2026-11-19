@@ -18,6 +18,14 @@ const { duas } = JSON.parse(
 ) as { duas: Dua[] };
 
 const problems: string[] = [];
+/**
+ * Not fatal. An entry without a written occasion still has its Arabic, both
+ * translations and (for Qurʾānic entries) the Jalālayn commentary. This used
+ * to be a hard failure, which was satisfied by a "not yet written" placeholder
+ * printed to readers — the check passed and the page looked unfinished. The
+ * gap is now reported here instead of on the page.
+ */
+const missingOccasion: string[] = [];
 
 for (const d of duas) {
   for (const lang of ["en", "tr"] as const) {
@@ -35,12 +43,17 @@ for (const d of duas) {
   if (!d.arabic && d.source.type !== "attributed") {
     problems.push(`${d.id}: no Arabic`);
   }
-  if (!d.context.summary.trim()) problems.push(`${d.id}: empty context`);
+  if (!d.context.summary.trim()) missingOccasion.push(d.id);
   if (d.context.references.length === 0) problems.push(`${d.id}: context has no citation`);
   for (const t of d.translations) {
     if (!t.translator.trim()) problems.push(`${d.id}: ${t.lang} translation has no translator`);
     if (!t.licence.trim()) problems.push(`${d.id}: ${t.lang} translation has no licence`);
   }
+}
+
+if (missingOccasion.length) {
+  console.error(`! ${missingOccasion.length} entries have no written occasion yet (section hidden on the page):`);
+  for (const id of missingOccasion) console.error(`  ${id}`);
 }
 
 if (problems.length) {

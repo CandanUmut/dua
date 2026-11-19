@@ -69,6 +69,7 @@ const ELMALILI = {
 const TURKISH = {
   translator: "Umut Candan",
   licence: "CC BY-SA 4.0",
+  project: true,
 };
 
 /**
@@ -80,6 +81,7 @@ const PROJECT_DRAFT = {
   translator: "Project translation (draft)",
   licence: "CC BY-SA 4.0",
   draft: true,
+  project: true,
 };
 
 /**
@@ -171,7 +173,7 @@ for (const seed of DUA_SEEDS) {
     transliteration: { text: transliterate(ar.text), scheme: "ala-lc" },
     translations,
     context: {
-      summary: legacy?.context ?? placeholderContext(seed, ar),
+      summary: legacy?.context ?? "",
       references: [{ work: "Qurʾān", locus: ar.ref }],
     },
     tafsir: buildTafsir(seed.id),
@@ -362,8 +364,4 @@ function buildTafsir(id: string) {
   const e = tafsirFile.entries[id];
   if (!e?.jalalayn || e.jalalayn.length <= 40) return [];
   return [{ ...tafsirFile.sources.jalalayn, text: e.jalalayn, kind: "commentary" }];
-}
-
-function placeholderContext(seed: { title: { en: string } }, ar: { ref: string; surahNameEn: string }): string {
-  return `From Sūrat ${ar.surahNameEn}, ${ar.ref}. The occasion of this supplication has not yet been written with a tafsīr citation.`;
 }

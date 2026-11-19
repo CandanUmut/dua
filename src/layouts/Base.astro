@@ -121,12 +121,10 @@ const here = Astro.url.pathname;
 
     <footer class="foot">
       <div class="page">
-        <p>
-          Arabic is fetched from an authenticated source and verified against a
-          checksum on every build — it is never typed by hand. Qurʾānic
-          translations are Marmaduke Pickthall's in English and Elmalılı Hamdi
-          Yazır's in Turkish, both public domain. Every translation on the site
-          names its translator.
+        <p data-i18n="footText">
+          Qurʾānic Arabic from a published edition of the muṣḥaf. Translations
+          by Marmaduke Pickthall (English) and Elmalılı Hamdi Yazır (Turkish).
+          Full sources and credits are on the About page.
         </p>
         <p>
           <a href={`${base}/about/`} data-i18n="navAbout">About</a> ·
