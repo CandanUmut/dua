@@ -1,0 +1,10 @@
+---
+import View from "../../../views/ProphetView.astro";
+import { PROPHETS } from "../../../lib/content";
+export function getStaticPaths() {
+  return PROPHETS.map((x) => ({ params: { slug: x.id }, props: { item: x } }));
+}
+const { item } = Astro.props;
+---
+
+<View prophet={item} lang="tr" />

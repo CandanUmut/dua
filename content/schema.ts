@@ -92,7 +92,10 @@ export const QuranSource = z.object({
   ayat: z.array(AyahRef).min(1),
   excerpt: Excerpt.optional(),
   /** Transliterated sūrah name, e.g. "al-Anbiyāʾ". Derived at fetch time. */
+  /** Site transliteration, e.g. "al-Anbiyāʾ" (content/surahs.ts). */
   surahName: z.string().min(1),
+  /** Turkish spelling, e.g. "Enbiyâ". */
+  surahNameTr: z.string().min(1),
   surahNameAr: z.string().min(1),
 });
 
@@ -105,6 +108,8 @@ export const HadithSource = z.object({
   type: z.literal("hadith"),
   /** e.g. "Ṣaḥīḥ al-Bukhārī" */
   collection: z.string().min(1),
+  /** e.g. "Buhârî" */
+  collectionTr: z.string().min(1),
   book: z.string().min(1).optional(),
   /** Reference number as that collection numbers it. String — numbering varies. */
   number: z.string().min(1),
@@ -216,12 +221,14 @@ export type Translation = z.infer<typeof Translation>;
  * The occasion — when and why it was said. The highest-value field on the site,
  * and the one users actually come for. Requires citations.
  */
+const Bi = z.object({ en: z.string(), tr: z.string() });
+
 export const Context = z.object({
   /**
    * Empty when no occasion has been written yet. The page then omits the
    * section rather than printing a "not yet written" placeholder to readers.
    */
-  summary: z.string(),
+  summary: Bi,
   references: z.array(Citation).min(1),
 });
 
@@ -258,7 +265,7 @@ export type Tafsir = z.infer<typeof Tafsir>;
  * those belong in `context` with a citation, or nowhere (brief §2.2).
  */
 export const Reflection = z.object({
-  text: z.string().min(1),
+  text: z.object({ en: z.string().min(1), tr: z.string().min(1) }),
   /**
    * Optional. A reflection makes no factual claim — it is explicitly labelled
    * as an editorial note rather than transmitted knowledge — so naming a person
@@ -323,6 +330,15 @@ export const Dua = z.object({
   }),
 
   related: z.array(Slug).default([]),
+
+  /**
+   * Times of day or life the *source itself* attaches the words to — "when
+   * he went to his bed". Unlike `situations`, these are sourced.
+   */
+  moments: z.array(Slug).default([]),
+
+  /** Global āyah numbers (1–6236), for per-āyah recitation audio. */
+  audioAyahs: z.array(z.number().int().min(1).max(6236)).default([]),
 
   /**
    * Not every entry is grammatically a supplication. 12:18 (`fa-ṣabrun jamīl`)

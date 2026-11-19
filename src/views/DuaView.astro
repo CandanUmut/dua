@@ -1,0 +1,144 @@
+---
+import Base from "../layouts/Base.astro";
+import Passage from "../components/Passage.astro";
+import Honorific from "../components/Honorific.astro";
+import Icon from "../components/Icon.astro";
+import DuaCard from "../components/DuaCard.astro";
+import type { Dua } from "../../content/schema";
+import { cards, dua as findDua, fullRef, name, prophet, theme, translation } from "../lib/content";
+import { pick, t, url, type Lang } from "../lib/i18n";
+
+interface Props { dua: Dua; lang: Lang }
+const { dua, lang } = Astro.props;
+const speaker = prophet(dua.speaker)!;
+const related = dua.related.map(findDua).filter(Boolean) as Dua[];
+const title = pick(dua.title, lang);
+const occasion = pick(dua.context.summary, lang);
+const tr = translation(dua, lang);
+const card = cards().find((c) => c.id === dua.id)!;
+const formNote =
+  dua.form === "statement" ? t("formStatement", lang)
+  : dua.id === "maryam-inni-audhu-bil-rahman-minka" ? t("formIstiadhaMaryam", lang)
+  : null;
+const issue = new URL("https://github.com/CandanUmut/dua/issues/new");
+issue.searchParams.set("title", `Correction: ${fullRef(dua, "en")} (${dua.id})`);
+issue.searchParams.set(
+  "body",
+  `Page: https://candanumut.github.io${url(lang, `/duas/${dua.id}/`)}\n\nWhat looks wrong:\n\n`,
+);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: title,
+  inLanguage: ["ar", lang],
+  isPartOf: { "@type": "Collection", name: t("siteName", lang) },
+  citation: fullRef(dua, "en"),
+};
+---
+
+<Base
+  lang={lang}
+  title={`${title} — ${name(speaker, lang)} — ${t("siteName", lang)}`}
+  description={`${tr?.text ?? title} — ${fullRef(dua, lang)}`.slice(0, 300)}
+  jsonLd={jsonLd}
+  duaId={dua.id}
+>
+  <p class="kicker">
+    <a href={url(lang, `/prophets/${speaker.id}/`)}>{name(speaker, lang)}</a>
+    {" "}<Honorific honorific={speaker.honorific} lang={lang} />
+  </p>
+  <h1 class="page-title">{title}</h1>
+
+  <Passage dua={dua} lang={lang} />
+
+  {formNote && <p class="notice">{formNote}</p>}
+
+  <div class="actions" role="group">
+    <button type="button" class="btn" data-act="save" aria-pressed="false">
+      <Icon name="save" /><span data-label>{t("actSave", lang)}</span>
+    </button>
+    <button type="button" class="btn" data-act="list"><Icon name="list" />{t("addToList", lang)}</button>
+    {dua.audioAyahs.length > 0 && (
+      <button type="button" class="btn" data-act="listen" aria-pressed="false" title={t("audioBy", lang)}>
+        <Icon name="play" /><span data-label>{t("actListen", lang)}</span>
+      </button>
+    )}
+    <a class="btn" href={`${url(lang, "/read/")}?ids=${dua.id}`}><Icon name="read" />{t("actRead", lang)}</a>
+    <button type="button" class="btn" data-act="share"><Icon name="share" />{t("actShare", lang)}</button>
+    <button type="button" class="btn quiet" data-act="copy"><Icon name="copy" />{t("actCopy", lang)}</button>
+  </div>
+
+  <div class="stack section">
+    {occasion && (
+      <section class="occasion prose">
+        <h2 class="section-label">{t("secWhenWhy", lang)}</h2>
+        <p>{occasion}</p>
+        <p class="refs">
+          {dua.context.references.map((r) => [r.work, r.locus].filter(Boolean).join(" ")).join(" · ")}
+        </p>
+      </section>
+    )}
+
+    {dua.reflection && (
+      <section>
+        <h2 class="section-label">{t("secReflection", lang)}</h2>
+        <div class="reflection">
+          <p lang={lang}>{pick(dua.reflection.text, lang)}</p>
+          <span class="byline" lang={lang}>{t("reflectionByline", lang)}</span>
+        </div>
+      </section>
+    )}
+
+    {dua.tafsir.map((tf) => (
+      <section class="prose">
+        <details class="fold" open={lang === "en"}>
+          <summary>{t("secCommentary", lang)} — {tf.work}</summary>
+          {lang === "tr" && <p class="refs">{t("commentaryEnglishOnly", lang)}</p>}
+          <blockquote class="tafsir" lang="en"><p>{tf.text}</p></blockquote>
+          <p class="refs">
+            {tf.work}, {tf.author}. {t("tafsirCite", lang, { t: tf.translator })}
+            {tf.url && <> <a href={tf.url} rel="noreferrer">altafsir.com</a></>}
+          </p>
+        </details>
+      </section>
+    ))}
+
+    <dl class="tags">
+      {dua.situations.en.length > 0 && (
+        <>
+          <dt>{t("secSaidWhen", lang)}</dt>
+          <dd>{dua.situations[lang].join(" · ")}</dd>
+        </>
+      )}
+      <dt>{t("secThemes", lang)}</dt>
+      <dd>
+        {dua.themes.map((th, i) => {
+          const x = theme(th);
+          return x ? (<>{i > 0 && " · "}<a href={url(lang, `/themes/${th}/`)}>{pick(x.label, lang)}</a></>) : null;
+        })}
+      </dd>
+      {dua.moments.length > 0 && (
+        <>
+          <dt>{t("navDay", lang)}</dt>
+          <dd>
+            {dua.moments.map((m, i) => (<>{i > 0 && " · "}<a href={url(lang, `/day/#${m}`)}>{t(`moment-${m}` as any, lang)}</a></>))}
+          </dd>
+        </>
+      )}
+    </dl>
+
+    <p class="util small"><a href={issue.href} rel="noreferrer">{t("actReport", lang)}</a></p>
+  </div>
+
+  {related.length > 0 && (
+    <section class="section">
+      <h2 class="section-label">{t("secNear", lang)}</h2>
+      <ul class="cards grid-2">
+        {related.map((r) => <li><DuaCard dua={r} lang={lang} /></li>)}
+      </ul>
+    </section>
+  )}
+
+  <script type="application/json" id="dua-data" set:html={JSON.stringify(card)} />
+</Base>

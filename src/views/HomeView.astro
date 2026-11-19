@@ -1,0 +1,177 @@
+---
+/**
+ * Today. The page a daily reader opens: the duʿāʾ of the day in its folio, the
+ * words for this time of day, where they left off, their lists, then the two
+ * ways into the collection.
+ *
+ * The duʿāʾ of the day is chosen in the browser from the local date, so it
+ * changes at the reader's midnight rather than at build time. The page ships a
+ * server-rendered default (the build day's entry) so it is never empty.
+ */
+import Base from "../layouts/Base.astro";
+import Folio from "../components/Folio.astro";
+import Icon from "../components/Icon.astro";
+import { DUAS, MOMENTS, THEMES, byMoment, byTheme, cards, dailyPool, inOrder, bySpeaker, name } from "../lib/content";
+import { pick, t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const pool = dailyPool();
+const all = cards();
+const days = Math.floor((Date.now() - Date.UTC(2024, 0, 1)) / 864e5);
+const initial = all.find((c) => c.id === pool[((days * 37) % pool.length + pool.length) % pool.length])!;
+const q = DUAS.filter((d) => d.source.type === "quran").length;
+const h = DUAS.filter((d) => d.source.type === "hadith").length;
+const moments = MOMENTS.filter((m) => byMoment(m).length > 0);
+const prophets = inOrder("prophet").filter((p) => bySpeaker(p.id).length > 0);
+---
+
+<Base lang={lang} title={t("siteName", lang)} description={t("tagline", lang)} ogType="website" tab="today">
+  <p class="today-date" data-today-date>&nbsp;</p>
+  <h1 class="hero-title">{t("todayLabel", lang)}</h1>
+
+  <section class="today-card" data-today>
+    <Folio foot={pick(initial.r, lang)}>
+      <p class="arabic" lang="ar" dir="rtl" translate="no" data-f="ar">{initial.ar}</p>
+    </Folio>
+    <p class="who" data-f="who">{pick(initial.s, lang)}</p>
+    <h2><a data-f="link" href={url(lang, `/duas/${initial.id}/`)}><span data-f="title">{pick(initial.t, lang)}</span></a></h2>
+    <div class="translation"><p data-f="tr" lang={lang}>{initial[lang]}</p></div>
+    <div class="actions">
+      <a class="btn primary" data-f="read" href={`${url(lang, "/read/")}?ids=${initial.id}`}><Icon name="read" />{t("actRead", lang)}</a>
+      <button class="btn" type="button" data-today-act="listen" aria-pressed="false" hidden={!initial.q}><Icon name="play" /><span data-label>{t("actListen", lang)}</span></button>
+      <button class="btn" type="button" data-today-act="share"><Icon name="share" />{t("actShare", lang)}</button>
+    </div>
+  </section>
+
+  <section class="section" data-continue hidden>
+    <div class="section-head"><h2>{t("continueReading", lang)}</h2></div>
+    <ul class="cards" data-continue-list></ul>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>{t("homeDay", lang)}</h2>
+      <a href={url(lang, "/day/")}>{t("navDay", lang)} →</a>
+    </div>
+    <p class="muted small util">{t("homeDayLede", lang)}</p>
+    <div class="moments">
+      {moments.map((m) => (
+        <a class="moment" href={url(lang, `/day/#${m}`)} data-moment={m}>
+          <Icon name={`moment-${m}`} />
+          <span>{t(`moment-${m}` as any, lang)}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>{t("homeLists", lang)}</h2>
+      <a href={url(lang, "/mine/")}>{t("navMine", lang)} →</a>
+    </div>
+    <ul class="cards grid-2" data-home-lists></ul>
+    <p class="muted small util" data-home-lists-empty>{t("homeListsEmpty", lang)}</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>{t("homeNeed", lang)}</h2>
+      <a href={url(lang, "/themes/")}>{t("allThemes", lang)} →</a>
+    </div>
+    <ul class="needs">
+      {THEMES.slice(0, 8).map((th) => (
+        <li><a href={url(lang, `/themes/${th.id}/`)}><span>{pick(th.label, lang)}</span><span class="n">{byTheme(th.id).length}</span></a></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>{t("homeProphets", lang)}</h2>
+      <a href={url(lang, "/prophets/")}>{t("allProphets", lang)} →</a>
+    </div>
+    <div class="chips">
+      {prophets.map((p) => <a class="chip" href={url(lang, `/prophets/${p.id}/`)}>{name(p, lang)}</a>)}
+    </div>
+    <p class="muted small util" style="margin-top: var(--s-6)">{t("countLine", lang, { q, h })}</p>
+  </section>
+
+  <script is:inline define:vars={{ pool }}>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const A = window.DuaApp;
+      if (!A) return;
+      const { lang, s, pickL, cardUrl, base } = A;
+      const now = new Date();
+      const loc = lang === "tr" ? "tr-TR" : "en-GB";
+
+      // Date line, with the Hijri date where the browser supports it.
+      const el = document.querySelector("[data-today-date]");
+      try {
+        const g = new Intl.DateTimeFormat(loc, { weekday: "long", day: "numeric", month: "long" }).format(now);
+        let hij = "";
+        try {
+          hij = new Intl.DateTimeFormat(loc + "-u-ca-islamic-umalqura", { day: "numeric", month: "long", year: "numeric" }).format(now);
+        } catch {}
+        el.innerHTML = "";
+        el.append(g);
+        if (hij) { const sp = document.createElement("span"); sp.className = "hijri"; sp.textContent = " · " + hij; el.append(sp); }
+      } catch {}
+
+      // The current moment of the day, highlighted.
+      const hr = now.getHours();
+      const m = hr >= 4 && hr < 7 ? "waking" : hr >= 21 || hr < 4 ? "sleep" : (hr >= 6 && hr < 10) || (hr >= 16 && hr < 20) ? "morning-evening" : null;
+      if (m) document.querySelector(`[data-moment="${m}"]`)?.setAttribute("data-now", "");
+
+      const { byId } = await A.cards();
+      const c = byId.get(pool[A.dayIndex(pool.length, now)]);
+      const box = document.querySelector("[data-today]");
+      if (c && box) {
+        const set = (f, v) => { const x = box.querySelector(`[data-f="${f}"]`); if (x) x.textContent = v; };
+        set("ar", c.ar); set("who", pickL(c.s)); set("title", pickL(c.t)); set("tr", c[lang] || c.en);
+        box.querySelector(".folio-foot").textContent = pickL(c.r);
+        box.querySelector('[data-f="link"]').href = cardUrl(c.id);
+        box.querySelector('[data-f="read"]').href = base + (lang === "tr" ? "/tr" : "") + "/read/?ids=" + c.id;
+        const lb = box.querySelector('[data-today-act="listen"]');
+        lb.hidden = !c.au.length;
+        lb.onclick = () => A.playAyahs(c.au, lb);
+        box.querySelector('[data-today-act="share"]').onclick = () => A.shareCard(c);
+      }
+
+      // Continue: the last three entries opened.
+      const recent = A.store.get(A.K.recent, []).slice(0, 3).map((r) => byId.get(r.id)).filter(Boolean);
+      if (recent.length) {
+        const ul = document.querySelector("[data-continue-list]");
+        recent.forEach((r) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a class="card" href="${cardUrl(r.id)}"><div class="card-ar" lang="ar" dir="rtl"></div><div class="card-title"></div><div class="card-meta"></div></a>`;
+          li.querySelector(".card-ar").textContent = r.ar.split(" ").slice(0, 9).join(" ");
+          li.querySelector(".card-title").textContent = pickL(r.t);
+          li.querySelector(".card-meta").textContent = `${pickL(r.s)} · ${pickL(r.r)}`;
+          ul.append(li);
+        });
+        document.querySelector("[data-continue]").hidden = false;
+      }
+
+      // Lists.
+      const lists = A.lists();
+      const saved = A.saved();
+      const ul = document.querySelector("[data-home-lists]");
+      const items = [];
+      if (saved.length) items.push({ name: s.mineSaved, ids: saved });
+      lists.forEach((l) => items.push({ name: l.name, ids: l.items }));
+      items.forEach((it) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = "card";
+        a.href = base + (lang === "tr" ? "/tr" : "") + "/read/?ids=" + it.ids.join(",");
+        a.innerHTML = '<div class="card-title"></div><div class="card-meta"></div>';
+        a.querySelector(".card-title").textContent = it.name;
+        a.querySelector(".card-meta").textContent = `${A.fmt("duaCount", { n: it.ids.length })} · ${s.mineReadAll}`;
+        li.append(a);
+        ul.append(li);
+      });
+      document.querySelector("[data-home-lists-empty]").hidden = items.length > 0;
+    });
+  </script>
+</Base>

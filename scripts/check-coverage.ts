@@ -43,7 +43,15 @@ for (const d of duas) {
   if (!d.arabic && d.source.type !== "attributed") {
     problems.push(`${d.id}: no Arabic`);
   }
-  if (!d.context.summary.trim()) missingOccasion.push(d.id);
+  const occ = d.context.summary;
+  if (!occ.en.trim()) missingOccasion.push(d.id);
+  // Turkish parity is not optional: a Turkish page must never fall back to an
+  // English occasion or reflection.
+  if (occ.en.trim() && !occ.tr.trim()) problems.push(`${d.id}: occasion has no Turkish`);
+  if (d.reflection && !d.reflection.text.tr.trim()) problems.push(`${d.id}: reflection has no Turkish`);
+  for (const lang of ["en", "tr"] as const) {
+    if (d.situations[lang].length !== d.situations.en.length) problems.push(`${d.id}: situations ${lang} count differs`);
+  }
   if (d.context.references.length === 0) problems.push(`${d.id}: context has no citation`);
   for (const t of d.translations) {
     if (!t.translator.trim()) problems.push(`${d.id}: ${t.lang} translation has no translator`);

@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { bySpeaker, inOrder, name } from "../lib/content";
+import { t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const groups = [
+  { title: null, list: inOrder("prophet") },
+  { title: t("sectionCompanion", lang), list: inOrder("companion") },
+  { title: t("sectionQuranTaught", lang), list: inOrder("quran-taught") },
+].map((g) => ({ ...g, list: g.list.filter((p) => bySpeaker(p.id).length > 0) }));
+let i = 0;
+---
+
+<Base lang={lang} title={`${t("prophetsTitle", lang)} — ${t("siteName", lang)}`} description={t("prophetsLede", lang)} tab="prophets">
+  <h1 class="page-title">{t("prophetsTitle", lang)}</h1>
+  <p class="lede">{t("prophetsLede", lang)}</p>
+  {groups.map((g) => (
+    <section class="section">
+      {g.title && <h2 class="section-label">{g.title}</h2>}
+      <ol class="seq-list">
+        {g.list.map((p) => (
+          <li>
+            <a href={url(lang, `/prophets/${p.id}/`)}>
+              <span class="no">{g.title ? "" : ++i}</span>
+              <span class="nm">{name(p, lang)}{p.name.enCommon && lang === "en" && <small>{p.name.enCommon}</small>}</span>
+              <span class="ct">{t("duaCount", lang, { n: bySpeaker(p.id).length })}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { THEMES, byTheme } from "../lib/content";
+import { pick, t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+
+<Base lang={lang} title={`${t("themesTitle", lang)} — ${t("siteName", lang)}`} description={t("themesLede", lang)} tab="need">
+  <h1 class="page-title">{t("themesTitle", lang)}</h1>
+  <p class="lede">{t("themesLede", lang)}</p>
+  <ul class="needs section">
+    {THEMES.map((th) => (
+      <li>
+        <a href={url(lang, `/themes/${th.id}/`)}>
+          <span>{pick(th.label, lang)}</span>
+          <span class="n">{byTheme(th.id).length}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

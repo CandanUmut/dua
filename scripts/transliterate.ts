@@ -254,6 +254,26 @@ export function transliterate(arabic: string): string {
   s = s.replace(/(.)\1{2,}/gu, "$1$1");
   // Tidy: collapse doubled separators, drop stray hyphens at word edges.
   s = s.replace(/\s+/g, " ").replace(/-\s/g, "- ").replace(/\s-/g, " -").trim();
+  // The divine name. A letter-by-letter reading of ٱللَّه gives "al-lah", and
+  // imlāʾī إله has no written alif to lengthen; both are fixed by name, since
+  // these are the words a reader most needs to say correctly.
+  s = s
+    .replace(/(^|[\s-])al-lah(umma|u|i|a)(?=\s|$)/gi, (_, pre, end) => `${pre}${pre === "-" ? "" : ""}Allāh${end}`)
+    .replace(/\b(li|bi)llahi\b/g, "$1llāhi")
+    .replace(/ʾilaha\b/g, "ʾilāha");
   // Capitalise the opening letter of the line.
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/**
+ * The ḥadīth edition writes the vowel of lām-alif after the alif (لاَ, لاَّ)
+ * where the Uthmani text writes it on the lām (لَا, لَّا). Both render the
+ * same on screen, but a letter-by-letter reader takes the first as a bare lām
+ * and produces "l yaghfiru" for lā yaghfiru and "ʾil ʾanta" for illā anta.
+ * Moving a fatḥa (and any shadda) back onto the lām fixes the reading. Only the
+ * transliteration input is normalised; the displayed Arabic is untouched.
+ */
+export function transliterateImlaei(arabic: string): string {
+  const fixed = arabic.replace(/لا([ّ]?)([َ])([ّ]?)/g, "ل$1$3$2ا");
+  return transliterate(fixed);
 }

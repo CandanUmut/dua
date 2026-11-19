@@ -1,49 +1,36 @@
 ---
 /**
- * The duʿāʾ passage: Arabic, transliteration, translations — with the source
- * apparatus set as a marginal rubric beside it (DESIGN.md §3).
+ * A duʿāʾ passage: the Arabic in its folio, the transliteration, the
+ * translations, and the source apparatus beneath.
  *
- * On excerpts, this renders the **whole āyah** with the supplication in full
- * ink and the surrounding narrative dimmed, rather than the excerpt alone. That
- * is a correctness decision: the translations render the complete āyah, so an
- * excerpt-only Arabic would put nine words of Arabic beside forty of English
- * and quietly imply they said the same thing.
+ * On a Qurʾānic excerpt the whole āyah is shown with the supplication in full
+ * ink and the narrative framing dimmed, because the translations render the
+ * complete āyah: nine words of Arabic beside forty of English would quietly
+ * imply they say the same thing.
  *
- * Entries whose source is `attributed` — currently only Dāwūd's psalm — have no
- * Arabic at all, and say so loudly rather than quietly omitting the block.
+ * Translators are credited once, in the apparatus — not over every block,
+ * where a name read as a byline on the duʿāʾ itself.
  */
 import type { Dua } from "../../content/schema";
-import { refLabel } from "../lib/content";
+import Folio from "./Folio.astro";
+import { fullRef } from "../lib/content";
+import { t, type Lang } from "../lib/i18n";
 
 interface Props {
   dua: Dua;
-  /**
-   * On a page of many passages the apparatus shows only the citation. Repeating
-   * "Uthmani, verified by checksum" and the excerpt note ten times down a
-   * prophet's page is noise, not provenance — it is the same statement about
-   * the same pipeline every time. The full apparatus stays on the duʿāʾ page,
-   * where it is stating something about one specific text.
-   */
+  lang: Lang;
+  /** On pages of many passages, show only the source line. */
   compact?: boolean;
 }
-const { dua, compact = false } = Astro.props;
-
+const { dua, lang, compact = false } = Astro.props;
 const src = dua.source;
 const excerpt = src.type === "quran" ? src.excerpt : undefined;
+const order = lang === "tr" ? ["tr", "en"] : ["en", "tr"];
+const translations = order
+  .map((l) => dua.translations.find((x) => x.lang === l))
+  .filter((x): x is NonNullable<typeof x> => Boolean(x));
+const langName = (l: string) => t(l === "en" ? "langEn" : "langTr", lang);
 
-/**
- * Exactly one translation per language — enforced by scripts/check-coverage.ts.
- * English first, then Turkish.
- */
-const en = dua.translations.filter((t) => t.lang === "en");
-const tr = dua.translations.filter((t) => t.lang === "tr");
-
-const LANG_LABEL: Record<string, string> = { en: "English", tr: "Türkçe" };
-
-/**
- * Split the full āyah into [before, supplication, after] on the recorded word
- * boundaries. Pure slicing of fetched text — nothing is rewritten.
- */
 let before = "";
 let core = dua.arabic?.text ?? "";
 let after = "";
@@ -53,149 +40,77 @@ if (excerpt && dua.arabic?.fullText) {
   core = words.slice(excerpt.fromWord, excerpt.toWord).join(" ");
   after = words.slice(excerpt.toWord).join(" ");
 }
+const GRADE_TR: Record<string, string> = { "ṣaḥīḥ": "sahih", "ḥasan": "hasen", "ḥasan ṣaḥīḥ": "hasen sahih" };
+const GRADER_TR: Record<string, string> = { "al-Bukhārī": "Buhârî", Muslim: "Müslim", "al-Albānī": "Elbânî" };
+const grade = src.type === "hadith"
+  ? lang === "tr"
+    ? `${GRADE_TR[src.grading] ?? src.grading} — ${GRADER_TR[src.gradedBy] ?? src.gradedBy}`
+    : `${src.grading} — ${src.gradedBy}`
+  : "";
+const quranLink =
+  src.type === "quran" ? `https://quran.com/${src.ayat[0].surah}/${src.ayat[0].ayah}` : undefined;
 ---
 
 <div class="passage">
-  <dl class="apparatus" aria-label="Source">
-    <dt data-i18n="secSource">Source</dt>
-    <dd>
-      {
-        src.type === "quran" ? (
-          <>
-            Sūrat {src.surahName}
-            <br />
-            <a href={`https://quran.com/${src.ayat[0].surah}/${src.ayat[0].ayah}`} rel="noreferrer">
-              {refLabel(dua)}
-            </a>
-          </>
-        ) : src.type === "hadith" ? (
-          <>
-            {src.collection}
-            <br />
-            <a href={src.url} rel="noreferrer">
-              no. {src.number}
-            </a>
-          </>
-        ) : (
-          <>
-            {src.work}
-            <br />
-            {src.locus}
-          </>
-        )
-      }
-    </dd>
+  <div>
+    <Folio foot={fullRef(dua, lang)}>
+      <p class="arabic" lang="ar" dir="rtl" translate="no" data-arabic>
+        {before && <span class="ar-frame">{before} </span>}
+        <span class="ar-core">{core}</span>
+        {after && <span class="ar-frame"> {after}</span>}
+      </p>
+      {dua.transliteration && <p class="translit" translate="no">{dua.transliteration.text}</p>}
+    </Folio>
 
     {
-      src.type === "hadith" && (
-        <>
-          <dt data-i18n="secGrading">Grading</dt>
-          <dd>
-            {src.grading} — {src.gradedBy}
-          </dd>
-        </>
-      )
-    }
-
-    {
-      src.type === "attributed" && (
-        <>
-          <dt data-i18n="secStatus">Status</dt>
-          <dd data-i18n="statusOutside">Outside the Qurʾān and Sunnah</dd>
-        </>
-      )
-    }
-
-    {
-      src.type === "hadith" && !compact && (
-        <>
-          <dt data-i18n="secNote">Note</dt>
-          <dd data-i18n="hadithUnchecked">Reference number not yet checked against a printed edition.</dd>
-        </>
-      )
-    }
-
-    {
-      excerpt && !compact && (
-        <>
-          <dt data-i18n="secExtent">Extent</dt>
-          <dd data-i18n="extentNote">Part of a longer āyah. The supplication is in full ink; the rest is dimmed.</dd>
-        </>
-      )
-    }
-
-    {
-      /*
-        Translators are credited here, in the apparatus, rather than in a
-        label over every translation. A name above each block read as a byline
-        on the duʿāʾ itself. Translations this project made carry no personal
-        name on the page; the About page credits them.
-      */
-      !compact && (
-        <>
-          <dt data-i18n="secTranslation">Translation</dt>
-          <dd>
-            {[...en, ...tr].map((t, i) => (
-              <>
-                {i > 0 && <br />}
-                <span data-translation-credit={t.lang}>
-                  <span data-i18n={t.lang === "en" ? "setEnglish" : "setTurkish"}>{LANG_LABEL[t.lang] ?? t.lang}</span>:{" "}
-                  {t.project ? (
-                    <span data-i18n={t.draft ? "creditDraft" : "creditProject"}>
-                      {t.draft ? "project translation, not yet reviewed" : "project translation"}
-                    </span>
-                  ) : (
-                    t.translator
-                  )}
-                </span>
-              </>
-            ))}
-          </dd>
-        </>
-      )
-    }
-  </dl>
-
-  <div class="passage-body">
-    {
-      dua.arabic ? (
-        /*
-          lang and dir go on this node specifically, never on <html>.
-          translate="no" keeps Chrome from re-translating vetted scripture.
-        */
-        <p class="arabic" lang="ar" dir="rtl" translate="no">
-          {before && <span class="ar-frame">{before} </span>}
-          <span class="ar-core">{core}</span>
-          {after && <span class="ar-frame"> {after}</span>}
-        </p>
-      ) : (
-        <p class="notice" style="margin-top:0">
-          No Arabic original — this passage is not Qurʾānic.
-        </p>
-      )
-    }
-
-    {
-      dua.transliteration && (
-        <p class="translit" data-translit-block translate="no">
-          {dua.transliteration.text}
-        </p>
-      )
-    }
-
-    {
-      /*
-        `lang` goes on the text itself, not the wrapper. Putting it on the
-        wrapper made the label inherit it, and `text-transform: uppercase`
-        under lang="tr" applies Turkish casing — so "PROJECT TRANSLATION"
-        rendered as "PROJECT TRANSLATİON".
-      */
-      [...en, ...tr].map((t) => (
-        <div class="translation" data-lang={t.lang} translate="no">
-          <span class="translation-by" lang="en">{LANG_LABEL[t.lang] ?? t.lang}</span>
-          <span lang={t.lang}>{t.text}</span>
+      translations.map((tr) => (
+        <div class="translation" data-lang={tr.lang} translate="no">
+          <span class="translation-by" lang={lang}>{langName(tr.lang)}</span>
+          <p lang={tr.lang}>{tr.text}</p>
         </div>
       ))
     }
   </div>
+
+  {
+    !compact && (
+      <dl class="apparatus" aria-label={t("secSource", lang)}>
+        <dt>{t("secSource", lang)}</dt>
+        <dd>
+          {src.type === "quran" ? (
+            <a href={quranLink} rel="noreferrer">{fullRef(dua, lang)}</a>
+          ) : src.type === "hadith" ? (
+            <a href={src.url} rel="noreferrer">{fullRef(dua, lang)}</a>
+          ) : (
+            <>{src.work}, {src.locus}</>
+          )}
+        </dd>
+
+        {src.type === "hadith" && (
+          <>
+            <dt>{t("secGrading", lang)}</dt>
+            <dd>{grade}</dd>
+          </>
+        )}
+
+        {(excerpt || src.type === "hadith") && (
+          <>
+            <dt>{t("secExtent", lang)}</dt>
+            <dd>{t(excerpt ? "extentNote" : "extentHadith", lang)}</dd>
+          </>
+        )}
+
+        <dt>{t("secTranslation", lang)}</dt>
+        <dd>
+          {translations.map((tr, i) => (
+            <>
+              {i > 0 && <br />}
+              {langName(tr.lang)}:{" "}
+              {tr.project ? t(tr.draft ? "creditDraft" : "creditProject", lang) : tr.translator}
+            </>
+          ))}
+        </dd>
+      </dl>
+    )
+  }
 </div>

@@ -1,0 +1,161 @@
+---
+/**
+ * Reading mode: one duʿāʾ at a time, large, with swipe and arrow-key paging,
+ * recitation for Qurʾānic entries, the screen kept awake, and a memorisation
+ * mode that hides the Arabic word by word.
+ *
+ * The sequence comes from the query string — ?ids=a,b,c · ?prophet=musa ·
+ * ?theme=grief · ?moment=sleep — so any list on the site can open here.
+ */
+import Base from "../layouts/Base.astro";
+import Folio from "../components/Folio.astro";
+import Icon from "../components/Icon.astro";
+import { DUAS, PROPHETS, THEMES, MOMENTS, byMoment, bySpeaker, byTheme } from "../lib/content";
+import { t, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const groups = {
+  prophet: Object.fromEntries(PROPHETS.map((p) => [p.id, bySpeaker(p.id).map((d) => d.id)])),
+  theme: Object.fromEntries(THEMES.map((x) => [x.id, byTheme(x.id).map((d) => d.id)])),
+  moment: Object.fromEntries(MOMENTS.map((m) => [m, byMoment(m).map((d) => d.id)])),
+};
+void DUAS;
+---
+
+<Base lang={lang} title={`${t("actRead", lang)} — ${t("siteName", lang)}`} description={t("tagline", lang)}>
+  <div class="reader" data-reader>
+    <div class="reader-top">
+      <span class="reader-pos" data-pos></span>
+      <div class="row">
+        <button class="btn" type="button" data-memo aria-pressed="false"><Icon name="memorise" />{t("readerMemorise", lang)}</button>
+        <button class="btn" type="button" data-trans aria-pressed="true"><Icon name="eye" />{t("readerTranslation", lang)}</button>
+      </div>
+    </div>
+
+    <div class="reader-body" data-body>
+      <p class="who" data-f="who" style="margin-top: var(--s-6)"></p>
+      <h1 data-f="title"></h1>
+      <Folio>
+        <p class="arabic" lang="ar" dir="rtl" translate="no" data-f="ar"></p>
+        <p class="translit" translate="no" data-f="tl"></p>
+      </Folio>
+      <div class="row memo-tools" data-memo-tools hidden style="justify-content:center">
+        <button class="chip" type="button" data-memo-mode="hide">{t("readerHideAll", lang)}</button>
+        <button class="chip" type="button" data-memo-mode="first">{t("readerFirstLetters", lang)}</button>
+        <button class="chip" type="button" data-memo-mode="show">{t("readerShowAll", lang)}</button>
+      </div>
+      <p class="memo-hint" data-memo-tools hidden>{t("readerTapHint", lang)}</p>
+      <div class="translation" data-tr-box style="margin-inline:auto; text-align:center"><p data-f="tr" lang={lang}></p></div>
+      <p class="refs" style="text-align:center; margin-top: var(--s-4)" data-f="ref"></p>
+      <div class="actions" style="justify-content:center">
+        <button class="btn" type="button" data-listen aria-pressed="false"><Icon name="play" /><span data-label>{t("actListen", lang)}</span></button>
+        <button class="btn" type="button" data-share><Icon name="share" />{t("actShare", lang)}</button>
+        <a class="btn quiet" data-open href="#">{t("readerOpen", lang)}</a>
+      </div>
+    </div>
+    <p class="muted" data-empty hidden style="text-align:center">{t("readerEmpty", lang)}</p>
+
+    <div class="reader-nav">
+      <button class="btn" type="button" data-prev><Icon name="left" />{t("readerPrev", lang)}</button>
+      <button class="btn primary" type="button" data-next>{t("readerNext", lang)}<Icon name="right" /></button>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ groups }}>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const A = window.DuaApp;
+      if (!A) return;
+      const { lang, s, pickL, cardUrl, fmt } = A;
+      const q = new URLSearchParams(location.search);
+      let ids = [];
+      if (q.get("ids")) ids = q.get("ids").split(",");
+      else for (const k of ["prophet", "theme", "moment"]) if (q.get(k)) ids = groups[k][q.get(k)] || [];
+      const { byId } = await A.cards();
+      ids = ids.filter((id) => byId.has(id));
+      const R = document.querySelector("[data-reader]");
+      const $ = (sel) => R.querySelector(sel);
+      if (!ids.length) { $("[data-body]").hidden = true; $("[data-empty]").hidden = false; $(".reader-nav").hidden = true; return; }
+
+      let i = Math.max(0, Math.min(ids.length - 1, parseInt(q.get("i") || "0", 10) || 0));
+      let memo = false, showTr = true;
+      const set = (f, v) => { const x = $(`[data-f="${f}"]`); if (x) x.textContent = v; };
+
+      function renderArabic(c) {
+        const p = $('[data-f="ar"]');
+        p.innerHTML = "";
+        c.ar.split(" ").forEach((w, k) => {
+          const sp = document.createElement("span");
+          sp.className = "w";
+          sp.textContent = w;
+          // First letter: the first Arabic letter, ignoring diacritics.
+          const m = w.match(/[ء-يٱ]/);
+          sp.dataset.first = m ? m[0] : "";
+          sp.addEventListener("click", () => { sp.classList.remove("hidden", "hint"); });
+          p.append(sp, document.createTextNode(k < c.ar.split(" ").length - 1 ? " " : ""));
+        });
+      }
+      function memoMode(mode) {
+        R.querySelectorAll(".w").forEach((w) => {
+          w.classList.toggle("hidden", mode === "hide");
+          w.classList.toggle("hint", mode === "first");
+        });
+      }
+      function render() {
+        const c = byId.get(ids[i]);
+        set("who", pickL(c.s));
+        set("title", pickL(c.t));
+        renderArabic(c);
+        set("tl", c.tl);
+        set("tr", c[lang] || c.en);
+        set("ref", pickL(c.r));
+        $("[data-pos]").textContent = fmt("readerOf", { i: i + 1, n: ids.length });
+        $("[data-open]").href = cardUrl(c.id);
+        $("[data-listen]").hidden = !c.au.length;
+        $("[data-prev]").disabled = i === 0;
+        $("[data-next]").disabled = i === ids.length - 1;
+        if (memo) memoMode("hide");
+        const u = new URL(location.href); u.searchParams.set("i", i); history.replaceState(null, "", u);
+        const r = A.store.get(A.K.recent, []).filter((x) => x.id !== c.id); r.unshift({ id: c.id, at: Date.now() }); A.store.set(A.K.recent, r.slice(0, 30));
+      }
+      const go = (d) => { const n = i + d; if (n < 0 || n >= ids.length) return; i = n; render(); window.scrollTo({ top: 0 }); };
+      $("[data-prev]").onclick = () => go(-1);
+      $("[data-next]").onclick = () => go(1);
+      addEventListener("keydown", (e) => {
+        if (e.target.closest("input, textarea")) return;
+        if (e.key === "ArrowRight") go(lang === "ar" ? -1 : 1);
+        if (e.key === "ArrowLeft") go(-1);
+      });
+      let x0 = null, y0 = null;
+      const body = $("[data-body]");
+      body.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      body.addEventListener("touchend", (e) => {
+        if (x0 == null) return;
+        const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+        x0 = null;
+      });
+      $("[data-memo]").onclick = (e) => {
+        memo = !memo;
+        e.currentTarget.setAttribute("aria-pressed", String(memo));
+        R.classList.toggle("memo", memo);
+        R.querySelectorAll("[data-memo-tools]").forEach((x) => (x.hidden = !memo));
+        memoMode(memo ? "hide" : "show");
+      };
+      R.querySelectorAll("[data-memo-mode]").forEach((b) => (b.onclick = () => memoMode(b.dataset.memoMode)));
+      $("[data-trans]").onclick = (e) => {
+        showTr = !showTr;
+        e.currentTarget.setAttribute("aria-pressed", String(showTr));
+        $("[data-tr-box]").hidden = !showTr;
+      };
+      $("[data-listen]").onclick = (e) => A.playAyahs(byId.get(ids[i]).au, e.currentTarget);
+      $("[data-share]").onclick = () => A.shareCard(byId.get(ids[i]));
+
+      // Keep the screen on while reading, where the browser allows it.
+      let lock = null;
+      const wake = async () => { try { lock = await navigator.wakeLock.request("screen"); } catch {} };
+      if ("wakeLock" in navigator) { wake(); document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") wake(); }); }
+      render();
+    });
+  </script>
+</Base>

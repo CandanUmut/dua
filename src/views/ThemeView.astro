@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import InlineDua from "../components/InlineDua.astro";
+import Icon from "../components/Icon.astro";
+import type { Theme } from "../../content/schema";
+import { byTheme } from "../lib/content";
+import { pick, t, url, type Lang } from "../lib/i18n";
+
+interface Props { theme: Theme; lang: Lang }
+const { theme, lang } = Astro.props;
+const duas = byTheme(theme.id);
+const label = pick(theme.label, lang);
+---
+
+<Base lang={lang} title={`${label} — ${t("siteName", lang)}`} description={pick(theme.description, lang)} tab="need">
+  <p class="kicker"><a href={url(lang, "/themes/")}>{t("themesTitle", lang)}</a></p>
+  <h1 class="page-title">{label}</h1>
+  <p class="lede">{pick(theme.description, lang)}</p>
+  <div class="actions">
+    <a class="btn primary" href={`${url(lang, "/read/")}?theme=${theme.id}`}><Icon name="read" />{t("readThrough", lang)}</a>
+  </div>
+  <section class="section">
+    <h2 class="section-label">{t("duaCount", lang, { n: duas.length })}</h2>
+    {duas.map((d) => <InlineDua dua={d} lang={lang} showSpeaker />)}
+  </section>
+</Base>

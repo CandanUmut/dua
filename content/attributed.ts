@@ -47,27 +47,12 @@ export type AttributedSeed = {
   turkish: string;
 };
 
-export const ATTRIBUTED_SEEDS: AttributedSeed[] = [
-  {
-    id: "dawud-have-mercy-on-me",
-    speaker: "dawud",
-    title: {
-      en: "Blot out my transgressions",
-      tr: "Günahlarımı sil",
-    },
-    query: "psalm+51:1-2",
-    work: "The Book of Psalms",
-    locus: "Psalm 51:1–2",
-    note: {
-      en: "The best-known penitential psalm, traditionally attributed to David. Outside the Qurʾān and the Sunnah, with no Islamic chain of transmission — included because the Qurʾān records that Dāwūd sought forgiveness (38:24) without quoting his words.",
-      tr: "Dâvûd'a nispet edilen en bilinen tevbe mezmuru. Kur'ân ve Sünnet dışıdır, İslâmî bir rivayet zinciri yoktur — Kur'ân, Dâvûd'un bağışlanma dilediğini bildirdiği hâlde (38:24) sözlerini aktarmadığı için buraya alınmıştır.",
-    },
-    themes: ["forgiveness", "grief"],
-    situations: {
-      en: ["after a wrong you cannot undo", "when asking to be washed rather than excused"],
-      tr: ["geri alamayacağınız bir yanlıştan sonra", "mazeret değil arınma istediğinizde"],
-    },
-    turkish:
-      "Ey Allah'ım, lütfunla bana merhamet et. Rahmetinin çokluğuyla isyanlarımı sil. Beni kötülüğümden tamamen yıka ve günahımdan arındır.",
-  },
-];
+/**
+ * **Empty, deliberately.** The one entry here was Psalm 51, offered as the
+ * words behind Dāwūd's istighfār in 38:24. The Psalm's own superscription sets
+ * it after the episode of David and Bathsheba — a narrative Islamic scholarship
+ * rejects as an account of a prophet. Presenting it beside 38:24 pointed
+ * readers to that story. Dāwūd remains on the site through 27:15. The
+ * mechanism is kept so a future entry can be added under the same rules.
+ */
+export const ATTRIBUTED_SEEDS: AttributedSeed[] = [];

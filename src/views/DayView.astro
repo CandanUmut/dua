@@ -1,0 +1,37 @@
+---
+/**
+ * Through the day — the Sunnah supplications tied to a moment by the narration
+ * itself, in the order a day runs.
+ */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import InlineDua from "../components/InlineDua.astro";
+import { MOMENTS, byMoment } from "../lib/content";
+import { t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const groups = MOMENTS.map((m) => ({ m, duas: byMoment(m) })).filter((g) => g.duas.length);
+---
+
+<Base lang={lang} title={`${t("dayTitle", lang)} — ${t("siteName", lang)}`} description={t("homeDayLede", lang)} tab="today">
+  <h1 class="page-title">{t("dayTitle", lang)}</h1>
+  <p class="lede">{t("homeDayLede", lang)}</p>
+  <p class="muted small util">{t("dayLede", lang)}</p>
+
+  <div class="moments" style="margin-top: var(--s-6)">
+    {groups.map(({ m }) => (
+      <a class="moment" href={`#${m}`}><Icon name={`moment-${m}`} /><span>{t(`moment-${m}` as any, lang)}</span></a>
+    ))}
+  </div>
+
+  {groups.map(({ m, duas }) => (
+    <section class="section" id={m} style="scroll-margin-top: calc(var(--bar) + var(--s-4))">
+      <div class="section-head">
+        <h2 style="display:flex;gap:var(--s-2);align-items:center"><span style="width:24px;color:var(--gilt)"><Icon name={`moment-${m}`} /></span>{t(`moment-${m}` as any, lang)}</h2>
+        <a href={`${url(lang, "/read/")}?moment=${m}`}>{t("actRead", lang)} →</a>
+      </div>
+      {duas.map((d) => <InlineDua dua={d} lang={lang} />)}
+    </section>
+  ))}
+</Base>

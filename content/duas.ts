@@ -137,10 +137,9 @@ export const DUA_SEEDS: DuaSeed[] = [
     ayat: a(71, 26),
     excerpt: { fromWord: 2, toWord: 10, note: CUT.saidThat },
     themes: ["injustice"],
-    situations: {
-      en: ["after every appeal has been exhausted"],
-      tr: ["her çağrı tükendikten sonra"],
-    },
+    // A prophet's imprecation on revealed knowledge — not offered to readers
+    // as words for a situation of their own. See content/editorial.ts.
+    situations: { en: [], tr: [] },
   },
   {
     id: "nuh-rabbi-inna-qawmi-kadhdhabuni",
@@ -500,10 +499,9 @@ export const DUA_SEEDS: DuaSeed[] = [
     ayat: a(10, 88),
     excerpt: { fromWord: 2, toWord: 29, note: CUT.saidThat },
     themes: ["injustice"],
-    situations: {
-      en: ["when wealth is being used to lead people away"],
-      tr: ["servet insanları saptırmak için kullanıldığında"],
-    },
+    // A prophet's imprecation on revealed knowledge — not offered to readers
+    // as words for a situation of their own. See content/editorial.ts.
+    situations: { en: [], tr: [] },
   },
 
   /* ------------------------------- Dāwūd ------------------------------ */
