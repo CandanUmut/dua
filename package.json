@@ -5,20 +5,22 @@
   "type": "module",
   "scripts": {
     "content:fetch": "tsx scripts/fetch-content.ts",
-    "content:verify": "tsx scripts/verify-content.ts",
-    "content:validate": "tsx scripts/validate-content.ts",
+    "content:verify": "tsx scripts/verify-content.ts && tsx scripts/fetch-hadith.ts --verify",
     "content:inventory": "tsx scripts/build-inventory.ts",
     "typecheck": "tsc --noEmit",
     "dev": "astro dev",
     "build": "astro build && tsx scripts/build-sitemap.ts && tsx scripts/build-sw.ts",
     "preview": "astro preview",
     "content:build": "tsx scripts/build-content.ts",
-    "content:all": "tsx scripts/fetch-content.ts && tsx scripts/fetch-attributed.ts && tsx scripts/fetch-quotes.ts && tsx scripts/fetch-tafsir.ts && tsx scripts/migrate-legacy.ts && tsx scripts/build-content.ts",
+    "content:all": "tsx scripts/fetch-content.ts && tsx scripts/fetch-hadith.ts && tsx scripts/fetch-tafsir.ts && tsx scripts/migrate-legacy.ts && tsx scripts/build-content.ts",
     "prebuild": "npm run content:build",
-    "content:fetch-attributed": "tsx scripts/fetch-attributed.ts",
     "content:fetch-tafsir": "tsx scripts/fetch-tafsir.ts",
     "content:fetch-quotes": "tsx scripts/fetch-quotes.ts",
-    "check:arabic": "tsx scripts/check-no-typed-arabic.ts"
+    "check:arabic": "tsx scripts/check-no-typed-arabic.ts",
+    "content:fetch-hadith": "tsx scripts/fetch-hadith.ts",
+    "check:copy": "tsx scripts/check-copy.ts",
+    "test:smoke": "node tests/smoke.mjs",
+    "check": "npm run typecheck && npm run check:arabic && tsx scripts/check-coverage.ts && npm run build && npm run check:copy && npm run test:smoke"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

@@ -34,6 +34,33 @@ What stops it from feeling like a finished, professional product:
 
 ---
 
+## Status (November 2026)
+
+Phases 1–4 and most of 5 are built. What is left is marked.
+
+| Item | Status |
+|---|---|
+| Turkish parity: occasions, reflections, interface, About | Done — every page in both languages |
+| `/tr/` routes, hreflang, bilingual sitemap | Done |
+| Occasions for every Qurʾānic entry, from the cited tafsīr | Done — 57/57, EN + TR |
+| Sūrah names in the site's spelling | Done |
+| Verify the ḥadīth references | Done — all fetched and cross-checked; one was wrong (Muslim 843 → 588) |
+| Reviewer for the ḥadīth translations | **Open — the maintainer.** Set `reviewed` per entry in `content/hadith.ts` |
+| Custom domain | **Open — needs a domain purchased**; then a `public/CNAME` file |
+| Today home, bottom tab bar | Done |
+| Lists, saved, recently read | Done |
+| Reading mode, wake lock, memorisation | Done |
+| Persist storage, backup and restore | Done |
+| Share as image | Done |
+| Daily Sunnah supplications | Done — 20 added, 25 in all |
+| Ḥadīth in the verified pipeline | Done — `hadith.lock.json` |
+| Recitation audio | Done — streamed on demand, needs a connection |
+| Mark, folio frame, distinct design | Done |
+| Reminders | Done as a calendar event (no server). Push notifications would need a backend or a native wrapper — not built |
+| Feedback without a GitHub account | **Open** — every page has a prefilled report link, but it needs GitHub. An email address or form is the maintainer's choice |
+| Smoke test, copy lint, i18n check in CI | Done |
+| Independent critic | Done — `.claude/agents/critic.md` |
+
 ## Done in this change
 
 - Translator names are no longer printed above every translation. They are

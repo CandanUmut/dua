@@ -52,7 +52,8 @@ export const UI = {
     en: "Make a list — “Morning”, “For my parents” — and read it straight through each day.",
     tr: "Bir liste oluşturun —“Sabah”, “Anne babam için”— ve her gün baştan sona okuyun.",
   },
-  allThemes: { en: "All sixteen", tr: "Hepsi" },
+  allThemes: { en: "All sixteen", tr: "On altısı" },
+  seeAll: { en: "See all", tr: "Tümü" },
   allProphets: { en: "All prophets", tr: "Bütün peygamberler" },
   countLine: {
     en: "{q} from the Qurʾān · {h} from the Sunnah",
