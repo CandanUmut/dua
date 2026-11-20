@@ -35,6 +35,7 @@ const tabs = [
   { id: "mine", href: url(lang, "/mine/"), label: t("navMine", lang), icon: "mine" },
 ] as const;
 const boot = { lang, base };
+
 ---
 
 <!doctype html>
@@ -77,6 +78,15 @@ const boot = { lang, base };
       (() => {
         try {
           const s = JSON.parse(localStorage.getItem("dua.settings") || "{}");
+          // Settings v2. The previous site saved reading:"both" for every
+          // visitor as its default, so a saved "both" from before v2 is not
+          // a choice anyone made: reset it to the page's own language.
+          if (s.v !== 2) {
+            s.reading = "auto";
+            s.honorific = "auto";
+            s.v = 2;
+            localStorage.setItem("dua.settings", JSON.stringify(s));
+          }
           const r = document.documentElement;
           if (s.theme && s.theme !== "auto") r.dataset.theme = s.theme;
           if (s.type && s.type !== "normal") r.dataset.type = s.type;
@@ -86,6 +96,8 @@ const boot = { lang, base };
         } catch {}
       })();
     </script>
+    {/* The ornament, generated in src/lib/geometry.ts — one shared file. */}
+    <link rel="stylesheet" href={`${base}/ornament.css`} />
     <script is:inline set:html={`window.DUA=${JSON.stringify(boot)};`} />
     <script is:inline defer src={`${base}/strings/${lang}.js`}></script>
     <script is:inline defer src={`${base}/app.js`}></script>
@@ -158,7 +170,7 @@ const boot = { lang, base };
           ["theme", "setAppearance", [["auto", "setAuto"], ["light", "setLight"], ["dark", "setDark"]]],
           ["type", "setTextSize", [["normal", "setNormal"], ["large", "setLarge"], ["xlarge", "setXLarge"]]],
           ["translit", "setTranslit", [["on", "setShow"], ["off", "setHide"]]],
-          ["honorific", "setHonorifics", [["arabic", "setArabicForm"], ["full", "setEnglishForm"], ["abbr", "setAbbr"]]],
+          ["honorific", "setHonorifics", [["auto", "setAuto"], ["arabic", "setArabicForm"], ["full", "setEnglishForm"], ["abbr", "setAbbr"]]],
         ].map(([name, label, opts]) => (
           <div class="setting" role="radiogroup" aria-labelledby={`set-${name}`}>
             <span id={`set-${name}`}>{t(label as any, lang)}</span>

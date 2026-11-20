@@ -23,17 +23,29 @@ export const inOrder = (section?: Prophet["section"]) =>
   PROPHETS.filter((p) => (section ? p.section === section : true)).sort((a, b) => a.order - b.order);
 
 /** Honorifics are data; the form is a reader setting. */
-export const HONORIFICS: Record<Honorific, { arabic: string; full: Record<Lang, string>; abbr: string }> = {
+/**
+ * Abbreviations follow each language's convention: Turkish writes (s.a.v.),
+ * (a.s.), (r.a.); English (saw), (as), (ra).
+ */
+export const HONORIFICS: Record<Honorific, { arabic: string; full: Record<Lang, string>; abbr: Record<Lang, string> }> = {
   "sallallahu-alayhi-wa-sallam": {
     arabic: "ﷺ",
     full: { en: "peace and blessings be upon him", tr: "sallallahu aleyhi ve sellem" },
-    abbr: "(ṣ)",
+    abbr: { en: "(saw)", tr: "(s.a.v.)" },
   },
-  "alayhi-salam": { arabic: "عليه السلام", full: { en: "peace be upon him", tr: "aleyhisselam" }, abbr: "(as)" },
-  "alayha-salam": { arabic: "عليها السلام", full: { en: "peace be upon her", tr: "aleyhesselam" }, abbr: "(as)" },
-  "radiyallahu-anhu": { arabic: "رضي الله عنه", full: { en: "may Allah be pleased with him", tr: "radıyallahu anh" }, abbr: "(ra)" },
-  "radiyallahu-anha": { arabic: "رضي الله عنها", full: { en: "may Allah be pleased with her", tr: "radıyallahu anhâ" }, abbr: "(ra)" },
-  none: { arabic: "", full: { en: "", tr: "" }, abbr: "" },
+  "alayhi-salam": { arabic: "عليه السلام", full: { en: "peace be upon him", tr: "aleyhisselam" }, abbr: { en: "(as)", tr: "(a.s.)" } },
+  "alayha-salam": { arabic: "عليها السلام", full: { en: "peace be upon her", tr: "aleyhesselam" }, abbr: { en: "(as)", tr: "(a.s.)" } },
+  "radiyallahu-anhu": { arabic: "رضي الله عنه", full: { en: "may Allah be pleased with him", tr: "radıyallahu anh" }, abbr: { en: "(ra)", tr: "(r.a.)" } },
+  "radiyallahu-anha": { arabic: "رضي الله عنها", full: { en: "may Allah be pleased with her", tr: "radıyallahu anhâ" }, abbr: { en: "(ra)", tr: "(r.a.)" } },
+  none: { arabic: "", full: { en: "", tr: "" }, abbr: { en: "", tr: "" } },
+};
+
+/** The form a page shows before the reader chooses: abbreviation in Turkish, the Arabic glyph in English. */
+export const defaultHonForm = (lang: Lang) => (lang === "tr" ? "abbr" : "arabic");
+
+const honOf = (h: Honorific | undefined) => {
+  const x = HONORIFICS[h ?? "none"];
+  return { a: x.arabic, f: x.full, b: x.abbr };
 };
 
 export const translation = (d: Dua, lang: "en" | "tr") => d.translations.find((t) => t.lang === lang);
@@ -93,8 +105,8 @@ export type Card = {
   tr: string;
   au: number[];
   q: boolean;
-  /** Honorific forms for the speaker: Arabic glyph, words per language, abbreviation. */
-  h: { a: string; f: { en: string; tr: string }; b: string };
+  /** Honorific forms for the speaker: Arabic glyph, words and abbreviation per language. */
+  h: { a: string; f: { en: string; tr: string }; b: { en: string; tr: string } };
 };
 export const cards = (): Card[] =>
   DUAS.map((d) => {
@@ -110,7 +122,7 @@ export const cards = (): Card[] =>
       tr: translation(d, "tr")?.text ?? "",
       au: d.audioAyahs,
       q: d.source.type === "quran",
-      h: (() => { const x = HONORIFICS[p?.honorific ?? "none"]; return { a: x.arabic, f: x.full, b: x.abbr }; })(),
+      h: honOf(p?.honorific),
     };
   });
 
@@ -141,7 +153,7 @@ export function normalise(s: string): string {
     .trim();
 }
 
-export type SearchDoc = { id: string; title: string; who: string; ref: string; ar: string; h: string };
+export type SearchDoc = { id: string; title: string; who: string; hon: Card["h"]; ref: string; ar: string; h: string };
 
 export function buildSearchIndex(lang: Lang): SearchDoc[] {
   return DUAS.map((d) => {
@@ -154,6 +166,7 @@ export function buildSearchIndex(lang: Lang): SearchDoc[] {
       id: d.id,
       title: pick(d.title, lang),
       who: name(p, lang),
+      hon: honOf(p?.honorific),
       ref: fullRef(d, lang),
       ar: arabicPreview(d, 7),
       h: normalise(

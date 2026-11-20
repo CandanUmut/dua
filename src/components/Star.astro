@@ -1,0 +1,16 @@
+---
+/**
+ * A star-polygon medallion {n/k} in a circle — see src/lib/geometry.ts. Each
+ * theme has its own, so the sixteen situations are sixteen figures.
+ */
+import { starPath } from "../lib/geometry";
+interface Props { n: number; k: number; size?: number; class?: string }
+const { n, k, size = 32, class: cls } = Astro.props;
+const c = 50;
+---
+
+<svg class:list={["medallion", cls]} viewBox="0 0 100 100" width={size} height={size} aria-hidden="true">
+  <circle cx={c} cy={c} r="47" fill="var(--medallion-ground, none)" stroke="currentColor" stroke-width="2.5" />
+  <path d={starPath(n, k, 40, c, c)} fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+  <circle cx={c} cy={c} r="7" fill="currentColor" />
+</svg>

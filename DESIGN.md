@@ -355,3 +355,28 @@ Search is present in the header but visually secondary. **Everything else**
 size, theme — lives in Settings behind one control, persisted to
 `localStorage`, and never blocks the reading path. The old site put nine such
 controls in the navigation.
+
+---
+
+## 7. Ornament (November 2026)
+
+The first redesign kept the manuscript palette but still read as a template:
+beige paper, a serif, pill buttons, bordered cards. The site now carries its
+own ornament, all of it generated from three constructions of the Islamic
+geometric tradition in `src/lib/geometry.ts` — nothing is clip-art:
+
+- **The star polygon {n/k}.** {8/3} is the rubʿ al-ḥizb, used for the mark,
+  bullets, the masthead band and the prophet numerals. Each of the sixteen
+  situations has its own medallion ({5/2}, {7/3}, {12/5}…), so the list is
+  sixteen figures rather than sixteen identical rows. Today's heading sits on a
+  {12/5} rosette.
+- **The khatam lattice.** Eight-pointed stars on a square grid, the commonest
+  field of tilework and illumination, laid into the paper at ~7% opacity.
+- **The tezhip band.** A chain of stars between two rules with rosette corners,
+  used as a CSS `border-image` around the Arabic, and as a strip edging the
+  lapis masthead, the tab bar and the footer — the serlevha of a muṣḥaf page.
+
+Colour stays two pigments and a gilt: lapis (now also as the deep ground of
+the masthead and footer), rubric red for the source apparatus, gilt for
+ornament only. The drawings are served once, as CSS variables, from
+`/ornament.css`, with separate inks for light and dark.

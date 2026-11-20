@@ -94,6 +94,10 @@
   /* Gilt for small text (citations, dates): darker than the ornament gilt so
      it passes 4.5:1 on paper. */
   --gilt-text: #6f5420;
+  --lapis-deep: #1d3150;
+  --gilt-on-lapis: #d8bd82;
+  --on-lapis: #efe9da;
+  --on-lapis-soft: #b9c3d3;
   --rule: #c9c5ba;
   --veil: rgba(27, 30, 28, 0.42);
 
@@ -131,6 +135,7 @@
     --ink: #dbd8ce; --ink-soft: #a3a299; --ink-faint: #979790;
     --lapis: #93b0d2; --lapis-ink: #121412; --rubric: #c99282;
     --gilt: #c4a76c; --gilt-soft: #8f7a4d; --gilt-text: #c9ae78; --rule: #343731;
+    --lapis-deep: #0d1626; --gilt-on-lapis: #c9ad73; --on-lapis: #e3ddcf; --on-lapis-soft: #9aa6b8;
     --veil: rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
@@ -140,6 +145,7 @@
   --ink: #dbd8ce; --ink-soft: #a3a299; --ink-faint: #979790;
   --lapis: #93b0d2; --lapis-ink: #121412; --rubric: #c99282;
   --gilt: #c4a76c; --gilt-soft: #8f7a4d; --gilt-text: #c9ae78; --rule: #343731;
+  --lapis-deep: #0d1626; --gilt-on-lapis: #c9ad73; --on-lapis: #e3ddcf; --on-lapis-soft: #9aa6b8;
   --veil: rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
@@ -287,36 +293,40 @@ main.page { padding-top: var(--s-8); padding-bottom: var(--s-16); }
 /* ---------------------- the folio: signature frame -------------------- */
 
 /*
- * The Arabic is set on a raised leaf inside a gilt double rule with corner
- * stars, after the illuminated frames (tezhip) of a muṣḥaf page. It is the one
- * ornamented thing on the site; everything around it stays plain.
+ * The Arabic sits on a raised leaf inside an illuminated border: a band of
+ * chained eight-pointed stars between two rules, with rosettes at the
+ * corners (border-image, drawn in src/lib/geometry.ts), then a gilt hairline,
+ * and a lapis cartouche at the head. After the tezhip of a muṣḥaf page.
  */
 .folio {
   position: relative;
+  margin: var(--s-8) 0 var(--s-6);
+  border: 15px solid transparent;
+  border-image: var(--band) 10 / 15px round;
   background: var(--paper-raised);
-  border-radius: 3px;
-  padding: var(--s-8) var(--s-6) var(--s-6);
-  margin: var(--s-6) 0;
-  box-shadow: 0 1px 0 var(--rule), 0 12px 32px -20px rgba(0, 0, 0, 0.25);
+  background-clip: padding-box;
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.45);
 }
-.folio::before, .folio::after {
-  content: ""; position: absolute; pointer-events: none; border-radius: 2px;
+.folio-in {
+  position: relative;
+  padding: var(--s-6) var(--s-5) var(--s-5);
+  outline: 1px solid var(--gilt-soft);
+  outline-offset: -5px;
 }
-.folio::before { inset: 7px; border: 1px solid var(--gilt-soft); }
-.folio::after { inset: 11px; border: 1px solid color-mix(in srgb, var(--gilt-soft) 55%, transparent); }
-.folio .corner {
-  position: absolute; width: 18px; height: 18px; color: var(--gilt); z-index: 1;
-}
-.folio .corner.tl { top: 0; left: 0; }
-.folio .corner.tr { top: 0; right: 0; }
-.folio .corner.bl { bottom: 0; left: 0; }
-.folio .corner.br { bottom: 0; right: 0; }
 .folio .crest {
-  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-  background: var(--paper); padding: 0 var(--s-2); color: var(--gilt);
+  position: absolute; z-index: 2; top: -27px; left: 50%;
+  width: 40px; height: 40px; margin-left: -20px;
+  display: grid; place-items: center;
+  background: var(--lapis-deep); color: var(--gilt-on-lapis);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 2px var(--paper-raised), 0 0 0 3px var(--gilt);
 }
-.folio .crest svg { width: 22px; height: 22px; }
-.folio > *:not(.corner):not(.crest) { position: relative; z-index: 1; }
+.folio .crest svg { transform: rotate(-45deg); }
+@media (max-width: 480px) {
+  :root { --ar-size: 1.5rem; --ar-line: 2.2; }
+  .folio { margin-left: calc(-1 * var(--s-2)); margin-right: calc(-1 * var(--s-2)); border-width: 12px; border-image-width: 12px; }
+  .folio-in { padding: var(--s-6) var(--s-3) var(--s-4); }
+}
 
 .arabic {
   font-family: var(--font-arabic); font-size: var(--ar-size); line-height: var(--ar-line);
@@ -333,10 +343,7 @@ main.page { padding-top: var(--s-8); padding-bottom: var(--s-16); }
 .folio-foot::before, .folio-foot::after {
   content: ""; height: 1px; width: 2.5rem; background: var(--gilt-soft);
 }
-@media (max-width: 480px) {
-  :root { --ar-size: 1.5rem; --ar-line: 2.2; }
-  .folio { padding: var(--s-8) var(--s-4) var(--s-5); margin-left: calc(-1 * var(--s-2)); margin-right: calc(-1 * var(--s-2)); }
-}
+
 
 .translit {
   font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft);
@@ -620,3 +627,127 @@ input[type="time"] { min-height: var(--tap); padding: 0 var(--s-3); border: 1px 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+
+/* =========================== ornament layer =========================== */
+/*
+ * Everything below gives the site its own face: a lapis-and-gilt masthead
+ * with a band of stars, the khatam lattice in the paper, star medallions,
+ * rosette numerals and star-knot rules. The drawings are generated in
+ * src/lib/geometry.ts and arrive as CSS variables from /ornament.css.
+ */
+
+body { background-color: var(--paper); background-image: var(--lattice); background-size: 72px 72px; }
+
+/* Masthead: lapis, like the serlevha of a muṣḥaf, edged with a band of stars. */
+.bar {
+  background: var(--lapis-deep);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-bottom: 0;
+}
+.bar::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 10px;
+  background-image: var(--strip); background-size: 24px 10px; background-repeat: repeat-x;
+}
+.wordmark { color: var(--on-lapis); }
+.wordmark svg { filter: drop-shadow(0 0 0.5px var(--gilt-on-lapis)); }
+.bar-nav a { color: var(--on-lapis-soft); }
+.bar-nav a:hover { color: var(--on-lapis); background: rgba(255, 255, 255, 0.06); }
+.bar-nav a[aria-current="page"] { color: var(--gilt-on-lapis); background: none; box-shadow: inset 0 -2px 0 var(--gilt-on-lapis); border-radius: 0; }
+.bar .icon-btn { color: var(--on-lapis-soft); }
+.bar .icon-btn:hover { color: var(--on-lapis); background: rgba(255, 255, 255, 0.08); }
+main.page { padding-top: calc(var(--s-8) + 10px); }
+
+/* Tab bar: the same band along its top edge; the current tab wears a star. */
+.tabs { border-top: 0; background: var(--paper-raised); }
+.tabs::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px;
+  background-image: var(--strip); background-size: 24px 10px; background-repeat: repeat-x;
+}
+.tabs a { position: relative; }
+.tabs a[aria-current="page"]::before {
+  content: ""; position: absolute; top: 6px; left: 50%; width: 8px; height: 8px; margin-left: 13px;
+  background: var(--gilt); -webkit-mask: var(--star) center / contain no-repeat; mask: var(--star) center / contain no-repeat;
+}
+
+/* Headings carry a star; sections are divided by a knot of stars. */
+.section-head h2, .page-title { display: flex; align-items: center; gap: var(--s-3); }
+.section-head h2::before {
+  content: ""; flex: none; width: 14px; height: 14px; background: var(--gilt);
+  -webkit-mask: var(--star) center / contain no-repeat; mask: var(--star) center / contain no-repeat;
+}
+.page-title { flex-wrap: wrap; }
+.rule { display: flex; align-items: center; gap: var(--s-3); margin: var(--s-10) 0; color: var(--gilt); }
+.rule::before, .rule::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gilt-soft)); }
+.rule::after { background: linear-gradient(90deg, var(--gilt-soft), transparent); }
+.rule svg { flex: none; }
+
+/* Buttons: squared, manuscript-tab corners rather than generic pills. */
+.btn, .chip, .choices span { border-radius: 3px; }
+.btn.primary {
+  background: var(--lapis-deep); color: var(--on-lapis); border-color: var(--lapis-deep);
+  box-shadow: inset 0 0 0 1px var(--lapis-deep), inset 0 0 0 2px var(--gilt-on-lapis);
+}
+.btn.primary:hover { box-shadow: inset 0 0 0 1px var(--lapis-deep), inset 0 0 0 2px var(--on-lapis); }
+
+/* The sixteen situations: each with its own star polygon. */
+.needs a { gap: var(--s-3); justify-content: flex-start; }
+.needs a > span:first-of-type { flex: 1; }
+.needs .medallion { flex: none; color: var(--gilt); }
+.needs a:hover .medallion { color: var(--rubric); }
+
+/* Prophet numerals in āyah-end rosettes. */
+.seq-list .no {
+  width: 2.25rem; height: 2.25rem; display: grid; place-items: center; text-align: center;
+  background: var(--gilt-text); color: var(--paper-raised); font-weight: 600;
+  -webkit-mask: var(--star) center / contain no-repeat; mask: var(--star) center / contain no-repeat;
+}
+.seq-list li a { grid-template-columns: 2.5rem 1fr auto; align-items: center; }
+
+/* Today: a rosette behind the heading. */
+.hero { position: relative; }
+.hero .rosette {
+  position: absolute; z-index: -1; top: -1.5rem; right: -2.5rem; width: 15rem; height: 15rem;
+  color: var(--gilt); opacity: 0.16; pointer-events: none;
+}
+@media (max-width: 600px) { .hero .rosette { width: 11rem; height: 11rem; right: -3.5rem; top: -1rem; } }
+main.page { position: relative; z-index: 0; overflow-x: clip; }
+
+/* Theme page header medallion. */
+.theme-medal { color: var(--gilt); }
+
+/* Cards: a gilt corner star instead of a plain box. */
+.card { position: relative; border-color: color-mix(in srgb, var(--gilt-soft) 45%, var(--rule)); border-radius: 3px; }
+.card::after {
+  content: ""; position: absolute; top: 8px; right: 8px; width: 9px; height: 9px; background: var(--gilt-soft);
+  -webkit-mask: var(--star) center / contain no-repeat; mask: var(--star) center / contain no-repeat; opacity: 0.8;
+}
+.card .card-ar { padding-right: 14px; }
+
+/* Moments: the icon sits in a lozenge. */
+.moment { border-radius: 3px; border-color: color-mix(in srgb, var(--gilt-soft) 45%, var(--rule)); }
+
+/* Footer in lapis, closing the page as the masthead opens it. */
+.foot { position: relative; background: var(--lapis-deep); color: var(--on-lapis-soft); border-top: 0; margin-top: var(--s-12); }
+.foot::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px;
+  background-image: var(--strip); background-size: 24px 10px; background-repeat: repeat-x;
+}
+.foot a { color: var(--on-lapis); }
+
+/* Reflection and tafsīr: hairlines in gilt, not grey. */
+.reflection { background: color-mix(in srgb, var(--paper-raised) 70%, transparent); border: 1px solid color-mix(in srgb, var(--gilt-soft) 50%, transparent); border-radius: 3px; }
+.tafsir { border-left-color: var(--gilt-soft); }
+.apparatus { border-top: 0; position: relative; padding-top: var(--s-6); }
+.apparatus::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px;
+  background-image: var(--strip); background-size: 24px 10px; background-repeat: repeat-x; opacity: 0.85;
+  -webkit-mask: linear-gradient(90deg, #000 60%, transparent); mask: linear-gradient(90deg, #000 60%, transparent);
+}
+
+@media print {
+  body { background-image: none; }
+  .bar::after, .tabs::before, .foot::before, .card::after, .hero .rosette { display: none; }
+}
+
+.wordmark svg [stroke] { stroke: var(--gilt-on-lapis); }

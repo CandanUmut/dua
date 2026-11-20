@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import { THEMES, byTheme } from "../lib/content";
 import { pick, t, url, type Lang } from "../lib/i18n";
+import Star from "../components/Star.astro";
+import { themeStar } from "../lib/geometry";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -14,6 +16,7 @@ const { lang } = Astro.props;
     {THEMES.map((th) => (
       <li>
         <a href={url(lang, `/themes/${th.id}/`)}>
+          <Star n={themeStar(th.order)[0]} k={themeStar(th.order)[1]} size={30} />
           <span>{pick(th.label, lang)}</span>
           <span class="n">{byTheme(th.id).length}</span>
         </a>

@@ -8,6 +8,7 @@ import Passage from "./Passage.astro";
 import type { Dua } from "../../content/schema";
 import { duaUrl, name, prophet } from "../lib/content";
 import { pick, t, type Lang } from "../lib/i18n";
+import Honorific from "./Honorific.astro";
 
 interface Props { dua: Dua; lang: Lang; showSpeaker?: boolean }
 const { dua, lang, showSpeaker = false } = Astro.props;
@@ -16,7 +17,7 @@ const occasion = pick(dua.context.summary, lang);
 
 <article class="inline-dua" id={dua.id}>
   <h2><a href={duaUrl(lang, dua.id)}>{pick(dua.title, lang)}</a></h2>
-  {showSpeaker && <p class="meta">{name(prophet(dua.speaker), lang)}</p>}
+  {showSpeaker && <p class="meta">{name(prophet(dua.speaker), lang)} <Honorific honorific={prophet(dua.speaker)!.honorific} lang={lang} /></p>}
   <Passage dua={dua} lang={lang} compact />
   {occasion && <p class="occ">{occasion}</p>}
   <p class="util small" style="margin-top: var(--s-3)">
