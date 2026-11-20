@@ -137,7 +137,7 @@ const { lang } = Astro.props;
         const li = el("li");
         const a = el("a", "card");
         a.href = cardUrl(r.id);
-        a.append(el("div", "card-title", pickL(c.t)), el("div", "card-meta", `${pickL(c.s)} · ${pickL(c.r)}`));
+        a.append(el("div", "card-title", pickL(c.t)), el("div", "card-meta", `${A.who(c)} · ${pickL(c.r)}`));
         li.append(a);
         rul.append(li);
       });

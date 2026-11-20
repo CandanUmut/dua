@@ -3,6 +3,7 @@
 import type { Dua } from "../../content/schema";
 import { arabicPreview, duaUrl, name, prophet, refLabel } from "../lib/content";
 import { pick, type Lang } from "../lib/i18n";
+import Honorific from "./Honorific.astro";
 
 interface Props { dua: Dua; lang: Lang; showSpeaker?: boolean }
 const { dua, lang, showSpeaker = true } = Astro.props;
@@ -12,5 +13,5 @@ const p = prophet(dua.speaker);
 <a class="card" href={duaUrl(lang, dua.id)}>
   {dua.arabic && <div class="card-ar" lang="ar" dir="rtl" translate="no">{arabicPreview(dua)}</div>}
   <div class="card-title">{pick(dua.title, lang)}</div>
-  <div class="card-meta">{showSpeaker && `${name(p, lang)} · `}{refLabel(dua, lang)}</div>
+  <div class="card-meta">{showSpeaker && p && <>{name(p, lang)} <Honorific honorific={p.honorific} lang={lang} /> · </>}{refLabel(dua, lang)}</div>
 </a>

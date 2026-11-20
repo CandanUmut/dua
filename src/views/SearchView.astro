@@ -58,7 +58,7 @@ const suggestions =
         out.innerHTML = rows.map((r) => `<li><a class="card" href="${home}duas/${r.id}/">
           <div class="card-ar" lang="ar" dir="rtl">${esc(r.ar)}</div>
           <div class="card-title">${esc(r.title)}</div>
-          <div class="card-meta">${esc(r.who)} · ${esc(r.ref)}</div></a></li>`).join("");
+          <div class="card-meta">${esc((r.who + " " + (window.DuaApp ? window.DuaApp.hon(r.hon) : "")).trim())} · ${esc(r.ref)}</div></a></li>`).join("");
         const nStr = rows.length === 1 ? S.one : S.many.replace("{n}", rows.length);
         count.textContent = rows.length === 0 ? S.none.replace("{q}", term) : S.count.replace("{n}", nStr).replace("{q}", term);
       };
@@ -66,7 +66,8 @@ const suggestions =
       q.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(run, 120); });
       document.querySelectorAll("[data-suggest]").forEach((b) => b.addEventListener("click", () => { q.value = b.dataset.suggest; run(); q.focus(); }));
       const initial = new URLSearchParams(location.search).get("q");
-      if (initial) { q.value = initial; run(); }
+      // After the shared script, so result names carry their honorific.
+      if (initial) document.addEventListener("DOMContentLoaded", () => { q.value = initial; run(); });
     })();
   </script>
 </Base>

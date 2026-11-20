@@ -2,16 +2,20 @@
 /**
  * A figure's honorific in the form the reader has chosen. All three forms ship
  * as data attributes; the settings script swaps the text, so the choice works
- * without a reload and the honorific is never baked into a name.
+ * without a reload and the honorific is never baked into a name. Before any
+ * choice, Turkish pages show the abbreviation — (a.s.), (s.a.v.) — as Turkish
+ * books do, and English pages the Arabic.
  */
-import { HONORIFICS } from "../lib/content";
+import { HONORIFICS, defaultHonForm } from "../lib/content";
 import type { Honorific } from "../../content/schema";
 import type { Lang } from "../lib/i18n";
 
 interface Props { honorific: Honorific; lang: Lang }
 const { honorific, lang } = Astro.props;
 const h = HONORIFICS[honorific];
+const arabicForm = defaultHonForm(lang) === "arabic";
 const isSaw = honorific === "sallallahu-alayhi-wa-sallam";
+const rtl = arabicForm && !isSaw;
 ---
 
 {
@@ -21,14 +25,12 @@ const isSaw = honorific === "sallallahu-alayhi-wa-sallam";
       data-hon
       data-hon-arabic={h.arabic}
       data-hon-full={h.full[lang]}
-      data-hon-abbr={h.abbr}
-      lang={isSaw ? undefined : "ar"}
-      dir={isSaw ? undefined : "rtl"}
+      data-hon-abbr={h.abbr[lang]}
+      lang={rtl ? "ar" : undefined}
+      dir={rtl ? "rtl" : undefined}
       translate="no"
-      aria-label={h.full[lang]}
-      style="font-family: var(--font-arabic); font-weight: 400"
-    >
-      {h.arabic}
-    </span>
+      title={h.full[lang]}
+      style={arabicForm ? "font-family: var(--font-arabic); font-weight: 400" : undefined}
+    >{arabicForm ? h.arabic : h.abbr[lang]}</span>
   )
 }

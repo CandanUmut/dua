@@ -4,6 +4,7 @@ import Passage from "../components/Passage.astro";
 import Honorific from "../components/Honorific.astro";
 import Icon from "../components/Icon.astro";
 import DuaCard from "../components/DuaCard.astro";
+import Rule from "../components/Rule.astro";
 import type { Dua } from "../../content/schema";
 import { cards, dua as findDua, fullRef, name, prophet, theme, translation } from "../lib/content";
 import { pick, t, url, type Lang } from "../lib/i18n";
@@ -69,7 +70,9 @@ const jsonLd = {
     <button type="button" class="btn quiet" data-act="copy"><Icon name="copy" />{t("actCopy", lang)}</button>
   </div>
 
-  <div class="stack section">
+  <Rule />
+
+  <div class="stack">
     {occasion && (
       <section class="occasion prose">
         <h2 class="section-label">{t("secWhenWhy", lang)}</h2>
@@ -136,7 +139,8 @@ const jsonLd = {
   </div>
 
   {related.length > 0 && (
-    <section class="section">
+    <section>
+      <Rule />
       <h2 class="section-label">{t("secNear", lang)}</h2>
       <ul class="cards grid-2">
         {related.map((r) => <li><DuaCard dua={r} lang={lang} /></li>)}

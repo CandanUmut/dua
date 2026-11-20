@@ -38,22 +38,37 @@
 
   /* ------------------------------ settings ----------------------------- */
 
-  const defaults = { theme: "auto", type: "normal", translit: true, honorific: "arabic", reading: "auto" };
-  let st = Object.assign({}, defaults, store.get(K.settings, {}));
+  const defaults = { theme: "auto", type: "normal", translit: true, honorific: "auto", reading: "auto" };
+  const storedSettings = store.get(K.settings, {});
+  // Settings v2: see the note in Base.astro. Pre-v2 values for reading and
+  // honorific were the old site's saved defaults, not a reader's choice.
+  if (storedSettings.v !== 2) {
+    storedSettings.reading = "auto";
+    storedSettings.honorific = "auto";
+    storedSettings.v = 2;
+  }
+  let st = Object.assign({}, defaults, storedSettings);
+  /** auto: the abbreviation on Turkish pages, the Arabic on English ones. */
+  const honForm = () => (!st.honorific || st.honorific === "auto" ? (lang === "tr" ? "abbr" : "arabic") : st.honorific);
 
   function apply() {
     const r = document.documentElement;
     if (st.theme === "auto") delete r.dataset.theme; else r.dataset.theme = st.theme;
     if (st.type === "normal") delete r.dataset.type; else r.dataset.type = st.type;
     r.dataset.translit = st.translit ? "on" : "off";
-    r.dataset.honorific = st.honorific;
+    r.dataset.honorific = honForm();
     r.dataset.reading = !st.reading || st.reading === "auto" ? lang : st.reading;
+    const form = honForm();
     $$("[data-hon]").forEach((el) => {
-      const key = st.honorific === "full" ? "honFull" : st.honorific === "abbr" ? "honAbbr" : "honArabic";
+      const key = form === "full" ? "honFull" : form === "abbr" ? "honAbbr" : "honArabic";
       el.textContent = el.dataset[key] || "";
-      const latin = st.honorific !== "arabic";
+      const latin = form !== "arabic";
       el.style.fontFamily = latin ? "inherit" : "var(--font-arabic)";
-      if (latin) { el.removeAttribute("dir"); el.lang = lang; }
+      el.style.fontWeight = latin ? "" : "400";
+      // The ﷺ glyph sits inside Latin text; the two-word honorifics are RTL Arabic.
+      const rtl = !latin && !(el.dataset.honArabic || "").includes("\uFDFA");
+      el.dir = rtl ? "rtl" : "auto";
+      el.lang = rtl ? "ar" : lang;
     });
   }
   const saveSettings = () => { store.set(K.settings, st); apply(); };
@@ -230,9 +245,13 @@
   /** A figure's honorific in the reader's chosen form, for names built in script. */
   function hon(h) {
     if (!h || !h.a) return "";
-    const f = st.honorific === "full" ? h.f[lang] || h.f.en : st.honorific === "abbr" ? h.b : h.a;
-    return f;
+    const form = honForm();
+    if (form === "full") return h.f[lang] || h.f.en;
+    if (form === "abbr") return (h.b && (h.b[lang] || h.b.en)) || "";
+    return h.a;
   }
+  /** "Mūsā (a.s.)": a name with its honorific, for text built in script. */
+  const who = (c) => `${pickL(c.s)} ${hon(c.h)}`.trim();
 
   /* ---------------------------- share as image ------------------------- */
 
@@ -304,9 +323,12 @@
 
     ctx.fillStyle = ink; ctx.font = '600 34px "Source Serif", serif';
     ctx.fillText(pickL(c.t), W / 2, H - M - 92);
-    ctx.fillStyle = gilt; ctx.font = '28px "Source Sans", sans-serif';
-    // Locale-aware: "SÛRESİ", not "SÛRESI".
-    ctx.fillText(`${pickL(c.s)} · ${pickL(c.r)}`.toLocaleUpperCase(lang === "tr" ? "tr-TR" : "en-GB"), W / 2, H - M - 46);
+    ctx.fillStyle = gilt; ctx.font = '28px "Source Sans", "Amiri", sans-serif';
+    // Locale-aware: "SÛRESİ", not "SÛRESI". The honorific is added after
+    // upper-casing, so "(a.s.)" keeps its own form.
+    const upper = (x) => x.toLocaleUpperCase(lang === "tr" ? "tr-TR" : "en-GB");
+    const hn = hon(c.h);
+    ctx.fillText(`${upper(pickL(c.s))}${hn ? " " + hn : ""} · ${upper(pickL(c.r))}`, W / 2, H - M - 46);
     ctx.fillStyle = soft; ctx.font = '24px "Source Sans", sans-serif';
     ctx.fillText(`${s.siteName} · candanumut.github.io/dua`, W / 2, H - M);
     return new Promise((res) => cv.toBlob(res, "image/png"));
@@ -359,7 +381,7 @@
       b.addEventListener("click", async () => {
         // A copied duʿāʾ carries its source; scripture detached from its
         // citation is how misattribution spreads.
-        const text = [c.ar, c[lang] || c.en, `— ${pickL(c.r)}`, location.origin + cardUrl(c.id)].filter(Boolean).join("\n\n");
+        const text = [c.ar, c[lang] || c.en, `— ${who(c)}, ${pickL(c.r)}`, location.origin + cardUrl(c.id)].filter(Boolean).join("\n\n");
         try { await navigator.clipboard.writeText(text); toast(s.copied); } catch { toast(s.copyFailed); }
       }),
     );
@@ -388,7 +410,7 @@
   window.DuaApp = {
     lang, base, s, fmt, store, K, toast, cards, pickL, cardUrl, dayIndex,
     saved, isSaved, toggleSaved, lists, setLists, createList, toggleInList, openListSheet,
-    playAyahs, stopAudio, hon, shareCard, makeImage, askPersist,
+    playAyahs, stopAudio, hon, who, shareCard, makeImage, askPersist,
     settings: () => st,
   };
 

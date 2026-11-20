@@ -199,6 +199,19 @@ await step("memorise hides the transliteration", async () => {
   if (shown) throw new Error("transliteration still visible in memorise mode");
 });
 
+await step("honorifics next to names", async () => {
+  await page.evaluate(() => localStorage.removeItem("dua.settings"));
+  await page.goto(ORIGIN + "/dua/tr/prophets/");
+  const tr = await page.textContent(".seq-list");
+  if (!tr.includes("(a.s.)") || !tr.includes("(s.a.v.)")) throw new Error("Turkish prophet list lacks (a.s.) / (s.a.v.)");
+  await page.goto(ORIGIN + "/dua/tr/duas/musa-rabbi-ishrah-li-sadri/");
+  const who = await page.evaluate(async () => { const { byId } = await window.DuaApp.cards(); return window.DuaApp.who(byId.get("musa-rabbi-ishrah-li-sadri")); });
+  if (!/\(a\.s\.\)$/.test(who)) throw new Error(`name for sharing/copying lacks its honorific: "${who}"`);
+  await page.goto(ORIGIN + "/dua/prophets/");
+  const en = await page.textContent(".seq-list");
+  if (!en.includes("\uFDFA") || !en.includes("عليه السلام")) throw new Error("English prophet list lacks the honorifics");
+});
+
 await browser.close();
 server.close();
 
@@ -207,4 +220,4 @@ if (failures.length) {
   for (const f of failures.slice(0, 60)) console.error(`  ${f}`);
   process.exit(1);
 }
-console.error(`✓ ${pages.length} pages and 9 features pass on a phone viewport`);
+console.error(`✓ ${pages.length} pages and 10 features pass on a phone viewport`);

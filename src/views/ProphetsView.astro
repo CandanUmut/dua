@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { bySpeaker, inOrder, name } from "../lib/content";
 import { t, url, type Lang } from "../lib/i18n";
+import Honorific from "../components/Honorific.astro";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -24,7 +25,7 @@ let i = 0;
           <li>
             <a href={url(lang, `/prophets/${p.id}/`)}>
               <span class="no">{g.title ? "" : ++i}</span>
-              <span class="nm">{name(p, lang)}{p.name.enCommon && lang === "en" && <small>{p.name.enCommon}</small>}</span>
+              <span class="nm">{name(p, lang)} <Honorific honorific={p.honorific} lang={lang} />{p.name.enCommon && lang === "en" && <small>{p.name.enCommon}</small>}</span>
               <span class="ct">{t("duaCount", lang, { n: bySpeaker(p.id).length })}</span>
             </a>
           </li>
