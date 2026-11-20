@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import { t, url, type Lang } from "../lib/i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+
+<Base lang={lang} title={`${t("notFound", lang)} — ${t("siteName", lang)}`} description={t("notFoundLede", lang)}>
+  <h1 class="page-title">{t("notFound", lang)}</h1>
+  <p class="lede">{t("notFoundLede", lang)}</p>
+  <div class="actions">
+    <a class="btn primary" href={url(lang, "/")}>{t("navToday", lang)}</a>
+    <a class="btn" href={url(lang, "/search/")}>{t("navSearch", lang)}</a>
+  </div>
+</Base>

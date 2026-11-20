@@ -1,0 +1,197 @@
+---
+/**
+ * Mine — saved entries, lists, recently read, backup, and a daily reminder.
+ * Rendered empty and filled in the browser, because all of it lives in the
+ * reader's own storage.
+ */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+
+<Base lang={lang} title={`${t("mineTitle", lang)} — ${t("siteName", lang)}`} description={t("mineLede", lang)} tab="mine">
+  <h1 class="page-title">{t("mineTitle", lang)}</h1>
+  <p class="lede">{t("mineLede", lang)}</p>
+
+  <section class="section">
+    <div class="section-head"><h2>{t("mineLists", lang)}</h2>
+      <button class="btn" type="button" data-mine-new><Icon name="plus" />{t("newList", lang)}</button>
+    </div>
+    <div data-mine-lists></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>{t("mineRecent", lang)}</h2></div>
+    <ul class="cards" data-mine-recent></ul>
+  </section>
+
+  <section class="panel">
+    <h2>{t("mineReminder", lang)}</h2>
+    <p class="muted small util">{t("mineReminderLede", lang)}</p>
+    <div class="row">
+      <label class="util small" for="rem-time">{t("mineReminderTime", lang)}</label>
+      <input id="rem-time" type="time" value="06:30" />
+      <button class="btn" type="button" data-mine-ics><Icon name="calendar" />{t("mineReminderAdd", lang)}</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>{t("mineBackup", lang)}</h2>
+    <p class="muted small util">{t("mineBackupLede", lang)}</p>
+    <div class="row">
+      <button class="btn" type="button" data-mine-export><Icon name="download" />{t("mineExport", lang)}</button>
+      <label class="btn" style="cursor:pointer"><Icon name="upload" />{t("mineImport", lang)}
+        <input type="file" accept="application/json,.json" data-mine-import class="visually-hidden" />
+      </label>
+    </div>
+    <p class="muted small util" data-mine-persist hidden style="margin-top: var(--s-3)">{t("minePersisted", lang)}</p>
+  </section>
+
+  <section class="panel">
+    <h2>{t("settingsTitle", lang)}</h2>
+    <button class="btn" type="button" data-open-settings><Icon name="settings" />{t("settingsTitle", lang)}</button>
+  </section>
+
+  <script is:inline define:vars={{ todayUrl: new URL(url(lang, "/"), "https://candanumut.github.io").href }}>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const A = window.DuaApp;
+      if (!A) return;
+      const { s, fmt, pickL, cardUrl, lang } = A;
+      const { byId } = await A.cards();
+      const readUrl = (ids) => A.base + (lang === "tr" ? "/tr" : "") + "/read/?ids=" + ids.join(",");
+      const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+      const iconBtn = (label, html, fn) => { const b = el("button", "icon-btn"); b.type = "button"; b.setAttribute("aria-label", label); b.title = label; b.innerHTML = html; b.onclick = fn; return b; };
+      const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+      const UP = svg('<path d="M6 14l6-6 6 6"/>'), DOWN = svg('<path d="M6 10l6 6 6-6"/>'), X = svg('<path d="M6 6l12 12M18 6L6 18"/>');
+
+      const box = document.querySelector("[data-mine-lists]");
+      function render() {
+        box.innerHTML = "";
+        const saved = A.saved();
+        const groups = [{ id: "__saved", name: s.mineSaved, items: saved, fixed: true }, ...A.lists()];
+        groups.forEach((g) => {
+          const wrap = el("div", "list-box");
+          const head = el("header");
+          head.append(el("h3", null, g.name));
+          if (g.items.length) {
+            const a = el("a", "btn primary", s.mineReadAll);
+            a.href = readUrl(g.items);
+            head.append(a);
+          }
+          if (!g.fixed) {
+            const rn = el("button", "btn quiet", s.mineRename);
+            rn.type = "button";
+            rn.onclick = () => { const n = (prompt(s.newListPrompt, g.name) || "").trim(); if (!n) return; const l = A.lists(); l.find((x) => x.id === g.id).name = n.slice(0, 60); A.setLists(l); render(); };
+            const del = el("button", "btn quiet", s.mineDelete);
+            del.type = "button";
+            del.onclick = () => { if (!confirm(s.mineDeleteConfirm)) return; A.setLists(A.lists().filter((x) => x.id !== g.id)); render(); };
+            head.append(rn, del);
+          }
+          wrap.append(head);
+          if (!g.items.length) {
+            wrap.append(el("p", "empty", g.fixed ? s.mineSavedEmpty : s.homeListsEmpty));
+          } else {
+            const ol = el("ol");
+            g.items.forEach((id, i) => {
+              const c = byId.get(id);
+              if (!c) return;
+              const li = el("li");
+              const a = el("a", null, pickL(c.t));
+              a.href = cardUrl(id);
+              li.append(a);
+              const move = (d) => {
+                if (g.fixed) {
+                  const l = A.saved(); const [x] = l.splice(i, 1); l.splice(i + d, 0, x); A.store.set(A.K.saved, l);
+                } else {
+                  const all = A.lists(); const L = all.find((x) => x.id === g.id); const [x] = L.items.splice(i, 1); L.items.splice(i + d, 0, x); A.setLists(all);
+                }
+                render();
+              };
+              if (i > 0) li.append(iconBtn(s.mineUp, UP, () => move(-1)));
+              if (i < g.items.length - 1) li.append(iconBtn(s.mineDown, DOWN, () => move(1)));
+              li.append(iconBtn(fmt("removeItem", { t: pickL(c.t) }), X, () => {
+                if (g.fixed) A.toggleSaved(id); else A.toggleInList(g.id, id);
+                render();
+              }));
+              ol.append(li);
+            });
+            wrap.append(ol);
+          }
+          box.append(wrap);
+        });
+      }
+      render();
+      document.querySelector("[data-mine-new]").onclick = () => {
+        const n = (prompt(s.newListPrompt) || "").trim();
+        if (n) { A.createList(n); render(); }
+      };
+
+      const recent = A.store.get(A.K.recent, []).slice(0, 10);
+      const rul = document.querySelector("[data-mine-recent]");
+      recent.forEach((r) => {
+        const c = byId.get(r.id);
+        if (!c) return;
+        const li = el("li");
+        const a = el("a", "card");
+        a.href = cardUrl(r.id);
+        a.append(el("div", "card-title", pickL(c.t)), el("div", "card-meta", `${pickL(c.s)} · ${pickL(c.r)}`));
+        li.append(a);
+        rul.append(li);
+      });
+      if (!recent.length) rul.closest("section").hidden = true;
+
+      // Backup
+      document.querySelector("[data-mine-export]").onclick = () => {
+        const data = { app: "dua-of-the-prophets", version: 1, exportedAt: new Date().toISOString(),
+          saved: A.saved(), lists: A.lists(), recent: A.store.get(A.K.recent, []), settings: A.settings() };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `dua-backup-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      };
+      document.querySelector("[data-mine-import]").onchange = async (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) return;
+        try {
+          const d = JSON.parse(await f.text());
+          if (d.app !== "dua-of-the-prophets" || !Array.isArray(d.saved) || !Array.isArray(d.lists)) throw 0;
+          const valid = (id) => typeof id === "string" && byId.has(id);
+          A.store.set(A.K.saved, d.saved.filter(valid));
+          A.setLists(d.lists.filter((l) => l && typeof l.name === "string" && Array.isArray(l.items))
+            .map((l) => ({ id: String(l.id || "l" + Math.random().toString(36).slice(2)), name: l.name.slice(0, 60), items: l.items.filter(valid) })));
+          if (Array.isArray(d.recent)) A.store.set(A.K.recent, d.recent.filter((r) => r && valid(r.id)).slice(0, 30));
+          A.toast(s.mineImported);
+          render();
+        } catch { A.toast(s.mineImportFailed); }
+        e.target.value = "";
+      };
+      try { if (navigator.storage && navigator.storage.persisted && await navigator.storage.persisted()) document.querySelector("[data-mine-persist]").hidden = false; } catch {}
+
+      // Calendar reminder: a daily recurring event that opens Today.
+      document.querySelector("[data-mine-ics]").onclick = () => {
+        const [hh, mm] = (document.getElementById("rem-time").value || "06:30").split(":");
+        const d = new Date(); d.setHours(+hh, +mm, 0, 0);
+        if (d < new Date()) d.setDate(d.getDate() + 1);
+        const p = (n) => String(n).padStart(2, "0");
+        const local = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T${p(d.getHours())}${p(d.getMinutes())}00`;
+        const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+        const ics = [
+          "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Dua of the Prophets//EN", "CALSCALE:GREGORIAN",
+          "BEGIN:VEVENT", `UID:dua-daily-${Date.now()}@candanumut.github.io`, `DTSTAMP:${stamp}`,
+          `DTSTART:${local}`, "DURATION:PT5M", "RRULE:FREQ=DAILY",
+          `SUMMARY:${s.reminderTitle}`, `URL:${todayUrl}`, `DESCRIPTION:${todayUrl}`,
+          "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${s.reminderTitle}`, "TRIGGER:PT0M", "END:VALARM",
+          "END:VEVENT", "END:VCALENDAR",
+        ].join("\r\n");
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+        a.download = "dua-reminder.ics";
+        document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      };
+    });
+  </script>
+</Base>

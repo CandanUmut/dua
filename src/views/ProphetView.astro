@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import Honorific from "../components/Honorific.astro";
+import InlineDua from "../components/InlineDua.astro";
+import Icon from "../components/Icon.astro";
+import type { Prophet } from "../../content/schema";
+import { bySpeaker, name } from "../lib/content";
+import { pick, t, url, type Lang } from "../lib/i18n";
+
+interface Props { prophet: Prophet; lang: Lang }
+const { prophet, lang } = Astro.props;
+const duas = bySpeaker(prophet.id);
+const female = prophet.honorific === "alayha-salam" || prophet.honorific === "radiyallahu-anha";
+const n = name(prophet, lang);
+---
+
+<Base
+  lang={lang}
+  title={`${n} — ${t("siteName", lang)}`}
+  description={`${pick(prophet.summary, lang)} ${t("duaCount", lang, { n: duas.length })}.`}
+  tab="prophets"
+>
+  <p class="kicker"><a href={url(lang, "/prophets/")}>{t("prophetsTitle", lang)}</a></p>
+  <h1 class="page-title">{n} <Honorific honorific={prophet.honorific} lang={lang} /></h1>
+  <p class="arabic" lang="ar" dir="rtl" translate="no" style="text-align:start; font-size: var(--t-lg); line-height:1.6; color: var(--gilt)">{prophet.name.ar}</p>
+
+  <div class="prose" style="margin-top: var(--s-6)">
+    <p class="lede">{pick(prophet.summary, lang)}</p>
+    {prophet.trial && (
+      <>
+        <h2 class="section-label" style="margin-top: var(--s-8)">{t(female ? "secTrialF" : "secTrial", lang)}</h2>
+        <p>{pick(prophet.trial, lang)}</p>
+      </>
+    )}
+    <p class="refs">{prophet.references.map((r) => `${r.work} ${r.locus ?? ""}`.trim()).join(" · ")}</p>
+  </div>
+
+  {duas.length > 0 && (
+    <>
+      <div class="actions">
+        <a class="btn primary" href={`${url(lang, "/read/")}?prophet=${prophet.id}`}><Icon name="read" />{t("readThrough", lang)}</a>
+      </div>
+      <section class="section">
+        <h2 class="section-label">{t("hisDua", lang)} · {duas.length}</h2>
+        {duas.map((d) => <InlineDua dua={d} lang={lang} />)}
+      </section>
+    </>
+  )}
+</Base>

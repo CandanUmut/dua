@@ -1,0 +1,10 @@
+---
+import View from "../../../views/DuaView.astro";
+import { DUAS } from "../../../lib/content";
+export function getStaticPaths() {
+  return DUAS.map((x) => ({ params: { slug: x.id }, props: { item: x } }));
+}
+const { item } = Astro.props;
+---
+
+<View dua={item} lang="tr" />

@@ -1,0 +1,19 @@
+---
+/**
+ * The gilt frame the Arabic sits in. Corner stars and a crest at the head,
+ * after the illuminated frame of a muṣḥaf page. Used once per passage.
+ */
+interface Props { foot?: string; class?: string }
+const { foot, class: cls } = Astro.props;
+const star = `<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="6" width="12" height="12"/><rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"/></g><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>`;
+---
+
+<div class:list={["folio", cls]}>
+  <span class="corner tl" set:html={star} />
+  <span class="corner tr" set:html={star} />
+  <span class="corner bl" set:html={star} />
+  <span class="corner br" set:html={star} />
+  <span class="crest" set:html={star} />
+  <slot />
+  {foot && <p class="folio-foot">{foot}</p>}
+</div>

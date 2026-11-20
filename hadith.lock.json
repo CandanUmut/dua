@@ -1,0 +1,106 @@
+{
+  "source": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1",
+  "note": "SHA-256 of each ḥadīth supplication as sliced from the dataset. Regenerate with `npx tsx scripts/fetch-hadith.ts`. Never edit Arabic by hand.",
+  "entries": {
+    "muhammad-allahumma-inni-zalamtu-nafsi": {
+      "ref": "bukhari:6326",
+      "sha256": "6985c01631871b438c153819b952eaebceb26954829bd6b6229021b9618ce631"
+    },
+    "muhammad-audhu-bika-min-adhab-jahannam": {
+      "ref": "muslim:588",
+      "sha256": "ddeaa6036d0536f62132f334ee7723a65e13a3e9717afd1088e1edfd3f3e143f"
+    },
+    "muhammad-allahumma-aslih-li-dini": {
+      "ref": "muslim:2720",
+      "sha256": "c4bf0a11b343ee5eaa30dcb292d0ac75e7ffd548378f6e4f81a5f173bccc693a"
+    },
+    "muhammad-as-aluka-al-huda-wal-tuqa": {
+      "ref": "muslim:2721",
+      "sha256": "64b13693f36e4cf50f626b68d7bc11b89ac2f11ddfb8b9d4eefc2fe47586d4cb"
+    },
+    "muhammad-audhu-bika-min-al-hamm-wal-hazan": {
+      "ref": "bukhari:6369",
+      "sha256": "1c1250d440751ce835e6c40ed3f6c1dc1accd3b2f10486d94f8a3f9fa2903c3c"
+    },
+    "muhammad-alhamdu-lillahi-alladhi-ahyana": {
+      "ref": "bukhari:6312",
+      "sha256": "635fb0ab3bcd41d7f4ec2a6314d02a1864971d093eb5716da37197fb747c79e4"
+    },
+    "muhammad-sayyid-al-istighfar": {
+      "ref": "bukhari:6306",
+      "sha256": "6ce7fa31440bfc23c2fe69c534c664fc6c10f56a5b689c1e42f52f38f239260f"
+    },
+    "muhammad-bismillahi-alladhi-la-yadurru": {
+      "ref": "abudawud:5088",
+      "sha256": "00d141afc6ac8c8dd86008b0b82065d7b4f826c007741a22ad13ff8dab3810e8"
+    },
+    "muhammad-bismillahi-tawakkaltu-ala-allah": {
+      "ref": "abudawud:5095",
+      "sha256": "33e98e886d67e66657f1471e5cc0444be8b7153efffdae7a087b2e9a8977e351"
+    },
+    "muhammad-iftah-li-abwaba-rahmatik": {
+      "ref": "muslim:713",
+      "sha256": "ba5d9d688cc88dfd23eb9d17f413355f889801ddceb508c4adf94b44c51bc069"
+    },
+    "muhammad-asaluka-min-fadlik": {
+      "ref": "muslim:713",
+      "sha256": "08cc07bfe5d00b020184279df823c77bf15f2dd4d154e4cc0ae155ea940ca788"
+    },
+    "muhammad-allahumma-antas-salam": {
+      "ref": "muslim:591",
+      "sha256": "3840c67e4e5a5e049559fab53d9d6c6f134a9da0104eefb5b918eb48ee2f030d"
+    },
+    "muhammad-allahumma-ainni-ala-dhikrik": {
+      "ref": "abudawud:1522",
+      "sha256": "8c02873d0701f4dd02fb90b3d1c5935b5ce57bdc6777ddcbbff040f78e00a931"
+    },
+    "muhammad-alhamdu-lillahi-alladhi-atamani": {
+      "ref": "tirmidhi:3458",
+      "sha256": "c626338f0c7c9e60005134fa0a2e97c6e25e18fa17633e4d70cf7c65ae526b7b"
+    },
+    "muhammad-dua-al-safar": {
+      "ref": "muslim:1342",
+      "sha256": "39fe3252389defd072a19804c13191c51a63f11f4f2dcde7f9f47f926034163a"
+    },
+    "muhammad-sayyiban-nafian": {
+      "ref": "bukhari:1032",
+      "sha256": "f26e54b431c728a729f99b1d717e4184c4e6d9cd9beafb29249624cdbd3e3b37"
+    },
+    "muhammad-adhhib-al-bas": {
+      "ref": "bukhari:5675",
+      "sha256": "ffc77c8692f4c17f24f7b2df91eb242db6995780b258ba3239dc1aae56791a24"
+    },
+    "muhammad-audhu-billahi-wa-qudratih": {
+      "ref": "muslim:2202",
+      "sha256": "0224ec07ee165b2a2cf8ce66596013ac782345e1a5f21e5ccf7b2dc9574fc431"
+    },
+    "muhammad-la-ilaha-illa-allah-al-azim-al-halim": {
+      "ref": "bukhari:6346",
+      "sha256": "f4ae65f7490385f57505a5ece6167eab1d4abdb1ab0003a31a3d0771b8da8047"
+    },
+    "muhammad-allahu-rabbi-la-ushriku-bihi": {
+      "ref": "abudawud:1525",
+      "sha256": "cba9e8a4e6b336b96f77012bc0917bfd9387238e431587ec8fdc0e262d0a70f1"
+    },
+    "muhammad-allahumma-inni-audhu-bika-min-zawal-nimatik": {
+      "ref": "muslim:2739",
+      "sha256": "27878803ff9a9e623077bcd25a22ea4323a013e7549a767a11bb38a6a0db41af"
+    },
+    "muhammad-ya-muqallib-al-qulub": {
+      "ref": "tirmidhi:3522",
+      "sha256": "e0c9382589df0591df73657830f15dd08af1754a61c544df48a82e52d91b4ca2"
+    },
+    "muhammad-istikhara": {
+      "ref": "bukhari:6382",
+      "sha256": "e426113e95ca2be08d4337516b66e0c4b25e37a27335ab8aa327bd52403378d4"
+    },
+    "muhammad-bismika-amutu-wa-ahya": {
+      "ref": "bukhari:6312",
+      "sha256": "a36ccf87cd9227ba70bf9ff31c4a62b6dfca3235ca83c5bbc2adf8eede8b9a50"
+    },
+    "muhammad-allahumma-qini-adhabak": {
+      "ref": "abudawud:5045",
+      "sha256": "ab8650e43e6fedc5f14d4d01a9d9f83a4ac902a524bcce9e46b19970a808da16"
+    }
+  }
+}

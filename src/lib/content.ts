@@ -1,91 +1,128 @@
 /**
- * Read-side access to the built content. Everything here runs at build time —
- * no page fetches data in the browser.
+ * Read-side access to the built content. Runs at build time.
  */
 
 import site from "../../content/generated/site.json";
 import type { Dua, Prophet, Theme, Honorific } from "../../content/schema.js";
+import { pick, t, url, type Lang } from "./i18n";
 
 export const DUAS = site.duas as unknown as Dua[];
 export const PROPHETS = site.prophets as unknown as Prophet[];
-/**
- * Sorted by `order`, not by position in the source array — the file groups
- * themes by when they were written, the `order` field is the deliberate reading
- * sequence (ordinary needs first, hardship in the middle, the end last).
- */
-export const THEMES = (site.themes as unknown as Theme[])
-  .slice()
-  .sort((a, b) => a.order - b.order);
-/** Legacy `#view=dua&id=…` identifiers → current duʿāʾ slugs. */
+export const THEMES = (site.themes as unknown as Theme[]).slice().sort((a, b) => a.order - b.order);
+export const MOMENTS = site.moments as string[];
 export const LEGACY_REDIRECTS = site.legacyRedirects as Record<string, string>;
 
 export const bySpeaker = (id: string) => DUAS.filter((d) => d.speaker === id);
 export const byTheme = (id: string) => DUAS.filter((d) => d.themes.includes(id));
+export const byMoment = (id: string) => DUAS.filter((d) => d.moments.includes(id));
 export const dua = (id: string) => DUAS.find((d) => d.id === id);
 export const prophet = (id: string) => PROPHETS.find((p) => p.id === id);
 export const theme = (id: string) => THEMES.find((t) => t.id === id);
 
 export const inOrder = (section?: Prophet["section"]) =>
-  PROPHETS.filter((p) => (section ? p.section === section : true)).sort(
-    (a, b) => a.order - b.order,
-  );
+  PROPHETS.filter((p) => (section ? p.section === section : true)).sort((a, b) => a.order - b.order);
 
-/**
- * Honorifics are data, and the *form* is a user setting — so each one carries
- * all three renderings and the UI picks. Never concatenated into a name.
- */
-export const HONORIFICS: Record<Honorific, { arabic: string; full: string; abbr: string }> = {
+/** Honorifics are data; the form is a reader setting. */
+export const HONORIFICS: Record<Honorific, { arabic: string; full: Record<Lang, string>; abbr: string }> = {
   "sallallahu-alayhi-wa-sallam": {
     arabic: "ﷺ",
-    full: "peace and blessings be upon him",
+    full: { en: "peace and blessings be upon him", tr: "sallallahu aleyhi ve sellem" },
     abbr: "(ṣ)",
   },
-  "alayhi-salam": { arabic: "عليه السلام", full: "peace be upon him", abbr: "(as)" },
-  "alayha-salam": { arabic: "عليها السلام", full: "peace be upon her", abbr: "(as)" },
-  "radiyallahu-anhu": { arabic: "رضي الله عنه", full: "may Allah be pleased with him", abbr: "(ra)" },
-  "radiyallahu-anha": { arabic: "رضي الله عنها", full: "may Allah be pleased with her", abbr: "(ra)" },
-  none: { arabic: "", full: "", abbr: "" },
+  "alayhi-salam": { arabic: "عليه السلام", full: { en: "peace be upon him", tr: "aleyhisselam" }, abbr: "(as)" },
+  "alayha-salam": { arabic: "عليها السلام", full: { en: "peace be upon her", tr: "aleyhesselam" }, abbr: "(as)" },
+  "radiyallahu-anhu": { arabic: "رضي الله عنه", full: { en: "may Allah be pleased with him", tr: "radıyallahu anh" }, abbr: "(ra)" },
+  "radiyallahu-anha": { arabic: "رضي الله عنها", full: { en: "may Allah be pleased with her", tr: "radıyallahu anhâ" }, abbr: "(ra)" },
+  none: { arabic: "", full: { en: "", tr: "" }, abbr: "" },
 };
 
-export const translation = (d: Dua, lang: "en" | "tr") =>
-  // Prefer an established, attributed rendering over a project draft when an
-  // entry carries more than one in the same language.
-  d.translations.find((t) => t.lang === lang && !t.draft) ??
-  d.translations.find((t) => t.lang === lang);
+export const translation = (d: Dua, lang: "en" | "tr") => d.translations.find((t) => t.lang === lang);
 
-export const refLabel = (d: Dua): string => {
+export const name = (p: Prophet | undefined, lang: Lang) => (p ? p.name[lang] || p.name.en : "");
+
+/** "21:87" / "20:25–28" / "Bukhārī 6306" — compact, for lists. */
+export function refLabel(d: Dua, lang: Lang = "en"): string {
   if (d.source.type === "hadith") {
-    return `${d.source.collection} ${d.source.number}`;
+    return `${lang === "tr" ? d.source.collectionTr : d.source.collection} ${d.source.number}`;
   }
-  if (d.source.type === "attributed") {
-    return d.source.locus;
-  }
+  if (d.source.type === "attributed") return d.source.locus;
   const { ayat } = d.source;
   const first = ayat[0];
   const last = ayat[ayat.length - 1];
-  return ayat.length > 1
-    ? `${first.surah}:${first.ayah}–${last.ayah}`
-    : `${first.surah}:${first.ayah}`;
+  return ayat.length > 1 ? `${first.surah}:${first.ayah}–${last.ayah}` : `${first.surah}:${first.ayah}`;
+}
+
+/** "Sūrat al-Anbiyāʾ 21:87" / "Enbiyâ Sûresi 21:87" / "Ṣaḥīḥ al-Bukhārī 6306". */
+export function fullRef(d: Dua, lang: Lang): string {
+  if (d.source.type === "quran") {
+    const n = lang === "tr" ? d.source.surahNameTr : d.source.surahName;
+    return `${t("surah", lang, { n })} ${refLabel(d)}`;
+  }
+  return refLabel(d, lang);
+}
+
+/** The first words of the Arabic, for list previews. */
+export const arabicPreview = (d: Dua, words = 9) => {
+  const w = (d.arabic?.text ?? "").split(" ");
+  return w.length > words ? w.slice(0, words).join(" ") + " …" : w.join(" ");
 };
 
 /**
- * Arabic search normalisation, so a reader typing undiacriticised Arabic from
- * memory finds the entry.
- *
- * Two things have to happen, and the second is easy to miss:
- *
- *  1. Strip tashkeel and unify alef forms, ta marbuta, and ya.
- *
- *  2. **Convert the dagger alif (U+0670) to a full alif rather than deleting
- *     it.** Uthmani writes many long a vowels as a superscript dagger rather
- *     than a full letter, so the word for "the wrongdoers" contains no plain
- *     alif at all. Stripping the dagger as though it were a vowel mark leaves
- *     a spelling no reader will ever type, and Arabic search silently matches
- *     nothing. This is a direct consequence of shipping Uthmani; it does not
- *     arise on an imlai corpus.
+ * Entries eligible to be "the duʿāʾ of the day". Leaves out the two prophetic
+ * imprecations (no situations offered), refuge addressed to a person (19:18),
+ * and statements — a reader opening the site in the morning should get a
+ * supplication they can make.
  */
-const DAGGER_ALIF = /\u0670/g;
-const ARABIC_MARKS = /[\u0610-\u061A\u064B-\u065F\u06D6-\u06ED\u0640]/g;
+export const dailyPool = () =>
+  DUAS.filter(
+    (d) =>
+      d.situations.en.length > 0 &&
+      d.form !== "statement" &&
+      d.id !== "maryam-inni-audhu-bil-rahman-minka",
+  ).map((d) => d.id);
+
+/** The minimal record the browser needs to render a duʿāʾ: Today, the reader, lists, sharing. */
+export type Card = {
+  id: string;
+  t: { en: string; tr: string };
+  s: { en: string; tr: string };
+  r: { en: string; tr: string };
+  ar: string;
+  tl: string;
+  en: string;
+  tr: string;
+  au: number[];
+  q: boolean;
+  /** Honorific forms for the speaker: Arabic glyph, words per language, abbreviation. */
+  h: { a: string; f: { en: string; tr: string }; b: string };
+};
+export const cards = (): Card[] =>
+  DUAS.map((d) => {
+    const p = prophet(d.speaker);
+    return {
+      id: d.id,
+      t: d.title,
+      s: { en: name(p, "en"), tr: name(p, "tr") },
+      r: { en: fullRef(d, "en"), tr: fullRef(d, "tr") },
+      ar: d.arabic?.text ?? "",
+      tl: d.transliteration?.text ?? "",
+      en: translation(d, "en")?.text ?? "",
+      tr: translation(d, "tr")?.text ?? "",
+      au: d.audioAyahs,
+      q: d.source.type === "quran",
+      h: (() => { const x = HONORIFICS[p?.honorific ?? "none"]; return { a: x.arabic, f: x.full, b: x.abbr }; })(),
+    };
+  });
+
+/* ------------------------------ search ------------------------------- */
+
+/**
+ * Arabic search normalisation. The dagger alif becomes a full alif rather than
+ * being stripped: Uthmani writes many long a vowels that way, and stripping it
+ * leaves a spelling no reader will type. Must match the copy in Search.astro.
+ */
+const DAGGER_ALIF = /ٰ/g;
+const ARABIC_MARKS = /[ؐ-ًؚ-ٟۖ-ۭـ]/g;
 
 export function normalise(s: string): string {
   return s
@@ -95,62 +132,42 @@ export function normalise(s: string): string {
     .replace(/[آأإٱ]/g, "ا")
     .replace(/ة/g, "ه")
     .replace(/ى/g, "ي")
-    // Latin: fold diacritics so "zalimin" matches "ẓālimīn"
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .replace(/[ʿʾ'’‘`]/g, "")
+    .replace(/ı/g, "i")
+    .replace(/\u2011/g, "-")
     .toLowerCase()
     .trim();
 }
 
-export type SearchDoc = {
-  id: string;
-  title: string;
-  speaker: string;
-  ref: string;
-  themes: string[];
-  haystack: string;
-};
+export type SearchDoc = { id: string; title: string; who: string; ref: string; ar: string; h: string };
 
-export function buildSearchIndex(): SearchDoc[] {
+export function buildSearchIndex(lang: Lang): SearchDoc[] {
   return DUAS.map((d) => {
     const p = prophet(d.speaker);
-    const en = translation(d, "en")?.text ?? "";
-    const tr = translation(d, "tr")?.text ?? "";
-    const themeLabels = d.themes
-      .map((t) => {
-        const th = theme(t);
-        return th ? `${th.label.en} ${th.label.tr}` : "";
-      })
-      .join(" ");
+    const themeLabels = d.themes.map((id) => {
+      const th = theme(id);
+      return th ? `${th.label.en} ${th.label.tr}` : "";
+    });
     return {
       id: d.id,
-      title: d.title.en,
-      speaker: p ? `${p.name.en}${p.name.enCommon ? ` (${p.name.enCommon})` : ""}` : d.speaker,
-      ref: refLabel(d),
-      themes: d.themes,
-      haystack: normalise(
+      title: pick(d.title, lang),
+      who: name(p, lang),
+      ref: fullRef(d, lang),
+      ar: arabicPreview(d, 7),
+      h: normalise(
         [
-          d.title.en,
-          d.title.tr,
-          d.arabic?.text ?? "",
-          d.transliteration?.text ?? "",
-          en,
-          tr,
-          p?.name.en,
-          p?.name.enCommon,
-          p?.name.tr,
-          p?.name.ar,
-          themeLabels,
-          d.situations.en.join(" "),
-          d.situations.tr.join(" "),
-          refLabel(d),
-          // Translator names and the occasion text, so searching "Elmalılı" or
-          // "mezmur" finds the entries they belong to.
-          d.translations.map((t) => t.translator).join(" "),
-          d.context.summary,
-          d.source.type === "hadith" ? d.source.collection : "",
-          d.source.type === "attributed" ? `${d.source.work} ${d.source.tradition}` : "",
+          d.title.en, d.title.tr, d.arabic?.text, d.transliteration?.text,
+          translation(d, "en")?.text, translation(d, "tr")?.text,
+          p?.name.en, p?.name.enCommon, p?.name.tr, p?.name.ar,
+          ...themeLabels,
+          ...d.situations.en, ...d.situations.tr,
+          refLabel(d, "en"), refLabel(d, "tr"),
+          d.translations.filter((x) => !x.project).map((x) => x.translator).join(" "),
+          d.context.summary.en, d.context.summary.tr,
+          d.source.type === "hadith" ? `${d.source.collection} ${d.source.collectionTr}` : "",
+          d.source.type === "quran" ? `${d.source.surahName} ${d.source.surahNameTr}` : "",
         ]
           .filter(Boolean)
           .join(" "),
@@ -158,3 +175,5 @@ export function buildSearchIndex(): SearchDoc[] {
     };
   });
 }
+
+export const duaUrl = (lang: Lang, id: string) => url(lang, `/duas/${id}/`);

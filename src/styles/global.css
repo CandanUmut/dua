@@ -1,12 +1,9 @@
 /*
- * Prophets' Duʿāʾ — type and colour system.
- *
- * Implements DESIGN.md. Two rules that shaped this file:
- *
- *   - Zero box-shadows. Separation is by rule and by space, the way a book
- *     does it. Max border-radius is 2px.
- *   - Every length is a token. There are no ad-hoc pixel values below.
+ * The Duʿāʾ of the Prophets — type, colour and component system.
+ * See DESIGN.md. The one ornament is the gilt folio around the Arabic.
  */
+
+/* ------------------------------- fonts -------------------------------- */
 
 /* ------------------------------- fonts -------------------------------- */
 
@@ -70,34 +67,43 @@
     U+A720-A7FF;
 }
 
+
+@font-face {
+  font-family: "Honorific";
+  src: url("/dua/fonts/amiri-arabic-1.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+FDFA;
+}
+
 /* ------------------------------- tokens ------------------------------- */
 
 :root {
-  /* Manuscript pigments — see DESIGN.md §1 for why not cream + terracotta. */
-  --paper: #e8e6df;
-  --paper-raised: #f1efe9;
+  /* Manuscript pigments: a cool rag paper, lapis for action, a rubric red for
+     the source apparatus, and a muted gilt used for ornament only. */
+  --paper: #e9e6de;
+  --paper-raised: #f4f2ec;
+  --paper-sunk: #dfdcd3;
   --ink: #1b1e1c;
-  --ink-soft: #4e534e;
-  --lapis: #2c4a6e;
+  --ink-soft: #4b504b;
+  --ink-faint: #5d615b;
+  --lapis: #27466b;
+  --lapis-ink: #f4f2ec;
   --rubric: #7e3b2e;
-  --rule: #c9c6bc;
-  --highlight: #d9d4be;
+  --gilt: #8a6a2f;
+  --gilt-soft: #b8995c;
+  /* Gilt for small text (citations, dates): darker than the ornament gilt so
+     it passes 4.5:1 on paper. */
+  --gilt-text: #6f5420;
+  --rule: #c9c5ba;
+  --veil: rgba(27, 30, 28, 0.42);
 
-  --font-body: "Source Serif", Georgia, "Times New Roman", serif;
-  --font-util: "Source Sans", system-ui, sans-serif;
-  --font-arabic: "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
+  /* "Honorific" maps only U+FDFA (ﷺ) to Amiri, so the glyph in running Latin
+     text is drawn by the Arabic face instead of a system fallback. */
+  --font-serif: "Honorific", "Source Serif", "Iowan Old Style", Georgia, serif;
+  --font-util: "Honorific", "Source Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
 
-  /*
-   * Modular scale, ~1.22 ratio. Deliberately flatter than the 1.25 first
-   * drafted, and with a much higher floor: at a 16px base the old --t-xs
-   * landed on 10px, which is where the source apparatus and every metadata
-   * label were set. That is unreadable, and it made the whole page feel small
-   * even though the body text was nominally fine.
-   *
-   * The base itself is now 18px (see html below), not 16px. This is a reading
-   * site, not an application.
-   */
-  --t-xs: 0.75rem;
+  --t-xs: 0.78rem;
   --t-sm: 0.875rem;
   --t-base: 1rem;
   --t-md: 1.222rem;
@@ -105,782 +111,512 @@
   --t-xl: 1.9rem;
   --t-2xl: 2.4rem;
 
-  /* 4px spacing scale */
-  --s-1: 0.25rem;
-  --s-2: 0.5rem;
-  --s-3: 0.75rem;
-  --s-4: 1rem;
-  --s-6: 1.5rem;
-  --s-8: 2rem;
-  --s-12: 3rem;
-  --s-16: 4rem;
-  --s-24: 6rem;
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.25rem;
+  --s-6: 1.5rem; --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem;
 
-  --measure: 62ch;
-  --page: 78rem;
-
-  /* Arabic: 1.55× the Latin body, per DESIGN.md §2. */
-  --ar-size: 1.55rem;
+  --ar-size: 1.7rem;
   --ar-line: 2.15;
-
-  color-scheme: light dark;
+  --measure: 36rem;
+  --page: 46rem;
+  --radius: 6px;
+  --tap: 44px;
+  --bar: 3.5rem;
+  --tabs: 4rem;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #191b1a;
-    --paper-raised: #212320;
-    --ink: #dad7cd;
-    --ink-soft: #9a9990;
-    --lapis: #8aa9cc;
-    --rubric: #c08b7b;
-    --rule: #33352f;
-    --highlight: #3b3d31;
+    --paper: #161816; --paper-raised: #1f221f; --paper-sunk: #111311;
+    --ink: #dbd8ce; --ink-soft: #a3a299; --ink-faint: #979790;
+    --lapis: #93b0d2; --lapis-ink: #121412; --rubric: #c99282;
+    --gilt: #c4a76c; --gilt-soft: #8f7a4d; --gilt-text: #c9ae78; --rule: #343731;
+    --veil: rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
   }
 }
-
-/* Explicit override from Settings must win in both directions. */
 :root[data-theme="dark"] {
-  --paper: #191b1a;
-  --paper-raised: #212320;
-  --ink: #dad7cd;
-  --ink-soft: #9a9990;
-  --lapis: #8aa9cc;
-  --rubric: #c08b7b;
-  --rule: #33352f;
-  --highlight: #3b3d31;
-}
-:root[data-theme="light"] {
-  --paper: #e8e6df;
-  --paper-raised: #f1efe9;
-  --ink: #1b1e1c;
-  --ink-soft: #4e534e;
-  --lapis: #2c4a6e;
-  --rubric: #7e3b2e;
-  --rule: #c9c6bc;
-  --highlight: #d9d4be;
+  --paper: #161816; --paper-raised: #1f221f; --paper-sunk: #111311;
+  --ink: #dbd8ce; --ink-soft: #a3a299; --ink-faint: #979790;
+  --lapis: #93b0d2; --lapis-ink: #121412; --rubric: #c99282;
+  --gilt: #c4a76c; --gilt-soft: #8f7a4d; --gilt-text: #c9ae78; --rule: #343731;
+  --veil: rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
 }
 
-/* ------------------------------- reset -------------------------------- */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/*
- * 18px base. Every size on the site is a rem, so the text-size setting scales
- * the root rather than the body — which means it moves headings, labels, the
- * apparatus and the Arabic together instead of only paragraph text. Scaling
- * `body` alone was why the setting appeared to do almost nothing.
- */
-html {
-  font-size: 112.5%;
-  -webkit-text-size-adjust: 100%;
-}
+/* The text-size setting scales the root, so every rem moves together. */
+html { font-size: 112.5%; -webkit-text-size-adjust: 100%; }
 :root[data-type="large"] { font-size: 128%; }
 :root[data-type="xlarge"] { font-size: 145%; }
 
+/* ------------------------------- base --------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: var(--font-serif);
   font-size: var(--t-base);
   line-height: 1.6;
-  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
-
-h1, h2, h3, h4 {
-  font-weight: 600;
-  line-height: 1.25;
-  margin: 0;
-  text-wrap: balance;
-}
-
+h1, h2, h3 { font-weight: 600; line-height: 1.2; margin: 0; text-wrap: balance; }
 p { margin: 0 0 var(--s-4); }
-p:last-child { margin-bottom: 0; }
-
-a {
-  color: var(--lapis);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-}
+a { color: var(--lapis); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
 a:hover { text-decoration-thickness: 2px; }
-
-:focus-visible {
-  outline: 2px solid var(--lapis);
-  outline-offset: 3px;
-  border-radius: 1px;
+:focus-visible { outline: 2px solid var(--lapis); outline-offset: 3px; border-radius: 2px; }
+img, svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
 }
-
-img { max-width: 100%; height: auto; }
-
-hr {
-  border: 0;
-  border-top: 1px solid var(--rule);
-  margin: var(--s-8) 0;
-}
-
-/* Motion is minimal by design; this makes it none. */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ------------------------------ layout -------------------------------- */
-
-.page {
-  max-width: var(--page);
-  margin-inline: auto;
-  padding-inline: var(--s-6);
-}
-
-.prose { max-width: var(--measure); }
-
+[hidden] { display: none !important; }
 .skip {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  background: var(--paper-raised);
-  color: var(--ink);
-  padding: var(--s-3) var(--s-4);
-  z-index: 100;
+  position: absolute; left: var(--s-4); top: -4rem; z-index: 50;
+  background: var(--ink); color: var(--paper); padding: var(--s-2) var(--s-4);
 }
-.skip:focus { left: var(--s-4); top: var(--s-2); }
+.skip:focus { top: var(--s-2); }
 
 /* ------------------------------ masthead ------------------------------ */
 
-.masthead {
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: saturate(1.2) blur(8px);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
   border-bottom: 1px solid var(--rule);
 }
-.masthead-in {
-  max-width: var(--page);
-  margin-inline: auto;
-  padding: var(--s-4) var(--s-6);
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-6);
-  flex-wrap: wrap;
+.bar-in {
+  /* In px, not rem: the text-size setting scales the root, and a header that
+     grew with it pushed the Settings button — the way back — off screen. */
+  max-width: 64rem; margin: 0 auto; height: 56px;
+  display: flex; align-items: center; gap: var(--s-4); padding: 0 var(--s-4);
 }
 .wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  font-family: var(--font-body);
-  font-size: var(--t-base);
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: 0.01em;
+  display: flex; align-items: center; gap: var(--s-2);
+  color: var(--ink); text-decoration: none;
+  font-family: var(--font-serif); font-weight: 600; font-size: 17px;
+  letter-spacing: 0.005em; min-height: 44px; white-space: nowrap; min-width: 0; overflow: hidden;
 }
-.wordmark:hover { color: var(--lapis); }
-.mark { display: block; border: 1px solid var(--rule); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .mark { filter: invert(1) hue-rotate(180deg); }
+.wordmark span { overflow: hidden; text-overflow: ellipsis; }
+.wordmark svg { width: 28px; height: 28px; flex: none; }
+.bar-nav { display: none; gap: var(--s-1); margin-left: var(--s-4); }
+.bar-nav a {
+  font-family: var(--font-util); font-size: 15px; color: var(--ink-soft);
+  text-decoration: none; padding: 0 var(--s-3); border-radius: var(--radius);
+  min-height: var(--tap); display: flex; align-items: center;
 }
-:root[data-theme="dark"] .mark { filter: invert(1) hue-rotate(180deg); }
-:root[data-theme="light"] .mark { filter: none; }
-.masthead nav {
-  margin-inline-start: auto;
-  display: flex;
-  gap: var(--s-4);
-  align-items: baseline;
-  flex-wrap: wrap;
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
+.bar-nav a[aria-current="page"] { color: var(--ink); background: var(--paper-sunk); }
+.bar-tools { margin-left: auto; display: flex; align-items: center; gap: 4px; flex: none; }
+.icon-btn {
+  min-width: var(--tap); min-height: var(--tap); padding: 0 var(--s-2);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  background: none; border: 0; border-radius: var(--radius); cursor: pointer;
+  color: var(--ink-soft); font-family: var(--font-util); font-size: 15px;
+  text-decoration: none; flex: none;
 }
-/* At 320px five nav items plus the wordmark do not fit on one line at the
-   18px base, so the nav drops to its own full-width row rather than pushing
-   the document wider. */
-@media (max-width: 560px) {
-  .masthead-in { gap: var(--s-3); }
-  .masthead nav {
-    margin-inline-start: 0;
-    width: 100%;
-    gap: var(--s-3) var(--s-4);
-  }
-}
-.masthead nav a { color: var(--ink-soft); text-decoration: none; }
-.masthead nav a:hover,
-.masthead nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
+.icon-btn:hover { background: var(--paper-sunk); color: var(--ink); }
+.icon-btn svg { width: 22px; height: 22px; }
+.lang-switch { font-weight: 600; letter-spacing: 0.02em; }
 
-/* ------------------------------- footer ------------------------------- */
-
-.foot {
+/* Bottom tab bar: the phone's primary navigation. */
+.tabs {
+  position: fixed; inset: auto 0 0 0; z-index: 30;
+  background: color-mix(in srgb, var(--paper-raised) 94%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--rule);
-  margin-top: var(--s-24);
-  padding: var(--s-8) 0 var(--s-12);
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
+  padding-bottom: env(safe-area-inset-bottom);
 }
-.foot a { color: var(--ink-soft); }
-.foot p { max-width: var(--measure); }
+.tabs ul {
+  list-style: none; margin: 0 auto; padding: 0; max-width: 32rem;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.tabs a {
+  height: 64px; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 3px; text-decoration: none; color: var(--ink-faint);
+  font-family: var(--font-util); font-size: 11.5px; letter-spacing: 0; padding: 0 2px;
+  min-width: 0;
+}
+.tabs a span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tabs svg { width: 24px; height: 24px; }
+.tabs a[aria-current="page"] { color: var(--lapis); }
+.tabs a[aria-current="page"] svg { stroke-width: 2.1; }
+body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 
-/* --------------------------- the duʿāʾ page --------------------------- */
+@media (min-width: 900px) {
+  .bar-nav { display: flex; }
+  .tabs { display: none; }
+  body { padding-bottom: 0; }
+}
+@media (max-width: 420px) {
+  .wordmark { font-size: 15px; }
+}
+
+/* -------------------------------- page -------------------------------- */
+
+.page { max-width: var(--page); margin: 0 auto; padding: 0 var(--s-4); }
+main.page { padding-top: var(--s-8); padding-bottom: var(--s-16); }
+.lede { font-size: var(--t-md); color: var(--ink-soft); line-height: 1.5; max-width: var(--measure); }
+.kicker, .eyebrow {
+  font-family: var(--font-util); font-size: var(--t-xs); letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0 0 var(--s-2);
+}
+.kicker a { color: inherit; }
+.page-title { font-size: var(--t-xl); margin-bottom: var(--s-3); }
+.section { margin-top: var(--s-12); }
+.section-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.section-head h2 { font-size: var(--t-md); }
+.section-head a { font-family: var(--font-util); font-size: var(--t-sm); white-space: nowrap; }
+.section-label {
+  display: block; font-family: var(--font-util); font-size: var(--t-xs);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  font-weight: 600; margin: 0 0 var(--s-3);
+}
+.prose { max-width: var(--measure); }
+.prose p { line-height: 1.7; }
+.muted { color: var(--ink-soft); }
+.util { font-family: var(--font-util); }
+.small { font-size: var(--t-sm); }
+
+/* ---------------------- the folio: signature frame -------------------- */
 
 /*
- * The signature element (DESIGN.md §3): the source apparatus sits in the left
- * margin beside the text, as a critical edition sets its apparatus — not in a
- * card underneath it.
+ * The Arabic is set on a raised leaf inside a gilt double rule with corner
+ * stars, after the illuminated frames (tezhip) of a muṣḥaf page. It is the one
+ * ornamented thing on the site; everything around it stays plain.
  */
-.passage {
-  display: grid;
-  grid-template-columns: 14rem 1fr;
-  gap: var(--s-8);
-  align-items: start;
-  margin: var(--s-8) 0;
+.folio {
+  position: relative;
+  background: var(--paper-raised);
+  border-radius: 3px;
+  padding: var(--s-8) var(--s-6) var(--s-6);
+  margin: var(--s-6) 0;
+  box-shadow: 0 1px 0 var(--rule), 0 12px 32px -20px rgba(0, 0, 0, 0.25);
 }
-
-.apparatus {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  line-height: 1.5;
-  color: var(--rubric);
-  text-align: right;
-  border-top: 2px solid var(--rubric);
-  padding-top: var(--s-3);
+.folio::before, .folio::after {
+  content: ""; position: absolute; pointer-events: none; border-radius: 2px;
 }
-.apparatus dt {
-  font-size: var(--t-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: var(--s-3);
+.folio::before { inset: 7px; border: 1px solid var(--gilt-soft); }
+.folio::after { inset: 11px; border: 1px solid color-mix(in srgb, var(--gilt-soft) 55%, transparent); }
+.folio .corner {
+  position: absolute; width: 18px; height: 18px; color: var(--gilt); z-index: 1;
 }
-.apparatus dt:first-of-type { margin-top: 0; }
-.apparatus dd { margin: 0; }
-.apparatus a { color: var(--rubric); }
-
-@media (max-width: 900px) {
-  .passage { grid-template-columns: 1fr; gap: var(--s-6); }
-  .apparatus {
-    order: 2;
-    text-align: left;
-    border-top: 1px solid var(--rubric);
-    padding-top: var(--s-4);
-  }
-  .passage-body { order: 1; }
+.folio .corner.tl { top: 0; left: 0; }
+.folio .corner.tr { top: 0; right: 0; }
+.folio .corner.bl { bottom: 0; left: 0; }
+.folio .corner.br { bottom: 0; right: 0; }
+.folio .crest {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--paper); padding: 0 var(--s-2); color: var(--gilt);
 }
-
-/* ------------------------------- Arabic ------------------------------- */
-
-/*
- * Constrained to the same measure as the translation. Without this the Arabic
- * right-aligns to the full grid column and drifts away from the text it
- * belongs with — they stop reading as one passage.
- */
-.passage-body { max-width: var(--measure); }
+.folio .crest svg { width: 22px; height: 22px; }
+.folio > *:not(.corner):not(.crest) { position: relative; z-index: 1; }
 
 .arabic {
-  font-family: var(--font-arabic);
-  font-size: var(--ar-size);
-  line-height: var(--ar-line);
-  /* 400 always. Anything heavier triggers synthetic bolding, which smears
-     the diacritics into the letters beneath them. */
-  font-weight: 400;
-  /* Ragged, never justified — justified Arabic produces the gaps. */
-  text-align: right;
-  margin: 0 0 var(--s-6);
-  padding: var(--s-4) 0;
-  color: var(--ink);
-  /* Ensure diacritics above and below are never clipped by the line box. */
-  overflow-wrap: break-word;
+  font-family: var(--font-arabic); font-size: var(--ar-size); line-height: var(--ar-line);
+  font-weight: 400; text-align: center; margin: 0; padding: var(--s-2) 0;
+  color: var(--ink); overflow-wrap: break-word; word-spacing: 0.04em;
 }
-
-/*
- * The supplication itself, against the āyah's narrative framing. Weight is not
- * available — anything above 400 triggers synthetic bolding and smears the
- * diacritics — so the distinction is carried by colour alone, and the framing
- * still clears AA against the paper.
- */
+.ar-frame { color: var(--ink-faint); }
 .ar-core { color: var(--ink); }
-.ar-frame { color: var(--ink-soft); opacity: 0.72; }
+.folio-foot {
+  display: flex; justify-content: center; align-items: center; gap: var(--s-2);
+  margin-top: var(--s-3); font-family: var(--font-util); font-size: var(--t-xs);
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--gilt-text);
+}
+.folio-foot::before, .folio-foot::after {
+  content: ""; height: 1px; width: 2.5rem; background: var(--gilt-soft);
+}
 @media (max-width: 480px) {
-  :root { --ar-size: 1.4rem; --ar-line: 2.2; }
+  :root { --ar-size: 1.5rem; --ar-line: 2.2; }
+  .folio { padding: var(--s-8) var(--s-4) var(--s-5); margin-left: calc(-1 * var(--s-2)); margin-right: calc(-1 * var(--s-2)); }
 }
 
 .translit {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: var(--measure);
-  margin: 0 0 var(--s-6);
-  font-style: normal;
+  font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft);
+  line-height: 1.7; margin: var(--s-4) 0 0; text-align: center;
 }
+:root[data-translit="off"] .translit { display: none; }
 
-.translation {
-  font-size: var(--t-base);
-  max-width: var(--measure);
-  line-height: 1.65;
-  margin: 0 0 var(--s-4);
+.translation { margin: var(--s-6) 0 0; max-width: var(--measure); }
+.translation p { font-size: var(--t-md); line-height: 1.55; margin: 0; }
+.translation + .translation { margin-top: var(--s-5); }
+.translation-by {
+  display: block; font-family: var(--font-util); font-size: var(--t-xs);
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+  margin-bottom: var(--s-1);
 }
-.translation + .translation { margin-top: var(--s-6); }
-/*
- * Reading-language filter. Hiding by attribute rather than removing the nodes
- * keeps the page static and the switch instant, and means a reader who picks
- * one language still has the other in the DOM for copy and for search engines.
- */
-/*
- * Filter on an explicit data-lang, not on the lang attribute: the label inside
- * each block is lang="en" regardless of the translation's language, so a
- * :has([lang="en"]) rule matched every block and hid all of them.
- */
+/* Reading-language filter, set on <html> by the settings script. */
 :root[data-reading="en"] .translation[data-lang="tr"],
 :root[data-reading="tr"] .translation[data-lang="en"] { display: none; }
 
-.draft-flag { color: var(--rubric); }
+/* ------------------------- source apparatus --------------------------- */
 
-.translation-by {
-  display: block;
-  /* Never inherit a content language — see the note in Passage.astro. */
-  font-family: var(--font-util);
-  font-size: var(--t-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: var(--s-2);
+.passage { display: grid; grid-template-columns: 1fr; gap: var(--s-6); }
+.apparatus {
+  font-family: var(--font-util); font-size: var(--t-sm); line-height: 1.5;
+  color: var(--rubric); border-top: 1px solid var(--rubric); padding-top: var(--s-4);
+  margin: var(--s-8) 0 0; display: grid; grid-template-columns: 7rem 1fr; gap: var(--s-2) var(--s-4);
 }
+.apparatus dt {
+  font-size: var(--t-xs); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-faint); padding-top: 0.15em;
+}
+.apparatus dd { margin: 0; }
+.apparatus a { color: var(--rubric); }
+@media (max-width: 480px) {
+  .apparatus { grid-template-columns: 1fr; gap: 0; }
+  .apparatus dt { margin-top: var(--s-3); }
+  .apparatus dt:first-of-type { margin-top: 0; }
+}
+
+/* ------------------------------ actions ------------------------------- */
+
+.actions {
+  display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-6) 0 0;
+}
+.btn {
+  min-height: var(--tap); padding: 0 var(--s-4); border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--paper-raised); color: var(--ink);
+  font-family: var(--font-util); font-size: var(--t-sm); font-weight: 600;
+  display: inline-flex; align-items: center; gap: var(--s-2); cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+}
+.btn:hover { border-color: var(--ink-faint); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn.primary { background: var(--lapis); color: var(--lapis-ink); border-color: var(--lapis); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn.quiet { background: none; }
+.toast {
+  position: fixed; left: 50%; bottom: calc(var(--tabs) + env(safe-area-inset-bottom) + var(--s-4));
+  transform: translateX(-50%) translateY(1rem); opacity: 0; pointer-events: none;
+  background: var(--ink); color: var(--paper); font-family: var(--font-util); font-size: var(--t-sm);
+  padding: var(--s-2) var(--s-4); border-radius: 999px; transition: opacity .2s, transform .2s; z-index: 60;
+  max-width: calc(100vw - 2rem); text-align: center;
+}
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (min-width: 900px) { .toast { bottom: var(--s-8); } }
 
 /* ------------------------------ sections ------------------------------ */
 
-.section-label {
-  display: block;
-  font-family: var(--font-util);
-  font-size: var(--t-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 0 0 var(--s-3);
-  font-weight: 600;
-}
-
-/*
- * The editorial reflection. Rendered in a visibly different register from
- * `context`, because it is this project's own voice rather than transmitted
- * knowledge — the old site presented the two at identical weight.
- */
-.reflection {
-  border-left: 2px solid var(--rule);
-  padding-left: var(--s-4);
-  max-width: var(--measure);
-  color: var(--ink-soft);
-  font-style: italic;
-}
-.reflection .byline {
-  display: block;
-  font-family: var(--font-util);
-  font-style: normal;
-  font-size: var(--t-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: var(--s-2);
-}
-
-.notice {
-  border: 1px solid var(--rubric);
-  padding: var(--s-3) var(--s-4);
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--rubric);
-  max-width: var(--measure);
-  margin: var(--s-6) 0;
-}
-
-/* -------------------------------- lists ------------------------------- */
-
-.index-list { list-style: none; padding: 0; margin: 0; }
-.index-list li { border-bottom: 1px solid var(--rule); }
-.index-list li:first-child { border-top: 1px solid var(--rule); }
-
-.entry {
-  display: grid;
-  grid-template-columns: 3rem 1fr auto;
-  gap: var(--s-4);
-  align-items: baseline;
-  padding: var(--s-4) 0;
-  text-decoration: none;
-  color: inherit;
-}
-.entry:hover { background: var(--paper-raised); }
-.entry .seq {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  font-variant-numeric: tabular-nums;
-}
-.entry .name { font-size: var(--t-md); font-weight: 600; }
-.entry .name .honorific { font-weight: 400; color: var(--ink-soft); font-size: var(--t-sm); }
-.entry .meta {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  text-align: right;
-  white-space: nowrap;
-}
-.entry .blurb {
-  grid-column: 2 / -1;
-  color: var(--ink-soft);
-  font-size: var(--t-sm);
-  margin-top: var(--s-1);
-  max-width: var(--measure);
-}
-@media (max-width: 640px) {
-  .entry { grid-template-columns: 2rem 1fr; }
-  .entry .meta { grid-column: 2; text-align: left; }
-  .entry .blurb { grid-column: 2; }
-}
-
-/* Theme grid — two columns of needs, not a three-card feature grid. */
-.themes { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
-@media (min-width: 720px) { .themes { grid-template-columns: 1fr 1fr; column-gap: var(--s-12); } }
-.themes li { border-bottom: 1px solid var(--rule); }
-.theme-link { display: block; padding: var(--s-4) 0; text-decoration: none; color: inherit; }
-.theme-link:hover .theme-name { color: var(--lapis); text-decoration: underline; }
-.theme-name { font-size: var(--t-md); font-weight: 600; display: block; }
-.theme-desc { color: var(--ink-soft); font-size: var(--t-sm); margin-top: var(--s-1); }
-.theme-count {
-  font-family: var(--font-util);
-  font-size: var(--t-xs);
-  color: var(--ink-soft);
-  font-variant-numeric: tabular-nums;
-}
-
-/*
- * Quoted classical commentary. Set at the same measure as the translation but
- * a step down and indented, so it reads as someone else's voice being quoted
- * rather than as the site speaking.
- */
+.occasion p { font-size: var(--t-base); line-height: 1.7; }
+.refs { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); }
 .tafsir {
-  margin: 0;
-  padding-left: var(--s-4);
-  border-left: 1px solid var(--rule);
-  max-width: var(--measure);
-  font-size: var(--t-sm);
-  line-height: 1.7;
-  color: var(--ink);
+  margin: 0; padding: 0 0 0 var(--s-4); border-left: 2px solid var(--rule);
+  color: var(--ink-soft); font-size: var(--t-sm); line-height: 1.7;
 }
-.tafsir-cite {
-  font-family: var(--font-util);
-  font-size: var(--t-xs);
-  color: var(--ink-soft);
-  margin-top: var(--s-2);
-  padding-left: var(--s-4);
+details.fold summary {
+  cursor: pointer; font-family: var(--font-util); font-size: var(--t-sm); color: var(--lapis);
+  min-height: var(--tap); display: flex; align-items: center; list-style: none;
+}
+details.fold summary::-webkit-details-marker { display: none; }
+details.fold summary::after { content: "+"; margin-left: var(--s-2); }
+details.fold[open] summary::after { content: "–"; }
+.reflection {
+  background: var(--paper-sunk); border-radius: var(--radius); padding: var(--s-4) var(--s-5);
   max-width: var(--measure);
 }
-
-/*
- * Situations and themes, collapsed into one line. Small, muted, and out of the
- * reading path — they are how someone arrives at a page, not what they came to
- * read once they are on it.
- */
-/*
- * Situations and themes at the foot of a duʿāʾ. They were one undifferentiated
- * run — lowercase situations flowing into capitalised theme links with only an
- * em-dash between — which read as one long confusing sentence. Each now has a
- * small label of its own.
- */
-.tags {
-  display: grid;
-  grid-template-columns: 6.5rem 1fr;
-  gap: var(--s-2) var(--s-4);
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  max-width: var(--measure);
-  line-height: 1.7;
-  margin-top: var(--s-8);
+.reflection p { font-style: italic; margin: 0 0 var(--s-2); }
+.reflection .byline {
+  font-family: var(--font-util); font-size: var(--t-xs); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-faint);
 }
-.tags dt {
-  font-size: var(--t-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding-top: 0.15em;
+.notice {
+  font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft);
+  border-left: 2px solid var(--rubric); padding: var(--s-2) var(--s-4); margin: var(--s-4) 0;
 }
+.tags { display: grid; grid-template-columns: 9rem 1fr; gap: var(--s-2) var(--s-4);
+  font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-soft); max-width: var(--measure); }
+.tags dt { font-size: var(--t-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding-top: .2em; }
 .tags dd { margin: 0; }
-@media (max-width: 560px) {
-  .tags { grid-template-columns: 1fr; gap: var(--s-1); }
-  .tags dt { margin-top: var(--s-3); }
-}
+@media (max-width: 560px) { .tags { grid-template-columns: 1fr; gap: var(--s-1); } .tags dt { margin-top: var(--s-3); } }
+.stack > * + * { margin-top: var(--s-10); }
 
-/* --------------------------- quiet actions ---------------------------- */
+/* -------------------------------- cards ------------------------------- */
 
-.actions {
-  display: flex;
-  gap: var(--s-4);
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  border-top: 1px solid var(--rule);
-  padding-top: var(--s-4);
-  margin-top: var(--s-8);
-  flex-wrap: wrap;
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+/* Grid items default to min-width:auto, so an unbroken Arabic preview would
+   push the page wider than the phone. */
+.cards > li, .grid-2 > * { min-width: 0; }
+.card {
+  display: block; position: relative; text-decoration: none; color: var(--ink);
+  background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: var(--s-4) var(--s-4) var(--s-4);
 }
-.actions button {
-  background: none;
-  border: 0;
-  padding: var(--s-1) 0;
-  font: inherit;
-  color: var(--lapis);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+.card:hover { border-color: var(--ink-faint); }
+.card .card-ar {
+  font-family: var(--font-arabic); font-size: 1.2rem; line-height: 1.9; color: var(--ink);
+  direction: rtl; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: var(--s-1);
 }
-.actions button:hover { text-decoration-thickness: 2px; }
+.card .card-title { font-weight: 600; font-size: var(--t-base); line-height: 1.35; }
+.card .card-meta { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); margin-top: var(--s-1); }
 
-/* ------------------------------ settings ------------------------------ */
+.grid-2 { display: grid; gap: var(--s-3); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
-.settings-toggle {
-  background: none;
-  border: 0;
-  font: inherit;
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  cursor: pointer;
-  padding: 0;
-  text-decoration: none;
+/* Need tiles */
+.needs { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-2); grid-template-columns: 1fr; }
+@media (min-width: 560px) { .needs { grid-template-columns: 1fr 1fr; } }
+.needs a {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  min-height: 3.25rem; padding: var(--s-2) var(--s-4); text-decoration: none; color: var(--ink);
+  border-bottom: 1px solid var(--rule); font-size: var(--t-base);
 }
-.settings-toggle:hover { color: var(--ink); text-decoration: underline; }
+.needs a:hover { background: var(--paper-sunk); }
+.needs .n { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); }
 
-dialog.settings {
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  background: var(--paper-raised);
-  color: var(--ink);
-  padding: var(--s-6);
-  max-width: 26rem;
-  width: calc(100% - var(--s-8));
+/* Moments strip */
+.moments { display: flex; gap: var(--s-2); overflow-x: auto; padding: 2px 2px var(--s-2);
+  scrollbar-width: none; margin: 0 calc(-1 * var(--s-4)); padding-left: var(--s-4); padding-right: var(--s-4); }
+.moments::-webkit-scrollbar { display: none; }
+.moment {
+  flex: none; display: flex; flex-direction: column; gap: var(--s-2); width: 7.5rem;
+  padding: var(--s-3); border-radius: var(--radius); border: 1px solid var(--rule);
+  background: var(--paper-raised); text-decoration: none; color: var(--ink);
+  font-family: var(--font-util); font-size: var(--t-sm); line-height: 1.3; min-height: 6rem;
 }
-dialog.settings::backdrop { background: rgb(0 0 0 / 0.4); }
-dialog.settings h2 { font-size: var(--t-md); margin-bottom: var(--s-4); }
-.setting { margin-bottom: var(--s-6); }
-.setting > span {
-  display: block;
-  font-family: var(--font-util);
-  font-size: var(--t-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: var(--s-2);
+.moment svg { width: 26px; height: 26px; color: var(--gilt); }
+@media (min-width: 900px) {
+  .moments { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }
 }
-.choices { display: flex; gap: var(--s-2); flex-wrap: wrap; }
-.choices label {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  border: 1px solid var(--rule);
-  padding: var(--s-2) var(--s-3);
-  cursor: pointer;
-  border-radius: 2px;
-}
-.choices input { position: absolute; opacity: 0; width: 0; height: 0; }
-.choices input:checked + span { font-weight: 700; }
-.choices label:has(input:checked) { border-color: var(--lapis); color: var(--lapis); }
-.choices label:has(input:focus-visible) { outline: 2px solid var(--lapis); outline-offset: 2px; }
+.moment[data-now] { border-color: var(--gilt); box-shadow: inset 0 0 0 1px var(--gilt); }
 
-/* ------------------------------- search ------------------------------- */
+/* Prophet sequence */
+.seq-list { list-style: none; margin: 0; padding: 0; }
+.seq-list li a {
+  display: grid; grid-template-columns: 2.5rem 1fr auto; align-items: baseline; gap: var(--s-3);
+  padding: var(--s-3) 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink);
+  min-height: var(--tap);
+}
+.seq-list .no { font-family: var(--font-util); font-size: var(--t-xs); color: var(--gilt-text); text-align: right; }
+.seq-list .nm { font-size: var(--t-md); }
+.seq-list .nm small { display: block; font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); margin-top: 2px; }
+.seq-list .ct { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); }
+
+/* Inline duʿāʾ on prophet / theme pages */
+.inline-dua { padding: var(--s-8) 0; border-bottom: 1px solid var(--rule); }
+.inline-dua:first-of-type { padding-top: var(--s-4); }
+.inline-dua h2 { font-size: var(--t-lg); }
+.inline-dua h2 a { color: var(--ink); text-decoration: none; }
+.inline-dua .meta { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); margin-top: var(--s-2); }
+.inline-dua .occ { color: var(--ink-soft); font-size: var(--t-sm); margin-top: var(--s-4); max-width: var(--measure); }
+
+/* --------------------------- Today / home ----------------------------- */
+
+.today-pending [data-today] [data-f], .today-pending [data-today] .folio-foot { visibility: hidden; }
+.today-date { font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); margin-bottom: var(--s-1); }
+.today-date .hijri { color: var(--gilt-text); }
+.hero-title { font-size: var(--t-2xl); line-height: 1.1; margin: 0 0 var(--s-2); }
+@media (max-width: 480px) { .hero-title { font-size: var(--t-xl); } }
+.today-card h2 { font-size: var(--t-lg); margin: var(--s-2) 0 0; }
+.today-card h2 a { color: var(--ink); text-decoration: none; }
+.today-card .who { font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); }
+
+/* -------------------------------- search ------------------------------ */
 
 .search-field {
-  font: inherit;
-  font-family: var(--font-util);
-  font-size: var(--t-base);
-  background: var(--paper-raised);
-  color: var(--ink);
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  padding: var(--s-3) var(--s-4);
-  width: 100%;
-  max-width: 34rem;
+  width: 100%; min-height: 3.25rem; padding: 0 var(--s-4); border-radius: var(--radius);
+  border: 1px solid var(--rule); background: var(--paper-raised); font-size: var(--t-md);
 }
-mark { background: var(--highlight); color: inherit; }
-
-/* Suggested queries on an empty search page. Quiet, and unmistakably clickable
-   without becoming a row of buttons. */
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .chip {
-  font: inherit;
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  background: none;
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  padding: var(--s-1) var(--s-3);
-  color: var(--ink);
-  cursor: pointer;
-  white-space: nowrap;
+  min-height: var(--tap); padding: 0 var(--s-4); border-radius: 999px; border: 1px solid var(--rule);
+  background: none; cursor: pointer; font-family: var(--font-util); font-size: var(--t-sm);
+  display: inline-flex; align-items: center; text-decoration: none; color: var(--ink);
 }
-.chip:hover { border-color: var(--lapis); color: var(--lapis); }
+.chip:hover { background: var(--paper-sunk); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-.prophet-name-ar {
-  font-family: var(--font-arabic);
-  font-size: var(--t-lg);
-  line-height: 1.8;
-  color: var(--ink-soft);
-  margin: var(--s-2) 0 0;
-}
+/* -------------------------------- sheets ------------------------------ */
 
-/* --------------------- continuous duʿāʾ reading flow ------------------- */
-/*
- * The prophet and theme pages are reading surfaces, not indexes. Each
- * supplication is separated by a rule and generous space rather than boxed —
- * the page should feel like turning through a section of a book, not like
- * scrolling a feed of cards.
- */
-.dua-flow { margin-top: var(--s-8); }
+dialog.sheet {
+  border: 0; padding: var(--s-6) var(--s-5) calc(var(--s-6) + env(safe-area-inset-bottom));
+  background: var(--paper-raised); color: var(--ink);
+  width: min(100%, 30rem); max-height: 85vh; overflow: auto;
+  margin: auto auto 0; border-radius: 14px 14px 0 0;
+}
+@media (min-width: 700px) { dialog.sheet { margin: auto; border-radius: 12px; } }
+dialog.sheet::backdrop { background: var(--veil); }
+dialog.sheet h2 { font-size: var(--t-md); margin-bottom: var(--s-4); }
+.setting { margin-bottom: var(--s-5); }
+.setting > span { display: block; font-family: var(--font-util); font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: var(--s-2); }
+.choices { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.choices label { position: relative; }
+.choices input { position: absolute; opacity: 0; inset: 0; }
+.choices span {
+  min-height: var(--tap); padding: 0 var(--s-4); display: inline-flex; align-items: center;
+  border-radius: 999px; border: 1px solid var(--rule); font-family: var(--font-util); font-size: var(--t-sm); cursor: pointer;
+}
+.choices input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.choices input:focus-visible + span { outline: 2px solid var(--lapis); outline-offset: 2px; }
+.check-list { list-style: none; margin: 0 0 var(--s-4); padding: 0; }
+.check-list label { display: flex; align-items: center; gap: var(--s-3); min-height: var(--tap); font-family: var(--font-util); cursor: pointer; }
+.check-list input { width: 20px; height: 20px; accent-color: var(--lapis); }
 
-.inline-dua {
-  padding-top: var(--s-12);
-  border-top: 1px solid var(--rule);
-  margin-top: var(--s-12);
-}
-.inline-dua:first-child { margin-top: var(--s-8); }
+/* -------------------------------- mine -------------------------------- */
 
-.inline-dua-head h2 {
-  font-size: var(--t-md);
-  font-weight: 600;
-  margin: 0;
-}
-.inline-dua-head h2 a { color: var(--ink); text-decoration: none; }
-.inline-dua-head h2 a:hover { color: var(--lapis); text-decoration: underline; }
+.list-box { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper-raised); margin-bottom: var(--s-4); }
+.list-box header { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.list-box header h3 { font-size: var(--t-md); margin-right: auto; }
+.list-box ol { list-style: none; margin: 0; padding: 0; }
+.list-box li { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-1) var(--s-2) var(--s-1) var(--s-4); border-bottom: 1px solid var(--rule); }
+.list-box li:last-child { border-bottom: 0; }
+.list-box li a { flex: 1; min-height: var(--tap); display: flex; align-items: center; color: var(--ink); text-decoration: none; }
+.list-box .empty { padding: var(--s-4); color: var(--ink-faint); font-family: var(--font-util); font-size: var(--t-sm); margin: 0; }
+.panel { border-top: 1px solid var(--rule); padding-top: var(--s-6); margin-top: var(--s-10); }
+.panel h2 { font-size: var(--t-md); margin-bottom: var(--s-2); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+input[type="time"] { min-height: var(--tap); padding: 0 var(--s-3); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper-raised); }
 
-/* The sequence marker is content here — these are numbered positions in a
-   named person's collection, not decorative 01/02/03 chrome. */
-.seq-num {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  font-weight: 400;
-  color: var(--rubric);
-  font-variant-numeric: tabular-nums;
-  margin-right: var(--s-3);
-}
+/* ------------------------------- reader ------------------------------- */
 
-.inline-dua-meta {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-  margin: var(--s-1) 0 0;
+.reader { display: flex; flex-direction: column; }
+.reader-top { display: flex; align-items: center; gap: var(--s-2); justify-content: space-between; }
+.reader-top { flex-wrap: wrap; }
+.reader-pos { white-space: nowrap; font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); }
+.reader-body { flex: 1; touch-action: pan-y; }
+.reader .arabic { font-size: calc(var(--ar-size) * 1.15); }
+.reader h1 { font-size: var(--t-lg); text-align: center; margin-top: var(--s-4); }
+.reader .who { text-align: center; font-family: var(--font-util); font-size: var(--t-sm); color: var(--ink-faint); }
+.reading .tabs, .reading .foot { display: none; }
+.reader-nav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: var(--s-2);
+  justify-content: space-between; align-items: center;
+  padding: 10px max(var(--s-4), calc((100vw - var(--page)) / 2 + var(--s-4))) calc(10px + env(safe-area-inset-bottom));
+  background: var(--paper-raised); border-top: 1px solid var(--rule);
 }
+.reader { min-height: 0; padding-bottom: 88px; }
+.w { cursor: default; border-radius: 4px; transition: color .15s; }
+.memo .w.hidden { color: transparent; background: var(--paper-sunk); cursor: pointer; }
+.memo .w.hint { color: transparent; background: var(--paper-sunk); cursor: pointer; position: relative; }
+.memo .w.hint::before { content: attr(data-first); position: absolute; right: .1em; color: var(--ink-faint); }
+.memo .translit { display: none; }
+.memo .w.hidden:focus-visible, .memo .w.hint:focus-visible { outline: 2px solid var(--lapis); }
+.memo-hint { font-family: var(--font-util); font-size: var(--t-xs); color: var(--ink-faint); text-align: center; }
 
-.inline-context {
-  max-width: var(--measure);
-  color: var(--ink-soft);
-  margin-top: var(--s-6);
-}
-.inline-more {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  margin-top: var(--s-4);
-}
+/* ------------------------------- footer ------------------------------- */
 
-/* On the flow pages the apparatus is a narrower margin than on a duʿāʾ page —
-   the passage is the thing being read, and there are many of them. */
-.dua-flow .passage { grid-template-columns: 11rem 1fr; margin-top: var(--s-6); }
-@media (max-width: 900px) {
-  .dua-flow .passage { grid-template-columns: 1fr; }
-  /* Once the margin folds under, the apparatus is repeating a reference the
-     meta line above the passage already gave. Drop it rather than print the
-     citation twice per entry down a ten-entry page. */
-  .dua-flow .apparatus { display: none; }
-}
-
-/* ------------------------------- jump list ---------------------------- */
-
-.jump {
-  margin-top: var(--s-8);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: var(--s-4) 0;
-}
-.jump ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  columns: 2;
-  column-gap: var(--s-12);
-}
-@media (max-width: 700px) { .jump ol { columns: 1; } }
-.jump li { break-inside: avoid; }
-.jump a {
-  display: block;
-  padding: var(--s-1) 0;
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink);
-  text-decoration: none;
-}
-.jump a:hover { color: var(--lapis); text-decoration: underline; }
-.jump-ref { color: var(--ink-soft); }
-.jump-ref::before { content: " · "; }
-
-/* Anchored passages should not land under the masthead. */
-.inline-dua { scroll-margin-top: var(--s-6); }
-
-/* ------------------------------ timeline ------------------------------ */
-/*
- * The one element kept from the braver direction, because it is genuinely the
- * index rather than ornament laid over content.
- */
-.timeline { position: relative; }
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 1.5rem;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--rule);
-}
-@media (max-width: 640px) { .timeline::before { left: 1rem; } }
-.timeline .entry { position: relative; }
-.timeline .entry::before {
-  content: "";
-  position: absolute;
-  left: 1.5rem;
-  top: 1.55rem;
-  width: 7px;
-  height: 7px;
-  margin-left: -3px;
-  border-radius: 50%;
-  background: var(--rubric);
-}
-@media (max-width: 640px) { .timeline .entry::before { left: 1rem; } }
-
-/* -------------------------------- utils ------------------------------- */
-
-.lede { font-size: var(--t-md); color: var(--ink-soft); max-width: var(--measure); }
-.hidden { display: none !important; }
-.visually-hidden {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-}
-.stack > * + * { margin-top: var(--s-8); }
-.kicker {
-  font-family: var(--font-util);
-  font-size: var(--t-sm);
-  color: var(--ink-soft);
-}
-.kicker a { color: var(--ink-soft); }
+.foot { border-top: 1px solid var(--rule); padding: var(--s-8) 0 var(--s-10); color: var(--ink-faint);
+  font-family: var(--font-util); font-size: var(--t-sm); }
+.foot p { max-width: var(--measure); }
+.foot a { color: var(--ink-soft); }
 
 /* -------------------------------- print ------------------------------- */
 
 @media print {
-  :root {
-    --paper: #fff; --paper-raised: #fff; --ink: #000; --ink-soft: #333;
-    --lapis: #000; --rubric: #000; --rule: #999;
-  }
-  .masthead nav, .actions, .settings-toggle, .skip, .related, .foot nav { display: none !important; }
-  body { font-size: 11pt; }
-  .passage { grid-template-columns: 1fr; }
-  .apparatus { border-top: 1px solid #999; text-align: left; }
-  /* A printed duʿāʾ must carry its citation — that is the whole point of
-     printing it. Links are expanded so the source survives the paper. */
+  .bar, .tabs, .actions, .foot, .reader-nav { display: none !important; }
+  body { background: #fff; color: #000; padding: 0; }
+  .folio { box-shadow: none; }
   .apparatus a::after { content: " (" attr(href) ")"; font-size: 8pt; }
-  a { text-decoration: none; color: #000; }
-  h1, h2 { page-break-after: avoid; }
-  .arabic { page-break-inside: avoid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }

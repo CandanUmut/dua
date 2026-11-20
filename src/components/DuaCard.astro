@@ -1,0 +1,16 @@
+---
+/** A duʿāʾ in a list: the opening Arabic, the title, who and where. */
+import type { Dua } from "../../content/schema";
+import { arabicPreview, duaUrl, name, prophet, refLabel } from "../lib/content";
+import { pick, type Lang } from "../lib/i18n";
+
+interface Props { dua: Dua; lang: Lang; showSpeaker?: boolean }
+const { dua, lang, showSpeaker = true } = Astro.props;
+const p = prophet(dua.speaker);
+---
+
+<a class="card" href={duaUrl(lang, dua.id)}>
+  {dua.arabic && <div class="card-ar" lang="ar" dir="rtl" translate="no">{arabicPreview(dua)}</div>}
+  <div class="card-title">{pick(dua.title, lang)}</div>
+  <div class="card-meta">{showSpeaker && `${name(p, lang)} · `}{refLabel(dua, lang)}</div>
+</a>

@@ -5,7 +5,7 @@ export default defineConfig({
   base: "/dua",
   output: "static",
   trailingSlash: "always",
-  build: { format: "directory", inlineStylesheets: "always" },
+  build: { format: "directory", inlineStylesheets: "never" },
   compressHTML: true,
   devToolbar: { enabled: false },
 });

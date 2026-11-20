@@ -1,0 +1,72 @@
+---
+import Base from "../layouts/Base.astro";
+import { buildSearchIndex } from "../lib/content";
+import { t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const index = buildSearchIndex(lang);
+const suggestions =
+  lang === "tr"
+    ? ["bağışlanma", "borç", "evlat", "sabır", "Yûnus", "uyku", "yolculuk", "hastalık"]
+    : ["forgiveness", "debt", "children", "patience", "Yūnus", "sleep", "travel", "illness"];
+---
+
+<Base lang={lang} title={`${t("searchTitle", lang)} — ${t("siteName", lang)}`} description={t("searchLede", lang)} tab="search">
+  <h1 class="page-title">{t("searchTitle", lang)}</h1>
+  <p class="lede">{t("searchLede", lang)}</p>
+  <div style="margin-top: var(--s-6)">
+    <label for="q" class="visually-hidden">{t("searchTitle", lang)}</label>
+    <input id="q" class="search-field" type="search" autocomplete="off" enterkeyhint="search"
+      placeholder={t("searchPlaceholder", lang)} aria-describedby="count" />
+  </div>
+  <p id="count" role="status" aria-live="polite" class="kicker" style="margin-top: var(--s-4)"></p>
+  <div id="suggestions">
+    <h2 class="section-label">{t("searchStart", lang)}</h2>
+    <div class="chips">{suggestions.map((q) => <button type="button" class="chip" data-suggest={q}>{q}</button>)}</div>
+  </div>
+  <ul class="cards" id="results" style="margin-top: var(--s-4)"></ul>
+
+  <script is:inline define:vars={{ index, home: url(lang, "/"), S: { none: t("searchNone", lang), count: t("searchCount", lang), one: t("searchOne", lang), many: t("searchMany", lang) } }}>
+    (() => {
+      const q = document.getElementById("q");
+      const out = document.getElementById("results");
+      const count = document.getElementById("count");
+      const sugg = document.getElementById("suggestions");
+      // Must match normalise() in src/lib/content.ts.
+      const norm = (s) => s.normalize("NFC").replace(/ٰ/g, "ا")
+        .replace(/[ؐ-ًؚ-ٟۖ-ۭـ]/g, "")
+        .replace(/[آأإٱ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي")
+        .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[ʿʾ'’‘`]/g, "")
+        .replace(/ı/g, "i").toLowerCase().trim();
+      const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const run = () => {
+        const term = q.value.trim();
+        sugg.hidden = Boolean(term);
+        if (!term) { out.innerHTML = ""; count.textContent = ""; return; }
+        const n = norm(term);
+        const words = n.split(/\s+/).filter(Boolean);
+        const rows = index
+          .map((d) => {
+            if (!words.every((w) => d.h.includes(w))) return null;
+            const titleHit = norm(d.title).includes(n) ? -1000 : 0;
+            return { ...d, rank: d.h.indexOf(words[0]) + titleHit };
+          })
+          .filter(Boolean)
+          .sort((a, b) => a.rank - b.rank)
+          .slice(0, 50);
+        out.innerHTML = rows.map((r) => `<li><a class="card" href="${home}duas/${r.id}/">
+          <div class="card-ar" lang="ar" dir="rtl">${esc(r.ar)}</div>
+          <div class="card-title">${esc(r.title)}</div>
+          <div class="card-meta">${esc(r.who)} · ${esc(r.ref)}</div></a></li>`).join("");
+        const nStr = rows.length === 1 ? S.one : S.many.replace("{n}", rows.length);
+        count.textContent = rows.length === 0 ? S.none.replace("{q}", term) : S.count.replace("{n}", nStr).replace("{q}", term);
+      };
+      let tm;
+      q.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(run, 120); });
+      document.querySelectorAll("[data-suggest]").forEach((b) => b.addEventListener("click", () => { q.value = b.dataset.suggest; run(); q.focus(); }));
+      const initial = new URLSearchParams(location.search).get("q");
+      if (initial) { q.value = initial; run(); }
+    })();
+  </script>
+</Base>

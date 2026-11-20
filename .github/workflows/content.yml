@@ -23,14 +23,14 @@ jobs:
       # content.lock.json. Fails if any Arabic has been edited by hand — which
       # is the whole point: the Phase 1 audit found two corrupted entries that
       # read fluently and survived human review.
-      - name: Verify Arabic against content.lock.json
+      - name: Verify Arabic against content.lock.json and hadith.lock.json
         run: npm run content:verify
 
       - name: Check Turkish is not dropped
         run: npx tsx scripts/migrate-legacy.ts
 
       - name: Verify tafsīr sources are distinct
-        run: npx tsx scripts/fetch-tafsir.ts
+        run: npx tsx scripts/fetch-tafsir.ts --verify
 
       - name: Validate content against schema
         run: npm run content:build
@@ -44,6 +44,18 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # What a reader sees: no developer language, no placeholder copy.
+      - name: Check reader-facing copy
+        run: npm run check:copy
+
+      # Every page, both languages, on a phone: no errors, no sideways
+      # scroll, 44px targets, no English on Turkish pages; and the daily
+      # features — save, lists, reader, memorise, share, backup, reminder.
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Smoke test
+        run: npm run test:smoke
 
   deploy:
     if: github.ref == 'refs/heads/main'

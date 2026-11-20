@@ -1,0 +1,128 @@
+---
+/**
+ * About, in both languages. Written for a reader: what this is, whether the
+ * text can be trusted, what stays private, who made it, how to report an
+ * error. The engineering detail lives in the repository.
+ */
+import Base from "../layouts/Base.astro";
+import { DUAS, PROPHETS } from "../lib/content";
+import { t, url, type Lang } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const q = DUAS.filter((d) => d.source.type === "quran").length;
+const h = DUAS.filter((d) => d.source.type === "hadith").length;
+const prophetCount = PROPHETS.filter((p) => p.section === "prophet").length;
+const en = lang === "en";
+const repo = "https://github.com/CandanUmut/dua";
+---
+
+<Base lang={lang} title={`${t("navAbout", lang)} — ${t("siteName", lang)}`} description={t("tagline", lang)} tab="about">
+  <h1 class="page-title">{t("navAbout", lang)}</h1>
+  <div class="prose stack" style="margin-top: var(--s-6)">
+    <section>
+      <p class="lede">
+        {en
+          ? `${q + h} supplications — ${q} from the Qurʾān and ${h} from the Sunnah — with the Arabic, how to say it, what it means, and when and why it was said.`
+          : `${q + h} dua — ${q} tanesi Kur'ân'dan, ${h} tanesi Sünnet'ten — Arapçası, okunuşu, anlamı ve ne zaman, niçin söylendiğiyle birlikte.`}
+      </p>
+      <p>
+        {en
+          ? `Find one by what you are going through, by the time of day, by prophet — ${prophetCount} of them, in the order they came — or by searching in Arabic, transliteration, English or Turkish.`
+          : `Yaşadığınız duruma, günün vaktine, peygambere —geliş sırasına göre ${prophetCount} peygamber— ya da Arapça, okunuş, Türkçe veya İngilizce arayarak bulabilirsiniz.`}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">{en ? "Where the text comes from" : "Metinler nereden geliyor"}</h2>
+      <p>
+        <strong>{en ? "The Qurʾānic Arabic" : "Kur'ân metni"}</strong>
+        {en
+          ? " is taken from a published edition of the muṣḥaf, never typed by hand. Each passage is checked against a fingerprint of the original every time the site is updated, so not a single letter can change unnoticed."
+          : " basılı bir mushaf neşrinden alınır, asla elle yazılmaz. Her pasaj, site her güncellendiğinde aslının parmak iziyle karşılaştırılır; böylece tek bir harf bile fark edilmeden değişemez."}
+      </p>
+      <p>
+        <strong>{en ? "The ḥadīth Arabic" : "Hadis metinleri"}</strong>
+        {en
+          ? " is taken the same way, from an open edition of the collections, by collection and number. Each one names its collection, its number and its grading — for the Sunan, al-Albānī's. Only the supplication is shown; the narration around it is told in “When and why it was said”."
+          : " de aynı şekilde, hadis külliyatının açık bir neşrinden, kitap ve numarasıyla alınır. Her biri kitabını, numarasını ve derecesini —Sünenler için Elbânî'nin hükmünü— belirtir. Yalnızca dua gösterilir; etrafındaki rivayet “Ne zaman ve niçin söylendi” bölümünde anlatılır."}
+      </p>
+      <p>
+        <strong>{en ? "Translations of the Qurʾān" : "Kur'ân çevirileri"}</strong>
+        {en
+          ? " are Marmaduke Pickthall's in English and Elmalılı Hamdi Yazır's in Turkish, both out of copyright, taken āyah by āyah so they cover exactly the words beside them."
+          : " İngilizcede Marmaduke Pickthall'ın, Türkçede Elmalılı Hamdi Yazır'ın çevirileridir. İkisinin de telif süresi dolmuştur ve âyet âyet alındıkları için yanlarındaki kelimeleri tam olarak karşılarlar."}
+      </p>
+      <p>
+        <strong>{en ? "Translations of the ḥadīth" : "Hadis çevirileri"}</strong>
+        {en
+          ? " are this site's own, in both languages, and each page says so. Those not yet checked against the Arabic by a reviewer are marked “not yet reviewed”."
+          : " her iki dilde de bu sitenin kendi çevirileridir ve her sayfada bu belirtilir. Henüz bir gözden geçirenin Arapçasıyla karşılaştırmadığı çeviriler “henüz gözden geçirilmedi” olarak işaretlenir."}
+      </p>
+      <p>
+        <strong>{en ? "Commentary" : "Tefsir"}</strong>
+        {en
+          ? " is Tafsīr al-Jalālayn, by al-Maḥallī and al-Suyūṭī, in Feras Hamza's English translation for the Royal Aal al-Bayt Institute."
+          : " Mahallî ve Süyûtî'nin Tefsîru'l-Celâleyn'idir; Feras Hamza'nın Royal Aal al-Bayt Enstitüsü için yaptığı İngilizce çeviriden verilir. Türkçe bir çevirisi bulunmadığından Türkçe sayfalarda da İngilizcedir."}
+      </p>
+      <p>
+        <strong>{en ? "“When and why it was said”" : "“Ne zaman ve niçin söylendi”"}</strong>
+        {en
+          ? " says only what the surrounding āyāt, the narration, or al-Jalālayn say, and names which. Where a supplication is part of a longer āyah, the whole āyah is shown with the supplication in full ink and the rest dimmed."
+          : " yalnızca çevredeki âyetlerin, rivayetin ya da Celâleyn'in söylediklerini aktarır ve hangisi olduğunu belirtir. Bir dua daha uzun bir âyetin parçasıysa âyetin tamamı gösterilir; dua koyu, geri kalanı soluk yazılır."}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">{en ? "What you will not find here" : "Burada bulamayacaklarınız"}</h2>
+      <p>
+        {en
+          ? "No promise that a duʿāʾ said a number of times brings a result, unless the narration itself says so — and then it is quoted, with its source. Where the site offers its own thought on a duʿāʾ, it is set apart and labelled an editorial note."
+          : "Rivayetin kendisi söylemedikçe, bir duayı belli sayıda okumanın belli bir sonuç getireceğine dair vaat yoktur; söylüyorsa kaynağıyla birlikte aktarılır. Sitenin bir dua hakkındaki kendi düşüncesi ayrı tutulur ve editör notu olarak işaretlenir."}
+      </p>
+      <p>
+        {en
+          ? "Two supplications in the Qurʾān ask for the destruction of a people (71:26 and 10:88). They are included so the record is complete, described plainly, and not offered as words for a situation of your own."
+          : "Kur'ân'daki iki dua bir kavmin helâkini ister (71:26 ve 10:88). Kaydın eksiksiz olması için yer alırlar, açıkça anlatılırlar ve sizin bir durumunuz için söylenecek sözler olarak sunulmazlar."}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">{en ? "Private by design" : "Gizlilik"}</h2>
+      <p>
+        {en
+          ? "No account, no analytics, no cookies, no advertising. What you save, your lists and your settings stay in your own browser and are never sent anywhere. After the first visit the whole site works offline."
+          : "Hesap yok, analiz yok, çerez yok, reklam yok. Kaydettikleriniz, listeleriniz ve ayarlarınız kendi tarayıcınızda kalır ve hiçbir yere gönderilmez. İlk ziyaretten sonra sitenin tamamı çevrimdışı çalışır."}
+      </p>
+      <p>
+        {en
+          ? "One exception, only when you press Listen: the recitation (Mishary Rashid Alafasy) streams from the Islamic Network audio service, which sees that request as it would any download."
+          : "Tek istisna, yalnızca Dinle'ye bastığınızda: tilavet (Mişari Raşid el-Afasi) Islamic Network ses hizmetinden akar ve bu hizmet isteği her indirmede olduğu gibi görür."}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">{en ? "Credits" : "Emeği geçenler"}</h2>
+      <p>
+        {en
+          ? "Created and maintained by Umut Candan. Qurʾān translations by Marmaduke Pickthall and Elmalılı Hamdi Yazır; Tafsīr al-Jalālayn in Feras Hamza's translation, courtesy of the Royal Aal al-Bayt Institute; ḥadīth text from the open hadith-api edition."
+          : "Umut Candan tarafından hazırlanmakta ve sürdürülmektedir. Kur'ân çevirileri Marmaduke Pickthall ve Elmalılı Hamdi Yazır'a; Tefsîru'l-Celâleyn çevirisi Feras Hamza'ya (Royal Aal al-Bayt Enstitüsü) aittir; hadis metinleri açık hadith-api neşrindendir."}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-label">{en ? "If something is wrong" : "Bir hata görürseniz"}</h2>
+      <p>
+        {en
+          ? "A site that quotes scripture needs a way to be told it has made a mistake. Every duʿāʾ page has a “Report a mistake” link; you do not need to know how to fix it."
+          : "Kutsal metinlerden alıntı yapan bir sitenin, hata yaptığında bunu öğrenebileceği bir yolu olmalıdır. Her dua sayfasında bir “Hata bildir” bağlantısı vardır; nasıl düzeltileceğini bilmeniz gerekmez."}
+        {" "}<a href={`${repo}/issues/new`} rel="noreferrer">{t("actReport", lang)}</a>.
+      </p>
+      <p class="refs">
+        {en ? "Open source — " : "Açık kaynak — "}<a href={repo} rel="noreferrer">{en ? "the repository" : "kaynak kodu"}</a>.
+        {en ? " Set in Amiri, Source Serif and Source Sans." : " Amiri, Source Serif ve Source Sans yazı tipleriyle dizilmiştir."}
+      </p>
+      <p><a href={url(lang, "/")}>{t("navToday", lang)} →</a></p>
+    </section>
+  </div>
+</Base>

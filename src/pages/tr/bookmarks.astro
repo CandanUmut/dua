@@ -1,0 +1,9 @@
+---
+/** The old Saved page. Lists and saved entries now live on /mine/. */
+import { url } from "../../lib/i18n";
+const to = url("tr", "/mine/");
+---
+
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8" /><meta http-equiv="refresh" content={`0;url=${to}`} /><link rel="canonical" href={to} /><title>→</title></head>
+<body><a href={to}>{to}</a></body></html>

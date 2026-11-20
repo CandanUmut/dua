@@ -71,21 +71,41 @@ error unrepresentable. There is no field you *could* put a wrong word into.
 
 ## Adding a ḥadīth duʿāʾ
 
-This is the one exception, because no API serves graded, versioned ḥadīth text.
-So the bar is higher rather than lower. In `content/hadith.ts` you must supply:
+The ḥadīth now follow the same rule as the Qurʾān: **no Arabic is typed.** The
+text comes from the open hadith-api edition (Unlicense) by collection and
+number, and is hash-locked in `hadith.lock.json`.
 
-- `collection` and `number`, as that collection numbers it
-- `grading` — ṣaḥīḥ, ḥasan, ḥasan ṣaḥīḥ
-- `gradedBy` — who gave that grading
+1. Find the narration and choose the supplication's word range by reading:
 
-The schema **rejects** a ḥadīth source missing any of these. An ungraded ḥadīth
-does not ship.
+   ```sh
+   npx tsx scripts/inspect-hadith.ts bukhari:6306 muslim:1334
+   ```
 
-Copy the Arabic from a reliable digital edition. Do not retype it, do not
-"clean it up", and do not correct what looks like a typo — open an issue
-instead.
+   The number after the colon is the dataset's own record number. For Bukhārī
+   and the Sunan it equals the standard number; for Muslim it does not — the
+   tool prints the standard (ʿAbd al-Bāqī) number beside it.
+
+2. Add a seed to `content/hadith.ts` with `ref` (book, dataset number,
+   standard number, and `variant` for Muslim's a/b sub-narrations), the
+   `excerpt` range, titles, translations, the `context` (what the narration
+   itself says, in both languages), themes, situations, and `moments` only if
+   the narration ties the words to a moment.
+
+3. `npx tsx scripts/fetch-hadith.ts`, then `npm run content:build`.
+
+The fetch fails if the record's standard number is not the one you cited, if
+the text contains a corrupted character, or — for the Sunan — if al-Albānī's
+grade is weaker than ḥasan. Bukhārī and Muslim are ṣaḥīḥ by inclusion.
+
+Translations here are the project's own. They render as "not yet reviewed"
+until someone has checked them against the Arabic and set `reviewed: { en:
+true, tr: true }` on the seed.
 
 ## Adding a passage from outside the Qurʾān and Sunnah
+
+*There are currently none; see the note in `content/attributed.ts` for why the
+one Psalm was removed. The rules below stand for any future entry, and
+rendering for this type would need to be restored first.*
 
 A few prophets the Qurʾān names have no supplication quoted in it. Where one is
 attributed to such a prophet in another scripture, it can go in
@@ -112,7 +132,10 @@ These are different things and the distinction is load-bearing.
 
 **`context`** is *when and why it was said*. It is transmitted knowledge and it
 **requires a citation** — a tafsīr or sīrah work, named, with a locus. If you
-cannot cite it, do not write it. Every Qurʾānic entry also carries Tafsīr
+cannot cite it, do not write it. For Qurʾānic entries it lives in
+`content/editorial.ts`, in English and Turkish, and says only what the
+surrounding āyāt or Tafsīr al-Jalālayn say — covering the entry's whole range,
+not its first āyah. Imprecations are described plainly, not softened. Every Qurʾānic entry also carries Tafsīr
 al-Jalālayn, fetched and attributed by `scripts/fetch-tafsir.ts`.
 
 If you add another commentary, **check it is actually that commentary.** An
@@ -168,14 +191,24 @@ it. If the licence is unclear, do not ship it.
 
 ```bash
 npm run typecheck        # tsc --noEmit, strict
-npm run content:verify   # re-derives all Arabic, fails on any drift
-npx tsx scripts/migrate-legacy.ts   # fails loudly if Turkish would be dropped
+npm run content:verify   # re-derives the Qurʾānic and ḥadīth Arabic; fails on drift
+npx tsx scripts/migrate-legacy.ts   # fails loudly if legacy Turkish would be lost
+npx tsx scripts/check-coverage.ts   # both languages for every occasion and reflection
+npm run check:arabic     # no Arabic phrases typed into templates
 npm run build
+npm run check:copy       # no developer language or placeholder text on any page
+npm run test:smoke       # every page, both languages, on a phone, plus the features
 ```
 
-`content:verify` is the important one. It re-fetches every āyah and compares
-against `content.lock.json`. If you hand-edit Arabic anywhere, the build breaks —
-which is the point.
+`npm run check` runs all of the local ones in order. The smoke test needs a
+Chromium; if the one Playwright expects is not installed, set
+`CHROMIUM_PATH` to a browser binary.
+
+## Reviewing the content
+
+`.claude/agents/critic.md` defines an independent critic — content first,
+then design and usability — that reports scored findings without editing
+anything. Run it after any content or design change.
 
 ## Reporting an error
 

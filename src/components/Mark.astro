@@ -1,0 +1,18 @@
+---
+/**
+ * The site's mark: the eight-pointed star of two squares — the rubʿ al-ḥizb,
+ * the sign a muṣḥaf uses to mark its divisions — with a rubric point at its
+ * centre. A marker of place in a recited text, which is what each entry here is.
+ */
+interface Props { size?: number }
+const { size = 28 } = Astro.props;
+---
+
+<svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
+  <g fill="none" stroke="var(--gilt)" stroke-width="3" stroke-linejoin="round">
+    <rect x="15" y="15" width="34" height="34" />
+    <rect x="15" y="15" width="34" height="34" transform="rotate(45 32 32)" />
+  </g>
+  <circle cx="32" cy="32" r="7.5" fill="none" stroke="var(--gilt)" stroke-width="2" />
+  <circle cx="32" cy="32" r="3.6" fill="var(--rubric)" />
+</svg>

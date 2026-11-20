@@ -1,16 +1,46 @@
 {
   "name": "The Duʿāʾ of the Prophets",
   "short_name": "Duʿāʾ",
-  "description": "The supplications of the Prophets from the Qurʾān and the authenticated Sunnah.",
+  "description": "The supplications of the Prophets from the Qurʾān and the Sunnah — with a duʿāʾ for each day.",
+  "lang": "en",
   "start_url": "/dua/",
   "scope": "/dua/",
   "display": "standalone",
-  "background_color": "#e8e6df",
-  "theme_color": "#e8e6df",
+  "background_color": "#e9e6de",
+  "theme_color": "#e9e6de",
   "icons": [
-    { "src": "/dua/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/dua/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/dua/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "/dua/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "/dua/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/dua/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/dua/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/dua/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today",
+      "url": "/dua/"
+    },
+    {
+      "name": "Mine",
+      "url": "/dua/mine/"
+    }
   ]
 }
